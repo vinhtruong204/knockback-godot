@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://b0a6xeiwcik5p"]
+
+[ext_resource type="Texture2D" uid="uid://dexsquoa82eqx" path="res://assets/Mode_2.png" id="1_i2nf4"]
+[ext_resource type="PackedScene" uid="uid://bnydl7bfp4dec" path="res://scences/player.tscn" id="2_am3uj"]
+[ext_resource type="Script" uid="uid://d1tv7qu7a5h4w" path="res://scripts/network_ui.gd" id="3_8edsk"]
+[ext_resource type="Script" uid="uid://df08lxw8j3ica" path="res://scripts/multiplayer_spawner.gd" id="4_3if0j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_am3uj"]
+size = Vector2(478, 19)
+
+[node name="main" type="Node2D" unique_id=2045882641]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1673242949]
+position = Vector2(0, 277)
+
+[node name="sprite" type="Sprite2D" parent="StaticBody2D" unique_id=1143117564]
+position = Vector2(1.4999847, 0)
+scale = Vector2(2.0560343, 0.345)
+texture = ExtResource("1_i2nf4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2084145002]
+position = Vector2(2, -0.5)
+shape = SubResource("RectangleShape2D_am3uj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=832561115]
+
+[node name="NetworkUI" type="Control" parent="CanvasLayer" unique_id=76151245]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_8edsk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/NetworkUI" unique_id=1195348931]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ButtonServer" type="Button" parent="CanvasLayer/NetworkUI/VBoxContainer" unique_id=2051975074]
+layout_mode = 2
+text = "SERVER"
+
+[node name="ButtonClient" type="Button" parent="CanvasLayer/NetworkUI/VBoxContainer" unique_id=93047588]
+layout_mode = 2
+text = "CLIENT"
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=387394056]
+offset_left = 515.0
+offset_top = 16.0
+offset_right = 555.0
+offset_bottom = 39.0
+text = "Type"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=529066921]
+spawn_path = NodePath("SpawnRoot")
+script = ExtResource("4_3if0j")
+player_scene = ExtResource("2_am3uj")
+
+[node name="SpawnRoot" type="Node2D" parent="MultiplayerSpawner" unique_id=1246771880]
+position = Vector2(6.52, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1335539192]
+
+[connection signal="pressed" from="CanvasLayer/NetworkUI/VBoxContainer/ButtonServer" to="CanvasLayer/NetworkUI" method="_on_button_server_pressed"]
+[connection signal="pressed" from="CanvasLayer/NetworkUI/VBoxContainer/ButtonClient" to="CanvasLayer/NetworkUI" method="_on_button_client_pressed"]
