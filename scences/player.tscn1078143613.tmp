@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://bnydl7bfp4dec"]
 
-[ext_resource type="Script" uid="uid://c70vb1l0t3qjc" path="res://scripts/player/player.gd" id="1_3j5lm"]
+[ext_resource type="Script" uid="uid://c70vb1l0t3qjc" path="res://scripts/player.gd" id="1_3j5lm"]
 [ext_resource type="Texture2D" uid="uid://cwd2gno5otk1v" path="res://assets/player/idle.png" id="1_hqvp4"]
 [ext_resource type="Texture2D" uid="uid://d3pagbf2vr50x" path="res://assets/player/run.png" id="3_efpdg"]
-[ext_resource type="Script" uid="uid://833qn4dgy4rc" path="res://scripts/player/state_machine/run_state.gd" id="4_7khn4"]
-[ext_resource type="Script" uid="uid://c1ocvq73vjd3l" path="res://scripts/player/state_machine/state_machine.gd" id="4_7xwe5"]
-[ext_resource type="Script" uid="uid://cb2nu8dsta4im" path="res://scripts/player/state_machine/idle_state.gd" id="5_7khn4"]
-[ext_resource type="Script" uid="uid://cg7qb4xddt32f" path="res://scripts/player/animation/animator_controller.gd" id="7_n0v3o"]
-[ext_resource type="Script" uid="uid://dufm3n2kblwq0" path="res://scripts/player/input/player_input.gd" id="8_mwok8"]
+[ext_resource type="Script" uid="uid://833qn4dgy4rc" path="res://scripts/run_state.gd" id="4_7khn4"]
+[ext_resource type="Script" uid="uid://c1ocvq73vjd3l" path="res://scripts/state_machine.gd" id="4_7xwe5"]
+[ext_resource type="Script" uid="uid://cb2nu8dsta4im" path="res://scripts/idle_state.gd" id="5_7khn4"]
+[ext_resource type="Script" uid="uid://cg7qb4xddt32f" path="res://scripts/animator_controller.gd" id="7_n0v3o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3j5lm"]
 atlas = ExtResource("1_hqvp4")
@@ -115,17 +114,5 @@ player = NodePath("../..")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1468366487]
 replication_config = SubResource("SceneReplicationConfig_7khn4")
 
-[node name="AnimatorController" type="Node2D" parent="." unique_id=531381097]
+[node name="Node2D" type="Node2D" parent="." unique_id=531381097]
 script = ExtResource("7_n0v3o")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=965768682]
-position = Vector2(0, -15.29412)
-position_smoothing_enabled = true
-position_smoothing_speed = 2.0
-
-[node name="PlayerInput" type="Node2D" parent="." unique_id=125342734]
-script = ExtResource("8_mwok8")
-
-[node name="Muzzle" type="Node2D" parent="." unique_id=312384057]
-
-[connection signal="state_change" from="StateMachine" to="AnimatorController" method="_on_state_machine_state_change"]

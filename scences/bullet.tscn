@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cryinsewn41ey"]
+
+[ext_resource type="Texture2D" uid="uid://dgo3il0kasdg" path="res://assets/Button_lvl_0_E.png" id="1_kguns"]
+
+[node name="Bullet" type="Node2D" unique_id=1559530049]
+
+[node name="ButtonLvl0E" type="Sprite2D" parent="." unique_id=1272132348]
+texture = ExtResource("1_kguns")

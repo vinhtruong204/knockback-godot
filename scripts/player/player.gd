@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-@onready var animation = $AnimatedSprite2D
+
+@onready var camera: Camera2D = $Camera2D
+
 @export var health = 50:
 	set(new_val):
 		health = new_val
@@ -11,9 +13,11 @@ const JUMP_VELOCITY = -400.0
 
 var input_dir: Vector2
 
-func _enter_tree() -> void:
+func _ready() -> void:
 	if is_multiplayer_authority():
 		health = int(self.name)
+		
+		camera.make_current()
 
 func _physics_process(delta: float) -> void:
 	if not is_multiplayer_authority():
@@ -40,9 +44,7 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
-		animation.play("run")
 	else:
-		animation.play("idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()

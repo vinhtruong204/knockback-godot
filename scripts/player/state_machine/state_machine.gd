@@ -1,5 +1,7 @@
 class_name StateMachine extends Node
 
+signal state_change(new_state_name: String)
+
 @export var initial_state: State
 var current_state: State
 var states: Dictionary[String, State] = {}
@@ -26,6 +28,9 @@ func change_state(new_state_name: String):
 
 	new_state.enter()
 	current_state = new_state
+	
+	# emit state change
+	state_change.emit(new_state.name.to_lower())
 
 func _process(delta):
 	if current_state:

@@ -4,11 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://bnydl7bfp4dec" path="res://scences/player.tscn" id="2_am3uj"]
 [ext_resource type="Script" uid="uid://d1tv7qu7a5h4w" path="res://scripts/network_ui.gd" id="3_8edsk"]
 [ext_resource type="Script" uid="uid://df08lxw8j3ica" path="res://scripts/multiplayer_spawner.gd" id="4_3if0j"]
+[ext_resource type="Script" uid="uid://cbal3qjm2inru" path="res://scripts/bullet_spawner.gd" id="5_41s58"]
+[ext_resource type="PackedScene" uid="uid://cryinsewn41ey" path="res://scences/bullet.tscn" id="6_cfdqf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_am3uj"]
 size = Vector2(478, 19)
 
-[node name="main" type="Node2D" unique_id=2045882641]
+[node name="Main" type="Node2D" unique_id=2045882641]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1673242949]
 position = Vector2(0, 277)
@@ -59,7 +61,12 @@ player_scene = ExtResource("2_am3uj")
 [node name="SpawnRoot" type="Node2D" parent="MultiplayerSpawner" unique_id=1246771880]
 position = Vector2(6.52, 0)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1335539192]
+[node name="BulletSpawner" type="MultiplayerSpawner" parent="." unique_id=802344975]
+spawn_path = NodePath("../MultiplayerSpawner/SpawnRoot")
+script = ExtResource("5_41s58")
+bullet_scene = ExtResource("6_cfdqf")
+
+[node name="SpawnRoot" type="Node2D" parent="BulletSpawner" unique_id=408777507]
 
 [connection signal="pressed" from="CanvasLayer/NetworkUI/VBoxContainer/ButtonServer" to="CanvasLayer/NetworkUI" method="_on_button_server_pressed"]
 [connection signal="pressed" from="CanvasLayer/NetworkUI/VBoxContainer/ButtonClient" to="CanvasLayer/NetworkUI" method="_on_button_client_pressed"]
