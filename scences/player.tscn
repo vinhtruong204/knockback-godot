@@ -88,6 +88,7 @@ properties/2/replication_mode = 1
 [node name="Player" type="CharacterBody2D" unique_id=1851866404]
 physics_interpolation_mode = 2
 scale = Vector2(5.95, 5.95)
+collision_mask = 2
 script = ExtResource("1_3j5lm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1070152029]

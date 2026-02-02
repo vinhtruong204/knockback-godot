@@ -21,4 +21,4 @@ func request_fire(pos: Vector2):
 
 func spawn_bullet(pos: Vector2):
 	var spawner := get_node("/root/Main/BulletSpawner")
-	spawner.spawn({"pos": pos, "dir": Vector2.ZERO})
+	spawner.spawn(pos)

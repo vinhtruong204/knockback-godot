@@ -44,6 +44,11 @@ player_shoot={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="map"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

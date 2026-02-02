@@ -9,11 +9,11 @@ func _ready():
 	if multiplayer.is_server():
 		set_multiplayer_authority(multiplayer.get_unique_id())
 
-func _spawn_bullet(data: Dictionary) -> Node:
+func _spawn_bullet(pos: Vector2) -> Node:
 	var bullet = bullet_scene.instantiate()
 
-	bullet.global_position = data.pos
-	
+	bullet.global_position = pos
+
 	bullet.set_multiplayer_authority(1)
 
 	return bullet

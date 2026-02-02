@@ -1,28 +1,14 @@
 [gd_scene format=3 uid="uid://b0a6xeiwcik5p"]
 
-[ext_resource type="Texture2D" uid="uid://dexsquoa82eqx" path="res://assets/Mode_2.png" id="1_i2nf4"]
 [ext_resource type="PackedScene" uid="uid://bnydl7bfp4dec" path="res://scences/player.tscn" id="2_am3uj"]
 [ext_resource type="Script" uid="uid://d1tv7qu7a5h4w" path="res://scripts/network_ui.gd" id="3_8edsk"]
-[ext_resource type="Script" uid="uid://df08lxw8j3ica" path="res://scripts/multiplayer_spawner.gd" id="4_3if0j"]
-[ext_resource type="Script" uid="uid://cbal3qjm2inru" path="res://scripts/bullet_spawner.gd" id="5_41s58"]
+[ext_resource type="Script" uid="uid://df08lxw8j3ica" path="res://scripts/spawners/player_spawner.gd" id="4_3if0j"]
+[ext_resource type="Script" uid="uid://cbal3qjm2inru" path="res://scripts/spawners/bullet_spawner.gd" id="5_41s58"]
 [ext_resource type="PackedScene" uid="uid://cryinsewn41ey" path="res://scences/bullet.tscn" id="6_cfdqf"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_am3uj"]
-size = Vector2(478, 19)
+[ext_resource type="Script" uid="uid://bxqipc7aon3k" path="res://scripts/spawners/map_spawner.gd" id="6_nwhyr"]
+[ext_resource type="PackedScene" uid="uid://bs0ldw8xcbu8e" path="res://scences/map.tscn" id="7_nwhyr"]
 
 [node name="Main" type="Node2D" unique_id=2045882641]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1673242949]
-position = Vector2(0, 277)
-
-[node name="sprite" type="Sprite2D" parent="StaticBody2D" unique_id=1143117564]
-position = Vector2(1.4999847, 0)
-scale = Vector2(2.0560343, 0.345)
-texture = ExtResource("1_i2nf4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2084145002]
-position = Vector2(2, -0.5)
-shape = SubResource("RectangleShape2D_am3uj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=832561115]
 
@@ -67,6 +53,14 @@ script = ExtResource("5_41s58")
 bullet_scene = ExtResource("6_cfdqf")
 
 [node name="SpawnRoot" type="Node2D" parent="BulletSpawner" unique_id=408777507]
+
+[node name="MapSpawner" type="MultiplayerSpawner" parent="." unique_id=624422725]
+spawn_path = NodePath("SpawnRoot")
+script = ExtResource("6_nwhyr")
+map_scene = ExtResource("7_nwhyr")
+
+[node name="SpawnRoot" type="Node2D" parent="MapSpawner" unique_id=1160459501]
+position = Vector2(0, 380)
 
 [connection signal="pressed" from="CanvasLayer/NetworkUI/VBoxContainer/ButtonServer" to="CanvasLayer/NetworkUI" method="_on_button_server_pressed"]
 [connection signal="pressed" from="CanvasLayer/NetworkUI/VBoxContainer/ButtonClient" to="CanvasLayer/NetworkUI" method="_on_button_client_pressed"]
