@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://dg4qala4ctepn"]
+
+[ext_resource type="Script" uid="uid://buliqdbgdujoo" path="res://scripts/transition layer/transition_layer.gd" id="1_uflbs"]
+
+[sub_resource type="Animation" id="Animation_4eq7q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Fade Rect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_tm0bt"]
+resource_name = "fade_in"
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Fade Rect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 2,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_uflbs"]
+resource_name = "fade_out"
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Fade Rect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 2,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uflbs"]
+_data = {
+&"RESET": SubResource("Animation_4eq7q"),
+&"fade_in": SubResource("Animation_tm0bt"),
+&"fade_out": SubResource("Animation_uflbs")
+}
+
+[node name="TransitionLayer" type="CanvasLayer" unique_id=604266338]
+script = ExtResource("1_uflbs")
+
+[node name="Control" type="Control" parent="." unique_id=28066267]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Fade Rect" type="ColorRect" parent="Control" unique_id=205861948]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=779341019]
+libraries/ = SubResource("AnimationLibrary_uflbs")

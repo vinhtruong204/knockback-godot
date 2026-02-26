@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://c1y4fpvweyg2q"]
+
+[ext_resource type="Texture2D" uid="uid://c7l5ceh733r7u" path="res://assets/login/Button_11.png" id="1_1qgm1"]
+[ext_resource type="Texture2D" uid="uid://u7usknujm0ol" path="res://assets/login/bg_login.jpg" id="1_wc656"]
+[ext_resource type="Texture2D" uid="uid://cjc5qkpuccud" path="res://assets/login/Button_10.png" id="2_74lrb"]
+[ext_resource type="Texture2D" uid="uid://b1rovbaucstv3" path="res://assets/login/Button_21.png" id="3_0msd8"]
+[ext_resource type="Texture2D" uid="uid://6o0grqeqb4ds" path="res://assets/login/Button_20.png" id="4_wc656"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sce6i"]
+texture = ExtResource("1_wc656")
+modulate_color = Color(0.4911909, 0.4911909, 0.4911909, 1)
+
+[node name="Login" type="Node2D" unique_id=2064406175]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1687703833]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1111925957]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control" unique_id=1566223762]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_sce6i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=1853689871]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -177.0
+offset_right = 128.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Google" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer" unique_id=13569719]
+layout_mode = 2
+tooltip_text = "Google"
+texture_normal = ExtResource("1_1qgm1")
+texture_pressed = ExtResource("2_74lrb")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/Google" unique_id=493148981]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 45.0
+offset_right = 195.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "GOOGLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Guest" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer" unique_id=879711704]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "Guest"
+texture_normal = ExtResource("3_0msd8")
+texture_pressed = ExtResource("4_wc656")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/Guest" unique_id=61652628]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 45.0
+offset_right = 195.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "GUEST"
+horizontal_alignment = 1
+vertical_alignment = 1

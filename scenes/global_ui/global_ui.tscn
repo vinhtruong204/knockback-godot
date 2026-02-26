@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bwh5p2vud2wtx"]
+
+[ext_resource type="Texture2D" uid="uid://dh7kjthvb5822" path="res://assets/loading/loading_bg.jpg" id="1_rigpo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wdeuj"]
+texture = ExtResource("1_rigpo")
+
+[node name="GlobalUi" type="CanvasLayer" unique_id=1624748408]
+
+[node name="LoadingContainer" type="Control" parent="." unique_id=1472621579]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="LoadingContainer" unique_id=277451825]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wdeuj")
+
+[node name="PopupContainer" type="Control" parent="." unique_id=1122338632]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="PopupContainer" unique_id=1216634931]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wdeuj")
+
+[node name="Button" type="Button" parent="PopupContainer" unique_id=1308225871]
+visible = false
+layout_mode = 0
+offset_left = 430.0
+offset_top = 161.0
+offset_right = 574.0
+offset_bottom = 261.0
+text = "sdfdsffffsdfsdfsdf
+sdfdsfdsf
+
+sdfdsf
+sư"
