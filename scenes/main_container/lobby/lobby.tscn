@@ -1,0 +1,341 @@
+[gd_scene format=3 uid="uid://b21va7keqlyqd"]
+
+[ext_resource type="Texture2D" uid="uid://bt4436voa0kvl" path="res://assets/lobby/lobby_bg.png" id="1_psu8p"]
+[ext_resource type="Texture2D" uid="uid://dyjtvlq4xa4dc" path="res://assets/lobby/top_bar/player_profile/player_profile_bg.png" id="2_psu8p"]
+[ext_resource type="Texture2D" uid="uid://6erg825vauqi" path="res://assets/lobby/top_bar/currency/game-coin.png" id="4_62jta"]
+[ext_resource type="Texture2D" uid="uid://b4ib7m3oh0bqc" path="res://assets/lobby/top_bar/player_profile/avatar_1.png" id="4_yapo1"]
+[ext_resource type="Texture2D" uid="uid://bu70s8kcb7igl" path="res://assets/lobby/top_bar/currency/diamond.png" id="5_u3wsq"]
+[ext_resource type="Texture2D" uid="uid://ds7nx8256lo5g" path="res://assets/lobby/top_bar/top_right/friend.png" id="6_5ibcn"]
+[ext_resource type="Texture2D" uid="uid://cyef5dnhi63h0" path="res://assets/lobby/top_bar/top_right/mail.png" id="7_hdsot"]
+[ext_resource type="Texture2D" uid="uid://dl36dfjcu1naq" path="res://assets/lobby/top_bar/top_right/settings.png" id="8_cvlo1"]
+[ext_resource type="Texture2D" uid="uid://cxd1mt1hrtcty" path="res://assets/lobby/middle/leaderboard/podium.png" id="9_hdsot"]
+[ext_resource type="Texture2D" uid="uid://cmjudeb8he08g" path="res://assets/lobby/middle/mode_selection/ranking.png" id="9_rmwd2"]
+[ext_resource type="Texture2D" uid="uid://blily84q0t8rs" path="res://assets/lobby/middle/mode_selection/marketing.png" id="10_docll"]
+[ext_resource type="Texture2D" uid="uid://d3y4t3u8jp3or" path="res://assets/lobby/middle/mode_selection/lan.png" id="11_hwkks"]
+[ext_resource type="Texture2D" uid="uid://coeuiave5xvqf" path="res://assets/lobby/bottom_bar/gun.png" id="12_1rix5"]
+[ext_resource type="Texture2D" uid="uid://bdp1qgtwpfiim" path="res://assets/lobby/bottom_bar/check.png" id="13_nkg57"]
+[ext_resource type="Texture2D" uid="uid://c04f4aiwa24cf" path="res://assets/lobby/bottom_bar/fortune-wheel.png" id="14_rmwd2"]
+[ext_resource type="Texture2D" uid="uid://8ia3qanuf6v" path="res://assets/lobby/bottom_bar/store.png" id="15_trvm1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yapo1"]
+texture = ExtResource("1_psu8p")
+
+[node name="Lobby" type="CanvasLayer" unique_id=745962393]
+
+[node name="Root" type="Control" parent="." unique_id=2076833974]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BGPanel" type="Panel" parent="Root" unique_id=1278228187]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_yapo1")
+
+[node name="TopBar" type="Control" parent="Root" unique_id=1890155658]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 90.0
+grow_horizontal = 2
+
+[node name="ProfileBtn" type="TextureButton" parent="Root/TopBar" unique_id=70014394]
+layout_mode = 1
+offset_right = 256.0
+offset_bottom = 87.0
+tooltip_text = "Google"
+texture_normal = ExtResource("2_psu8p")
+texture_pressed = ExtResource("2_psu8p")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PlayerName" type="Label" parent="Root/TopBar/ProfileBtn" unique_id=663447556]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -132.0
+offset_bottom = 45.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "PlayerName"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="Root/TopBar/ProfileBtn" unique_id=1309491065]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = -45.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "LV. 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Root/TopBar/ProfileBtn" unique_id=1283226444]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 81.0
+grow_vertical = 2
+texture = ExtResource("4_yapo1")
+expand_mode = 1
+
+[node name="CurrencyContainer" type="HBoxContainer" parent="Root/TopBar" unique_id=1182588072]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -149.5
+offset_right = 149.5
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="GoldBtn" type="Button" parent="Root/TopBar/CurrencyContainer" unique_id=1858132688]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "10000000"
+icon = ExtResource("4_62jta")
+alignment = 2
+icon_alignment = 2
+expand_icon = true
+
+[node name="GoldBtn2" type="Button" parent="Root/TopBar/CurrencyContainer" unique_id=1583615788]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "10000000"
+icon = ExtResource("5_u3wsq")
+alignment = 2
+icon_alignment = 2
+expand_icon = true
+
+[node name="RightContainer" type="HBoxContainer" parent="Root/TopBar" unique_id=359632358]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -190.0
+offset_bottom = 57.0
+grow_horizontal = 0
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="FriendBtn" type="TextureButton" parent="Root/TopBar/RightContainer" unique_id=1169760456]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("6_5ibcn")
+texture_pressed = ExtResource("6_5ibcn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MailBtn" type="TextureButton" parent="Root/TopBar/RightContainer" unique_id=795767844]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("7_hdsot")
+texture_pressed = ExtResource("7_hdsot")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="SettingsBtn" type="TextureButton" parent="Root/TopBar/RightContainer" unique_id=337693450]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("8_cvlo1")
+texture_pressed = ExtResource("8_cvlo1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Middle" type="Control" parent="Root" unique_id=1837770972]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -118.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeaderBoardBtn" type="Button" parent="Root/Middle" unique_id=1803340469]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -47.5
+offset_right = 106.0
+offset_bottom = 47.5
+grow_vertical = 2
+text = "Leaderboard"
+icon = ExtResource("9_hdsot")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/Middle" unique_id=312975416]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -349.0
+offset_right = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Team1Btn" type="Button" parent="Root/Middle/HBoxContainer" unique_id=1223609360]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Team1"
+icon = ExtResource("4_yapo1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Team2Btn" type="Button" parent="Root/Middle/HBoxContainer" unique_id=2050085710]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Team2"
+icon = ExtResource("4_yapo1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="ModeSelectionPanel" type="Control" parent="Root/Middle" unique_id=1858059592]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -454.0
+offset_right = -27.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="RankBtn" type="Button" parent="Root/Middle/ModeSelectionPanel" unique_id=737842420]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 113.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 35
+text = "Ranking"
+icon = ExtResource("9_rmwd2")
+expand_icon = true
+
+[node name="NormalBtn" type="Button" parent="Root/Middle/ModeSelectionPanel" unique_id=1045656372]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -76.0
+offset_right = 206.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "Normal"
+icon = ExtResource("10_docll")
+expand_icon = true
+
+[node name="LanBtn" type="Button" parent="Root/Middle/ModeSelectionPanel" unique_id=937429043]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -189.0
+offset_top = -76.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "LAN"
+icon = ExtResource("11_hwkks")
+expand_icon = true
+
+[node name="BottomBar" type="Control" parent="Root" unique_id=552450965]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="LeftContainer" type="HBoxContainer" parent="Root/BottomBar" unique_id=346499100]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_right = 172.0
+grow_vertical = 0
+alignment = 1
+
+[node name="EquipmentBtn" type="Button" parent="Root/BottomBar/LeftContainer" unique_id=107425365]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 25
+text = "Equip"
+icon = ExtResource("12_1rix5")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="TaskBtn" type="Button" parent="Root/BottomBar/LeftContainer" unique_id=1473755039]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 25
+text = "Task"
+icon = ExtResource("13_nkg57")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="RightContainer" type="HBoxContainer" parent="Root/BottomBar" unique_id=209026011]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -57.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 1
+
+[node name="LuckyWheelBtn" type="Button" parent="Root/BottomBar/RightContainer" unique_id=1396503956]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Wheel"
+icon = ExtResource("14_rmwd2")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="ShopBtn" type="Button" parent="Root/BottomBar/RightContainer" unique_id=45823176]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Shop"
+icon = ExtResource("15_trvm1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true

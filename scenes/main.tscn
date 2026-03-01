@@ -1,16 +1,13 @@
 [gd_scene format=3 uid="uid://cc3p6xo3gxqk0"]
 
-[ext_resource type="PackedScene" uid="uid://c1y4fpvweyg2q" path="res://scenes/main_container/login/login.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://dg4qala4ctepn" path="res://scenes/transition_layer/transition_layer.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bwh5p2vud2wtx" path="res://scenes/global_ui/global_ui.tscn" id="2_sugp2"]
 
 [node name="Main" type="Node2D" unique_id=2005498567]
 
-[node name="Scene Container" type="Node2D" parent="." unique_id=1995966241]
-
-[node name="Login" parent="Scene Container" unique_id=2064406175 instance=ExtResource("1_o5qli")]
+[node name="SceneContainer" type="Node2D" parent="." unique_id=1995966241]
 
 [node name="GlobalUi" parent="." unique_id=1624748408 instance=ExtResource("2_sugp2")]
 
-[node name="Transition Layer" parent="." unique_id=604266338 instance=ExtResource("2_0wfyh")]
+[node name="TransitionLayer" parent="." unique_id=604266338 instance=ExtResource("2_0wfyh")]
 visible = false

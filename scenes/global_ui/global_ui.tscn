@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://bwh5p2vud2wtx"]
 
 [ext_resource type="Texture2D" uid="uid://dh7kjthvb5822" path="res://assets/loading/loading_bg.jpg" id="1_rigpo"]
+[ext_resource type="Script" uid="uid://ccxc8xtmoilgi" path="res://scripts/global_ui/global_ui.gd" id="1_wdeuj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wdeuj"]
 texture = ExtResource("1_rigpo")
 
-[node name="GlobalUi" type="CanvasLayer" unique_id=1624748408]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rigpo"]
+bg_color = Color(1, 0.3183585, 0.4317693, 1)
+
+[node name="GlobalUI" type="CanvasLayer" unique_id=1624748408]
+process_mode = 3
+script = ExtResource("1_wdeuj")
 
 [node name="LoadingContainer" type="Control" parent="." unique_id=1472621579]
 layout_mode = 3
@@ -23,6 +29,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_wdeuj")
+
+[node name="LoadingProgressBar" type="ProgressBar" parent="LoadingContainer" unique_id=1519762792]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -163.0
+offset_top = -96.0
+offset_right = 163.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_rigpo")
 
 [node name="PopupContainer" type="Control" parent="." unique_id=1122338632]
 visible = false
@@ -53,5 +74,4 @@ offset_bottom = 261.0
 text = "sdfdsffffsdfsdfsdf
 sdfdsfdsf
 
-sdfdsf
-sư"
+sdfdsf"
