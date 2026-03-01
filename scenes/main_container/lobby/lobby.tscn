@@ -16,9 +16,33 @@
 [ext_resource type="Texture2D" uid="uid://bdp1qgtwpfiim" path="res://assets/lobby/bottom_bar/check.png" id="13_nkg57"]
 [ext_resource type="Texture2D" uid="uid://c04f4aiwa24cf" path="res://assets/lobby/bottom_bar/fortune-wheel.png" id="14_rmwd2"]
 [ext_resource type="Texture2D" uid="uid://8ia3qanuf6v" path="res://assets/lobby/bottom_bar/store.png" id="15_trvm1"]
+[ext_resource type="Texture2D" uid="uid://dra30bwaljc6w" path="res://assets/lobby/top_bar/player_profile/panel/left-arrow.png" id="17_ygewx"]
+[ext_resource type="Texture2D" uid="uid://divp8d6bt1q7s" path="res://assets/lobby/bottom_bar/equipment/rifle.png" id="18_uit80"]
+[ext_resource type="Texture2D" uid="uid://pkh4vcgyq8u1" path="res://assets/lobby/bottom_bar/equipment/water-gun.png" id="19_8vi03"]
+[ext_resource type="Texture2D" uid="uid://6lp2p1pncgxs" path="res://assets/lobby/bottom_bar/equipment/knife.png" id="20_qkvb6"]
+[ext_resource type="Texture2D" uid="uid://cbqjpj6oiapq8" path="res://assets/lobby/bottom_bar/equipment/grenade.png" id="21_qkvb6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yapo1"]
 texture = ExtResource("1_psu8p")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trvm1"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygewx"]
+bg_color = Color(0.23029937, 0.23029937, 0.23029937, 0.63529414)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uit80"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k63ad"]
+bg_color = Color(0.24313726, 0.24313726, 0.24313726, 0.54901963)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Lobby" type="CanvasLayer" unique_id=745962393]
 
@@ -97,6 +121,7 @@ texture = ExtResource("4_yapo1")
 expand_mode = 1
 
 [node name="CurrencyContainer" type="HBoxContainer" parent="Root/TopBar" unique_id=1182588072]
+z_index = 10
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -154,6 +179,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="SettingsBtn" type="TextureButton" parent="Root/TopBar/RightContainer" unique_id=337693450]
+z_index = 10
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture_normal = ExtResource("8_cvlo1")
@@ -178,8 +204,8 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = -47.5
-offset_right = 106.0
-offset_bottom = 47.5
+offset_right = 108.0
+offset_bottom = 60.5
 grow_vertical = 2
 text = "Leaderboard"
 icon = ExtResource("9_hdsot")
@@ -339,3 +365,528 @@ icon = ExtResource("15_trvm1")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
+
+[node name="OverlayContainer" type="Control" parent="Root" unique_id=657373235]
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerProfile" type="Panel" parent="Root/OverlayContainer" unique_id=265118281]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_trvm1")
+
+[node name="BackBtn" type="Button" parent="Root/OverlayContainer/PlayerProfile" unique_id=1896285121]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 28
+text = "Lobby"
+icon = ExtResource("17_ygewx")
+expand_icon = true
+
+[node name="ProfilePanel" type="Panel" parent="Root/OverlayContainer/PlayerProfile" unique_id=1555787995]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 151.0
+offset_top = -166.0
+offset_right = 430.0
+offset_bottom = 202.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ygewx")
+
+[node name="Label" type="Label" parent="Root/OverlayContainer/PlayerProfile/ProfilePanel" unique_id=1778537002]
+layout_mode = 1
+offset_right = 54.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "Lv. 100"
+
+[node name="PlayerName" type="Panel" parent="Root/OverlayContainer/PlayerProfile/ProfilePanel" unique_id=923419747]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -97.0
+offset_top = 50.0
+offset_right = 97.0
+offset_bottom = 90.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Root/OverlayContainer/PlayerProfile/ProfilePanel/PlayerName" unique_id=2103257035]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.5
+offset_top = -11.5
+offset_right = 47.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PlayerName"
+
+[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/PlayerProfile/ProfilePanel" unique_id=1832653101]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.75
+offset_top = -80.75
+offset_right = 80.75
+offset_bottom = 80.75
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_yapo1")
+expand_mode = 1
+
+[node name="TextEdit" type="TextEdit" parent="Root/OverlayContainer/PlayerProfile/ProfilePanel" unique_id=1400067158]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = 87.0
+offset_right = 112.5
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_uit80")
+placeholder_text = "Smooth Criminal"
+
+[node name="StatsPanel" type="Panel" parent="Root/OverlayContainer/PlayerProfile" unique_id=833522583]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -564.0
+offset_top = -166.0
+offset_right = -37.0
+offset_bottom = 202.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k63ad")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Root/OverlayContainer/PlayerProfile/StatsPanel" unique_id=1348092214]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -112.5
+offset_right = 192.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Current rank: Diamon
+
+Rank points: 3200
+
+Totals game: 50
+
+Win rate: 50%
+
+KDA: 2.3"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/PlayerProfile/StatsPanel" unique_id=454835704]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -136.5
+offset_top = 9.0
+offset_right = 136.5
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="RankingBtn" type="Button" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer" unique_id=1387583681]
+layout_mode = 2
+text = "Ranking"
+
+[node name="NormalBtn" type="Button" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer" unique_id=1379107573]
+layout_mode = 2
+text = "Normal
+"
+
+[node name="AchivementBtn" type="Button" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer" unique_id=1041056605]
+layout_mode = 2
+text = "Achivement"
+
+[node name="Equipment" type="Panel" parent="Root/OverlayContainer" unique_id=230209453]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_trvm1")
+
+[node name="BackBtn" type="Button" parent="Root/OverlayContainer/Equipment" unique_id=104393936]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 28
+text = "Lobby"
+icon = ExtResource("17_ygewx")
+expand_icon = true
+
+[node name="EquipContainer" type="VBoxContainer" parent="Root/OverlayContainer/Equipment" unique_id=2021346106]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 19.0
+offset_top = -137.0
+offset_right = 174.0
+offset_bottom = 137.0
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Primary" type="Panel" parent="Root/OverlayContainer/Equipment/EquipContainer" unique_id=791656390]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/EquipContainer/Primary" unique_id=380367785]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_uit80")
+expand_mode = 1
+
+[node name="Secondary" type="Panel" parent="Root/OverlayContainer/Equipment/EquipContainer" unique_id=1619396322]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/EquipContainer/Secondary" unique_id=807046765]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_8vi03")
+expand_mode = 1
+
+[node name="Melee" type="Panel" parent="Root/OverlayContainer/Equipment/EquipContainer" unique_id=1098461008]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/EquipContainer/Melee" unique_id=1961210661]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_qkvb6")
+expand_mode = 1
+
+[node name="ItemContainer" type="HBoxContainer" parent="Root/OverlayContainer/Equipment" unique_id=291072224]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -520.0
+offset_top = 177.0
+offset_right = -310.0
+offset_bottom = 227.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Item1" type="Panel" parent="Root/OverlayContainer/Equipment/ItemContainer" unique_id=1627715202]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/ItemContainer/Item1" unique_id=937539617]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_qkvb6")
+expand_mode = 1
+
+[node name="Item2" type="Panel" parent="Root/OverlayContainer/Equipment/ItemContainer" unique_id=249128636]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/ItemContainer/Item2" unique_id=801911242]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_qkvb6")
+expand_mode = 1
+
+[node name="Item3" type="Panel" parent="Root/OverlayContainer/Equipment/ItemContainer" unique_id=240567897]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/ItemContainer/Item3" unique_id=272871274]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_qkvb6")
+expand_mode = 1
+
+[node name="CharacterContainer" type="HBoxContainer" parent="Root/OverlayContainer/Equipment" unique_id=1659902422]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = -120.0
+offset_right = -18.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Team1Btn" type="Button" parent="Root/OverlayContainer/Equipment/CharacterContainer" unique_id=2111404945]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Team1"
+icon = ExtResource("4_yapo1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Team2Btn" type="Button" parent="Root/OverlayContainer/Equipment/CharacterContainer" unique_id=111117465]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Team2"
+icon = ExtResource("4_yapo1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="StatsPanel" type="Panel" parent="Root/OverlayContainer/Equipment" unique_id=2093597750]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -519.0
+offset_top = -166.0
+offset_right = -37.0
+offset_bottom = 222.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k63ad")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel" unique_id=1344957682]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -136.5
+offset_top = 9.0
+offset_right = 136.5
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="CharacterBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/HBoxContainer" unique_id=1294317994]
+layout_mode = 2
+text = "Character"
+
+[node name="WeaponBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/HBoxContainer" unique_id=821190800]
+layout_mode = 2
+text = "Weapon"
+
+[node name="ItemBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/HBoxContainer" unique_id=494570790]
+layout_mode = 2
+text = "Item"
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/Equipment/StatsPanel" unique_id=1179923222]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -217.5
+offset_top = -330.0
+offset_right = 217.5
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel" unique_id=41135916]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 10.5
+offset_top = 3.0
+offset_right = 116.0
+offset_bottom = 3.0
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TypeBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/VBoxContainer" unique_id=696741320]
+layout_mode = 2
+text = "Type"
+
+[node name="TypeBtn2" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/VBoxContainer" unique_id=1376329495]
+layout_mode = 2
+text = "Type"
+
+[node name="TypeBtn3" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/VBoxContainer" unique_id=1918964187]
+layout_mode = 2
+text = "Type"
+
+[node name="TypeBtn4" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/VBoxContainer" unique_id=1444495262]
+layout_mode = 2
+text = "Type"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel" unique_id=271050522]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -273.0
+offset_top = -135.5
+offset_bottom = 135.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer" unique_id=848922195]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1043899909]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TypeBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer" unique_id=1784338374]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Type"
+
+[node name="TypeBtn2" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer" unique_id=443099612]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Type"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=323209593]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TypeBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer2" unique_id=1448233762]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Type"
+
+[node name="TypeBtn2" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer2" unique_id=1620016522]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Type"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1210553940]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TypeBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer3" unique_id=1387171849]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Type"
+
+[node name="TypeBtn2" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer3" unique_id=1658484475]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Type"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=982234761]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TypeBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer4" unique_id=1521652144]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Type"
+
+[node name="TypeBtn2" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer4" unique_id=293178052]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Type"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1446291895]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TypeBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer5" unique_id=710388790]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Type"
+
+[node name="TypeBtn2" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer5" unique_id=605072225]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Type"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1919010896]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TypeBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer6" unique_id=1347259754]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Type"
+
+[node name="TypeBtn2" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer6" unique_id=1532042249]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Type"

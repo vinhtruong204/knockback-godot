@@ -17,7 +17,6 @@ func _process(_delta):
 	match status:
 		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 			progress_bar.value = progress[0] * 100.0
-			print(progress[0])
 
 		ResourceLoader.THREAD_LOAD_LOADED:
 			progress_bar.value = progress[0] * 100.0
