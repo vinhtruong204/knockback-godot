@@ -21,6 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://pkh4vcgyq8u1" path="res://assets/lobby/bottom_bar/equipment/water-gun.png" id="19_8vi03"]
 [ext_resource type="Texture2D" uid="uid://6lp2p1pncgxs" path="res://assets/lobby/bottom_bar/equipment/knife.png" id="20_qkvb6"]
 [ext_resource type="Texture2D" uid="uid://cbqjpj6oiapq8" path="res://assets/lobby/bottom_bar/equipment/grenade.png" id="21_qkvb6"]
+[ext_resource type="PackedScene" uid="uid://ddil1hqxl3u0d" path="res://scenes/main_container/lobby/shop_discount_item.tscn" id="22_nv17j"]
+[ext_resource type="PackedScene" uid="uid://bcmefd44yuifu" path="res://scenes/main_container/lobby/shop_weapon_item.tscn" id="23_mmps8"]
+[ext_resource type="PackedScene" uid="uid://f0n6ea4se4q7" path="res://scenes/main_container/lobby/shop_item.tscn" id="24_5xf5k"]
+[ext_resource type="PackedScene" uid="uid://crq6tmfroxjug" path="res://scenes/main_container/lobby/shop_character_item.tscn" id="25_8dsj6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yapo1"]
 texture = ExtResource("1_psu8p")
@@ -43,6 +47,9 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkvb6"]
+bg_color = Color(0.27314222, 0.27314225, 0.27314213, 1)
 
 [node name="Lobby" type="CanvasLayer" unique_id=745962393]
 
@@ -374,6 +381,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PlayerProfile" type="Panel" parent="Root/OverlayContainer" unique_id=265118281]
 visible = false
@@ -383,6 +391,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_trvm1")
 
 [node name="BackBtn" type="Button" parent="Root/OverlayContainer/PlayerProfile" unique_id=1896285121]
@@ -536,12 +545,14 @@ layout_mode = 2
 text = "Achivement"
 
 [node name="Equipment" type="Panel" parent="Root/OverlayContainer" unique_id=230209453]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_trvm1")
 
 [node name="BackBtn" type="Button" parent="Root/OverlayContainer/Equipment" unique_id=104393936]
@@ -890,3 +901,1300 @@ text = "Type"
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 text = "Type"
+
+[node name="Leaderboard" type="Panel" parent="Root/OverlayContainer" unique_id=1748336464]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+
+[node name="BackBtn" type="Button" parent="Root/OverlayContainer/Leaderboard" unique_id=403809404]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 28
+text = "Lobby"
+icon = ExtResource("17_ygewx")
+expand_icon = true
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/Leaderboard" unique_id=103081825]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -378.75
+offset_top = -177.5
+offset_right = 378.75
+offset_bottom = 177.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel" unique_id=410703524]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 63.75
+offset_top = -95.0
+offset_right = 141.75
+offset_bottom = 95.0
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="RankBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/VBoxContainer" unique_id=662286677]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Ranking"
+
+[node name="NormalBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/VBoxContainer" unique_id=1890209324]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Normal"
+
+[node name="CollectorBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/VBoxContainer" unique_id=1700520144]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Collector"
+
+[node name="StatsPanel" type="Panel" parent="Root/OverlayContainer/Leaderboard/Panel" unique_id=1661980868]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -585.75
+offset_top = -128.0
+offset_right = -28.75
+offset_bottom = 140.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k63ad")
+
+[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel" unique_id=306478134]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -271.0
+offset_top = -110.5
+offset_right = 271.0
+offset_bottom = 110.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 10
+columns = 6
+
+[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1956992574]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1159703347]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=904228805]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=216309490]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=292833585]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1844522400]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=808597880]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=805568306]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=294311293]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=2136991198]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label11" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1849080822]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label12" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=2049847448]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label13" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1681013252]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label14" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=548776166]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label15" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=762055230]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label16" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1467725680]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label17" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=547948313]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label18" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=313549014]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label19" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1431588919]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label20" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=219730552]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label21" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=530923296]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label22" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=178683400]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label23" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1266601586]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label24" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=2098464874]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label25" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=923114766]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label26" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1024904357]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label27" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=213974850]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label28" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1570374290]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label29" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1128785934]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label30" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=515445649]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label31" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1253449305]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label32" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=686356996]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label33" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=670274539]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label34" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1589824115]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label35" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1308981610]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label36" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=278652045]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label37" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1237015294]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label38" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=2067573777]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label39" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1540694325]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label40" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1260092816]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label41" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=648324386]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label42" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=2003353010]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ranking" type="Panel" parent="Root/OverlayContainer" unique_id=1253661110]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+
+[node name="BackBtn" type="Button" parent="Root/OverlayContainer/Ranking" unique_id=1954359820]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 28
+text = "Lobby"
+icon = ExtResource("17_ygewx")
+expand_icon = true
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/Ranking" unique_id=1152063248]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 92.0
+offset_top = -153.0
+offset_right = 476.0
+offset_bottom = 218.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Ranking/Panel" unique_id=835242044]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -158.0
+offset_right = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Label" type="Label" parent="Root/OverlayContainer/Ranking/Panel/VBoxContainer" unique_id=170059578]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Diamond"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Ranking/Panel/VBoxContainer" unique_id=244299750]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_u3wsq")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Ranking/Panel/VBoxContainer" unique_id=1829864765]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "125/250"
+horizontal_alignment = 1
+
+[node name="FightBtn" type="Button" parent="Root/OverlayContainer/Ranking/Panel/VBoxContainer" unique_id=209988544]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Fight"
+icon = ExtResource("12_1rix5")
+expand_icon = true
+
+[node name="Normal" type="Panel" parent="Root/OverlayContainer" unique_id=1897805840]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+
+[node name="BackBtn" type="Button" parent="Root/OverlayContainer/Normal" unique_id=244690640]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 28
+text = "Lobby"
+icon = ExtResource("17_ygewx")
+expand_icon = true
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/Normal" unique_id=516641378]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 92.0
+offset_top = -153.0
+offset_right = 476.0
+offset_bottom = 218.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Normal/Panel" unique_id=688491173]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -158.0
+offset_right = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="ModeBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=2043761416]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Mode"
+icon = ExtResource("12_1rix5")
+alignment = 2
+expand_icon = true
+
+[node name="MapBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=313492143]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Map"
+icon = ExtResource("12_1rix5")
+alignment = 2
+expand_icon = true
+
+[node name="TeamSizeBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=1840610809]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "1v1"
+icon = ExtResource("12_1rix5")
+alignment = 2
+expand_icon = true
+
+[node name="FightBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=2132890294]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Fight"
+icon = ExtResource("12_1rix5")
+expand_icon = true
+
+[node name="Shop" type="Panel" parent="Root/OverlayContainer" unique_id=271100709]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+
+[node name="BackBtn" type="Button" parent="Root/OverlayContainer/Shop" unique_id=964785844]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 28
+text = "Lobby"
+icon = ExtResource("17_ygewx")
+expand_icon = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Shop" unique_id=1469147636]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -94.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=1303582635]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Recommended"
+
+[node name="Button2" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=1525398718]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Daily Discount"
+
+[node name="Button3" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=802948477]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Weapon"
+
+[node name="Button4" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=2101376796]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Item"
+
+[node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=1074166852]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Character"
+
+[node name="ItemsContainer" type="Control" parent="Root/OverlayContainer/Shop" unique_id=1370765152]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -392.0
+offset_top = -133.0
+offset_right = 399.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Recommend" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=850079412]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend" unique_id=207956449]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer" unique_id=224189099]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel" unique_id=115520139]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.5
+offset_right = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel/VBoxContainer" unique_id=729895993]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("18_uit80")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel/VBoxContainer" unique_id=125169344]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("12_1rix5")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel/VBoxContainer" unique_id=929328942]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("20_qkvb6")
+expand_mode = 1
+
+[node name="BuyBtn" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel/VBoxContainer" unique_id=1750978681]
+layout_mode = 2
+text = "10000"
+icon = ExtResource("4_62jta")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Panel2" type="Panel" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer" unique_id=1963220034]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2" unique_id=444588639]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.5
+offset_right = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2/VBoxContainer" unique_id=617193942]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("18_uit80")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2/VBoxContainer" unique_id=1873130795]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("12_1rix5")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2/VBoxContainer" unique_id=1603467233]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("20_qkvb6")
+expand_mode = 1
+
+[node name="BuyBtn" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2/VBoxContainer" unique_id=368162815]
+layout_mode = 2
+text = "10000"
+icon = ExtResource("4_62jta")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Panel3" type="Panel" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer" unique_id=1401309630]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3" unique_id=1857585628]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.5
+offset_right = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3/VBoxContainer" unique_id=1476724639]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("18_uit80")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3/VBoxContainer" unique_id=238468107]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("12_1rix5")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3/VBoxContainer" unique_id=1694306382]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("20_qkvb6")
+expand_mode = 1
+
+[node name="BuyBtn" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3/VBoxContainer" unique_id=511404244]
+layout_mode = 2
+text = "1000"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Daily Discount" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1884015232]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount" unique_id=1791656908]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.5
+offset_top = -100.0
+offset_right = 356.5
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 0
+columns = 4
+
+[node name="Control" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=2018053991 instance=ExtResource("22_nv17j")]
+layout_mode = 2
+
+[node name="Control2" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=1284283082 instance=ExtResource("22_nv17j")]
+layout_mode = 2
+
+[node name="Control3" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=7993706 instance=ExtResource("22_nv17j")]
+layout_mode = 2
+
+[node name="Control4" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=15023937 instance=ExtResource("22_nv17j")]
+layout_mode = 2
+
+[node name="Control5" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=1048448705 instance=ExtResource("22_nv17j")]
+layout_mode = 2
+
+[node name="Control6" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=594069224 instance=ExtResource("22_nv17j")]
+layout_mode = 2
+
+[node name="Control7" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=205584706 instance=ExtResource("22_nv17j")]
+layout_mode = 2
+
+[node name="Control8" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=1355310001 instance=ExtResource("22_nv17j")]
+layout_mode = 2
+
+[node name="Weapon" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1467739191]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon" unique_id=568888700]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.5
+offset_top = -100.0
+offset_right = 356.5
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 30
+columns = 4
+
+[node name="Control" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=925476186 instance=ExtResource("23_mmps8")]
+layout_mode = 2
+
+[node name="Control2" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=370140062 instance=ExtResource("23_mmps8")]
+layout_mode = 2
+
+[node name="Control3" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=1296620569 instance=ExtResource("23_mmps8")]
+layout_mode = 2
+
+[node name="Control4" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=2142517145 instance=ExtResource("23_mmps8")]
+layout_mode = 2
+
+[node name="Control5" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=1030616022 instance=ExtResource("23_mmps8")]
+layout_mode = 2
+
+[node name="Control6" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=1239928027 instance=ExtResource("23_mmps8")]
+layout_mode = 2
+
+[node name="Control7" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=1958833481 instance=ExtResource("23_mmps8")]
+layout_mode = 2
+
+[node name="Control8" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=689896400 instance=ExtResource("23_mmps8")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon" unique_id=806058477]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -475.5
+offset_top = -15.5
+offset_right = -430.5
+offset_bottom = 15.5
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/VBoxContainer" unique_id=1100579353]
+layout_mode = 2
+text = "Type"
+
+[node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/VBoxContainer" unique_id=756387129]
+layout_mode = 2
+text = "Type"
+
+[node name="Button2" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/VBoxContainer" unique_id=2021297634]
+layout_mode = 2
+text = "Type"
+
+[node name="Button4" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/VBoxContainer" unique_id=261818469]
+layout_mode = 2
+text = "Type"
+
+[node name="Button3" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/VBoxContainer" unique_id=1387921382]
+layout_mode = 2
+text = "Type"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon" unique_id=754243374]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -137.0
+offset_top = -183.0
+offset_right = 137.0
+offset_bottom = -139.0
+grow_horizontal = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/HBoxContainer" unique_id=238826099]
+layout_mode = 2
+text = "Primary"
+
+[node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/HBoxContainer" unique_id=59211790]
+layout_mode = 2
+text = "Secondary"
+
+[node name="Button2" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/HBoxContainer" unique_id=582030692]
+layout_mode = 2
+text = "Melee"
+
+[node name="Item" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1800100722]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Item" unique_id=887390195]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.5
+offset_top = -100.0
+offset_right = 356.5
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 30
+columns = 4
+
+[node name="Control" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=62550013 instance=ExtResource("24_5xf5k")]
+layout_mode = 2
+
+[node name="Control2" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=1417282567 instance=ExtResource("24_5xf5k")]
+layout_mode = 2
+
+[node name="Control3" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=281864766 instance=ExtResource("24_5xf5k")]
+layout_mode = 2
+
+[node name="Control4" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=2047159497 instance=ExtResource("24_5xf5k")]
+layout_mode = 2
+
+[node name="Control5" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=61097603 instance=ExtResource("24_5xf5k")]
+layout_mode = 2
+
+[node name="Control6" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=2081239720 instance=ExtResource("24_5xf5k")]
+layout_mode = 2
+
+[node name="Control7" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=1946017984 instance=ExtResource("24_5xf5k")]
+layout_mode = 2
+
+[node name="Control8" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=1983361442 instance=ExtResource("24_5xf5k")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Item" unique_id=155076426]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -475.5
+offset_top = -15.5
+offset_right = -430.5
+offset_bottom = 15.5
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/VBoxContainer" unique_id=1200524538]
+layout_mode = 2
+text = "Type"
+
+[node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/VBoxContainer" unique_id=1089931642]
+layout_mode = 2
+text = "Type"
+
+[node name="Button2" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/VBoxContainer" unique_id=488470593]
+layout_mode = 2
+text = "Type"
+
+[node name="Button4" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/VBoxContainer" unique_id=1229591335]
+layout_mode = 2
+text = "Type"
+
+[node name="Button3" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/VBoxContainer" unique_id=1883032084]
+layout_mode = 2
+text = "Type"
+
+[node name="Character" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=587488887]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Character" unique_id=1306279992]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.5
+offset_top = -100.0
+offset_right = 356.5
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 30
+columns = 4
+
+[node name="Control" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=1885284530 instance=ExtResource("25_8dsj6")]
+layout_mode = 2
+
+[node name="Control2" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=745807808 instance=ExtResource("25_8dsj6")]
+layout_mode = 2
+
+[node name="Control3" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=1748972806 instance=ExtResource("25_8dsj6")]
+layout_mode = 2
+
+[node name="Control4" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=1268608115 instance=ExtResource("25_8dsj6")]
+layout_mode = 2
+
+[node name="Control5" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=2090244273 instance=ExtResource("25_8dsj6")]
+layout_mode = 2
+
+[node name="Control6" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=435988216 instance=ExtResource("25_8dsj6")]
+layout_mode = 2
+
+[node name="Control7" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=1126340143 instance=ExtResource("25_8dsj6")]
+layout_mode = 2
+
+[node name="Control8" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=165746583 instance=ExtResource("25_8dsj6")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Character" unique_id=1432919524]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -475.5
+offset_top = -15.5
+offset_right = -430.5
+offset_bottom = 15.5
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/VBoxContainer" unique_id=43963247]
+layout_mode = 2
+text = "Type"
+
+[node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/VBoxContainer" unique_id=1694142764]
+layout_mode = 2
+text = "Type"
+
+[node name="TopOverlay" type="Control" parent="Root" unique_id=308563002]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Purchase" type="Panel" parent="Root/TopOverlay" unique_id=623878866]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+
+[node name="BackBtn" type="Button" parent="Root/TopOverlay/Purchase" unique_id=896451679]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 28
+text = "Lobby"
+icon = ExtResource("17_ygewx")
+expand_icon = true
+
+[node name="TopWrapper" type="Control" parent="Root/TopOverlay/Purchase" unique_id=369433589]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 86.0
+offset_bottom = 213.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/TopOverlay/Purchase/TopWrapper" unique_id=1477316565]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -414.0
+offset_top = -20.0
+offset_right = 414.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="CurrentVIP" type="Label" parent="Root/TopOverlay/Purchase/TopWrapper/HBoxContainer" unique_id=2009280580]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "VIP 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Root/TopOverlay/Purchase/TopWrapper/HBoxContainer" unique_id=1169918767]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 50.0
+
+[node name="NextVIP" type="Label" parent="Root/TopOverlay/Purchase/TopWrapper/HBoxContainer" unique_id=217996155]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "VIP 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Root/TopOverlay/Purchase" unique_id=1804079982]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -330.0
+offset_top = -293.0
+offset_right = 330.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+columns = 3
+
+[node name="Button" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=633894300]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+text = "100
+10.000 VND"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Button2" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=2008505003]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+text = "100
+10.000 VND"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Button3" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=1435665214]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+text = "100
+10.000 VND"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Button4" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=1424307285]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+text = "100
+10.000 VND"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Button5" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=984419443]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+text = "100
+10.000 VND"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Button6" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=943975743]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+text = "100
+10.000 VND"
+icon = ExtResource("4_62jta")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Settings" type="Panel" parent="Root/TopOverlay" unique_id=1631783551]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+
+[node name="BackBtn" type="Button" parent="Root/TopOverlay/Settings" unique_id=1728616436]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 28
+text = "Lobby"
+icon = ExtResource("17_ygewx")
+expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/TopOverlay/Settings" unique_id=1803825875]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -311.0
+offset_top = -52.0
+offset_right = 311.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="MusicContainer" type="HBoxContainer" parent="Root/TopOverlay/Settings/VBoxContainer" unique_id=1791928525]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Label" type="Label" parent="Root/TopOverlay/Settings/VBoxContainer/MusicContainer" unique_id=1449236400]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="Root/TopOverlay/Settings/VBoxContainer/MusicContainer" unique_id=938932922]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 50.0
+ticks_position = 3
+
+[node name="SoundContainer" type="HBoxContainer" parent="Root/TopOverlay/Settings/VBoxContainer" unique_id=1791645372]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Label" type="Label" parent="Root/TopOverlay/Settings/VBoxContainer/SoundContainer" unique_id=1590649805]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Sound"
+
+[node name="HSlider" type="HSlider" parent="Root/TopOverlay/Settings/VBoxContainer/SoundContainer" unique_id=2097273034]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 50.0
+ticks_position = 3
+
+[node name="FPS" type="Control" parent="Root/TopOverlay/Settings/VBoxContainer" unique_id=343933158]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Root/TopOverlay/Settings/VBoxContainer/FPS" unique_id=460281889]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 51.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "FPS"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/TopOverlay/Settings/VBoxContainer/FPS" unique_id=821004315]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -453.0
+offset_top = -25.0
+offset_right = -41.0
+offset_bottom = 28.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+
+[node name="LowBtn" type="Button" parent="Root/TopOverlay/Settings/VBoxContainer/FPS/HBoxContainer" unique_id=1553863695]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "LOW"
+
+[node name="MediumBtn" type="Button" parent="Root/TopOverlay/Settings/VBoxContainer/FPS/HBoxContainer" unique_id=988226059]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "MEDIUM"
+
+[node name="HighBtn" type="Button" parent="Root/TopOverlay/Settings/VBoxContainer/FPS/HBoxContainer" unique_id=707795126]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "HIGH"

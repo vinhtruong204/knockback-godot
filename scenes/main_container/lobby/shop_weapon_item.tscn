@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bcmefd44yuifu"]
+
+[ext_resource type="Texture2D" uid="uid://divp8d6bt1q7s" path="res://assets/lobby/bottom_bar/equipment/rifle.png" id="1_or0jl"]
+[ext_resource type="Texture2D" uid="uid://6erg825vauqi" path="res://assets/lobby/top_bar/currency/game-coin.png" id="2_oa2er"]
+
+[node name="Control" type="Control" unique_id=2018053991]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1963058168]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_right = 40.0
+offset_bottom = 63.0
+grow_horizontal = 2
+texture = ExtResource("1_or0jl")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="." unique_id=2127766089]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+icon = ExtResource("2_oa2er")
+icon_alignment = 2
+expand_icon = true
