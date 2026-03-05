@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bcmefd44yuifu" path="res://scenes/main_container/lobby/shop_weapon_item.tscn" id="23_mmps8"]
 [ext_resource type="PackedScene" uid="uid://f0n6ea4se4q7" path="res://scenes/main_container/lobby/shop_item.tscn" id="24_5xf5k"]
 [ext_resource type="PackedScene" uid="uid://crq6tmfroxjug" path="res://scenes/main_container/lobby/shop_character_item.tscn" id="25_8dsj6"]
+[ext_resource type="PackedScene" uid="uid://fppac6rwmf2l" path="res://scenes/main_container/lobby/wheel/wheel_item.tscn" id="26_hmpgm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yapo1"]
 texture = ExtResource("1_psu8p")
@@ -1405,6 +1406,7 @@ icon = ExtResource("12_1rix5")
 expand_icon = true
 
 [node name="Shop" type="Panel" parent="Root/OverlayContainer" unique_id=271100709]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1935,6 +1937,271 @@ text = "Type"
 [node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/VBoxContainer" unique_id=1694142764]
 layout_mode = 2
 text = "Type"
+
+[node name="Wheel" type="Panel" parent="Root/OverlayContainer" unique_id=273721717]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+
+[node name="BackBtn" type="Button" parent="Root/OverlayContainer/Wheel" unique_id=12317368]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 28
+text = "Lobby"
+icon = ExtResource("17_ygewx")
+expand_icon = true
+
+[node name="Control" type="Control" parent="Root/OverlayContainer/Wheel" unique_id=978215104]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Wheel/Control" unique_id=1600392802]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -158.5
+offset_top = -81.0
+offset_right = 158.5
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Wheel/Control/HBoxContainer" unique_id=1530425717]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Gold"
+
+[node name="Button2" type="Button" parent="Root/OverlayContainer/Wheel/Control/HBoxContainer" unique_id=1854966229]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Diamond"
+
+[node name="WheelContainer" type="Control" parent="Root/OverlayContainer/Wheel/Control" unique_id=2126800399]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -271.0
+offset_top = -202.0
+offset_right = 307.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/Wheel/Control/WheelContainer" unique_id=291630823]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer" unique_id=75287695]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer" unique_id=1471203430 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer" unique_id=1362694019 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer" unique_id=1518904020 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer" unique_id=2097300072 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer" unique_id=537632319]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -154.0
+offset_top = -80.0
+offset_right = 154.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer2" unique_id=2099384726 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer2" unique_id=817711032 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer2" unique_id=869792516 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer2" unique_id=383012600 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer" unique_id=459364471]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -154.0
+offset_right = 100.0
+offset_bottom = 154.0
+grow_vertical = 2
+alignment = 1
+
+[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer" unique_id=1224579760 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer" unique_id=1809605452 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer" unique_id=385081216 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer" unique_id=680642099 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer" unique_id=1466123303]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -154.0
+offset_bottom = 154.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+
+[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer2" unique_id=1554959287 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer2" unique_id=155951262 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer2" unique_id=2020794823 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer2" unique_id=1751137877 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="GoldOptions" type="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer" unique_id=2007947101]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.25
+offset_top = -32.25
+offset_right = 169.25
+offset_bottom = 32.25
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldOptions" unique_id=1394340742]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -25.5
+offset_right = 153.0
+offset_bottom = 25.5
+grow_vertical = 2
+text = "1000 | 1x"
+icon = ExtResource("4_62jta")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Button2" type="Button" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldOptions" unique_id=960715389]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -25.5
+offset_bottom = 25.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "10000 | 10x"
+icon = ExtResource("4_62jta")
+icon_alignment = 2
+expand_icon = true
+
+[node name="DiamondOptions" type="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer" unique_id=557186745]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.25
+offset_top = -32.25
+offset_right = 169.25
+offset_bottom = 32.25
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondOptions" unique_id=429074915]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -25.5
+offset_right = 153.0
+offset_bottom = 25.5
+grow_vertical = 2
+text = "1000 | 1x"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Button2" type="Button" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondOptions" unique_id=980133482]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -25.5
+offset_bottom = 25.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "10000 | 10x"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
 
 [node name="TopOverlay" type="Control" parent="Root" unique_id=308563002]
 visible = false

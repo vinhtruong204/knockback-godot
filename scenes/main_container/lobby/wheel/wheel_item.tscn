@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://fppac6rwmf2l"]
+
+[ext_resource type="Texture2D" uid="uid://divp8d6bt1q7s" path="res://assets/lobby/bottom_bar/equipment/rifle.png" id="1_gjbyq"]
+
+[node name="Control" type="Control" unique_id=2018053991]
+custom_minimum_size = Vector2(80, 60)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 80.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1963058168]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_right = 40.0
+offset_bottom = 63.0
+grow_horizontal = 2
+texture = ExtResource("1_gjbyq")
+expand_mode = 1
