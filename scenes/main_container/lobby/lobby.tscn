@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b21va7keqlyqd"]
 
+[ext_resource type="Script" uid="uid://c0qtlwkfwu03n" path="res://scripts/main_container/lobby/lobby_ui_manager.gd" id="1_1cl6t"]
 [ext_resource type="Texture2D" uid="uid://bt4436voa0kvl" path="res://assets/lobby/lobby_bg.png" id="1_psu8p"]
 [ext_resource type="Texture2D" uid="uid://dyjtvlq4xa4dc" path="res://assets/lobby/top_bar/player_profile/player_profile_bg.png" id="2_psu8p"]
 [ext_resource type="Texture2D" uid="uid://6erg825vauqi" path="res://assets/lobby/top_bar/currency/game-coin.png" id="4_62jta"]
@@ -16,22 +17,24 @@
 [ext_resource type="Texture2D" uid="uid://bdp1qgtwpfiim" path="res://assets/lobby/bottom_bar/check.png" id="13_nkg57"]
 [ext_resource type="Texture2D" uid="uid://c04f4aiwa24cf" path="res://assets/lobby/bottom_bar/fortune-wheel.png" id="14_rmwd2"]
 [ext_resource type="Texture2D" uid="uid://8ia3qanuf6v" path="res://assets/lobby/bottom_bar/store.png" id="15_trvm1"]
-[ext_resource type="Texture2D" uid="uid://dra30bwaljc6w" path="res://assets/lobby/top_bar/player_profile/panel/left-arrow.png" id="17_ygewx"]
+[ext_resource type="PackedScene" uid="uid://da5kc4flddx4g" path="res://scenes/main_container/lobby/common/back_btn.tscn" id="17_1cl6t"]
 [ext_resource type="Texture2D" uid="uid://divp8d6bt1q7s" path="res://assets/lobby/bottom_bar/equipment/rifle.png" id="18_uit80"]
 [ext_resource type="Texture2D" uid="uid://pkh4vcgyq8u1" path="res://assets/lobby/bottom_bar/equipment/water-gun.png" id="19_8vi03"]
 [ext_resource type="Texture2D" uid="uid://6lp2p1pncgxs" path="res://assets/lobby/bottom_bar/equipment/knife.png" id="20_qkvb6"]
 [ext_resource type="Texture2D" uid="uid://cbqjpj6oiapq8" path="res://assets/lobby/bottom_bar/equipment/grenade.png" id="21_qkvb6"]
-[ext_resource type="PackedScene" uid="uid://ddil1hqxl3u0d" path="res://scenes/main_container/lobby/shop_discount_item.tscn" id="22_nv17j"]
-[ext_resource type="PackedScene" uid="uid://bcmefd44yuifu" path="res://scenes/main_container/lobby/shop_weapon_item.tscn" id="23_mmps8"]
-[ext_resource type="PackedScene" uid="uid://f0n6ea4se4q7" path="res://scenes/main_container/lobby/shop_item.tscn" id="24_5xf5k"]
-[ext_resource type="PackedScene" uid="uid://crq6tmfroxjug" path="res://scenes/main_container/lobby/shop_character_item.tscn" id="25_8dsj6"]
+[ext_resource type="PackedScene" uid="uid://ddil1hqxl3u0d" path="res://scenes/main_container/lobby/shop/shop_discount_item.tscn" id="22_nv17j"]
+[ext_resource type="Script" uid="uid://byvqrb4x87lhl" path="res://scripts/main_container/lobby/shop/shop_ui_manager.gd" id="23_idp30"]
+[ext_resource type="PackedScene" uid="uid://bcmefd44yuifu" path="res://scenes/main_container/lobby/shop/shop_weapon_item.tscn" id="23_mmps8"]
+[ext_resource type="PackedScene" uid="uid://f0n6ea4se4q7" path="res://scenes/main_container/lobby/shop/shop_item.tscn" id="24_5xf5k"]
+[ext_resource type="PackedScene" uid="uid://crq6tmfroxjug" path="res://scenes/main_container/lobby/shop/shop_character_item.tscn" id="25_8dsj6"]
 [ext_resource type="PackedScene" uid="uid://fppac6rwmf2l" path="res://scenes/main_container/lobby/wheel/wheel_item.tscn" id="26_hmpgm"]
+[ext_resource type="Script" uid="uid://dubuyiby8y7n7" path="res://scripts/main_container/lobby/wheel/wheel_ui_manager.gd" id="27_y3tir"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yapo1"]
 texture = ExtResource("1_psu8p")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trvm1"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.14911404, 0.14911404, 0.14911404, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygewx"]
 bg_color = Color(0.23029937, 0.23029937, 0.23029937, 0.63529414)
@@ -61,6 +64,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1cl6t")
 
 [node name="BGPanel" type="Panel" parent="Root" unique_id=1278228187]
 layout_mode = 1
@@ -150,7 +154,7 @@ alignment = 2
 icon_alignment = 2
 expand_icon = true
 
-[node name="GoldBtn2" type="Button" parent="Root/TopBar/CurrencyContainer" unique_id=1583615788]
+[node name="DiamondBtn" type="Button" parent="Root/TopBar/CurrencyContainer" unique_id=1583615788]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "10000000"
@@ -375,7 +379,6 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="OverlayContainer" type="Control" parent="Root" unique_id=657373235]
-z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -395,14 +398,8 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_trvm1")
 
-[node name="BackBtn" type="Button" parent="Root/OverlayContainer/PlayerProfile" unique_id=1896285121]
+[node name="BackBtn" parent="Root/OverlayContainer/PlayerProfile" unique_id=1003464806 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
-offset_right = 143.0
-offset_bottom = 71.0
-theme_override_font_sizes/font_size = 28
-text = "Lobby"
-icon = ExtResource("17_ygewx")
-expand_icon = true
 
 [node name="ProfilePanel" type="Panel" parent="Root/OverlayContainer/PlayerProfile" unique_id=1555787995]
 layout_mode = 1
@@ -556,14 +553,8 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_trvm1")
 
-[node name="BackBtn" type="Button" parent="Root/OverlayContainer/Equipment" unique_id=104393936]
+[node name="BackBtn" parent="Root/OverlayContainer/Equipment" unique_id=259672230 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
-offset_right = 143.0
-offset_bottom = 71.0
-theme_override_font_sizes/font_size = 28
-text = "Lobby"
-icon = ExtResource("17_ygewx")
-expand_icon = true
 
 [node name="EquipContainer" type="VBoxContainer" parent="Root/OverlayContainer/Equipment" unique_id=2021346106]
 layout_mode = 1
@@ -914,14 +905,8 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
 
-[node name="BackBtn" type="Button" parent="Root/OverlayContainer/Leaderboard" unique_id=403809404]
+[node name="BackBtn" parent="Root/OverlayContainer/Leaderboard" unique_id=310445800 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
-offset_right = 143.0
-offset_bottom = 71.0
-theme_override_font_sizes/font_size = 28
-text = "Lobby"
-icon = ExtResource("17_ygewx")
-expand_icon = true
 
 [node name="Panel" type="Panel" parent="Root/OverlayContainer/Leaderboard" unique_id=103081825]
 layout_mode = 1
@@ -1260,14 +1245,8 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
 
-[node name="BackBtn" type="Button" parent="Root/OverlayContainer/Ranking" unique_id=1954359820]
+[node name="BackBtn" parent="Root/OverlayContainer/Ranking" unique_id=1517319978 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
-offset_right = 143.0
-offset_bottom = 71.0
-theme_override_font_sizes/font_size = 28
-text = "Lobby"
-icon = ExtResource("17_ygewx")
-expand_icon = true
 
 [node name="Panel" type="Panel" parent="Root/OverlayContainer/Ranking" unique_id=1152063248]
 layout_mode = 1
@@ -1329,14 +1308,8 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
 
-[node name="BackBtn" type="Button" parent="Root/OverlayContainer/Normal" unique_id=244690640]
+[node name="BackBtn" parent="Root/OverlayContainer/Normal" unique_id=1223498661 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
-offset_right = 143.0
-offset_bottom = 71.0
-theme_override_font_sizes/font_size = 28
-text = "Lobby"
-icon = ExtResource("17_ygewx")
-expand_icon = true
 
 [node name="Panel" type="Panel" parent="Root/OverlayContainer/Normal" unique_id=516641378]
 layout_mode = 1
@@ -1405,7 +1378,7 @@ text = "Fight"
 icon = ExtResource("12_1rix5")
 expand_icon = true
 
-[node name="Shop" type="Panel" parent="Root/OverlayContainer" unique_id=271100709]
+[node name="LAN" type="Panel" parent="Root/OverlayContainer" unique_id=1440337544]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1416,14 +1389,128 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
 
-[node name="BackBtn" type="Button" parent="Root/OverlayContainer/Shop" unique_id=964785844]
-layout_mode = 0
-offset_right = 143.0
-offset_bottom = 71.0
-theme_override_font_sizes/font_size = 28
-text = "Lobby"
-icon = ExtResource("17_ygewx")
+[node name="BackBtn" parent="Root/OverlayContainer/LAN" unique_id=1087116649 instance=ExtResource("17_1cl6t")]
+layout_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/LAN" unique_id=253356988]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/LAN/HBoxContainer" unique_id=275758030]
+custom_minimum_size = Vector2(384, 371)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel" unique_id=678340075]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -158.0
+offset_right = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="ModeBtn" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel/VBoxContainer" unique_id=259189158]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Mode"
+icon = ExtResource("12_1rix5")
+alignment = 2
 expand_icon = true
+
+[node name="MapBtn" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel/VBoxContainer" unique_id=197223290]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Map"
+icon = ExtResource("12_1rix5")
+alignment = 2
+expand_icon = true
+
+[node name="TeamSizeBtn" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel/VBoxContainer" unique_id=709049474]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "1v1"
+icon = ExtResource("12_1rix5")
+alignment = 2
+expand_icon = true
+
+[node name="FightBtn" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel/VBoxContainer" unique_id=573031633]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Fight"
+icon = ExtResource("12_1rix5")
+expand_icon = true
+
+[node name="Panel2" type="Panel" parent="Root/OverlayContainer/LAN/HBoxContainer" unique_id=1710462101]
+custom_minimum_size = Vector2(384, 371)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel2" unique_id=1545277014]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -158.0
+offset_right = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Host" type="TextEdit" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel2/VBoxContainer" unique_id=871121226]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "HOST IP "
+
+[node name="Port" type="TextEdit" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel2/VBoxContainer" unique_id=905032300]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "PORT"
+
+[node name="SaveBtn" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel2/VBoxContainer" unique_id=1627927441]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Confirm"
+expand_icon = true
+
+[node name="Shop" type="Panel" parent="Root/OverlayContainer" unique_id=271100709]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+script = ExtResource("23_idp30")
+
+[node name="BackBtn" parent="Root/OverlayContainer/Shop" unique_id=1687888561 instance=ExtResource("17_1cl6t")]
+layout_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Shop" unique_id=1469147636]
 layout_mode = 1
@@ -1438,27 +1525,27 @@ grow_vertical = 0
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Button" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=1303582635]
+[node name="RecommendedBtn" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=1303582635]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Recommended"
 
-[node name="Button2" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=1525398718]
+[node name="DailyDiscountBtn" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=1525398718]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Daily Discount"
 
-[node name="Button3" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=802948477]
+[node name="WeaponBtn" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=802948477]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Weapon"
 
-[node name="Button4" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=2101376796]
+[node name="ItemBtn" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=2101376796]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Item"
 
-[node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=1074166852]
+[node name="CharacterBtn" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=1074166852]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Character"
@@ -1471,7 +1558,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -392.0
-offset_top = -133.0
+offset_top = -176.0
 offset_right = 399.0
 offset_bottom = 133.0
 grow_horizontal = 2
@@ -1939,6 +2026,7 @@ layout_mode = 2
 text = "Type"
 
 [node name="Wheel" type="Panel" parent="Root/OverlayContainer" unique_id=273721717]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1947,15 +2035,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+script = ExtResource("27_y3tir")
 
-[node name="BackBtn" type="Button" parent="Root/OverlayContainer/Wheel" unique_id=12317368]
+[node name="BackBtn" parent="Root/OverlayContainer/Wheel" unique_id=1834917779 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
-offset_right = 143.0
-offset_bottom = 71.0
-theme_override_font_sizes/font_size = 28
-text = "Lobby"
-icon = ExtResource("17_ygewx")
-expand_icon = true
 
 [node name="Control" type="Control" parent="Root/OverlayContainer/Wheel" unique_id=978215104]
 layout_mode = 1
@@ -1982,12 +2065,12 @@ grow_vertical = 0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Button" type="Button" parent="Root/OverlayContainer/Wheel/Control/HBoxContainer" unique_id=1530425717]
+[node name="GoldBtn" type="Button" parent="Root/OverlayContainer/Wheel/Control/HBoxContainer" unique_id=1530425717]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Gold"
 
-[node name="Button2" type="Button" parent="Root/OverlayContainer/Wheel/Control/HBoxContainer" unique_id=1854966229]
+[node name="DiamondBtn" type="Button" parent="Root/OverlayContainer/Wheel/Control/HBoxContainer" unique_id=1854966229]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Diamond"
@@ -2014,56 +2097,64 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer" unique_id=75287695]
+[node name="GoldWheel" type="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer" unique_id=1619653364]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel" unique_id=75287695]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -166.0
+offset_right = 166.0
+offset_bottom = 60.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer" unique_id=1471203430 instance=ExtResource("26_hmpgm")]
+[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/HBoxContainer" unique_id=1471203430 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer" unique_id=1362694019 instance=ExtResource("26_hmpgm")]
+[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/HBoxContainer" unique_id=1362694019 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer" unique_id=1518904020 instance=ExtResource("26_hmpgm")]
+[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/HBoxContainer" unique_id=1518904020 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer" unique_id=2097300072 instance=ExtResource("26_hmpgm")]
+[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/HBoxContainer" unique_id=2097300072 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer" unique_id=537632319]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel" unique_id=537632319]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -154.0
+offset_left = -166.0
 offset_top = -80.0
-offset_right = 154.0
+offset_right = 166.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer2" unique_id=2099384726 instance=ExtResource("26_hmpgm")]
+[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/HBoxContainer2" unique_id=2099384726 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer2" unique_id=817711032 instance=ExtResource("26_hmpgm")]
+[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/HBoxContainer2" unique_id=817711032 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer2" unique_id=869792516 instance=ExtResource("26_hmpgm")]
+[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/HBoxContainer2" unique_id=869792516 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/HBoxContainer2" unique_id=383012600 instance=ExtResource("26_hmpgm")]
+[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/HBoxContainer2" unique_id=383012600 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer" unique_id=459364471]
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel" unique_id=459364471]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -2074,19 +2165,19 @@ offset_bottom = 154.0
 grow_vertical = 2
 alignment = 1
 
-[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer" unique_id=1224579760 instance=ExtResource("26_hmpgm")]
+[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/VBoxContainer" unique_id=1224579760 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer" unique_id=1809605452 instance=ExtResource("26_hmpgm")]
+[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/VBoxContainer" unique_id=1809605452 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer" unique_id=385081216 instance=ExtResource("26_hmpgm")]
+[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/VBoxContainer" unique_id=385081216 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer" unique_id=680642099 instance=ExtResource("26_hmpgm")]
+[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/VBoxContainer" unique_id=680642099 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer" unique_id=1466123303]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel" unique_id=1466123303]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -2100,19 +2191,19 @@ grow_horizontal = 0
 grow_vertical = 2
 alignment = 1
 
-[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer2" unique_id=1554959287 instance=ExtResource("26_hmpgm")]
+[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/VBoxContainer2" unique_id=1554959287 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer2" unique_id=155951262 instance=ExtResource("26_hmpgm")]
+[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/VBoxContainer2" unique_id=155951262 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer2" unique_id=2020794823 instance=ExtResource("26_hmpgm")]
+[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/VBoxContainer2" unique_id=2020794823 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/VBoxContainer2" unique_id=1751137877 instance=ExtResource("26_hmpgm")]
+[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/VBoxContainer2" unique_id=1751137877 instance=ExtResource("26_hmpgm")]
 layout_mode = 2
 
-[node name="GoldOptions" type="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer" unique_id=2007947101]
+[node name="GoldOptions" type="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel" unique_id=2007947101]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2126,7 +2217,7 @@ offset_bottom = 32.25
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldOptions" unique_id=1394340742]
+[node name="Button" type="Button" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/GoldOptions" unique_id=1394340742]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -2140,7 +2231,7 @@ icon = ExtResource("4_62jta")
 icon_alignment = 2
 expand_icon = true
 
-[node name="Button2" type="Button" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldOptions" unique_id=960715389]
+[node name="Button2" type="Button" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/GoldWheel/GoldOptions" unique_id=960715389]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -2157,8 +2248,114 @@ icon = ExtResource("4_62jta")
 icon_alignment = 2
 expand_icon = true
 
-[node name="DiamondOptions" type="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer" unique_id=557186745]
+[node name="DiamondWheel" type="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer" unique_id=377895886]
 visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel" unique_id=1400809216]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -166.0
+offset_right = 166.0
+offset_bottom = 60.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/HBoxContainer" unique_id=668224908 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/HBoxContainer" unique_id=85651174 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/HBoxContainer" unique_id=1570651239 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/HBoxContainer" unique_id=166268420 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel" unique_id=999395514]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -166.0
+offset_top = -80.0
+offset_right = 166.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/HBoxContainer2" unique_id=607521411 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/HBoxContainer2" unique_id=641393203 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/HBoxContainer2" unique_id=1871080696 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/HBoxContainer2" unique_id=704074983 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel" unique_id=1126276102]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -154.0
+offset_right = 100.0
+offset_bottom = 154.0
+grow_vertical = 2
+alignment = 1
+
+[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/VBoxContainer" unique_id=912098906 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/VBoxContainer" unique_id=1669018797 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/VBoxContainer" unique_id=113267085 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/VBoxContainer" unique_id=1124604456 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel" unique_id=1983463677]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -154.0
+offset_bottom = 154.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+
+[node name="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/VBoxContainer2" unique_id=2058419245 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control2" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/VBoxContainer2" unique_id=1965255685 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control3" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/VBoxContainer2" unique_id=559777113 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="Control4" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/VBoxContainer2" unique_id=2027701144 instance=ExtResource("26_hmpgm")]
+layout_mode = 2
+
+[node name="DiamondOptions" type="Control" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel" unique_id=557186745]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2172,7 +2369,7 @@ offset_bottom = 32.25
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondOptions" unique_id=429074915]
+[node name="Button" type="Button" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/DiamondOptions" unique_id=429074915]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -2186,7 +2383,7 @@ icon = ExtResource("5_u3wsq")
 icon_alignment = 2
 expand_icon = true
 
-[node name="Button2" type="Button" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondOptions" unique_id=980133482]
+[node name="Button2" type="Button" parent="Root/OverlayContainer/Wheel/Control/WheelContainer/DiamondWheel/DiamondOptions" unique_id=980133482]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -2199,12 +2396,250 @@ offset_bottom = 25.5
 grow_horizontal = 0
 grow_vertical = 2
 text = "10000 | 10x"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Task" type="Panel" parent="Root/OverlayContainer" unique_id=1519019786]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+
+[node name="BackBtn" parent="Root/OverlayContainer/Task" unique_id=1670354976 instance=ExtResource("17_1cl6t")]
+layout_mode = 0
+
+[node name="Control" type="Control" parent="Root/OverlayContainer/Task" unique_id=1856341206]
+custom_minimum_size = Vector2(821, 401)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -410.5
+offset_top = -401.0
+offset_right = 410.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Task/Control" unique_id=331551934]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -93.5
+offset_right = 148.0
+offset_bottom = 93.5
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Task/Control/VBoxContainer" unique_id=406655341]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Daily "
+
+[node name="Button2" type="Button" parent="Root/OverlayContainer/Task/Control/VBoxContainer" unique_id=1012983784]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Weekly"
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/Task/Control" unique_id=18616367]
+custom_minimum_size = Vector2(603, 305)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -603.0
+offset_top = -152.5
+offset_bottom = 152.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Task/Control/Panel" unique_id=1211698831]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer" unique_id=1681496323]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 2
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer" unique_id=258783364]
+custom_minimum_size = Vector2(550, 100)
+layout_mode = 2
+
+[node name="Task" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel" unique_id=1855518739]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "Task..........................."
+
+[node name="Progress" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel" unique_id=1007767083]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 63.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "1/12"
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel" unique_id=1150428330]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -24.5
+offset_bottom = 24.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "100"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Panel2" type="Panel" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer" unique_id=1961755777]
+custom_minimum_size = Vector2(550, 100)
+layout_mode = 2
+
+[node name="Task" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel2" unique_id=669850453]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "Task..........................."
+
+[node name="Progress" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel2" unique_id=844863140]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 63.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "1/12"
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel2" unique_id=1856936806]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -24.5
+offset_bottom = 24.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "100"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Panel3" type="Panel" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer" unique_id=302486869]
+custom_minimum_size = Vector2(550, 100)
+layout_mode = 2
+
+[node name="Task" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel3" unique_id=1316982211]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "Task..........................."
+
+[node name="Progress" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel3" unique_id=710458027]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 63.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "1/12"
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel3" unique_id=1001579398]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -24.5
+offset_bottom = 24.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "100"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Panel4" type="Panel" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer" unique_id=1639596341]
+custom_minimum_size = Vector2(550, 100)
+layout_mode = 2
+
+[node name="Task" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel4" unique_id=796165854]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "Task..........................."
+
+[node name="Progress" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel4" unique_id=693720920]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 63.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "1/12"
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel4" unique_id=1165183820]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -24.5
+offset_bottom = 24.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "100"
 icon = ExtResource("5_u3wsq")
 icon_alignment = 2
 expand_icon = true
 
 [node name="TopOverlay" type="Control" parent="Root" unique_id=308563002]
-visible = false
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2221,16 +2656,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
 
-[node name="BackBtn" type="Button" parent="Root/TopOverlay/Purchase" unique_id=896451679]
+[node name="BackBtn" parent="Root/TopOverlay/Purchase" unique_id=1944590998 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
-offset_right = 143.0
-offset_bottom = 71.0
-theme_override_font_sizes/font_size = 28
-text = "Lobby"
-icon = ExtResource("17_ygewx")
-expand_icon = true
 
 [node name="TopWrapper" type="Control" parent="Root/TopOverlay/Purchase" unique_id=369433589]
 layout_mode = 1
@@ -2359,14 +2789,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
 
-[node name="BackBtn" type="Button" parent="Root/TopOverlay/Settings" unique_id=1728616436]
+[node name="BackBtn" parent="Root/TopOverlay/Settings" unique_id=20028794 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
-offset_right = 143.0
-offset_bottom = 71.0
-theme_override_font_sizes/font_size = 28
-text = "Lobby"
-icon = ExtResource("17_ygewx")
-expand_icon = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/TopOverlay/Settings" unique_id=1803825875]
 layout_mode = 1
@@ -2465,3 +2889,20 @@ text = "MEDIUM"
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "HIGH"
+
+[connection signal="pressed" from="Root/TopBar/ProfileBtn" to="Root" method="_open_player_profile"]
+[connection signal="pressed" from="Root/TopBar/CurrencyContainer/GoldBtn" to="Root" method="_open_purchase"]
+[connection signal="pressed" from="Root/TopBar/CurrencyContainer/DiamondBtn" to="Root" method="_open_purchase"]
+[connection signal="pressed" from="Root/TopBar/RightContainer/SettingsBtn" to="Root" method="_open_settings"]
+[connection signal="pressed" from="Root/Middle/LeaderBoardBtn" to="Root" method="_open_leaderboard"]
+[connection signal="pressed" from="Root/Middle/HBoxContainer/Team1Btn" to="Root" method="_open_equipment"]
+[connection signal="pressed" from="Root/Middle/HBoxContainer/Team2Btn" to="Root" method="_open_equipment"]
+[connection signal="pressed" from="Root/Middle/ModeSelectionPanel/RankBtn" to="Root" method="_open_ranking"]
+[connection signal="pressed" from="Root/Middle/ModeSelectionPanel/NormalBtn" to="Root" method="_open_normal"]
+[connection signal="pressed" from="Root/Middle/ModeSelectionPanel/LanBtn" to="Root" method="_open_lan"]
+[connection signal="pressed" from="Root/BottomBar/LeftContainer/EquipmentBtn" to="Root" method="_open_equipment"]
+[connection signal="pressed" from="Root/BottomBar/LeftContainer/TaskBtn" to="Root" method="_open_task"]
+[connection signal="pressed" from="Root/BottomBar/RightContainer/LuckyWheelBtn" to="Root" method="_open_wheel"]
+[connection signal="pressed" from="Root/BottomBar/RightContainer/ShopBtn" to="Root" method="_open_shop"]
+[connection signal="pressed" from="Root/OverlayContainer/Wheel/Control/HBoxContainer/GoldBtn" to="Root/OverlayContainer/Wheel" method="_open_gold_wheel"]
+[connection signal="pressed" from="Root/OverlayContainer/Wheel/Control/HBoxContainer/DiamondBtn" to="Root/OverlayContainer/Wheel" method="_open_diamond_wheel"]
