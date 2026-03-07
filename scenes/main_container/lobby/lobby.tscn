@@ -1939,6 +1939,7 @@ layout_mode = 2
 text = "Type"
 
 [node name="Wheel" type="Panel" parent="Root/OverlayContainer" unique_id=273721717]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2199,6 +2200,249 @@ offset_bottom = 25.5
 grow_horizontal = 0
 grow_vertical = 2
 text = "10000 | 10x"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Task" type="Panel" parent="Root/OverlayContainer" unique_id=1519019786]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+
+[node name="BackBtn" type="Button" parent="Root/OverlayContainer/Task" unique_id=1139464449]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 28
+text = "Lobby"
+icon = ExtResource("17_ygewx")
+expand_icon = true
+
+[node name="Control" type="Control" parent="Root/OverlayContainer/Task" unique_id=1856341206]
+custom_minimum_size = Vector2(821, 401)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -410.5
+offset_top = -401.0
+offset_right = 410.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Task/Control" unique_id=331551934]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -93.5
+offset_right = 148.0
+offset_bottom = 93.5
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Task/Control/VBoxContainer" unique_id=406655341]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Daily "
+
+[node name="Button2" type="Button" parent="Root/OverlayContainer/Task/Control/VBoxContainer" unique_id=1012983784]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Weekly"
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/Task/Control" unique_id=18616367]
+custom_minimum_size = Vector2(603, 305)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -603.0
+offset_top = -152.5
+offset_bottom = 152.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Task/Control/Panel" unique_id=1211698831]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer" unique_id=1681496323]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 2
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer" unique_id=258783364]
+custom_minimum_size = Vector2(550, 100)
+layout_mode = 2
+
+[node name="Task" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel" unique_id=1855518739]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "Task..........................."
+
+[node name="Progress" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel" unique_id=1007767083]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 63.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "1/12"
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel" unique_id=1150428330]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -24.5
+offset_bottom = 24.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "100"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Panel2" type="Panel" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer" unique_id=1961755777]
+custom_minimum_size = Vector2(550, 100)
+layout_mode = 2
+
+[node name="Task" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel2" unique_id=669850453]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "Task..........................."
+
+[node name="Progress" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel2" unique_id=844863140]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 63.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "1/12"
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel2" unique_id=1856936806]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -24.5
+offset_bottom = 24.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "100"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Panel3" type="Panel" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer" unique_id=302486869]
+custom_minimum_size = Vector2(550, 100)
+layout_mode = 2
+
+[node name="Task" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel3" unique_id=1316982211]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "Task..........................."
+
+[node name="Progress" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel3" unique_id=710458027]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 63.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "1/12"
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel3" unique_id=1001579398]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -24.5
+offset_bottom = 24.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "100"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Panel4" type="Panel" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer" unique_id=1639596341]
+custom_minimum_size = Vector2(550, 100)
+layout_mode = 2
+
+[node name="Task" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel4" unique_id=796165854]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "Task..........................."
+
+[node name="Progress" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel4" unique_id=693720920]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 63.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "1/12"
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel4" unique_id=1165183820]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -24.5
+offset_bottom = 24.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "100"
 icon = ExtResource("5_u3wsq")
 icon_alignment = 2
 expand_icon = true
