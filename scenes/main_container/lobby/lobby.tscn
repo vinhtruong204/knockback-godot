@@ -33,8 +33,8 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yapo1"]
 texture = ExtResource("1_psu8p")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trvm1"]
-bg_color = Color(0.14911404, 0.14911404, 0.14911404, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkvb6"]
+bg_color = Color(0.27314222, 0.27314225, 0.27314213, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygewx"]
 bg_color = Color(0.23029937, 0.23029937, 0.23029937, 0.63529414)
@@ -51,9 +51,6 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkvb6"]
-bg_color = Color(0.27314222, 0.27314225, 0.27314213, 1)
 
 [node name="Lobby" type="CanvasLayer" unique_id=745962393]
 
@@ -396,7 +393,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_trvm1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
 
 [node name="BackBtn" parent="Root/OverlayContainer/PlayerProfile" unique_id=1003464806 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
@@ -551,7 +548,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_trvm1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
 
 [node name="BackBtn" parent="Root/OverlayContainer/Equipment" unique_id=259672230 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
