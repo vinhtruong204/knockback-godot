@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dkgg0bf0dgsdq"]
+
+[ext_resource type="Texture2D" uid="uid://dh7kjthvb5822" path="res://assets/loading/loading_bg.jpg" id="1_ci707"]
+[ext_resource type="Script" uid="uid://b03wyjw2q1euh" path="res://scripts/main_container/game/player_spawner.gd" id="2_u7cc6"]
+[ext_resource type="PackedScene" uid="uid://b7sxa5hokgkp3" path="res://scenes/main_container/game/player.tscn" id="3_m7m7f"]
+
+[node name="Game" type="Node2D" unique_id=43312602]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1502320093]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=45498573]
+position = Vector2(521, 221)
+texture = ExtResource("1_ci707")
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=29764652]
+spawn_path = NodePath("..")
+script = ExtResource("2_u7cc6")
+player_scene = ExtResource("3_m7m7f")

@@ -3,10 +3,13 @@ extends Node
 var current_scene: Node = null
 var scene_path: String = ""
 var is_loaded := false
-var _progress := [0.0]
+var _progress: Array[float] = [0.0]
 
 func get_progress() -> float:
 	return _progress[0]
+
+func _ready() -> void:
+	pass
 
 func load_scene(path: String):
 	# Clean up old scene
@@ -31,7 +34,7 @@ func _process(_delta):
 
 	match status:
 		ResourceLoader.THREAD_LOAD_LOADED:
-			_progress = [1]
+			_progress = [1.0]
 			var packed_scene = ResourceLoader.load_threaded_get(scene_path)
 			
 			var scene = packed_scene.instantiate()

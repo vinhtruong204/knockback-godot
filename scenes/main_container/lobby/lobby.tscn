@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://ddil1hqxl3u0d" path="res://scenes/main_container/lobby/shop/shop_discount_item.tscn" id="22_nv17j"]
 [ext_resource type="Script" uid="uid://byvqrb4x87lhl" path="res://scripts/main_container/lobby/shop/shop_ui_manager.gd" id="23_idp30"]
 [ext_resource type="PackedScene" uid="uid://bcmefd44yuifu" path="res://scenes/main_container/lobby/shop/shop_weapon_item.tscn" id="23_mmps8"]
+[ext_resource type="Script" uid="uid://c0afvvfqkanbr" path="res://scripts/main_container/lobby/fight_btn_handler.gd" id="23_ypnxj"]
 [ext_resource type="PackedScene" uid="uid://f0n6ea4se4q7" path="res://scenes/main_container/lobby/shop/shop_item.tscn" id="24_5xf5k"]
 [ext_resource type="PackedScene" uid="uid://crq6tmfroxjug" path="res://scenes/main_container/lobby/shop/shop_character_item.tscn" id="25_8dsj6"]
 [ext_resource type="PackedScene" uid="uid://fppac6rwmf2l" path="res://scenes/main_container/lobby/wheel/wheel_item.tscn" id="26_hmpgm"]
@@ -1291,6 +1292,14 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Fight"
+icon = ExtResource("12_1rix5")
+expand_icon = true
+script = ExtResource("23_ypnxj")
+
+[node name="Server" type="Button" parent="Root/OverlayContainer/Ranking/Panel/VBoxContainer" unique_id=1452616438]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Server"
 icon = ExtResource("12_1rix5")
 expand_icon = true
 
@@ -2901,5 +2910,7 @@ text = "HIGH"
 [connection signal="pressed" from="Root/BottomBar/LeftContainer/TaskBtn" to="Root" method="_open_task"]
 [connection signal="pressed" from="Root/BottomBar/RightContainer/LuckyWheelBtn" to="Root" method="_open_wheel"]
 [connection signal="pressed" from="Root/BottomBar/RightContainer/ShopBtn" to="Root" method="_open_shop"]
+[connection signal="pressed" from="Root/OverlayContainer/Ranking/Panel/VBoxContainer/FightBtn" to="Root/OverlayContainer/Ranking/Panel/VBoxContainer/FightBtn" method="_on_fight_pressed"]
+[connection signal="pressed" from="Root/OverlayContainer/Ranking/Panel/VBoxContainer/Server" to="Root/OverlayContainer/Ranking/Panel/VBoxContainer/FightBtn" method="_on_server_pressed"]
 [connection signal="pressed" from="Root/OverlayContainer/Wheel/Control/HBoxContainer/GoldBtn" to="Root/OverlayContainer/Wheel" method="_open_gold_wheel"]
 [connection signal="pressed" from="Root/OverlayContainer/Wheel/Control/HBoxContainer/DiamondBtn" to="Root/OverlayContainer/Wheel" method="_open_diamond_wheel"]
