@@ -13,7 +13,10 @@ func _ready():
 func _on_peer_connected(peer_id: int):
 	if not multiplayer.is_server(): return
 	
-	self.spawn({"peer_id": peer_id, "pos": Vector2(500, 500)})
+	var rng = RandomNumberGenerator.new()
+	self.spawn({"peer_id": peer_id, "pos": Vector2(rng.randf() * 300, rng.randf() * 300)})
+	
+	print("spawn " + str(peer_id))
 
 func _spawn_player(data: Dictionary) -> Node:
 	var player = player_scene.instantiate()

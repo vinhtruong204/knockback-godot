@@ -9,13 +9,15 @@ func _ready():
     multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 
     multiplayer.connected_to_server.connect(func():
+        print("load map")
         SceneLoader.load_scene(game_scene_path)
         )
+    
+    if OS.has_feature("dedicated_server"):
+        create_server()
 
 func _on_peer_connected(id):
     print("Peer connected:", id)
-
-    # spawn some character on server
 
 func _on_peer_disconnected(id):
     print("Peer disconnected:", id)
@@ -32,6 +34,6 @@ func create_server() -> void:
     peer.create_server(PORT)
     multiplayer.multiplayer_peer = peer
 
-    print("create server")
+    print("start server at " + str(PORT))
 
     SceneLoader.load_scene(game_scene_path)

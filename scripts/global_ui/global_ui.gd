@@ -5,8 +5,9 @@ var scene_path := "res://scenes/main_container/lobby/lobby.tscn"
 var is_loaded: bool = false
 
 func _ready():
-	SceneLoader.load_scene(scene_path)
-	is_loaded = false
+	if not OS.has_feature("dedicated_server"):
+		SceneLoader.load_scene(scene_path)
+		is_loaded = false
 
 func _process(_delta):
 	if is_loaded:
