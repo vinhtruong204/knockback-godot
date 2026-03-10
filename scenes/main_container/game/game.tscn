@@ -1,18 +1,47 @@
 [gd_scene format=3 uid="uid://dkgg0bf0dgsdq"]
 
 [ext_resource type="Texture2D" uid="uid://dh7kjthvb5822" path="res://assets/loading/loading_bg.jpg" id="1_ci707"]
+[ext_resource type="Script" uid="uid://fl37psjgvksq" path="res://addons/virtual_joystick_plus/virtual_joystick_plus.gd" id="1_h7arf"]
+[ext_resource type="Texture2D" uid="uid://dll0wmd7v2ohb" path="res://assets/game/ui/joystick_outer.png" id="2_h7arf"]
 [ext_resource type="Script" uid="uid://b03wyjw2q1euh" path="res://scripts/main_container/game/player_spawner.gd" id="2_u7cc6"]
+[ext_resource type="Texture2D" uid="uid://k157ataslok5" path="res://assets/game/ui/joystick_inner.png" id="3_lm4et"]
 [ext_resource type="PackedScene" uid="uid://b7sxa5hokgkp3" path="res://scenes/main_container/game/player.tscn" id="3_m7m7f"]
 
 [node name="Game" type="Node2D" unique_id=43312602]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1502320093]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=45498573]
+[node name="Root" type="Control" parent="CanvasLayer" unique_id=1215111760]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerJoystick" type="Control" parent="CanvasLayer/Root" unique_id=1410260706]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -217.0
+offset_right = 206.0
+grow_vertical = 0
+pivot_offset = Vector2(103, 108.5)
+script = ExtResource("1_h7arf")
+joystick_texture = ExtResource("2_h7arf")
+stick_texture = ExtResource("3_lm4et")
+metadata/_custom_type_script = "uid://fl37psjgvksq"
+
+[node name="Map" type="Sprite2D" parent="." unique_id=45498573]
+visible = false
 position = Vector2(521, 221)
 texture = ExtResource("1_ci707")
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=29764652]
-spawn_path = NodePath("..")
+spawn_path = NodePath("Node")
 script = ExtResource("2_u7cc6")
 player_scene = ExtResource("3_m7m7f")
+
+[node name="Node" type="Node" parent="PlayerSpawner" unique_id=418880065]

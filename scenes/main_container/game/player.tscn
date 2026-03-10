@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b7sxa5hokgkp3"]
 
 [ext_resource type="Texture2D" uid="uid://8ia3qanuf6v" path="res://assets/lobby/bottom_bar/store.png" id="1_ktt5d"]
-[ext_resource type="Script" uid="uid://b1553iaqdkmmg" path="res://scenes/main_container/game/player.gd" id="1_xucm1"]
+[ext_resource type="Script" uid="uid://b1553iaqdkmmg" path="res://scripts/main_container/game/player.gd" id="1_xucm1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktt5d"]
 size = Vector2(249, 212)
@@ -12,6 +12,7 @@ properties/0/spawn = true
 properties/0/replication_mode = 2
 
 [node name="Player" type="CharacterBody2D" unique_id=1722197910]
+collision_mask = 0
 script = ExtResource("1_xucm1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1014080359]
