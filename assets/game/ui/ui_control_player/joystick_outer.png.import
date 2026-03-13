@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k157ataslok5"
-path="res://.godot/imported/joystick_inner.png-e8420b3cc83b88007d0eb2ed4fa4a32e.ctex"
+uid="uid://dll0wmd7v2ohb"
+path="res://.godot/imported/joystick_outer.png-f062e217726fd10b5c59ea4b3b22a3d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game/ui/joystick_inner.png"
-dest_files=["res://.godot/imported/joystick_inner.png-e8420b3cc83b88007d0eb2ed4fa4a32e.ctex"]
+source_file="res://assets/game/ui/ui_control_player/joystick_outer.png"
+dest_files=["res://.godot/imported/joystick_outer.png-f062e217726fd10b5c59ea4b3b22a3d8.ctex"]
 
 [params]
 

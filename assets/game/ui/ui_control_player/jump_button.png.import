@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dll0wmd7v2ohb"
-path="res://.godot/imported/joystick_outer.png-a47cb1b0ea2e80759f9c3030e61fd491.ctex"
+uid="uid://djbu6lgswobsi"
+path="res://.godot/imported/jump_button.png-30a17dfbc9c6e67817a3f4decb60b7ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game/ui/joystick_outer.png"
-dest_files=["res://.godot/imported/joystick_outer.png-a47cb1b0ea2e80759f9c3030e61fd491.ctex"]
+source_file="res://assets/game/ui/ui_control_player/jump_button.png"
+dest_files=["res://.godot/imported/jump_button.png-30a17dfbc9c6e67817a3f4decb60b7ae.ctex"]
 
 [params]
 

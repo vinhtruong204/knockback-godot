@@ -8,8 +8,8 @@ const JUMP_VELOCITY = -400.0
 
 func _ready() -> void:
 	if is_multiplayer_authority():
-		joystick = get_tree().root.get_node("Main/SceneContainer/Game/CanvasLayer/Root/PlayerJoystick")
-		
+		joystick = get_tree().root.get_node("Main/SceneContainer/Game/CanvasLayer/Root/UIControlPlayer/PlayerJoystick")
+
 
 func _physics_process(_delta: float) -> void:
 	if not is_multiplayer_authority():

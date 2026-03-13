@@ -5,9 +5,6 @@ const PORT := 9543
 var game_scene_path := "res://scenes/main_container/game/game.tscn"
 
 func _ready():
-    multiplayer.peer_connected.connect(_on_peer_connected)
-    multiplayer.peer_disconnected.connect(_on_peer_disconnected)
-    
     if OS.has_feature("dedicated_server"):
         SceneLoader.load_scene(game_scene_path)
         create_server()
@@ -38,3 +35,6 @@ func create_server() -> void:
     print("start server at " + str(PORT))
 
     SceneLoader.load_scene(game_scene_path)
+
+    multiplayer.peer_connected.connect(_on_peer_connected)
+    multiplayer.peer_disconnected.connect(_on_peer_disconnected)

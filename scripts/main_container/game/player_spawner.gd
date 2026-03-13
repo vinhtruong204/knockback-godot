@@ -23,8 +23,8 @@ func _on_peer_connected(peer_id: int):
 		for key in _players_list:
 			var rng = RandomNumberGenerator.new()
 			self.spawn({"peer_id": key, "pos": Vector2(rng.randf() * 300, rng.randf() * 300)})
-
-	print("spawn " + str(peer_id))
+			print("spawn " + str(key))
+			
 
 func _on_peer_disconnected(peer_id: int):
 	if not multiplayer.is_server(): return
