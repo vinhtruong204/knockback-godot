@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c1y4fpvweyg2q"]
 
 [ext_resource type="Texture2D" uid="uid://c7l5ceh733r7u" path="res://assets/login/Button_11.png" id="1_1qgm1"]
+[ext_resource type="Script" uid="uid://c54d5ooi0tvx7" path="res://scripts/main_container/login/google_login.gd" id="1_7ouuo"]
 [ext_resource type="Texture2D" uid="uid://u7usknujm0ol" path="res://assets/login/bg_login.jpg" id="1_wc656"]
 [ext_resource type="Texture2D" uid="uid://cjc5qkpuccud" path="res://assets/login/Button_10.png" id="2_74lrb"]
 [ext_resource type="Texture2D" uid="uid://b1rovbaucstv3" path="res://assets/login/Button_21.png" id="3_0msd8"]
@@ -11,6 +12,7 @@ texture = ExtResource("1_wc656")
 modulate_color = Color(0.4911909, 0.4911909, 0.4911909, 1)
 
 [node name="Login" type="Node2D" unique_id=2064406175]
+script = ExtResource("1_7ouuo")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1687703833]
 
@@ -85,3 +87,23 @@ theme_override_font_sizes/font_size = 32
 text = "GUEST"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SignOut" type="Button" parent="CanvasLayer/Control" unique_id=1847774722]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -118.0
+offset_bottom = 73.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+text = "Sign Out"
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/Control" unique_id=539872184]
+layout_mode = 0
+offset_right = 370.0
+offset_bottom = 463.0
+placeholder_text = "Status"
+
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Google" to="." method="sign_in"]
+[connection signal="pressed" from="CanvasLayer/Control/SignOut" to="." method="sign_out"]
