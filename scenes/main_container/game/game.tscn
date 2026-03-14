@@ -1,18 +1,283 @@
 [gd_scene format=3 uid="uid://dkgg0bf0dgsdq"]
 
 [ext_resource type="Texture2D" uid="uid://dh7kjthvb5822" path="res://assets/loading/loading_bg.jpg" id="1_ci707"]
+[ext_resource type="Script" uid="uid://fl37psjgvksq" path="res://addons/virtual_joystick_plus/virtual_joystick_plus.gd" id="1_h7arf"]
+[ext_resource type="Texture2D" uid="uid://dll0wmd7v2ohb" path="res://assets/game/ui/ui_control_player/joystick_outer.png" id="2_h7arf"]
 [ext_resource type="Script" uid="uid://b03wyjw2q1euh" path="res://scripts/main_container/game/player_spawner.gd" id="2_u7cc6"]
+[ext_resource type="Texture2D" uid="uid://k157ataslok5" path="res://assets/game/ui/ui_control_player/joystick_inner.png" id="3_lm4et"]
 [ext_resource type="PackedScene" uid="uid://b7sxa5hokgkp3" path="res://scenes/main_container/game/player.tscn" id="3_m7m7f"]
+[ext_resource type="Texture2D" uid="uid://djbu6lgswobsi" path="res://assets/game/ui/ui_control_player/jump_button.png" id="4_lm4et"]
+[ext_resource type="Texture2D" uid="uid://dg28mj55jtopx" path="res://assets/game/ui/ui_control_player/fire_button.png" id="5_tq710"]
+[ext_resource type="Texture2D" uid="uid://bcpv0wmj4hkl5" path="res://assets/game/ui/ui_control_player/bomb_button.png" id="6_05s03"]
+[ext_resource type="Texture2D" uid="uid://c04f4aiwa24cf" path="res://assets/lobby/bottom_bar/fortune-wheel.png" id="7_05s03"]
+[ext_resource type="Texture2D" uid="uid://dl36dfjcu1naq" path="res://assets/lobby/top_bar/top_right/settings.png" id="8_inwiu"]
+[ext_resource type="Texture2D" uid="uid://dyjtvlq4xa4dc" path="res://assets/lobby/top_bar/player_profile/player_profile_bg.png" id="9_kdgan"]
+[ext_resource type="Texture2D" uid="uid://6o0grqeqb4ds" path="res://assets/login/Button_20.png" id="10_rw2ea"]
+
+[sub_resource type="Theme" id="Theme_tq710"]
 
 [node name="Game" type="Node2D" unique_id=43312602]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1502320093]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=45498573]
+[node name="Root" type="Control" parent="CanvasLayer" unique_id=1215111760]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UIControlPlayer" type="Control" parent="CanvasLayer/Root" unique_id=1947981484]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -250.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PlayerJoystick" type="Control" parent="CanvasLayer/Root/UIControlPlayer" unique_id=1410260706]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_vertical = 2
+pivot_offset = Vector2(150, 150)
+script = ExtResource("1_h7arf")
+joystick_texture = ExtResource("2_h7arf")
+stick_texture = ExtResource("3_lm4et")
+metadata/_custom_type_script = "uid://fl37psjgvksq"
+
+[node name="ButtonsWrapper" type="Control" parent="CanvasLayer/Root/UIControlPlayer" unique_id=1439838683]
+custom_minimum_size = Vector2(198, 201.78616)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = -100.89308
+offset_right = -78.0
+offset_bottom = 100.89308
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="JumpBtn" type="TextureButton" parent="CanvasLayer/Root/UIControlPlayer/ButtonsWrapper" unique_id=504925624]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_bottom = 80.0
+grow_horizontal = 0
+texture_normal = ExtResource("4_lm4et")
+texture_pressed = ExtResource("4_lm4et")
+texture_hover = ExtResource("4_lm4et")
+
+[node name="FireBtn" type="TextureButton" parent="CanvasLayer/Root/UIControlPlayer/ButtonsWrapper" unique_id=209652889]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -80.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("5_tq710")
+texture_pressed = ExtResource("5_tq710")
+texture_hover = ExtResource("5_tq710")
+
+[node name="BombBtn" type="TextureButton" parent="CanvasLayer/Root/UIControlPlayer/ButtonsWrapper" unique_id=640785495]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+offset_right = 80.0
+grow_vertical = 0
+texture_normal = ExtResource("6_05s03")
+texture_pressed = ExtResource("6_05s03")
+texture_hover = ExtResource("6_05s03")
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/Root/UIControlPlayer" unique_id=1104017395]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -117.0
+offset_right = 100.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_tq710")
+selected = 0
+fit_to_longest_item = false
+item_count = 3
+popup/item_0/text = "Primary"
+popup/item_0/id = 0
+popup/item_1/text = "Secondary"
+popup/item_1/id = 1
+popup/item_2/text = "Melee"
+popup/item_2/id = 2
+
+[node name="TopUI" type="Control" parent="CanvasLayer/Root" unique_id=581601505]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+
+[node name="OpponentInfor" type="Panel" parent="CanvasLayer/Root/TopUI" unique_id=229881166]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Root/TopUI/OpponentInfor" unique_id=731414475]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_right = 75.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Root/TopUI/OpponentInfor" unique_id=664991577]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -35.0
+offset_right = 75.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HeartTexture" type="TextureRect" parent="CanvasLayer/Root/TopUI/OpponentInfor/Label2" unique_id=1884730950]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -20.0
+offset_right = 53.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_05s03")
+expand_mode = 1
+
+[node name="SettingPanel" type="Panel" parent="CanvasLayer/Root/TopUI" unique_id=1191869917]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 290.0
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Root/TopUI/SettingPanel" unique_id=75713797]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -32.75
+offset_right = 70.0
+offset_bottom = 32.75
+grow_vertical = 2
+texture_normal = ExtResource("8_inwiu")
+texture_pressed = ExtResource("8_inwiu")
+texture_hover = ExtResource("8_inwiu")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Root/TopUI/SettingPanel" unique_id=2114253875]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -190.0
+offset_bottom = 32.0
+grow_horizontal = 0
+value = 46.0
+nine_patch_stretch = true
+texture_under = ExtResource("9_kdgan")
+texture_progress = ExtResource("10_rw2ea")
+
+[node name="Label2" type="Label" parent="CanvasLayer/Root/TopUI/SettingPanel" unique_id=1376393561]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -41.0
+offset_right = -58.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HeartTexture" type="TextureRect" parent="CanvasLayer/Root/TopUI/SettingPanel/Label2" unique_id=8866514]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -20.0
+offset_right = 53.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_05s03")
+expand_mode = 1
+
+[node name="World" type="Node2D" parent="." unique_id=1477937842]
+
+[node name="Map" type="Sprite2D" parent="World" unique_id=45498573]
+visible = false
 position = Vector2(521, 221)
 texture = ExtResource("1_ci707")
 
-[node name="PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=29764652]
-spawn_path = NodePath("..")
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="World" unique_id=29764652]
+spawn_path = NodePath("Node")
 script = ExtResource("2_u7cc6")
 player_scene = ExtResource("3_m7m7f")
+
+[node name="Node" type="Node" parent="World/PlayerSpawner" unique_id=418880065]

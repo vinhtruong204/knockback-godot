@@ -8,3 +8,4 @@ func on_click():
 	
 	if parent:
 		parent.visible = false
+		%UIButtons.mouse_filter = Control.MOUSE_FILTER_STOP
