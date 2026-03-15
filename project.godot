@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 SceneLoader="*uid://dyvrrc8agilms"
 NetworkManager="*uid://dshxldter4tuo"
+ApiManager="*uid://t1rm4v2fcxwe"
+ConfigApi="*uid://bnvsveot3ys4m"
+EconomyApi="*uid://mqobuqg8rrsr"
+MatchApi="*uid://dgtx0ok3jp58q"
+PlayerApi="*uid://ckquj3nr7huqk"
 
 [display]
 

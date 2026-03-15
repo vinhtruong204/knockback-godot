@@ -1,0 +1,167 @@
+extends Node
+
+var base_url: String:
+	get: return ApiManager.host + ":8000/api/v1"
+
+# --- Auth (unauthenticated) ---
+
+func login(id_token: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/auth/google", HTTPClient.METHOD_POST,
+		{"id_token": id_token}, false, callback)
+
+func signout(callback: Callable = Callable()):
+	ApiManager.send_request(self , base_url, "/auth/signout", HTTPClient.METHOD_POST,
+		{"session_token": ApiManager.session_token}, false,
+		callback if callback.is_valid() else func(_r): pass )
+
+func refresh_token(callback: Callable):
+	ApiManager.send_request(self , base_url, "/auth/refresh", HTTPClient.METHOD_POST,
+		{"session_token": ApiManager.session_token}, false, callback)
+
+# --- Players ---
+
+func get_players(callback: Callable, skip := 0, limit := 100):
+	ApiManager.send_request(self , base_url, "/players?skip=%d&limit=%d" % [skip, limit],
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func get_player(pid: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid,
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func create_player(data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players",
+		HTTPClient.METHOD_POST, data, true, callback)
+
+func update_player(pid: String, data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid,
+		HTTPClient.METHOD_PUT, data, true, callback)
+
+func delete_player(pid: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid,
+		HTTPClient.METHOD_DELETE, {}, true, callback)
+
+# --- Player Stats ---
+
+func get_player_stats(pid: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/stats",
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func get_player_stats_by_mode(pid: String, mode: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/stats/" + mode,
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func create_player_stats(data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/player-stats",
+		HTTPClient.METHOD_POST, data, true, callback)
+
+func update_player_stats(pid: String, mode: String, data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/stats/" + mode,
+		HTTPClient.METHOD_PUT, data, true, callback)
+
+# --- Player Currency ---
+
+func get_player_currencies(pid: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/currencies",
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func get_player_currency(pid: String, currency_type: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/currencies/" + currency_type,
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func add_player_currency(data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/player-currencies",
+		HTTPClient.METHOD_POST, data, true, callback)
+
+func update_player_currency(pid: String, currency_type: String, data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/currencies/" + currency_type,
+		HTTPClient.METHOD_PUT, data, true, callback)
+
+# --- Player Inventory ---
+
+func get_player_inventory(pid: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/inventory",
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func get_inventory_item(pid: String, item_id: String, item_type: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/inventory/" + item_id + "?item_type=" + item_type,
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func add_inventory_item(data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/player-inventory",
+		HTTPClient.METHOD_POST, data, true, callback)
+
+func update_inventory_item(pid: String, item_id: String, item_type: String, data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/inventory/" + item_id + "?item_type=" + item_type,
+		HTTPClient.METHOD_PUT, data, true, callback)
+
+# --- Player Equipment ---
+
+func get_player_equipment(pid: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/equipment",
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func get_equipment_slot(pid: String, slot_type: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/equipment/" + slot_type,
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func equip_item(data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/player-equipment",
+		HTTPClient.METHOD_POST, data, true, callback)
+
+func update_equipment(pid: String, slot_type: String, data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/equipment/" + slot_type,
+		HTTPClient.METHOD_PUT, data, true, callback)
+
+func unequip_item(pid: String, slot_type: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/equipment/" + slot_type,
+		HTTPClient.METHOD_DELETE, {}, true, callback)
+
+# --- Selected Character ---
+
+func get_selected_character(pid: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/selected-character",
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func select_character(data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/selected-characters",
+		HTTPClient.METHOD_POST, data, true, callback)
+
+func update_selected_character(pid: String, data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/selected-character",
+		HTTPClient.METHOD_PUT, data, true, callback)
+
+# --- Achievements ---
+
+func get_player_achievements(pid: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/achievements",
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func get_player_achievement(pid: String, achievement_id: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/achievements/" + achievement_id,
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func award_achievement(data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/player-achievements",
+		HTTPClient.METHOD_POST, data, true, callback)
+
+func update_achievement_progress(pid: String, achievement_id: String, data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/achievements/" + achievement_id,
+		HTTPClient.METHOD_PUT, data, true, callback)
+
+# --- Ranks ---
+
+func get_player_ranks(pid: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/ranks",
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func get_player_rank(pid: String, season_id: String, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/ranks/" + season_id,
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func create_player_rank(data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/player-ranks",
+		HTTPClient.METHOD_POST, data, true, callback)
+
+func update_player_rank(pid: String, season_id: String, data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/players/" + pid + "/ranks/" + season_id,
+		HTTPClient.METHOD_PUT, data, true, callback)
