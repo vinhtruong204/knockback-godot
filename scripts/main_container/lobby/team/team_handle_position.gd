@@ -12,9 +12,9 @@ func reset_position():
 	team_hbox.z_index = 0
 
 func change_position_playmode():
-	team_hbox.position.x += 400
+	team_hbox.position.x = _origin_pos.x + 400
 	team_hbox.z_index = 1
 
 func change_position_equipment():
-	team_hbox.position.x += 200
+	team_hbox.position.x = _origin_pos.x + 400
 	team_hbox.z_index = 1

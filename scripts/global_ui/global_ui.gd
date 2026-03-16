@@ -7,7 +7,7 @@ var is_loaded: bool = false
 
 func _ready():
 	if not OS.has_feature("dedicated_server"):
-		SceneLoader.load_scene(login_scene_path)
+		SceneLoader.load_scene(lobby_scene_path)
 		is_loaded = false
 
 func _process(_delta):
