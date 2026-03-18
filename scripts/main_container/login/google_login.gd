@@ -40,6 +40,7 @@ func _on_login_response(result: Dictionary):
 		ApiManager.player_id = result.data["player_id"]
 		ApiManager.save_session()
 		text_edit.text = "Logged in! Player ID: " + str(ApiManager.player_id)
+		_go_to_lobby()
 	else:
 		text_edit.text = "Error: " + result.error
 

@@ -1,8 +1,9 @@
 extends Node
 
-const ADDRESS := "127.0.0.1"
+const ADDRESS := "100.96.156.107"
 const PORT := 9543
 var game_scene_path := "res://scenes/main_container/game/game.tscn"
+var lobby_scene_path := "res://scenes/main_container/lobby/lobby.tscn"
 
 func _ready():
     if OS.has_feature("dedicated_server"):
@@ -38,3 +39,7 @@ func create_server() -> void:
 
     multiplayer.peer_connected.connect(_on_peer_connected)
     multiplayer.peer_disconnected.connect(_on_peer_disconnected)
+
+func leave_game() -> void:
+    multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
+    SceneLoader.load_scene(lobby_scene_path)

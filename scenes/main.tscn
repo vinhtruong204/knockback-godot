@@ -8,6 +8,7 @@
 [node name="SceneContainer" type="Node2D" parent="." unique_id=1995966241]
 
 [node name="GlobalUi" parent="." unique_id=1624748408 instance=ExtResource("2_sugp2")]
+visible = false
 
 [node name="TransitionLayer" parent="." unique_id=604266338 instance=ExtResource("2_0wfyh")]
 visible = false

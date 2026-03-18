@@ -13,8 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://dl36dfjcu1naq" path="res://assets/lobby/top_bar/top_right/settings.png" id="8_inwiu"]
 [ext_resource type="Texture2D" uid="uid://dyjtvlq4xa4dc" path="res://assets/lobby/top_bar/player_profile/player_profile_bg.png" id="9_kdgan"]
 [ext_resource type="Texture2D" uid="uid://6o0grqeqb4ds" path="res://assets/login/Button_20.png" id="10_rw2ea"]
+[ext_resource type="Script" uid="uid://cuuufax0t0rvj" path="res://scripts/main_container/game/ui/game_settings_overlay.gd" id="11_4ifxa"]
 
 [sub_resource type="Theme" id="Theme_tq710"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rw2ea"]
+bg_color = Color(0.08078333, 0.08078336, 0.08078327, 1)
 
 [node name="Game" type="Node2D" unique_id=43312602]
 
@@ -206,7 +210,7 @@ anchor_bottom = 1.0
 offset_right = 290.0
 grow_vertical = 2
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Root/TopUI/SettingPanel" unique_id=75713797]
+[node name="SettingBtn" type="TextureButton" parent="CanvasLayer/Root/TopUI/SettingPanel" unique_id=75713797]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -268,6 +272,172 @@ grow_vertical = 2
 texture = ExtResource("7_05s03")
 expand_mode = 1
 
+[node name="SettingOverlay" type="Control" parent="CanvasLayer/Root" unique_id=452860821]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_4ifxa")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Root/SettingOverlay" unique_id=1008533752]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsPanel" type="Panel" parent="CanvasLayer/Root/SettingOverlay" unique_id=1849551040]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rw2ea")
+
+[node name="Label" type="Label" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel" unique_id=1089909594]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_right = 48.5
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+text = "Settings"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel" unique_id=1384977792]
+custom_minimum_size = Vector2(350, 336)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -336.0
+offset_right = 175.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Music" type="Control" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer" unique_id=198050294]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer/Music" unique_id=1204965300]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -17.5
+offset_right = 70.0
+offset_bottom = 17.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer/Music" unique_id=1065848334]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+value = 50.0
+
+[node name="Sound" type="Control" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer" unique_id=1467421671]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer/Sound" unique_id=1578074753]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -17.5
+offset_right = 70.0
+offset_bottom = 17.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer/Sound" unique_id=2003943851]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+value = 50.0
+
+[node name="Continue" type="Control" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer" unique_id=95654560]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ContinueBtn" type="Button" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer/Continue" unique_id=1766557369]
+custom_minimum_size = Vector2(212, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -25.0
+offset_right = 106.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+
+[node name="Leave" type="Control" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer" unique_id=630367337]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="LeaveBtn" type="Button" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer/Leave" unique_id=364832994]
+custom_minimum_size = Vector2(212, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -25.0
+offset_right = 106.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Leave"
+
 [node name="World" type="Node2D" parent="." unique_id=1477937842]
 
 [node name="Map" type="Sprite2D" parent="World" unique_id=45498573]
@@ -281,3 +451,7 @@ script = ExtResource("2_u7cc6")
 player_scene = ExtResource("3_m7m7f")
 
 [node name="Node" type="Node" parent="World/PlayerSpawner" unique_id=418880065]
+
+[connection signal="pressed" from="CanvasLayer/Root/TopUI/SettingPanel/SettingBtn" to="CanvasLayer/Root/SettingOverlay" method="on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer/Continue/ContinueBtn" to="CanvasLayer/Root/SettingOverlay" method="on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer/Leave/LeaveBtn" to="CanvasLayer/Root/SettingOverlay" method="on_leave_pressed"]

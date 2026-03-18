@@ -55,7 +55,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="PopupContainer" unique_id=1216634931]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,7 +64,6 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_wdeuj")
 
 [node name="Button" type="Button" parent="PopupContainer" unique_id=1308225871]
-visible = false
 layout_mode = 0
 offset_left = 430.0
 offset_top = 161.0
