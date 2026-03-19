@@ -3,17 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://dh7kjthvb5822" path="res://assets/loading/loading_bg.jpg" id="1_ci707"]
 [ext_resource type="Script" uid="uid://fl37psjgvksq" path="res://addons/virtual_joystick_plus/virtual_joystick_plus.gd" id="1_h7arf"]
 [ext_resource type="Texture2D" uid="uid://dll0wmd7v2ohb" path="res://assets/game/ui/ui_control_player/joystick_outer.png" id="2_h7arf"]
-[ext_resource type="Script" uid="uid://b03wyjw2q1euh" path="res://scripts/main_container/game/player_spawner.gd" id="2_u7cc6"]
+[ext_resource type="Script" uid="uid://b03wyjw2q1euh" path="res://scripts/main_container/game/spawners/player_spawner.gd" id="2_u7cc6"]
 [ext_resource type="Texture2D" uid="uid://k157ataslok5" path="res://assets/game/ui/ui_control_player/joystick_inner.png" id="3_lm4et"]
 [ext_resource type="PackedScene" uid="uid://b7sxa5hokgkp3" path="res://scenes/main_container/game/player.tscn" id="3_m7m7f"]
 [ext_resource type="Texture2D" uid="uid://djbu6lgswobsi" path="res://assets/game/ui/ui_control_player/jump_button.png" id="4_lm4et"]
 [ext_resource type="Texture2D" uid="uid://dg28mj55jtopx" path="res://assets/game/ui/ui_control_player/fire_button.png" id="5_tq710"]
 [ext_resource type="Texture2D" uid="uid://bcpv0wmj4hkl5" path="res://assets/game/ui/ui_control_player/bomb_button.png" id="6_05s03"]
-[ext_resource type="Texture2D" uid="uid://c04f4aiwa24cf" path="res://assets/lobby/bottom_bar/fortune-wheel.png" id="7_05s03"]
 [ext_resource type="Texture2D" uid="uid://dl36dfjcu1naq" path="res://assets/lobby/top_bar/top_right/settings.png" id="8_inwiu"]
 [ext_resource type="Texture2D" uid="uid://dyjtvlq4xa4dc" path="res://assets/lobby/top_bar/player_profile/player_profile_bg.png" id="9_kdgan"]
 [ext_resource type="Texture2D" uid="uid://6o0grqeqb4ds" path="res://assets/login/Button_20.png" id="10_rw2ea"]
 [ext_resource type="Script" uid="uid://cuuufax0t0rvj" path="res://scripts/main_container/game/ui/game_settings_overlay.gd" id="11_4ifxa"]
+[ext_resource type="Texture2D" uid="uid://cuvljo0ehj24r" path="res://assets/game/ui/ui_top/heart.png" id="11_w45y3"]
 
 [sub_resource type="Theme" id="Theme_tq710"]
 
@@ -31,6 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="UIControlPlayer" type="Control" parent="CanvasLayer/Root" unique_id=1947981484]
 layout_mode = 1
@@ -41,6 +42,7 @@ anchor_bottom = 1.0
 offset_top = -250.0
 grow_horizontal = 2
 grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayerJoystick" type="Control" parent="CanvasLayer/Root/UIControlPlayer" unique_id=1410260706]
 custom_minimum_size = Vector2(300, 300)
@@ -57,6 +59,7 @@ script = ExtResource("1_h7arf")
 joystick_texture = ExtResource("2_h7arf")
 stick_texture = ExtResource("3_lm4et")
 metadata/_custom_type_script = "uid://fl37psjgvksq"
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonsWrapper" type="Control" parent="CanvasLayer/Root/UIControlPlayer" unique_id=1439838683]
 custom_minimum_size = Vector2(198, 201.78616)
@@ -72,6 +75,7 @@ offset_right = -78.0
 offset_bottom = 100.89308
 grow_horizontal = 0
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="JumpBtn" type="TextureButton" parent="CanvasLayer/Root/UIControlPlayer/ButtonsWrapper" unique_id=504925624]
 layout_mode = 1
@@ -84,6 +88,7 @@ grow_horizontal = 0
 texture_normal = ExtResource("4_lm4et")
 texture_pressed = ExtResource("4_lm4et")
 texture_hover = ExtResource("4_lm4et")
+metadata/_edit_use_anchors_ = true
 
 [node name="FireBtn" type="TextureButton" parent="CanvasLayer/Root/UIControlPlayer/ButtonsWrapper" unique_id=209652889]
 layout_mode = 1
@@ -99,6 +104,7 @@ grow_vertical = 0
 texture_normal = ExtResource("5_tq710")
 texture_pressed = ExtResource("5_tq710")
 texture_hover = ExtResource("5_tq710")
+metadata/_edit_use_anchors_ = true
 
 [node name="BombBtn" type="TextureButton" parent="CanvasLayer/Root/UIControlPlayer/ButtonsWrapper" unique_id=640785495]
 layout_mode = 1
@@ -111,6 +117,7 @@ grow_vertical = 0
 texture_normal = ExtResource("6_05s03")
 texture_pressed = ExtResource("6_05s03")
 texture_hover = ExtResource("6_05s03")
+metadata/_edit_use_anchors_ = true
 
 [node name="OptionButton" type="OptionButton" parent="CanvasLayer/Root/UIControlPlayer" unique_id=1104017395]
 custom_minimum_size = Vector2(200, 60)
@@ -136,6 +143,7 @@ popup/item_1/text = "Secondary"
 popup/item_1/id = 1
 popup/item_2/text = "Melee"
 popup/item_2/id = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TopUI" type="Control" parent="CanvasLayer/Root" unique_id=581601505]
 custom_minimum_size = Vector2(0, 80)
@@ -144,6 +152,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 80.0
 grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="OpponentInfor" type="Panel" parent="CanvasLayer/Root/TopUI" unique_id=229881166]
 custom_minimum_size = Vector2(130, 0)
@@ -154,6 +163,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="CanvasLayer/Root/TopUI/OpponentInfor" unique_id=731414475]
 layout_mode = 1
@@ -168,6 +178,7 @@ theme_override_font_sizes/font_size = 25
 text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="CanvasLayer/Root/TopUI/OpponentInfor" unique_id=664991577]
 layout_mode = 1
@@ -185,22 +196,24 @@ theme_override_font_sizes/font_size = 25
 text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="HeartTexture" type="TextureRect" parent="CanvasLayer/Root/TopUI/OpponentInfor/Label2" unique_id=1884730950]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.51428574
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.51428574
 offset_left = 13.0
 offset_top = -20.0
 offset_right = 53.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_05s03")
+texture = ExtResource("11_w45y3")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="SettingPanel" type="Panel" parent="CanvasLayer/Root/TopUI" unique_id=1191869917]
 custom_minimum_size = Vector2(300, 0)
@@ -209,6 +222,7 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 290.0
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="SettingBtn" type="TextureButton" parent="CanvasLayer/Root/TopUI/SettingPanel" unique_id=75713797]
 layout_mode = 1
@@ -224,6 +238,7 @@ texture_pressed = ExtResource("8_inwiu")
 texture_hover = ExtResource("8_inwiu")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Root/TopUI/SettingPanel" unique_id=2114253875]
 layout_mode = 1
@@ -237,6 +252,7 @@ value = 46.0
 nine_patch_stretch = true
 texture_under = ExtResource("9_kdgan")
 texture_progress = ExtResource("10_rw2ea")
+metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="CanvasLayer/Root/TopUI/SettingPanel" unique_id=1376393561]
 layout_mode = 1
@@ -255,6 +271,7 @@ theme_override_font_sizes/font_size = 25
 text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="HeartTexture" type="TextureRect" parent="CanvasLayer/Root/TopUI/SettingPanel/Label2" unique_id=8866514]
 layout_mode = 1
@@ -269,8 +286,9 @@ offset_right = 53.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_05s03")
+texture = ExtResource("11_w45y3")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="SettingOverlay" type="Control" parent="CanvasLayer/Root" unique_id=452860821]
 visible = false

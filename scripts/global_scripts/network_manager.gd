@@ -1,6 +1,6 @@
 extends Node
 
-const ADDRESS := "100.96.156.107"
+const ADDRESS := "localhost"
 const PORT := 9543
 var game_scene_path := "res://scenes/main_container/game/game.tscn"
 var lobby_scene_path := "res://scenes/main_container/lobby/lobby.tscn"
@@ -10,6 +10,7 @@ func _ready():
         SceneLoader.load_scene(game_scene_path)
         create_server()
     else:
+        SceneLoader.load_scene(lobby_scene_path) # lobby for testing on godot editor
         multiplayer.connected_to_server.connect(func():
             SceneLoader.load_scene(game_scene_path)
             )
@@ -28,12 +29,14 @@ func create_client() -> void:
 
     print("create client")
 
+    SceneLoader.load_scene(game_scene_path)
+
 func create_server() -> void:
     var peer := ENetMultiplayerPeer.new()
     peer.create_server(PORT)
     multiplayer.multiplayer_peer = peer
 
-    print("start server at " + str(PORT))
+    print("start server at " + ADDRESS + ":" + str(PORT))
 
     SceneLoader.load_scene(game_scene_path)
 
