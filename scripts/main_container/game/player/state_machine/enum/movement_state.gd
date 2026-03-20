@@ -1,4 +1,4 @@
-class_name PlayerState
+class_name MovementState
 
 const IDLE: StringName = &"idle"
 const RUN: StringName = &"run"
