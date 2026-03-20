@@ -56,17 +56,17 @@ script = ExtResource("4_q8fla")
 [node name="PlayerFlip" type="Node" parent="." unique_id=465284370]
 script = ExtResource("5_hr0h4")
 
-[node name="StateMachine" type="Node" parent="." unique_id=137007932]
+[node name="MovementStateMachine" type="Node" parent="." unique_id=137007932]
 script = ExtResource("6_fvmf8")
 metadata/_custom_type_script = "uid://cdexaq52um2sr"
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=1061872824]
+[node name="Idle" type="Node" parent="MovementStateMachine" unique_id=1061872824]
 
-[node name="Run" type="Node" parent="StateMachine" unique_id=1737567335]
+[node name="Run" type="Node" parent="MovementStateMachine" unique_id=1737567335]
 
-[node name="Jump" type="Node" parent="StateMachine" unique_id=1343980535]
+[node name="Jump" type="Node" parent="MovementStateMachine" unique_id=1343980535]
 
-[node name="Fall" type="Node" parent="StateMachine" unique_id=1747679945]
+[node name="Fall" type="Node" parent="MovementStateMachine" unique_id=1747679945]
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1496173730]
 replication_config = SubResource("SceneReplicationConfig_ktt5d")
