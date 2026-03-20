@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://yw0c4fpfxk8i"]
+
+[ext_resource type="Texture2D" uid="uid://dyjtvlq4xa4dc" path="res://assets/lobby/top_bar/player_profile/player_profile_bg.png" id="1_634g2"]
+
+[node name="Map" type="Node" unique_id=777352624]
+
+[node name="PlayerProfileBg" type="Sprite2D" parent="." unique_id=476970109]
+position = Vector2(143.49998, 244)
+scale = Vector2(0.101549044, 0.12515962)
+texture = ExtResource("1_634g2")
+
+[node name="PlayerProfileBg2" type="Sprite2D" parent="." unique_id=756902636]
+position = Vector2(698.99994, 238)
+scale = Vector2(0.101549044, 0.12515962)
+texture = ExtResource("1_634g2")
+
+[node name="PlayerProfileBg3" type="Sprite2D" parent="." unique_id=1143925721]
+position = Vector2(435.00003, 441)
+scale = Vector2(0.101549044, 0.12515962)
+texture = ExtResource("1_634g2")

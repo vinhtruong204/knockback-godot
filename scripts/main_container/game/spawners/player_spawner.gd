@@ -4,6 +4,8 @@ class_name PlayerSpawner extends MultiplayerSpawner
 var _players_list: Dictionary[int, Node] = {}
 const MAX_PLAYER := 2
 
+signal all_player_joined()
+
 func _ready():
 	spawn_function = _spawn_player
 	multiplayer.peer_connected.connect(_on_peer_connected)
@@ -20,10 +22,13 @@ func _on_peer_connected(peer_id: int):
 	if _players_list.size() == MAX_PLAYER:
 		await get_tree().create_timer(1).timeout # wait for player load map
 
+		# emit signal all player joined
+		all_player_joined.emit()
+		
 		for key in _players_list:
 			var rng = RandomNumberGenerator.new()
 			self.spawn({"peer_id": key, "pos": Vector2(rng.randf() * 300, rng.randf() * 300)})
-			print("spawn " + str(key))
+			print("Spawn player id: " + str(key))
 			
 
 func _on_peer_disconnected(peer_id: int):

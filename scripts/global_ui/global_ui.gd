@@ -1,13 +1,12 @@
 class_name GlobalUI extends CanvasLayer
 
-var lobby_scene_path := "res://scenes/main_container/lobby/lobby.tscn"
-var login_scene_path := "res://scenes/main_container/login/login.tscn"
 @onready var progress_bar := $LoadingContainer/LoadingProgressBar
+@onready var loading_container := $LoadingContainer
+
 var is_loaded: bool = false
 
 func _ready():
 	if not OS.has_feature("dedicated_server"):
-		SceneLoader.load_scene(login_scene_path)
 		is_loaded = false
 
 func _process(_delta):
@@ -18,5 +17,11 @@ func _process(_delta):
 	progress_bar.value = progress
 	
 	if progress == 100.0:
-		$LoadingContainer.visible = false
+		loading_container.visible = false
 		is_loaded = true
+
+
+func show_loading_screen() -> void:
+	loading_container.visible = true
+	is_loaded = false
+	progress_bar.value = 0.0

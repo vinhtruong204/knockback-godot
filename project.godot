@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 SceneLoader="*uid://dyvrrc8agilms"
 NetworkManager="*uid://dshxldter4tuo"
+ApiManager="*uid://t1rm4v2fcxwe"
+ConfigApi="*uid://bnvsveot3ys4m"
+EconomyApi="*uid://mqobuqg8rrsr"
+MatchApi="*uid://dgtx0ok3jp58q"
+PlayerApi="*uid://ckquj3nr7huqk"
 
 [display]
 
@@ -29,7 +34,14 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/addons/google_sign_in/plugin.cfg", "res://addons/google_sign_in/plugin.cfg", "res://addons/virtual_joystick_plus/plugin.cfg")
+enabled=PackedStringArray("res://addons/addons/google_sign_in/plugin.cfg", "res://addons/virtual_joystick_plus/plugin.cfg")
+
+[input]
+
+player_move={
+"deadzone": 0.2,
+"events": []
+}
 
 [input_devices]
 

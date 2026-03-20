@@ -49,4 +49,14 @@ func _open_purchase():
 func _open_settings():
 	$TopOverlay/Settings.visible = true
 	_ignore_ui_buttons_input()
+
+func _sign_out() -> void:
+	if OS.get_name() == "Android" and Engine.has_singleton("GoogleSignIn"):
+		var google_sign_in = Engine.get_singleton("GoogleSignIn")
+		await google_sign_in.signOut()
+
+		# clear session
+		ApiManager.clear_session()
+		
+		SceneLoader.load_scene("res://scenes/main_container/login/login.tscn")
 #endregion

@@ -712,20 +712,18 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
-[node name="StatsPanel" type="Panel" parent="Root/OverlayContainer/Equipment" unique_id=2093597750]
+[node name="StatsPanel" type="Control" parent="Root/OverlayContainer/Equipment" unique_id=1605780600]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -519.0
-offset_top = -166.0
-offset_right = -37.0
-offset_bottom = 222.0
+offset_left = -508.0
+offset_top = -194.0
+offset_bottom = 194.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_k63ad")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel" unique_id=1344957682]
 layout_mode = 1
@@ -759,7 +757,7 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -217.5
+offset_left = -266.0
 offset_top = -330.0
 offset_right = 217.5
 offset_bottom = -17.0
@@ -801,7 +799,7 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -273.0
+offset_left = -354.5
 offset_top = -135.5
 offset_bottom = 135.5
 grow_horizontal = 0
@@ -815,93 +813,444 @@ alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1043899909]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 30
 alignment = 1
 
-[node name="TypeBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer" unique_id=1784338374]
-custom_minimum_size = Vector2(100, 50)
+[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer" unique_id=954773318]
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
-text = "Type"
+texture_normal = ExtResource("12_1rix5")
+texture_pressed = ExtResource("12_1rix5")
+texture_hover = ExtResource("12_1rix5")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="TypeBtn2" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer" unique_id=443099612]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-text = "Type"
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer/TypeBtn" unique_id=2145243505]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=323209593]
+[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer" unique_id=1554820020]
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
-theme_override_constants/separation = 20
+texture_normal = ExtResource("19_8vi03")
+texture_pressed = ExtResource("19_8vi03")
+texture_hover = ExtResource("19_8vi03")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer/TypeBtn2" unique_id=1818251960]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1172618537]
+layout_mode = 2
+theme_override_constants/separation = 30
 alignment = 1
 
-[node name="TypeBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer2" unique_id=1448233762]
-custom_minimum_size = Vector2(100, 50)
+[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer2" unique_id=1190977263]
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
-text = "Type"
+texture_normal = ExtResource("12_1rix5")
+texture_pressed = ExtResource("12_1rix5")
+texture_hover = ExtResource("12_1rix5")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="TypeBtn2" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer2" unique_id=1620016522]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-text = "Type"
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer2/TypeBtn" unique_id=1956612907]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1210553940]
+[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer2" unique_id=154428234]
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
-theme_override_constants/separation = 20
+texture_normal = ExtResource("19_8vi03")
+texture_pressed = ExtResource("19_8vi03")
+texture_hover = ExtResource("19_8vi03")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer2/TypeBtn2" unique_id=603437959]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=402265256]
+layout_mode = 2
+theme_override_constants/separation = 30
 alignment = 1
 
-[node name="TypeBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer3" unique_id=1387171849]
-custom_minimum_size = Vector2(100, 50)
+[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer3" unique_id=1421571732]
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
-text = "Type"
+texture_normal = ExtResource("12_1rix5")
+texture_pressed = ExtResource("12_1rix5")
+texture_hover = ExtResource("12_1rix5")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="TypeBtn2" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer3" unique_id=1658484475]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-text = "Type"
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer3/TypeBtn" unique_id=2140202053]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=982234761]
+[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer3" unique_id=280059284]
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
-theme_override_constants/separation = 20
+texture_normal = ExtResource("19_8vi03")
+texture_pressed = ExtResource("19_8vi03")
+texture_hover = ExtResource("19_8vi03")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer3/TypeBtn2" unique_id=680167190]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1324667271]
+layout_mode = 2
+theme_override_constants/separation = 30
 alignment = 1
 
-[node name="TypeBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer4" unique_id=1521652144]
-custom_minimum_size = Vector2(100, 50)
+[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer4" unique_id=1184661723]
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
-text = "Type"
+texture_normal = ExtResource("12_1rix5")
+texture_pressed = ExtResource("12_1rix5")
+texture_hover = ExtResource("12_1rix5")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="TypeBtn2" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer4" unique_id=293178052]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-text = "Type"
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer4/TypeBtn" unique_id=1502704904]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1446291895]
+[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer4" unique_id=1677648141]
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
-theme_override_constants/separation = 20
+texture_normal = ExtResource("19_8vi03")
+texture_pressed = ExtResource("19_8vi03")
+texture_hover = ExtResource("19_8vi03")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer4/TypeBtn2" unique_id=1888753801]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=806002420]
+layout_mode = 2
+theme_override_constants/separation = 30
 alignment = 1
 
-[node name="TypeBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer5" unique_id=710388790]
-custom_minimum_size = Vector2(100, 50)
+[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer5" unique_id=688214349]
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
-text = "Type"
+texture_normal = ExtResource("12_1rix5")
+texture_pressed = ExtResource("12_1rix5")
+texture_hover = ExtResource("12_1rix5")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="TypeBtn2" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer5" unique_id=605072225]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-text = "Type"
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer5/TypeBtn" unique_id=687508176]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1919010896]
+[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer5" unique_id=993720176]
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
-theme_override_constants/separation = 20
+texture_normal = ExtResource("19_8vi03")
+texture_pressed = ExtResource("19_8vi03")
+texture_hover = ExtResource("19_8vi03")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer5/TypeBtn2" unique_id=1043385378]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=2132693272]
+layout_mode = 2
+theme_override_constants/separation = 30
 alignment = 1
 
-[node name="TypeBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer6" unique_id=1347259754]
-custom_minimum_size = Vector2(100, 50)
+[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer6" unique_id=626562475]
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
-text = "Type"
+texture_normal = ExtResource("12_1rix5")
+texture_pressed = ExtResource("12_1rix5")
+texture_hover = ExtResource("12_1rix5")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="TypeBtn2" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer6" unique_id=1532042249]
-custom_minimum_size = Vector2(100, 50)
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer6/TypeBtn" unique_id=1212069668]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
+
+[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer6" unique_id=1918539860]
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
-text = "Type"
+texture_normal = ExtResource("19_8vi03")
+texture_pressed = ExtResource("19_8vi03")
+texture_hover = ExtResource("19_8vi03")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer6/TypeBtn2" unique_id=1958446862]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1973858338]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer7" unique_id=1936136378]
+custom_minimum_size = Vector2(150, 70)
+layout_mode = 2
+texture_normal = ExtResource("12_1rix5")
+texture_pressed = ExtResource("12_1rix5")
+texture_hover = ExtResource("12_1rix5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer7/TypeBtn" unique_id=175641561]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
+
+[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer7" unique_id=708925561]
+custom_minimum_size = Vector2(150, 70)
+layout_mode = 2
+texture_normal = ExtResource("19_8vi03")
+texture_pressed = ExtResource("19_8vi03")
+texture_hover = ExtResource("19_8vi03")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer7/TypeBtn2" unique_id=1985475597]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1002246348]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer8" unique_id=1743389370]
+custom_minimum_size = Vector2(150, 70)
+layout_mode = 2
+texture_normal = ExtResource("12_1rix5")
+texture_pressed = ExtResource("12_1rix5")
+texture_hover = ExtResource("12_1rix5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer8/TypeBtn" unique_id=1900262814]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
+
+[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer8" unique_id=188211080]
+custom_minimum_size = Vector2(150, 70)
+layout_mode = 2
+texture_normal = ExtResource("19_8vi03")
+texture_pressed = ExtResource("19_8vi03")
+texture_hover = ExtResource("19_8vi03")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer8/TypeBtn2" unique_id=1767831605]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=238582576]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer9" unique_id=1325711630]
+custom_minimum_size = Vector2(150, 70)
+layout_mode = 2
+texture_normal = ExtResource("12_1rix5")
+texture_pressed = ExtResource("12_1rix5")
+texture_hover = ExtResource("12_1rix5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer9/TypeBtn" unique_id=313232230]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
+
+[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer9" unique_id=33417770]
+custom_minimum_size = Vector2(150, 70)
+layout_mode = 2
+texture_normal = ExtResource("19_8vi03")
+texture_pressed = ExtResource("19_8vi03")
+texture_hover = ExtResource("19_8vi03")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer9/TypeBtn2" unique_id=1619156872]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"
 
 [node name="Leaderboard" type="Panel" parent="Root/OverlayContainer" unique_id=1748336464]
 visible = false
@@ -2907,6 +3256,22 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "HIGH"
 
+[node name="SignOutBtn" type="Button" parent="Root/TopOverlay/Settings" unique_id=2101795352]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -81.0
+offset_right = 50.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Sign out"
+
 [connection signal="pressed" from="Root/UIButtons/TopBar/ProfileBtn" to="Root" method="_open_player_profile"]
 [connection signal="pressed" from="Root/UIButtons/TopBar/CurrencyContainer/GoldBtn" to="Root" method="_open_purchase"]
 [connection signal="pressed" from="Root/UIButtons/TopBar/CurrencyContainer/DiamondBtn" to="Root" method="_open_purchase"]
@@ -2929,3 +3294,4 @@ text = "HIGH"
 [connection signal="pressed" from="Root/OverlayContainer/Normal/BackBtn" to="Root/UIButtons/Middle" method="reset_position"]
 [connection signal="pressed" from="Root/OverlayContainer/Wheel/Control/HBoxContainer/GoldBtn" to="Root/OverlayContainer/Wheel" method="_open_gold_wheel"]
 [connection signal="pressed" from="Root/OverlayContainer/Wheel/Control/HBoxContainer/DiamondBtn" to="Root/OverlayContainer/Wheel" method="_open_diamond_wheel"]
+[connection signal="pressed" from="Root/TopOverlay/Settings/SignOutBtn" to="Root" method="_sign_out"]
