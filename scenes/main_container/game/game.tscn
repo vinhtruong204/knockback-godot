@@ -46,6 +46,7 @@ grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerJoystick" type="Control" parent="CanvasLayer/Root/UIControlPlayer" unique_id=1410260706]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 1
 anchors_preset = 4
@@ -459,19 +460,20 @@ text = "Leave"
 
 [node name="World" type="Node2D" parent="." unique_id=1477937842]
 
-[node name="PlayerSpawner" type="MultiplayerSpawner" parent="World" unique_id=29764652]
-spawn_path = NodePath("Players")
-script = ExtResource("2_u7cc6")
-player_scene = ExtResource("3_m7m7f")
-
-[node name="Players" type="Node" parent="World/PlayerSpawner" unique_id=418880065]
-
 [node name="MapSpawner" type="MultiplayerSpawner" parent="World" unique_id=783201829]
 spawn_path = NodePath("Map")
 script = ExtResource("14_mdc8l")
 map_scene = ExtResource("15_w45y3")
 
-[node name="Map" type="Node" parent="World/MapSpawner" unique_id=430412998]
+[node name="Map" type="Node2D" parent="World/MapSpawner" unique_id=674388464]
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="World" unique_id=29764652]
+spawn_path = NodePath("Players")
+script = ExtResource("2_u7cc6")
+player_scene = ExtResource("3_m7m7f")
+
+[node name="Players" type="Node2D" parent="World/PlayerSpawner" unique_id=1201245116]
+position = Vector2(324, 10)
 
 [connection signal="pressed" from="CanvasLayer/Root/TopUI/SettingPanel/SettingBtn" to="CanvasLayer/Root/SettingOverlay" method="on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer/Continue/ContinueBtn" to="CanvasLayer/Root/SettingOverlay" method="on_continue_pressed"]

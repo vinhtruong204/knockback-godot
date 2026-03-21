@@ -27,7 +27,7 @@ func _on_peer_connected(peer_id: int):
 		
 		for key in _players_list:
 			var rng = RandomNumberGenerator.new()
-			self.spawn({"peer_id": key, "pos": Vector2(rng.randf() * 300, rng.randf() * 300)})
+			self.spawn({"peer_id": key, "pos": Vector2(rng.randf() * 200, rng.randf() * 200)})
 			print("Spawn player id: " + str(key))
 			
 
