@@ -43,11 +43,11 @@ func _on_peer_disconnected(peer_id: int):
 
 func _spawn_player(data: Dictionary) -> Node:
 	var player := player_scene.instantiate()
+	player.set_multiplayer_authority(data["peer_id"])
 
 	player.name = str(data["peer_id"])
-	player.position = data["pos"]
+	player.global_position = data["pos"]
 
-	player.set_multiplayer_authority(data["peer_id"])
 	_players_list[data["peer_id"]] = player
 	
 	return player

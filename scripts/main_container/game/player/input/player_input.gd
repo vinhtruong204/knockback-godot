@@ -9,9 +9,12 @@ const DROP_DOWN_THRESHOLD: float = 0.8
 # Variables
 var _dir: Vector2 = Vector2.ZERO
 
-# Signals
+# Movement signals
 signal jump()
 signal drop_down()
+
+# Action signals
+signal shoot()
 
 func _ready() -> void:
 	if not is_multiplayer_authority(): return
@@ -23,11 +26,19 @@ func _physics_process(_delta: float) -> void:
 
 	_dir = joystick.get_value()
 
+	#region Movement
 	if Input.is_action_just_pressed("player_jump"):
 		jump.emit()
-
+	
 	if _dir.y > DROP_DOWN_THRESHOLD:
 		drop_down.emit()
+	#endregion
+
+	#region Action
+	if Input.is_action_just_pressed("player_attack"):
+		shoot.emit()
+	#endregion
+
 
 func get_dir() -> Vector2:
 	return _dir
