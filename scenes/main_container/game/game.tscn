@@ -49,7 +49,7 @@ mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerJoystick" type="Control" parent="CanvasLayer/Root/UIControlPlayer" unique_id=1410260706]
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -57,7 +57,7 @@ anchor_bottom = 1.0
 offset_top = -200.0
 offset_right = 200.0
 grow_vertical = 0
-pivot_offset = Vector2(100, 100)
+pivot_offset = Vector2(150, 150)
 mouse_filter = 1
 script = ExtResource("1_h7arf")
 joystick_texture = ExtResource("2_h7arf")
@@ -463,19 +463,19 @@ text = "Leave"
 [node name="World" type="Node2D" parent="." unique_id=1477937842]
 
 [node name="MapSpawner" type="MultiplayerSpawner" parent="World" unique_id=783201829]
-spawn_path = NodePath("Map")
+spawn_path = NodePath("MapSpawnPoint")
 script = ExtResource("14_mdc8l")
 map_scene = ExtResource("15_w45y3")
 
-[node name="Map" type="Node2D" parent="World/MapSpawner" unique_id=674388464]
+[node name="MapSpawnPoint" type="Node2D" parent="World/MapSpawner" unique_id=674388464]
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="World" unique_id=29764652]
-spawn_path = NodePath("Players")
+spawn_path = NodePath("PlayersSpawnPoint")
 script = ExtResource("2_u7cc6")
 player_scene = ExtResource("3_m7m7f")
 
-[node name="Players" type="Node2D" parent="World/PlayerSpawner" unique_id=1201245116]
-position = Vector2(324, 10)
+[node name="PlayersSpawnPoint" type="Node2D" parent="World/PlayerSpawner" unique_id=1201245116]
+position = Vector2(0, -915)
 
 [connection signal="pressed" from="CanvasLayer/Root/TopUI/SettingPanel/SettingBtn" to="CanvasLayer/Root/SettingOverlay" method="on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer/Continue/ContinueBtn" to="CanvasLayer/Root/SettingOverlay" method="on_continue_pressed"]

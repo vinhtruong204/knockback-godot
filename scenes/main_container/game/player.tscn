@@ -70,3 +70,6 @@ metadata/_custom_type_script = "uid://cdexaq52um2sr"
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1496173730]
 replication_config = SubResource("SceneReplicationConfig_ktt5d")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2134647276]
+position_smoothing_enabled = true

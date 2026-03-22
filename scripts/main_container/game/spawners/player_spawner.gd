@@ -3,6 +3,7 @@ class_name PlayerSpawner extends MultiplayerSpawner
 @export var player_scene: PackedScene
 var _players_list: Dictionary[int, Node] = {}
 const MAX_PLAYER := 2
+const SPAWN_X_OFFSET := 200
 
 signal all_player_joined()
 
@@ -27,7 +28,7 @@ func _on_peer_connected(peer_id: int):
 		
 		for key in _players_list:
 			var rng = RandomNumberGenerator.new()
-			self.spawn({"peer_id": key, "pos": Vector2(rng.randf() * 200, rng.randf() * 200)})
+			self.spawn({"peer_id": key, "pos": Vector2(rng.randf_range(-SPAWN_X_OFFSET, SPAWN_X_OFFSET), 0)})
 			print("Spawn player id: " + str(key))
 			
 
@@ -44,7 +45,7 @@ func _spawn_player(data: Dictionary) -> Node:
 	var player := player_scene.instantiate()
 
 	player.name = str(data["peer_id"])
-	player.global_position = data["pos"]
+	player.position = data["pos"]
 
 	player.set_multiplayer_authority(data["peer_id"])
 	_players_list[data["peer_id"]] = player
