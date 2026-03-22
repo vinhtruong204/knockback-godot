@@ -1,19 +1,44 @@
 class_name PlayerInput extends Node
 
-@export var joystick: VirtualJoystickPlus
+# Constants
+const DROP_DOWN_THRESHOLD: float = 0.8
+
+# Nodes
+@onready var joystick: VirtualJoystickPlus
+
+# Variables
 var _dir: Vector2 = Vector2.ZERO
 
-# Called when the node enters the scene tree for the first time.
+# Movement signals
+signal jump()
+signal drop_down()
+
+# Action signals
+signal shoot()
+
 func _ready() -> void:
-	if is_multiplayer_authority():
-		joystick = get_tree().root.get_node("Main/SceneContainer/Game/CanvasLayer/Root/UIControlPlayer/PlayerJoystick")
+	if not is_multiplayer_authority(): return
+	
+	joystick = get_tree().root.get_node("Main/SceneContainer/Game/CanvasLayer/Root/UIControlPlayer/PlayerJoystick")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
-	if not joystick: return
+	if not is_multiplayer_authority() or not joystick: return
 
 	_dir = joystick.get_value()
+
+	#region Movement
+	if Input.is_action_just_pressed("player_jump"):
+		jump.emit()
+	
+	if _dir.y > DROP_DOWN_THRESHOLD:
+		drop_down.emit()
+	#endregion
+
+	#region Action
+	if Input.is_action_just_pressed("player_attack"):
+		shoot.emit()
+	#endregion
+
 
 func get_dir() -> Vector2:
 	return _dir

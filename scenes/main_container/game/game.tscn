@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dll0wmd7v2ohb" path="res://assets/game/ui/ui_control_player/joystick_outer.png" id="2_h7arf"]
 [ext_resource type="Script" uid="uid://b03wyjw2q1euh" path="res://scripts/main_container/game/spawners/player_spawner.gd" id="2_u7cc6"]
 [ext_resource type="Texture2D" uid="uid://k157ataslok5" path="res://assets/game/ui/ui_control_player/joystick_inner.png" id="3_lm4et"]
-[ext_resource type="PackedScene" uid="uid://b7sxa5hokgkp3" path="res://scenes/main_container/game/player.tscn" id="3_m7m7f"]
+[ext_resource type="PackedScene" uid="uid://b7sxa5hokgkp3" path="res://scenes/main_container/game/player/player.tscn" id="3_m7m7f"]
+[ext_resource type="Script" uid="uid://bb7hf7sken5ca" path="res://scripts/main_container/game/ui/buttons_control_player/buttons_control_player.gd" id="4_4ifxa"]
 [ext_resource type="Texture2D" uid="uid://djbu6lgswobsi" path="res://assets/game/ui/ui_control_player/jump_button.png" id="4_lm4et"]
 [ext_resource type="Texture2D" uid="uid://dg28mj55jtopx" path="res://assets/game/ui/ui_control_player/fire_button.png" id="5_tq710"]
 [ext_resource type="Texture2D" uid="uid://bcpv0wmj4hkl5" path="res://assets/game/ui/ui_control_player/bomb_button.png" id="6_05s03"]
@@ -15,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://cuvljo0ehj24r" path="res://assets/game/ui/ui_top/heart.png" id="11_w45y3"]
 [ext_resource type="Script" uid="uid://bdem1pa885n1i" path="res://scripts/main_container/game/spawners/map_spawner.gd" id="14_mdc8l"]
 [ext_resource type="PackedScene" uid="uid://yw0c4fpfxk8i" path="res://scenes/main_container/game/map/map.tscn" id="15_w45y3"]
+[ext_resource type="Script" uid="uid://ij01s4xah7uu" path="res://scripts/main_container/game/spawners/bullet_spawner.gd" id="17_yuadw"]
+[ext_resource type="PackedScene" uid="uid://djx2xhq3oxw25" path="res://scenes/main_container/game/bullet/bullet.tscn" id="18_blur5"]
 
 [sub_resource type="Theme" id="Theme_tq710"]
 
@@ -32,6 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="UIControlPlayer" type="Control" parent="CanvasLayer/Root" unique_id=1947981484]
@@ -43,6 +47,7 @@ anchor_bottom = 1.0
 offset_top = -250.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerJoystick" type="Control" parent="CanvasLayer/Root/UIControlPlayer" unique_id=1410260706]
@@ -51,16 +56,18 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
+offset_left = 36.0
 offset_top = -100.0
-offset_right = 200.0
+offset_right = 236.0
 offset_bottom = 100.0
 grow_vertical = 2
 pivot_offset = Vector2(150, 150)
 script = ExtResource("1_h7arf")
 joystick_texture = ExtResource("2_h7arf")
+joystick_opacity = 1.0
 stick_texture = ExtResource("3_lm4et")
+stick_opacity = 1.0
 metadata/_custom_type_script = "uid://fl37psjgvksq"
-metadata/_edit_use_anchors_ = true
 
 [node name="ButtonsWrapper" type="Control" parent="CanvasLayer/Root/UIControlPlayer" unique_id=1439838683]
 custom_minimum_size = Vector2(198, 201.78616)
@@ -76,6 +83,8 @@ offset_right = -78.0
 offset_bottom = 100.89308
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("4_4ifxa")
 metadata/_edit_use_anchors_ = true
 
 [node name="JumpBtn" type="TextureButton" parent="CanvasLayer/Root/UIControlPlayer/ButtonsWrapper" unique_id=504925624]
@@ -87,11 +96,9 @@ offset_left = -80.0
 offset_bottom = 80.0
 grow_horizontal = 0
 texture_normal = ExtResource("4_lm4et")
-texture_pressed = ExtResource("4_lm4et")
-texture_hover = ExtResource("4_lm4et")
 metadata/_edit_use_anchors_ = true
 
-[node name="FireBtn" type="TextureButton" parent="CanvasLayer/Root/UIControlPlayer/ButtonsWrapper" unique_id=209652889]
+[node name="AttackBtn" type="TextureButton" parent="CanvasLayer/Root/UIControlPlayer/ButtonsWrapper" unique_id=209652889]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -299,6 +306,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("11_4ifxa")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Root/SettingOverlay" unique_id=1008533752]
@@ -459,19 +467,27 @@ text = "Leave"
 
 [node name="World" type="Node2D" parent="." unique_id=1477937842]
 
-[node name="PlayerSpawner" type="MultiplayerSpawner" parent="World" unique_id=29764652]
-spawn_path = NodePath("Players")
-script = ExtResource("2_u7cc6")
-player_scene = ExtResource("3_m7m7f")
-
-[node name="Players" type="Node" parent="World/PlayerSpawner" unique_id=418880065]
-
 [node name="MapSpawner" type="MultiplayerSpawner" parent="World" unique_id=783201829]
-spawn_path = NodePath("Map")
+spawn_path = NodePath("MapSpawnPoint")
 script = ExtResource("14_mdc8l")
 map_scene = ExtResource("15_w45y3")
 
-[node name="Map" type="Node" parent="World/MapSpawner" unique_id=430412998]
+[node name="MapSpawnPoint" type="Node2D" parent="World/MapSpawner" unique_id=674388464]
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="World" unique_id=29764652]
+spawn_path = NodePath("PlayersSpawnPoint")
+script = ExtResource("2_u7cc6")
+player_scene = ExtResource("3_m7m7f")
+
+[node name="PlayersSpawnPoint" type="Node2D" parent="World/PlayerSpawner" unique_id=1201245116]
+position = Vector2(0, -915)
+
+[node name="BulletSpawner" type="MultiplayerSpawner" parent="World" unique_id=1495185695]
+spawn_path = NodePath("BulletSpawnPoint")
+script = ExtResource("17_yuadw")
+bullet_scene = ExtResource("18_blur5")
+
+[node name="BulletSpawnPoint" type="Node2D" parent="World/BulletSpawner" unique_id=1331582799]
 
 [connection signal="pressed" from="CanvasLayer/Root/TopUI/SettingPanel/SettingBtn" to="CanvasLayer/Root/SettingOverlay" method="on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer/Continue/ContinueBtn" to="CanvasLayer/Root/SettingOverlay" method="on_continue_pressed"]

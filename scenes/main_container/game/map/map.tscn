@@ -1,20 +1,51 @@
 [gd_scene format=3 uid="uid://yw0c4fpfxk8i"]
 
+[ext_resource type="Texture2D" uid="uid://bnf4q6tmsl55t" path="res://assets/game/map/night.jpg" id="1_5wlb3"]
 [ext_resource type="Texture2D" uid="uid://dyjtvlq4xa4dc" path="res://assets/lobby/top_bar/player_profile/player_profile_bg.png" id="1_634g2"]
 
-[node name="Map" type="Node" unique_id=777352624]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_634g2"]
+size = Vector2(3938.9834, 399.48996)
 
-[node name="PlayerProfileBg" type="Sprite2D" parent="." unique_id=476970109]
-position = Vector2(143.49998, 244)
-scale = Vector2(0.101549044, 0.12515962)
+[node name="Map" type="Node2D" unique_id=1512980749]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1750878947]
+texture = ExtResource("1_5wlb3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=493944478]
+position = Vector2(-336, 216)
+collision_layer = 2
+
+[node name="PlayerProfileBg" type="Sprite2D" parent="StaticBody2D" unique_id=476970109]
+scale = Vector2(0.1400442, 0.06915136)
 texture = ExtResource("1_634g2")
 
-[node name="PlayerProfileBg2" type="Sprite2D" parent="." unique_id=756902636]
-position = Vector2(698.99994, 238)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=207387511]
 scale = Vector2(0.101549044, 0.12515962)
+shape = SubResource("RectangleShape2D_634g2")
+one_way_collision = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1175421666]
+position = Vector2(235, 207)
+collision_layer = 2
+
+[node name="PlayerProfileBg" type="Sprite2D" parent="StaticBody2D2" unique_id=1935680972]
+scale = Vector2(0.1400442, 0.06915136)
 texture = ExtResource("1_634g2")
 
-[node name="PlayerProfileBg3" type="Sprite2D" parent="." unique_id=1143925721]
-position = Vector2(435.00003, 441)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=878761751]
 scale = Vector2(0.101549044, 0.12515962)
+shape = SubResource("RectangleShape2D_634g2")
+one_way_collision = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=681403248]
+position = Vector2(4, 29)
+collision_layer = 2
+
+[node name="PlayerProfileBg" type="Sprite2D" parent="StaticBody2D3" unique_id=1812194450]
+scale = Vector2(0.1400442, 0.06915136)
 texture = ExtResource("1_634g2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=575872721]
+scale = Vector2(0.101549044, 0.12515962)
+shape = SubResource("RectangleShape2D_634g2")
+one_way_collision = true

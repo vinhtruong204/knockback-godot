@@ -31,11 +31,12 @@ func change_state(state_name: StringName) -> void:
 	print(get_parent().name + " changed state to: " + state_name)
 
 func resolve_state() -> StringName:
-	# if not player.is_on_floor():
-		# if player.velocity.y < 0:
-		# 	return MovementState.JUMP
-		# else:
-		# 	return MovementState.FALL
+	if not player.is_on_floor():
+		if player.velocity.y < 0:
+			return MovementState.JUMP
+		else:
+			return MovementState.FALL
+	
 	if player_input.get_dir() != Vector2.ZERO:
 		return MovementState.RUN
 
