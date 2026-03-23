@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://3ejbqf4xmvl4" path="res://scripts/main_container/game/player/flip/player_flip.gd" id="5_hr0h4"]
 [ext_resource type="Script" uid="uid://cdexaq52um2sr" path="res://scripts/main_container/game/player/state_machine/movement_state_machine.gd" id="6_fvmf8"]
 [ext_resource type="Script" uid="uid://c6572dhanhxpq" path="res://scripts/main_container/game/player/attack/player_attack.gd" id="6_oi880"]
+[ext_resource type="Script" uid="uid://dewmpddmrib5c" path="res://scripts/main_container/game/player/damage/player_take_damage.gd" id="8_1nnnh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktt5d"]
 size = Vector2(40, 96)
@@ -64,7 +65,7 @@ script = ExtResource("5_hr0h4")
 script = ExtResource("6_oi880")
 
 [node name="GunBarrel" type="Node2D" parent="PlayerActtack" unique_id=466263056]
-position = Vector2(119, 0)
+position = Vector2(100, 0)
 
 [node name="MovementStateMachine" type="Node" parent="." unique_id=137007932]
 script = ExtResource("6_fvmf8")
@@ -77,6 +78,9 @@ metadata/_custom_type_script = "uid://cdexaq52um2sr"
 [node name="Jump" type="Node" parent="MovementStateMachine" unique_id=1343980535]
 
 [node name="Fall" type="Node" parent="MovementStateMachine" unique_id=1747679945]
+
+[node name="PlayerTakeDamage" type="Node" parent="." unique_id=129877689]
+script = ExtResource("8_1nnnh")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1496173730]
 replication_config = SubResource("SceneReplicationConfig_ktt5d")

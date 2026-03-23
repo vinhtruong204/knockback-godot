@@ -24,9 +24,9 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if not is_multiplayer_authority() or not joystick: return
 
+	#region Movement
 	_dir = joystick.get_value()
 
-	#region Movement
 	if Input.is_action_just_pressed("player_jump"):
 		jump.emit()
 	

@@ -17,4 +17,7 @@ func _spawn_bullet(data: Dictionary) -> Node:
 		
 	bullet.name = str(data["peer_id"])
 	bullet.global_position = data["pos"]
+	bullet.direction = data["direction"]
+	bullet.owner_id = data["peer_id"]
+	
 	return bullet
