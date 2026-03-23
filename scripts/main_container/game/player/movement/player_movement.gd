@@ -56,9 +56,13 @@ func _physics_process(delta: float) -> void:
 
 func drop_down():
 	var collision = player.get_slide_collision(0)
-	var collider = collision.get_collider()
 
-	if collision and not collider.get_meta("is_bottom_platform", false):
+	if collision and not collision.get_collider().get_meta("is_bottom_platform", false):
+		var collider = collision.get_collider()
+
+		# Check if collider is valid
+		if not collider: return
+
 		player.add_collision_exception_with(collider)
 
 		await get_tree().create_timer(0.1).timeout
