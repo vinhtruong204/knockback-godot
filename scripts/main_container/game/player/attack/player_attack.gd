@@ -19,17 +19,19 @@ func _ready() -> void:
 func _on_shoot() -> void:
 	# Calculate gun barrel position based on player direction
 	var gun_barrel_position: Vector2 = Vector2()
-	match player_flip.get_player_direction():
+	var direction: PlayerFlip.Direction = player_flip.get_player_direction()
+
+	match direction:
 		PlayerFlip.Direction.LEFT:
 			gun_barrel_position = player.global_position - gun_barrel.position
 		PlayerFlip.Direction.RIGHT:
 			gun_barrel_position = player.global_position + gun_barrel.position
 
-	shoot.rpc_id(1, multiplayer.get_unique_id(), gun_barrel_position)
+	shoot.rpc_id(1, multiplayer.get_unique_id(), gun_barrel_position, direction)
 
 
-@rpc("any_peer", "call_local", "reliable")
-func shoot(peer_id: int, pos: Vector2) -> void:
+@rpc("authority", "call_remote", "reliable")
+func shoot(peer_id: int, pos: Vector2, direction: PlayerFlip.Direction) -> void:
 	if not multiplayer.is_server(): return
 	
-	bullet_spawner.spawn({"peer_id": peer_id, "pos": pos})
+	bullet_spawner.spawn({"peer_id": peer_id, "pos": pos, "direction": direction})
