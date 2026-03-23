@@ -1,13 +1,23 @@
 [gd_scene format=3 uid="uid://djx2xhq3oxw25"]
 
+[ext_resource type="Script" uid="uid://culmlsixby6ts" path="res://scripts/main_container/game/bullet/bullet_controller.gd" id="1_aek2s"]
 [ext_resource type="Texture2D" uid="uid://cahjsg8cmuk5h" path="res://assets/game/gun/projectile_trail_basic.png" id="1_n8onm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8onm"]
+size = Vector2(65, 8)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_n8onm"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 2
 
-[node name="Bullet" type="Node2D" unique_id=1555148801]
+[node name="Bullet" type="Area2D" unique_id=600635095]
+collision_layer = 4
+script = ExtResource("1_aek2s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=416728276]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_n8onm")
 
 [node name="ProjectileTrailBasic" type="Sprite2D" parent="." unique_id=449001478]
 texture = ExtResource("1_n8onm")
