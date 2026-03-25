@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://yw0c4fpfxk8i" path="res://scenes/main_container/game/map/map.tscn" id="15_w45y3"]
 [ext_resource type="Script" uid="uid://ij01s4xah7uu" path="res://scripts/main_container/game/spawners/bullet_spawner.gd" id="17_yuadw"]
 [ext_resource type="PackedScene" uid="uid://djx2xhq3oxw25" path="res://scenes/main_container/game/bullet/bullet.tscn" id="18_blur5"]
+[ext_resource type="Script" uid="uid://b18aw7ifcpeln" path="res://scripts/main_container/game/spawners/bomb_spawner.gd" id="19_blur5"]
+[ext_resource type="PackedScene" uid="uid://b1nfrg52j82it" path="res://scenes/main_container/game/bomb/bomb.tscn" id="20_173oa"]
 
 [sub_resource type="Theme" id="Theme_tq710"]
 
@@ -475,11 +477,11 @@ map_scene = ExtResource("15_w45y3")
 [node name="MapSpawnPoint" type="Node2D" parent="World/MapSpawner" unique_id=674388464]
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="World" unique_id=29764652]
-spawn_path = NodePath("PlayersSpawnPoint")
+spawn_path = NodePath("PlayerSpawnPoint")
 script = ExtResource("2_u7cc6")
 player_scene = ExtResource("3_m7m7f")
 
-[node name="PlayersSpawnPoint" type="Node2D" parent="World/PlayerSpawner" unique_id=1201245116]
+[node name="PlayerSpawnPoint" type="Node2D" parent="World/PlayerSpawner" unique_id=1201245116]
 position = Vector2(0, -915)
 
 [node name="BulletSpawner" type="MultiplayerSpawner" parent="World" unique_id=1495185695]
@@ -488,6 +490,13 @@ script = ExtResource("17_yuadw")
 bullet_scene = ExtResource("18_blur5")
 
 [node name="BulletSpawnPoint" type="Node2D" parent="World/BulletSpawner" unique_id=1331582799]
+
+[node name="BombSpawner" type="MultiplayerSpawner" parent="World" unique_id=318336758]
+spawn_path = NodePath("BombSpawnPoint")
+script = ExtResource("19_blur5")
+bomb_scene = ExtResource("20_173oa")
+
+[node name="BombSpawnPoint" type="Node2D" parent="World/BombSpawner" unique_id=429941188]
 
 [connection signal="pressed" from="CanvasLayer/Root/TopUI/SettingPanel/SettingBtn" to="CanvasLayer/Root/SettingOverlay" method="on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer/Continue/ContinueBtn" to="CanvasLayer/Root/SettingOverlay" method="on_continue_pressed"]

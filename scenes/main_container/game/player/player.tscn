@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c6572dhanhxpq" path="res://scripts/main_container/game/player/attack/player_attack.gd" id="6_oi880"]
 [ext_resource type="Script" uid="uid://dewmpddmrib5c" path="res://scripts/main_container/game/player/knockback/player_knockback.gd" id="8_1nnnh"]
 [ext_resource type="Script" uid="uid://cakhrini71344" path="res://scripts/main_container/game/player/health/player_health.gd" id="9_xx650"]
+[ext_resource type="Script" uid="uid://df8mau67xmcbn" path="res://scripts/main_container/game/player/throw_bomb/player_throw_bomb.gd" id="10_ym3yy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktt5d"]
 size = Vector2(40, 96)
@@ -91,6 +92,9 @@ script = ExtResource("8_1nnnh")
 
 [node name="PlayerHealth" type="Node" parent="." unique_id=478959390]
 script = ExtResource("9_xx650")
+
+[node name="PlayerThrowBomb" type="Node" parent="." unique_id=968704071]
+script = ExtResource("10_ym3yy")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1496173730]
 replication_config = SubResource("SceneReplicationConfig_ktt5d")
