@@ -96,5 +96,8 @@ script = ExtResource("9_xx650")
 [node name="PlayerThrowBomb" type="Node" parent="." unique_id=968704071]
 script = ExtResource("10_ym3yy")
 
+[node name="BombBarrel" type="Node2D" parent="PlayerThrowBomb" unique_id=1716012731]
+position = Vector2(100, 0)
+
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1496173730]
 replication_config = SubResource("SceneReplicationConfig_ktt5d")

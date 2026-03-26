@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dbnp1ulccd0wi"]
+
+[ext_resource type="Script" uid="uid://bxqqxl8plo1bi" path="res://scripts/main_container/game/death_zone/death_zone_handler.gd" id="1_00b44"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_abjad"]
+normal = Vector2(-0.9999906, -0.004347785)
+distance = 582.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_00b44"]
+distance = 276.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7yrv6"]
+distance = -500.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_obw1w"]
+normal = Vector2(1, 0)
+distance = 729.0
+
+[node name="DeathZone" type="Area2D" unique_id=1933175393]
+collision_layer = 32
+script = ExtResource("1_00b44")
+
+[node name="CollisionShapeLeft" type="CollisionShape2D" parent="." unique_id=931596555]
+shape = SubResource("WorldBoundaryShape2D_abjad")
+
+[node name="CollisionShapeTop" type="CollisionShape2D" parent="." unique_id=562674605]
+shape = SubResource("WorldBoundaryShape2D_00b44")
+
+[node name="CollisionShapeBottom" type="CollisionShape2D" parent="." unique_id=204131425]
+shape = SubResource("WorldBoundaryShape2D_7yrv6")
+
+[node name="CollisionShapeRight" type="CollisionShape2D" parent="." unique_id=870938129]
+shape = SubResource("WorldBoundaryShape2D_obw1w")

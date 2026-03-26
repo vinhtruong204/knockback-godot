@@ -16,5 +16,6 @@ func _spawn_bomb(data: Dictionary) -> Node:
 		bomb.set_multiplayer_authority(multiplayer.get_unique_id())
 		bomb.global_position = data["pos"]
 		bomb.set_owner_id(data["peer_id"])
+		bomb.add_initial_impulse(data["direction"])
 	
 	return bomb

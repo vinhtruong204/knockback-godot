@@ -63,6 +63,9 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Map"
 2d_physics/layer_3="Bullet"
+2d_physics/layer_4="Grenade"
+2d_physics/layer_5="Explode Zone"
+2d_physics/layer_6="Death Zone"
 
 [physics]
 
