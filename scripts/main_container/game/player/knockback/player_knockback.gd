@@ -15,4 +15,10 @@ func apply_knockback_rpc(direction: int, force: float):
 		PlayerFlip.Direction.RIGHT:
 			dir = Vector2.RIGHT
 
-	player_movement._knockback_velocity += dir * force
+	player_movement.knockback_velocity += dir * force
+
+@rpc("any_peer", "call_remote", "reliable")
+func apply_bomb_force_rpc(force: Vector2):
+	if not is_multiplayer_authority(): return
+
+	player_movement.knockback_velocity += force

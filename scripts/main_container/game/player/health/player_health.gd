@@ -1,7 +1,7 @@
 class_name PlayerHealth extends Node
 
-const MAX_HEALTH: int = 50
-const MAX_HEART: int = 2
+const MAX_HEALTH: int = 100
+const MAX_HEART: int = 5
 
 @export var health: int = MAX_HEALTH
 @export var heart: int = MAX_HEART
