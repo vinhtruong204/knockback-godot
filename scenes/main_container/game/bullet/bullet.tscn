@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://djx2xhq3oxw25"]
 
 [ext_resource type="Script" uid="uid://culmlsixby6ts" path="res://scripts/main_container/game/bullet/bullet_controller.gd" id="1_aek2s"]
-[ext_resource type="Texture2D" uid="uid://cahjsg8cmuk5h" path="res://assets/game/gun/projectile_trail_basic.png" id="1_n8onm"]
+[ext_resource type="Texture2D" uid="uid://cahjsg8cmuk5h" path="res://assets/game/bullet/projectile_trail_basic.png" id="1_n8onm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8onm"]
 size = Vector2(65, 8)

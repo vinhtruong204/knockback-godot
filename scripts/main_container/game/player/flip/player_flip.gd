@@ -6,7 +6,7 @@ enum Direction {
 }
 
 @onready var player_input: PlayerInput = $"../PlayerInput"
-@onready var sprite: Sprite2D = $"../Sprite2D"
+@onready var character_sprite: Node2D = $"../ChracterSprites"
 
 var _player_direction: Direction = Direction.LEFT
 
@@ -18,9 +18,9 @@ func _physics_process(_delta: float) -> void:
 	
 	var dir := player_input.get_dir()
 	
-	if dir.x > 0 and not sprite.flip_h:
-		sprite.flip_h = true
+	if dir.x > 0:
+		character_sprite.scale.x = -1
 		_player_direction = Direction.RIGHT
-	elif dir.x < 0 and sprite.flip_h:
-		sprite.flip_h = false
+	elif dir.x < 0:
+		character_sprite.scale.x = 1
 		_player_direction = Direction.LEFT
