@@ -16,5 +16,5 @@ func _on_attack_btn_pressed() -> void:
 	Input.action_release("player_attack")
 
 func _on_bomb_btn_pressed() -> void:
-	Input.action_press("player_bomb")
-	Input.action_release("player_bomb")
+	Input.action_press("player_throw_bomb")
+	Input.action_release("player_throw_bomb")

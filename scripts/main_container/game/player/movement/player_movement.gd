@@ -8,10 +8,7 @@ const MAX_SPEED = 500.0
 @onready var player_input: PlayerInput = $"../PlayerInput"
 @onready var player: CharacterBody2D = $"../"
 
-var _knockback_velocity: Vector2 = Vector2.ZERO
-
-func set_knockback_velocity(velocity: Vector2) -> void:
-	_knockback_velocity = velocity
+var knockback_velocity: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	player_input.jump.connect(_on_jump)
@@ -41,15 +38,16 @@ func _physics_process(delta: float) -> void:
 		input_velocity_x = dir.x * SPEED
 
 	# Blend input + knockback
-	var final_velocity_x = input_velocity_x + _knockback_velocity.x
+	var final_velocity_x = input_velocity_x + knockback_velocity.x
 
 	# Clamp
 	final_velocity_x = clamp(final_velocity_x, -MAX_SPEED, MAX_SPEED)
 
 	player.velocity.x = final_velocity_x
+	player.velocity.y = knockback_velocity.y if knockback_velocity.y != 0 else player.velocity.y
 
 	# Decay knockback
-	_knockback_velocity = _knockback_velocity.move_toward(Vector2.ZERO, KNOCKBACK_DECAY * delta)
+	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, KNOCKBACK_DECAY * delta)
 
 	player.move_and_slide()
 

@@ -15,6 +15,7 @@ signal drop_down()
 
 # Action signals
 signal shoot()
+signal throw_bomb()
 
 func _ready() -> void:
 	if not is_multiplayer_authority(): return
@@ -37,6 +38,9 @@ func _physics_process(_delta: float) -> void:
 	#region Action
 	if Input.is_action_just_pressed("player_attack"):
 		shoot.emit()
+	
+	if Input.is_action_just_pressed("player_throw_bomb"):
+		throw_bomb.emit()
 	#endregion
 
 

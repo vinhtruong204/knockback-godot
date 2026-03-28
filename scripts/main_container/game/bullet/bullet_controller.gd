@@ -35,5 +35,6 @@ func _on_body_entered(body: Node) -> void:
 	if body.get_multiplayer_authority() != owner_id:
 		print("Hit:", body.name)
 
-		body.get_node("PlayerTakeDamage").apply_knockback_rpc.rpc_id(body.get_multiplayer_authority(), direction, 200.0)
+		# body.get_node("PlayerKnockback").apply_knockback_rpc.rpc_id(body.get_multiplayer_authority(), direction, 200.0)
+		body.get_node("PlayerHealth").take_damage_rpc.rpc_id(body.get_multiplayer_authority(), 50)
 		self.queue_free()

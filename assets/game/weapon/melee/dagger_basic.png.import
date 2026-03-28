@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cahjsg8cmuk5h"
-path="res://.godot/imported/projectile_trail_basic.png-13401afddb18a93992a46e82d0945d5e.ctex"
+uid="uid://dhd3ao8h5lc5h"
+path="res://.godot/imported/dagger_basic.png-3dae092d4b1a77bace21904894c2ecea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game/gun/projectile_trail_basic.png"
-dest_files=["res://.godot/imported/projectile_trail_basic.png-13401afddb18a93992a46e82d0945d5e.ctex"]
+source_file="res://assets/game/weapon/melee/dagger_basic.png"
+dest_files=["res://.godot/imported/dagger_basic.png-3dae092d4b1a77bace21904894c2ecea.ctex"]
 
 [params]
 

@@ -9,15 +9,19 @@
 [ext_resource type="Texture2D" uid="uid://djbu6lgswobsi" path="res://assets/game/ui/ui_control_player/jump_button.png" id="4_lm4et"]
 [ext_resource type="Texture2D" uid="uid://dg28mj55jtopx" path="res://assets/game/ui/ui_control_player/fire_button.png" id="5_tq710"]
 [ext_resource type="Texture2D" uid="uid://bcpv0wmj4hkl5" path="res://assets/game/ui/ui_control_player/bomb_button.png" id="6_05s03"]
+[ext_resource type="Script" uid="uid://bfhkvl81as0dq" path="res://scripts/main_container/game/ui/top_ui/opponent_info/opponent_info.gd" id="8_fstxj"]
 [ext_resource type="Texture2D" uid="uid://dl36dfjcu1naq" path="res://assets/lobby/top_bar/top_right/settings.png" id="8_inwiu"]
 [ext_resource type="Texture2D" uid="uid://dyjtvlq4xa4dc" path="res://assets/lobby/top_bar/player_profile/player_profile_bg.png" id="9_kdgan"]
+[ext_resource type="Script" uid="uid://lrf70nvqlpky" path="res://scripts/main_container/game/ui/top_ui/settings_panel/settings_panel_controller.gd" id="9_w881x"]
 [ext_resource type="Texture2D" uid="uid://6o0grqeqb4ds" path="res://assets/login/Button_20.png" id="10_rw2ea"]
-[ext_resource type="Script" uid="uid://cuuufax0t0rvj" path="res://scripts/main_container/game/ui/game_settings_overlay.gd" id="11_4ifxa"]
+[ext_resource type="Script" uid="uid://cuuufax0t0rvj" path="res://scripts/main_container/game/ui/settings_overlay/game_settings_overlay.gd" id="11_4ifxa"]
 [ext_resource type="Texture2D" uid="uid://cuvljo0ehj24r" path="res://assets/game/ui/ui_top/heart.png" id="11_w45y3"]
 [ext_resource type="Script" uid="uid://bdem1pa885n1i" path="res://scripts/main_container/game/spawners/map_spawner.gd" id="14_mdc8l"]
 [ext_resource type="PackedScene" uid="uid://yw0c4fpfxk8i" path="res://scenes/main_container/game/map/map.tscn" id="15_w45y3"]
 [ext_resource type="Script" uid="uid://ij01s4xah7uu" path="res://scripts/main_container/game/spawners/bullet_spawner.gd" id="17_yuadw"]
 [ext_resource type="PackedScene" uid="uid://djx2xhq3oxw25" path="res://scenes/main_container/game/bullet/bullet.tscn" id="18_blur5"]
+[ext_resource type="Script" uid="uid://b18aw7ifcpeln" path="res://scripts/main_container/game/spawners/bomb_spawner.gd" id="19_blur5"]
+[ext_resource type="PackedScene" uid="uid://b1nfrg52j82it" path="res://scenes/main_container/game/bomb/bomb.tscn" id="20_173oa"]
 
 [sub_resource type="Theme" id="Theme_tq710"]
 
@@ -162,74 +166,70 @@ offset_bottom = 80.0
 grow_horizontal = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="OpponentInfor" type="Panel" parent="CanvasLayer/Root/TopUI" unique_id=229881166]
+[node name="OpponentInfor" type="Panel" parent="CanvasLayer/Root/TopUI" unique_id=229881166 node_paths=PackedStringArray("player_spawner")]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.81296295
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
+script = ExtResource("8_fstxj")
+player_spawner = NodePath("../../../../World/PlayerSpawner")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer/Root/TopUI/OpponentInfor" unique_id=731414475]
+[node name="Name" type="Label" parent="CanvasLayer/Root/TopUI/OpponentInfor" unique_id=731414475]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -75.0
-offset_right = 75.0
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 35.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 25
 text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="CanvasLayer/Root/TopUI/OpponentInfor" unique_id=664991577]
+[node name="HeartNumber" type="Label" parent="CanvasLayer/Root/TopUI/OpponentInfor" unique_id=664991577]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -75.0
 offset_top = -35.0
-offset_right = 75.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 25
 text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
-[node name="HeartTexture" type="TextureRect" parent="CanvasLayer/Root/TopUI/OpponentInfor/Label2" unique_id=1884730950]
+[node name="HeartTexture" type="TextureRect" parent="CanvasLayer/Root/TopUI/OpponentInfor/HeartNumber" unique_id=1884730950]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
+anchor_left = 0.52475065
 anchor_top = 0.51428574
-anchor_right = 0.5
+anchor_right = 0.52475065
 anchor_bottom = 0.51428574
-offset_left = 13.0
-offset_top = -20.0
-offset_right = 53.0
-offset_bottom = 20.0
+offset_left = 13.000343
+offset_top = -18.000002
+offset_right = 53.000336
+offset_bottom = 21.999998
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_w45y3")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="SettingPanel" type="Panel" parent="CanvasLayer/Root/TopUI" unique_id=1191869917]
-custom_minimum_size = Vector2(300, 0)
+[node name="SettingPanel" type="Panel" parent="CanvasLayer/Root/TopUI" unique_id=1191869917 node_paths=PackedStringArray("player_spawner")]
+custom_minimum_size = Vector2(300, 80)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 290.0
 grow_vertical = 2
+script = ExtResource("9_w881x")
+player_spawner = NodePath("../../../../World/PlayerSpawner")
 metadata/_edit_use_anchors_ = true
 
 [node name="SettingBtn" type="TextureButton" parent="CanvasLayer/Root/TopUI/SettingPanel" unique_id=75713797]
@@ -248,21 +248,20 @@ ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Root/TopUI/SettingPanel" unique_id=2114253875]
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer/Root/TopUI/SettingPanel" unique_id=2114253875]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.97
+anchor_right = 0.97
 offset_left = -190.0
 offset_bottom = 32.0
 grow_horizontal = 0
-value = 46.0
 nine_patch_stretch = true
 texture_under = ExtResource("9_kdgan")
 texture_progress = ExtResource("10_rw2ea")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="CanvasLayer/Root/TopUI/SettingPanel" unique_id=1376393561]
+[node name="HeartNumber" type="Label" parent="CanvasLayer/Root/TopUI/SettingPanel" unique_id=1376393561]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -281,12 +280,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="HeartTexture" type="TextureRect" parent="CanvasLayer/Root/TopUI/SettingPanel/Label2" unique_id=8866514]
+[node name="HeartTexture" type="TextureRect" parent="CanvasLayer/Root/TopUI/SettingPanel/HeartNumber" unique_id=8866514]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = -1
+anchor_left = 0.62903225
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.62903225
 anchor_bottom = 0.5
 offset_left = 13.0
 offset_top = -20.0
@@ -475,11 +474,11 @@ map_scene = ExtResource("15_w45y3")
 [node name="MapSpawnPoint" type="Node2D" parent="World/MapSpawner" unique_id=674388464]
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="World" unique_id=29764652]
-spawn_path = NodePath("PlayersSpawnPoint")
+spawn_path = NodePath("PlayerSpawnPoint")
 script = ExtResource("2_u7cc6")
 player_scene = ExtResource("3_m7m7f")
 
-[node name="PlayersSpawnPoint" type="Node2D" parent="World/PlayerSpawner" unique_id=1201245116]
+[node name="PlayerSpawnPoint" type="Node2D" parent="World/PlayerSpawner" unique_id=1201245116]
 position = Vector2(0, -915)
 
 [node name="BulletSpawner" type="MultiplayerSpawner" parent="World" unique_id=1495185695]
@@ -488,6 +487,13 @@ script = ExtResource("17_yuadw")
 bullet_scene = ExtResource("18_blur5")
 
 [node name="BulletSpawnPoint" type="Node2D" parent="World/BulletSpawner" unique_id=1331582799]
+
+[node name="BombSpawner" type="MultiplayerSpawner" parent="World" unique_id=318336758]
+spawn_path = NodePath("BombSpawnPoint")
+script = ExtResource("19_blur5")
+bomb_scene = ExtResource("20_173oa")
+
+[node name="BombSpawnPoint" type="Node2D" parent="World/BombSpawner" unique_id=429941188]
 
 [connection signal="pressed" from="CanvasLayer/Root/TopUI/SettingPanel/SettingBtn" to="CanvasLayer/Root/SettingOverlay" method="on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer/Continue/ContinueBtn" to="CanvasLayer/Root/SettingOverlay" method="on_continue_pressed"]

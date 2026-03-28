@@ -27,3 +27,9 @@ func _ready() -> void:
 		$Camera2D.limit_bottom = 0 + sprite_size.y / 2
 	else:
 		$Camera2D.queue_free()
+
+
+func reset() -> void:
+	self.position = Vector2.ZERO
+
+	# TODO: Reset selected gun and ammo

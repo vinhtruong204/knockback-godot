@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bnf4q6tmsl55t" path="res://assets/game/map/night.jpg" id="1_5wlb3"]
 [ext_resource type="Texture2D" uid="uid://dyjtvlq4xa4dc" path="res://assets/lobby/top_bar/player_profile/player_profile_bg.png" id="1_634g2"]
+[ext_resource type="PackedScene" uid="uid://dbnp1ulccd0wi" path="res://scenes/main_container/game/map/death_zone.tscn" id="3_u05x7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_634g2"]
 size = Vector2(3938.9834, 399.48996)
@@ -52,3 +53,5 @@ texture = ExtResource("1_634g2")
 scale = Vector2(0.101549044, 0.12515962)
 shape = SubResource("RectangleShape2D_634g2")
 one_way_collision = true
+
+[node name="DeathZone" parent="." unique_id=1933175393 instance=ExtResource("3_u05x7")]
