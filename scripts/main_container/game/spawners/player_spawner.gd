@@ -6,6 +6,7 @@ const MAX_PLAYER := 2
 const SPAWN_X_OFFSET := 200
 
 signal all_player_joined()
+signal player_spawned(player: Node)
 
 func _ready():
 	spawn_function = _spawn_player
@@ -29,7 +30,7 @@ func _on_peer_connected(peer_id: int):
 		for key in _players_list:
 			var rng = RandomNumberGenerator.new()
 			self.spawn({"peer_id": key, "pos": Vector2(rng.randf_range(-SPAWN_X_OFFSET, SPAWN_X_OFFSET), 0)})
-			print("Spawn player id: " + str(key))
+			# print("Spawn player id: " + str(key))
 			
 
 func _on_peer_disconnected(peer_id: int):
@@ -49,5 +50,7 @@ func _spawn_player(data: Dictionary) -> Node:
 	player.global_position = data["pos"]
 
 	_players_list[data["peer_id"]] = player
+	
+	player_spawned.emit(player)
 	
 	return player

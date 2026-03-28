@@ -1,4 +1,4 @@
-extends Control
+class_name GameSettingsOverlay extends Control
 
 
 func on_settings_pressed() -> void:

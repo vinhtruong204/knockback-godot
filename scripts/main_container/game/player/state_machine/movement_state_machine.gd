@@ -28,7 +28,7 @@ func change_state(state_name: StringName) -> void:
 	# emit signal when state changed
 	state_changed.emit(state_name)
 
-	print(get_parent().name + " changed state to: " + state_name)
+	# print(get_parent().name + " changed state to: " + state_name)
 
 func resolve_state() -> StringName:
 	if not player.is_on_floor():
