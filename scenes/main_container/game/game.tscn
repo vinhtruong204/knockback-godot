@@ -11,8 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://bcpv0wmj4hkl5" path="res://assets/game/ui/ui_control_player/bomb_button.png" id="6_05s03"]
 [ext_resource type="Script" uid="uid://bfhkvl81as0dq" path="res://scripts/main_container/game/ui/top_ui/opponent_info/opponent_info.gd" id="8_fstxj"]
 [ext_resource type="Texture2D" uid="uid://dl36dfjcu1naq" path="res://assets/lobby/top_bar/top_right/settings.png" id="8_inwiu"]
+[ext_resource type="Script" uid="uid://dw2e0n8wo8m82" path="res://scripts/main_container/game/ui/switch_weapon/switch_weapon_handler.gd" id="8_j7cqd"]
+[ext_resource type="Texture2D" uid="uid://da66hbq7briog" path="res://assets/game/weapon/primary/ak_basic.png" id="8_rd8tu"]
 [ext_resource type="Texture2D" uid="uid://dyjtvlq4xa4dc" path="res://assets/lobby/top_bar/player_profile/player_profile_bg.png" id="9_kdgan"]
+[ext_resource type="Texture2D" uid="uid://dr7yaw25ltsg3" path="res://assets/game/weapon/secondary/colt_python.png" id="9_tvbha"]
 [ext_resource type="Script" uid="uid://lrf70nvqlpky" path="res://scripts/main_container/game/ui/top_ui/settings_panel/settings_panel_controller.gd" id="9_w881x"]
+[ext_resource type="Texture2D" uid="uid://dhd3ao8h5lc5h" path="res://assets/game/weapon/melee/dagger_basic.png" id="10_j7cqd"]
 [ext_resource type="Texture2D" uid="uid://6o0grqeqb4ds" path="res://assets/login/Button_20.png" id="10_rw2ea"]
 [ext_resource type="Script" uid="uid://cuuufax0t0rvj" path="res://scripts/main_container/game/ui/settings_overlay/game_settings_overlay.gd" id="11_4ifxa"]
 [ext_resource type="Texture2D" uid="uid://cuvljo0ehj24r" path="res://assets/game/ui/ui_top/heart.png" id="11_w45y3"]
@@ -22,8 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://djx2xhq3oxw25" path="res://scenes/main_container/game/bullet/bullet.tscn" id="18_blur5"]
 [ext_resource type="Script" uid="uid://b18aw7ifcpeln" path="res://scripts/main_container/game/spawners/bomb_spawner.gd" id="19_blur5"]
 [ext_resource type="PackedScene" uid="uid://b1nfrg52j82it" path="res://scenes/main_container/game/bomb/bomb.tscn" id="20_173oa"]
-
-[sub_resource type="Theme" id="Theme_tq710"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rw2ea"]
 bg_color = Color(0.08078333, 0.08078336, 0.08078327, 1)
@@ -57,14 +59,12 @@ metadata/_edit_use_anchors_ = true
 [node name="PlayerJoystick" type="Control" parent="CanvasLayer/Root/UIControlPlayer" unique_id=1410260706]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 36.0
-offset_top = -100.0
-offset_right = 236.0
-offset_bottom = 100.0
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -300.0
+offset_right = 300.0
+grow_vertical = 0
 pivot_offset = Vector2(150, 150)
 script = ExtResource("1_h7arf")
 joystick_texture = ExtResource("2_h7arf")
@@ -131,8 +131,8 @@ texture_pressed = ExtResource("6_05s03")
 texture_hover = ExtResource("6_05s03")
 metadata/_edit_use_anchors_ = true
 
-[node name="OptionButton" type="OptionButton" parent="CanvasLayer/Root/UIControlPlayer" unique_id=1104017395]
-custom_minimum_size = Vector2(200, 60)
+[node name="SwitchWeaponHandler" type="Control" parent="CanvasLayer/Root/UIControlPlayer" unique_id=388424403]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -140,22 +140,78 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -100.0
-offset_top = -117.0
+offset_top = -78.0
 offset_right = 100.0
-offset_bottom = -57.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = SubResource("Theme_tq710")
-selected = 0
-fit_to_longest_item = false
-item_count = 3
-popup/item_0/text = "Primary"
-popup/item_0/id = 0
-popup/item_1/text = "Secondary"
-popup/item_1/id = 1
-popup/item_2/text = "Melee"
-popup/item_2/id = 2
-metadata/_edit_use_anchors_ = true
+script = ExtResource("8_j7cqd")
+
+[node name="CurrentWeaponBtn" type="Button" parent="CanvasLayer/Root/UIControlPlayer/SwitchWeaponHandler" unique_id=1732135960]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "15/30"
+icon = ExtResource("8_rd8tu")
+alignment = 2
+expand_icon = true
+
+[node name="SelectWeaponPanel" type="Panel" parent="CanvasLayer/Root/UIControlPlayer/SwitchWeaponHandler" unique_id=2033564093]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -182.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Root/UIControlPlayer/SwitchWeaponHandler/SelectWeaponPanel" unique_id=1061157409]
+custom_minimum_size = Vector2(178, 171)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = -85.5
+offset_right = 90.5
+offset_bottom = 85.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="PrimaryBtn" type="Button" parent="CanvasLayer/Root/UIControlPlayer/SwitchWeaponHandler/SelectWeaponPanel/VBoxContainer" unique_id=1652410541]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "15/30"
+icon = ExtResource("8_rd8tu")
+alignment = 2
+expand_icon = true
+
+[node name="SecondaryBtn" type="Button" parent="CanvasLayer/Root/UIControlPlayer/SwitchWeaponHandler/SelectWeaponPanel/VBoxContainer" unique_id=809532151]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "12/12"
+icon = ExtResource("9_tvbha")
+alignment = 2
+expand_icon = true
+
+[node name="MeleeBtn" type="Button" parent="CanvasLayer/Root/UIControlPlayer/SwitchWeaponHandler/SelectWeaponPanel/VBoxContainer" unique_id=881417980]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+icon = ExtResource("10_j7cqd")
+icon_alignment = 1
+expand_icon = true
 
 [node name="TopUI" type="Control" parent="CanvasLayer/Root" unique_id=581601505]
 custom_minimum_size = Vector2(0, 80)

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://qbeo4glgneva" path="res://scripts/main_container/game/player/player_controller.gd" id="1_xucm1"]
 [ext_resource type="Texture2D" uid="uid://ca8xaw8t7lxwu" path="res://assets/game/player/player.png" id="2_xucm1"]
 [ext_resource type="Script" uid="uid://cicwfo3sahl1d" path="res://scripts/main_container/game/player/input/player_input.gd" id="3_cjfdc"]
+[ext_resource type="Script" uid="uid://bmpimh3nyresw" path="res://scripts/main_container/game/player/weapon_holder/weapon_hold_handler.gd" id="3_ni1ir"]
 [ext_resource type="Texture2D" uid="uid://da66hbq7briog" path="res://assets/game/weapon/primary/ak_basic.png" id="3_tb6ua"]
 [ext_resource type="Texture2D" uid="uid://dr7yaw25ltsg3" path="res://assets/game/weapon/secondary/colt_python.png" id="4_ni1ir"]
 [ext_resource type="Script" uid="uid://b1553iaqdkmmg" path="res://scripts/main_container/game/player/movement/player_movement.gd" id="4_q8fla"]
@@ -30,6 +31,9 @@ properties/2/replication_mode = 2
 properties/3/path = NodePath("ChracterSprites:scale:x")
 properties/3/spawn = true
 properties/3/replication_mode = 2
+properties/4/path = NodePath("ChracterSprites/WeaponHoldHandler:current_weapon_type")
+properties/4/spawn = true
+properties/4/replication_mode = 2
 
 [node name="Player" type="CharacterBody2D" unique_id=1722197910]
 collision_mask = 6
@@ -63,30 +67,32 @@ position_smoothing_enabled = true
 scale = Vector2(0.085, 0.085)
 texture = ExtResource("2_xucm1")
 
-[node name="GunHolder" type="Node2D" parent="ChracterSprites" unique_id=1993028933]
+[node name="WeaponHoldHandler" type="Node2D" parent="ChracterSprites" unique_id=1993028933 node_paths=PackedStringArray("player_input")]
+script = ExtResource("3_ni1ir")
+player_input = NodePath("../../PlayerInput")
 
-[node name="Primary" type="Node2D" parent="ChracterSprites/GunHolder" unique_id=432530119]
+[node name="Primary" type="Node2D" parent="ChracterSprites/WeaponHoldHandler" unique_id=432530119]
 position = Vector2(-27, 12)
 
-[node name="AkBasic" type="Sprite2D" parent="ChracterSprites/GunHolder/Primary" unique_id=236225952]
+[node name="AkBasic" type="Sprite2D" parent="ChracterSprites/WeaponHoldHandler/Primary" unique_id=236225952]
 scale = Vector2(0.425, 0.425)
 texture = ExtResource("3_tb6ua")
 flip_h = true
 
-[node name="Secondary" type="Node2D" parent="ChracterSprites/GunHolder" unique_id=1046608083]
+[node name="Secondary" type="Node2D" parent="ChracterSprites/WeaponHoldHandler" unique_id=1046608083]
 visible = false
 position = Vector2(-25, 16)
 
-[node name="ColtPython" type="Sprite2D" parent="ChracterSprites/GunHolder/Secondary" unique_id=771023910]
+[node name="ColtPython" type="Sprite2D" parent="ChracterSprites/WeaponHoldHandler/Secondary" unique_id=771023910]
 scale = Vector2(0.385, 0.385)
 texture = ExtResource("4_ni1ir")
 flip_h = true
 
-[node name="Melee" type="Node2D" parent="ChracterSprites/GunHolder" unique_id=1627411790]
+[node name="Melee" type="Node2D" parent="ChracterSprites/WeaponHoldHandler" unique_id=1627411790]
 visible = false
 position = Vector2(-29, 21)
 
-[node name="DaggerBasic" type="Sprite2D" parent="ChracterSprites/GunHolder/Melee" unique_id=1557251997]
+[node name="DaggerBasic" type="Sprite2D" parent="ChracterSprites/WeaponHoldHandler/Melee" unique_id=1557251997]
 texture = ExtResource("11_1ea6r")
 flip_h = true
 
@@ -108,7 +114,7 @@ script = ExtResource("5_hr0h4")
 script = ExtResource("6_oi880")
 
 [node name="GunBarrel" type="Node2D" parent="PlayerActtack" unique_id=466263056]
-position = Vector2(100, 0)
+position = Vector2(90, 8)
 
 [node name="MovementStateMachine" type="Node" parent="." unique_id=137007932]
 script = ExtResource("6_fvmf8")
@@ -132,7 +138,7 @@ script = ExtResource("9_xx650")
 script = ExtResource("10_ym3yy")
 
 [node name="BombBarrel" type="Node2D" parent="PlayerThrowBomb" unique_id=1716012731]
-position = Vector2(100, 0)
+position = Vector2(23, 13)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1496173730]
 replication_config = SubResource("SceneReplicationConfig_ktt5d")
