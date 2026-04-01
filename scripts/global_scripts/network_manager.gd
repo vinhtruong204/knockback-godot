@@ -1,6 +1,6 @@
 extends Node
 
-const ADDRESS := "localhost"
+const ADDRESS := "100.96.156.107"
 const PORT := 9543
 var game_scene_path := "res://scenes/main_container/game/game.tscn"
 var lobby_scene_path := "res://scenes/main_container/lobby/lobby.tscn"

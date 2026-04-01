@@ -9,6 +9,13 @@ func login(id_token: String, callback: Callable):
 	ApiManager.send_request(self , base_url, "/auth/google", HTTPClient.METHOD_POST,
 		{"id_token": id_token}, false, callback)
 
+func dev_login(dev_name: String = "DevPlayer", device_info: String = "", callback: Callable = Callable()):
+	var body := {"name": dev_name}
+	if device_info != "":
+		body["device_info"] = device_info
+	ApiManager.send_request(self , base_url, "/auth/dev-login", HTTPClient.METHOD_POST,
+		body, false, callback if callback.is_valid() else func(_r): pass)
+
 func signout(callback: Callable = Callable()):
 	ApiManager.send_request(self , base_url, "/auth/signout", HTTPClient.METHOD_POST,
 		{"session_token": ApiManager.session_token}, false,

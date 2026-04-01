@@ -50,13 +50,20 @@ func send_request(caller: Node, base_url: String, path: String, method: HTTPClie
 			callback.call(response)
 			return
 
-		var json = JSON.parse_string(response_body.get_string_from_utf8())
+		var ok := response_code >= 200 and response_code < 300
+		var body_text := response_body.get_string_from_utf8()
+
+		if ok and body_text.strip_edges() == "":
+			response = {"ok": true, "status": response_code, "data": null, "error": ""}
+			callback.call(response)
+			return
+
+		var json = JSON.parse_string(body_text)
 		if json == null:
 			response = {"ok": false, "status": response_code, "data": null, "error": "Invalid server response"}
 			callback.call(response)
 			return
 
-		var ok := response_code >= 200 and response_code < 300
 		if ok:
 			response = {"ok": true, "status": response_code, "data": json, "error": ""}
 		else:
