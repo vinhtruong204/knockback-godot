@@ -49,6 +49,7 @@ func _send_signout_request():
 		return
 	PlayerApi.signout()
 	ApiManager.clear_session()
+	CacheManager.clear_all()
 
 func _on_sign_in_failed(error: String):
 	text_edit.text = "Sign-in failed: " + error

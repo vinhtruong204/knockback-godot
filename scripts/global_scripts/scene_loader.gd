@@ -8,9 +8,6 @@ var _progress: Array[float] = [0.0]
 func get_progress() -> float:
 	return _progress[0]
 
-func _ready() -> void:
-	pass
-
 func load_scene(path: String):
 	# Clean up old scene
 	if current_scene:

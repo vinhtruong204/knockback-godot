@@ -24,6 +24,7 @@ ConfigApi="*uid://bnvsveot3ys4m"
 EconomyApi="*uid://mqobuqg8rrsr"
 MatchApi="*uid://dgtx0ok3jp58q"
 PlayerApi="*uid://ckquj3nr7huqk"
+CacheManager="*uid://bnw61bjcsgjj6"
 
 [display]
 
