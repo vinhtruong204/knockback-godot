@@ -1,16 +1,17 @@
 extends Node
 
-const ADDRESS := "localhost"
+const ADDRESS := "100.96.156.107"
 const PORT := 9543
 var game_scene_path := "res://scenes/main_container/game/game.tscn"
 var lobby_scene_path := "res://scenes/main_container/lobby/lobby.tscn"
+var login_scene_path := "res://scenes/main_container/login/login.tscn"
 
 func _ready():
 	if OS.has_feature("dedicated_server"):
 		SceneLoader.load_scene(game_scene_path)
 		create_server()
 	else:
-		SceneLoader.load_scene(lobby_scene_path) # lobby for testing on godot editor
+		SceneLoader.load_scene(login_scene_path)
 		multiplayer.connected_to_server.connect(func():
 			SceneLoader.load_scene(game_scene_path)
 			)
