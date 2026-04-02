@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bt4436voa0kvl" path="res://assets/lobby/lobby_bg.png" id="1_psu8p"]
 [ext_resource type="Texture2D" uid="uid://dyjtvlq4xa4dc" path="res://assets/lobby/top_bar/player_profile/player_profile_bg.png" id="2_psu8p"]
 [ext_resource type="Texture2D" uid="uid://6erg825vauqi" path="res://assets/lobby/top_bar/currency/game-coin.png" id="4_62jta"]
+[ext_resource type="Script" uid="uid://bs24vnwpb2qoc" path="res://scripts/main_container/lobby/top_bar/player_profile/player_profile_btn.gd" id="4_f82ac"]
 [ext_resource type="Texture2D" uid="uid://b4ib7m3oh0bqc" path="res://assets/lobby/top_bar/player_profile/avatar_1.png" id="4_yapo1"]
 [ext_resource type="Texture2D" uid="uid://bu70s8kcb7igl" path="res://assets/lobby/top_bar/currency/diamond.png" id="5_u3wsq"]
+[ext_resource type="Script" uid="uid://ceyogbx00end" path="res://scripts/main_container/lobby/top_bar/currency/currency_container.gd" id="6_5f28n"]
 [ext_resource type="Texture2D" uid="uid://ds7nx8256lo5g" path="res://assets/lobby/top_bar/top_right/friend.png" id="6_5ibcn"]
 [ext_resource type="Texture2D" uid="uid://cyef5dnhi63h0" path="res://assets/lobby/top_bar/top_right/mail.png" id="7_hdsot"]
 [ext_resource type="Texture2D" uid="uid://dl36dfjcu1naq" path="res://assets/lobby/top_bar/top_right/settings.png" id="8_cvlo1"]
@@ -22,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://divp8d6bt1q7s" path="res://assets/lobby/bottom_bar/equipment/rifle.png" id="18_uit80"]
 [ext_resource type="Texture2D" uid="uid://pkh4vcgyq8u1" path="res://assets/lobby/bottom_bar/equipment/water-gun.png" id="19_8vi03"]
 [ext_resource type="Texture2D" uid="uid://6lp2p1pncgxs" path="res://assets/lobby/bottom_bar/equipment/knife.png" id="20_qkvb6"]
+[ext_resource type="Script" uid="uid://0wxgl2n7id6k" path="res://scripts/main_container/lobby/top_bar/player_profile/player_profile_panel.gd" id="21_3nquo"]
 [ext_resource type="Texture2D" uid="uid://cbqjpj6oiapq8" path="res://assets/lobby/bottom_bar/equipment/grenade.png" id="21_qkvb6"]
 [ext_resource type="PackedScene" uid="uid://ddil1hqxl3u0d" path="res://scenes/main_container/lobby/shop/shop_discount_item.tscn" id="22_nv17j"]
 [ext_resource type="Script" uid="uid://byvqrb4x87lhl" path="res://scripts/main_container/lobby/shop/shop_ui_manager.gd" id="23_idp30"]
@@ -46,6 +49,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uit80"]
+bg_color = Color(0.19219694, 0.192197, 0.19219688, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k63ad"]
 bg_color = Color(0.24313726, 0.24313726, 0.24313726, 0.54901963)
@@ -99,6 +103,7 @@ texture_normal = ExtResource("2_psu8p")
 texture_pressed = ExtResource("2_psu8p")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("4_f82ac")
 
 [node name="PlayerName" type="Label" parent="Root/UIButtons/TopBar/ProfileBtn" unique_id=663447556]
 layout_mode = 1
@@ -131,7 +136,7 @@ text = "LV. 100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Root/UIButtons/TopBar/ProfileBtn" unique_id=1283226444]
+[node name="Avatar" type="TextureRect" parent="Root/UIButtons/TopBar/ProfileBtn" unique_id=1283226444]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -152,6 +157,7 @@ offset_bottom = 44.0
 grow_horizontal = 2
 theme_override_constants/separation = 20
 alignment = 1
+script = ExtResource("6_5f28n")
 
 [node name="GoldBtn" type="Button" parent="Root/UIButtons/TopBar/CurrencyContainer" unique_id=1858132688]
 custom_minimum_size = Vector2(120, 0)
@@ -397,7 +403,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="PlayerProfile" type="Panel" parent="Root/OverlayContainer" unique_id=265118281]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -406,6 +411,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+script = ExtResource("21_3nquo")
 
 [node name="BackBtn" parent="Root/OverlayContainer/PlayerProfile" unique_id=1003464806 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
@@ -422,7 +428,7 @@ offset_bottom = 202.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ygewx")
 
-[node name="Label" type="Label" parent="Root/OverlayContainer/PlayerProfile/ProfilePanel" unique_id=1778537002]
+[node name="Level" type="Label" parent="Root/OverlayContainer/PlayerProfile/ProfilePanel" unique_id=1778537002]
 layout_mode = 1
 offset_right = 54.0
 offset_bottom = 23.0
@@ -454,8 +460,9 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "PlayerName"
+horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/PlayerProfile/ProfilePanel" unique_id=1832653101]
+[node name="Avatar" type="TextureRect" parent="Root/OverlayContainer/PlayerProfile/ProfilePanel" unique_id=1832653101]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -471,7 +478,7 @@ grow_vertical = 2
 texture = ExtResource("4_yapo1")
 expand_mode = 1
 
-[node name="TextEdit" type="TextEdit" parent="Root/OverlayContainer/PlayerProfile/ProfilePanel" unique_id=1400067158]
+[node name="SloganEditor" type="TextEdit" parent="Root/OverlayContainer/PlayerProfile/ProfilePanel" unique_id=1400067158]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -502,38 +509,16 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_k63ad")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Root/OverlayContainer/PlayerProfile/StatsPanel" unique_id=1348092214]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -112.5
-offset_right = 192.0
-offset_bottom = 112.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Current rank: Diamon
-
-Rank points: 3200
-
-Totals game: 50
-
-Win rate: 50%
-
-KDA: 2.3"
-
 [node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/PlayerProfile/StatsPanel" unique_id=454835704]
+custom_minimum_size = Vector2(278, 40)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -136.5
-offset_top = 9.0
-offset_right = 136.5
-offset_bottom = 40.0
+offset_left = -139.0
+offset_top = 26.0
+offset_right = 139.0
+offset_bottom = 66.0
 grow_horizontal = 2
 theme_override_constants/separation = 20
 alignment = 1
@@ -550,6 +535,64 @@ text = "Normal
 [node name="AchivementBtn" type="Button" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer" unique_id=1041056605]
 layout_mode = 2
 text = "Achivement"
+
+[node name="ContentContainer" type="Control" parent="Root/OverlayContainer/PlayerProfile/StatsPanel" unique_id=215379027]
+custom_minimum_size = Vector2(384, 240)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -83.0
+offset_right = 192.0
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BgPanel" type="Panel" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/ContentContainer" unique_id=101422440]
+custom_minimum_size = Vector2(384, 225)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatsText" type="RichTextLabel" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/ContentContainer" unique_id=1348092214]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = -112.5
+offset_right = 160.5
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Current rank: Diamond
+
+Rank points: 3200
+
+Totals game: 50
+
+Win rate: 50%
+
+KDA: 2.3"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/ContentContainer" unique_id=443749169]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/ContentContainer/ScrollContainer" unique_id=1518890023]
+layout_mode = 2
 
 [node name="Equipment" type="Panel" parent="Root/OverlayContainer" unique_id=230209453]
 visible = false
@@ -3302,6 +3345,9 @@ text = "Sign out"
 [connection signal="pressed" from="Root/UIButtons/BottomBar/LeftContainer/TaskBtn" to="Root" method="_open_task"]
 [connection signal="pressed" from="Root/UIButtons/BottomBar/RightContainer/LuckyWheelBtn" to="Root" method="_open_wheel"]
 [connection signal="pressed" from="Root/UIButtons/BottomBar/RightContainer/ShopBtn" to="Root" method="_open_shop"]
+[connection signal="pressed" from="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer/RankingBtn" to="Root/OverlayContainer/PlayerProfile" method="on_ranking_button_pressed"]
+[connection signal="pressed" from="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer/NormalBtn" to="Root/OverlayContainer/PlayerProfile" method="on_normal_button_pressed"]
+[connection signal="pressed" from="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer/AchivementBtn" to="Root/OverlayContainer/PlayerProfile" method="on_achivement_button_pressed"]
 [connection signal="pressed" from="Root/OverlayContainer/Ranking/BackBtn" to="Root/UIButtons/Middle" method="reset_position"]
 [connection signal="pressed" from="Root/OverlayContainer/Ranking/Panel/FightBtn" to="Root/OverlayContainer/Ranking/Panel/FightBtn" method="_on_fight_pressed"]
 [connection signal="pressed" from="Root/OverlayContainer/Ranking/Panel/Server" to="Root/OverlayContainer/Ranking/Panel/FightBtn" method="_on_server_pressed"]
