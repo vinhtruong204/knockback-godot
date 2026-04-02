@@ -146,6 +146,20 @@ class PlayerCurrencyModel:
 		}
 
 
+class CurrencyModifyModel:
+	var amount: int
+
+	static func from_dict(data: Dictionary) -> CurrencyModifyModel:
+		var model := CurrencyModifyModel.new()
+		model.amount = data.get("amount", 0)
+		return model
+
+	func to_dict() -> Dictionary:
+		return {
+			"amount": amount,
+		}
+
+
 class PlayerInventoryModel:
 	var player_id: String
 	var item_id: int

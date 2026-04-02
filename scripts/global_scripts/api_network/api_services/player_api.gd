@@ -135,6 +135,24 @@ func update_player_currency(pid: String, currency_type: String, data: Dictionary
 				CacheManager.invalidate("player_dynamic:currencies:" + pid + ":" + currency_type)
 			callback.call(response))
 
+func deduct_player_currency(pid: String, currency_type: String, data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/player-currencies/" + pid + "/" + currency_type + "/deduct",
+		HTTPClient.METHOD_PATCH, data, true,
+		func(response: Dictionary):
+			if response.ok:
+				CacheManager.invalidate("player_dynamic:currencies:" + pid)
+				CacheManager.invalidate("player_dynamic:currencies:" + pid + ":" + currency_type)
+			callback.call(response))
+
+func add_player_currency_amount(pid: String, currency_type: String, data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/player-currencies/" + pid + "/" + currency_type + "/add",
+		HTTPClient.METHOD_PATCH, data, true,
+		func(response: Dictionary):
+			if response.ok:
+				CacheManager.invalidate("player_dynamic:currencies:" + pid)
+				CacheManager.invalidate("player_dynamic:currencies:" + pid + ":" + currency_type)
+			callback.call(response))
+
 # --- Player Inventory ---
 
 func get_player_inventory(pid: String, callback: Callable, force_refresh := false):

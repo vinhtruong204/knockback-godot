@@ -34,6 +34,8 @@
 [ext_resource type="PackedScene" uid="uid://crq6tmfroxjug" path="res://scenes/main_container/lobby/shop/shop_character_item.tscn" id="25_8dsj6"]
 [ext_resource type="PackedScene" uid="uid://fppac6rwmf2l" path="res://scenes/main_container/lobby/wheel/wheel_item.tscn" id="26_hmpgm"]
 [ext_resource type="Script" uid="uid://dubuyiby8y7n7" path="res://scripts/main_container/lobby/wheel/wheel_ui_manager.gd" id="27_y3tir"]
+[ext_resource type="Script" uid="uid://cgng515gvynwx" path="res://scripts/main_container/lobby/settings/settings_controller.gd" id="35_hur8o"]
+[ext_resource type="Script" uid="uid://bq3545jnijnhj" path="res://scripts/main_container/lobby/purchase/purchase_controller.gd" id="35_rjdw1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yapo1"]
 texture = ExtResource("1_psu8p")
@@ -403,6 +405,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="PlayerProfile" type="Panel" parent="Root/OverlayContainer" unique_id=265118281]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3072,7 +3075,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Purchase" type="Panel" parent="Root/TopOverlay" unique_id=623878866]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3081,78 +3083,33 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+script = ExtResource("35_rjdw1")
 
 [node name="BackBtn" parent="Root/TopOverlay/Purchase" unique_id=1944590998 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
 
-[node name="TopWrapper" type="Control" parent="Root/TopOverlay/Purchase" unique_id=369433589]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 86.0
-offset_bottom = 213.0
-grow_horizontal = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Root/TopOverlay/Purchase/TopWrapper" unique_id=1477316565]
+[node name="GridContainer" type="GridContainer" parent="Root/TopOverlay/Purchase" unique_id=1804079982]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -414.0
-offset_top = -20.0
-offset_right = 414.0
-offset_bottom = 20.0
+offset_left = -460.0
+offset_top = -116.0
+offset_right = 460.0
+offset_bottom = 184.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 30
-
-[node name="CurrentVIP" type="Label" parent="Root/TopOverlay/Purchase/TopWrapper/HBoxContainer" unique_id=2009280580]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-text = "VIP 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="Root/TopOverlay/Purchase/TopWrapper/HBoxContainer" unique_id=1169918767]
-custom_minimum_size = Vector2(700, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-value = 50.0
-
-[node name="NextVIP" type="Label" parent="Root/TopOverlay/Purchase/TopWrapper/HBoxContainer" unique_id=217996155]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-text = "VIP 1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GridContainer" type="GridContainer" parent="Root/TopOverlay/Purchase" unique_id=1804079982]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -330.0
-offset_top = -293.0
-offset_right = 330.0
-offset_bottom = -23.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/h_separation = 30
-theme_override_constants/v_separation = 30
-columns = 3
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 60
+columns = 4
 
 [node name="Button" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=633894300]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
-text = "100
-10.000 VND"
+text = "10.000
+1.000.000 VND"
 icon = ExtResource("5_u3wsq")
 icon_alignment = 2
 expand_icon = true
@@ -3160,8 +3117,8 @@ expand_icon = true
 [node name="Button2" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=2008505003]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
-text = "100
-10.000 VND"
+text = "5.000
+500.000 VND"
 icon = ExtResource("5_u3wsq")
 icon_alignment = 2
 expand_icon = true
@@ -3169,8 +3126,8 @@ expand_icon = true
 [node name="Button3" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=1435665214]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
-text = "100
-10.000 VND"
+text = "1.000
+100.000 VND"
 icon = ExtResource("5_u3wsq")
 icon_alignment = 2
 expand_icon = true
@@ -3178,17 +3135,8 @@ expand_icon = true
 [node name="Button4" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=1424307285]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
-text = "100
-10.000 VND"
-icon = ExtResource("5_u3wsq")
-icon_alignment = 2
-expand_icon = true
-
-[node name="Button5" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=984419443]
-custom_minimum_size = Vector2(200, 120)
-layout_mode = 2
-text = "100
-10.000 VND"
+text = "500
+50.000 VND	"
 icon = ExtResource("5_u3wsq")
 icon_alignment = 2
 expand_icon = true
@@ -3196,8 +3144,35 @@ expand_icon = true
 [node name="Button6" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=943975743]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
-text = "100
+text = "10.000
 10.000 VND"
+icon = ExtResource("4_62jta")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Button7" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=567568817]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+text = "5.000
+10.000 VND"
+icon = ExtResource("4_62jta")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Button5" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=984419443]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+text = "50
+FREE (0/3)"
+icon = ExtResource("5_u3wsq")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Button8" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=2083834190]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+text = "500
+FREE (0/3)"
 icon = ExtResource("4_62jta")
 icon_alignment = 2
 expand_icon = true
@@ -3211,6 +3186,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+script = ExtResource("35_hur8o")
 
 [node name="BackBtn" parent="Root/TopOverlay/Settings" unique_id=20028794 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
@@ -3354,4 +3330,10 @@ text = "Sign out"
 [connection signal="pressed" from="Root/OverlayContainer/Normal/BackBtn" to="Root/UIButtons/Middle" method="reset_position"]
 [connection signal="pressed" from="Root/OverlayContainer/Wheel/Control/HBoxContainer/GoldBtn" to="Root/OverlayContainer/Wheel" method="_open_gold_wheel"]
 [connection signal="pressed" from="Root/OverlayContainer/Wheel/Control/HBoxContainer/DiamondBtn" to="Root/OverlayContainer/Wheel" method="_open_diamond_wheel"]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [10000, "diamond"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button2" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [5000, "diamond"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button3" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [1000, "diamond"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button4" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [500, "diamond"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button6" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [10000, "gold"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button7" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [5000, "gold"]]
 [connection signal="pressed" from="Root/TopOverlay/Settings/SignOutBtn" to="Root" method="_sign_out"]

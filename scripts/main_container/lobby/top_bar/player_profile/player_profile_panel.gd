@@ -8,9 +8,18 @@ class_name PlayerProfilePanel extends Panel
 
 func _ready() -> void:
 	self.visibility_changed.connect(_on_visibility_changed)
+	slogan_edit.connect("focus_exited", _on_slogan_edit_focus_exited)
 
 	# Default to ranking tab
 	on_ranking_button_pressed()
+
+func _on_slogan_edit_focus_exited() -> void:
+	PlayerApi.update_player(ApiManager.player_id, {"slogan": slogan_edit.text}, func(response: Dictionary) -> void:
+		if response.get("ok", false):
+			print("Slogan updated successfully")
+		else:
+			print("Failed to update slogan")
+	)
 
 func _on_visibility_changed() -> void:
 	if self.visible:
