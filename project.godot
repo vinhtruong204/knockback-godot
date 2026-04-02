@@ -15,6 +15,10 @@ run/main_scene="uid://cc3p6xo3gxqk0"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://cks8wdk2ron7j"
+
 [autoload]
 
 SceneLoader="*uid://dyvrrc8agilms"
@@ -25,6 +29,7 @@ EconomyApi="*uid://mqobuqg8rrsr"
 MatchApi="*uid://dgtx0ok3jp58q"
 PlayerApi="*uid://ckquj3nr7huqk"
 CacheManager="*uid://bnw61bjcsgjj6"
+AudioManager="*uid://ciyv1qco4h3wq"
 
 [display]
 
@@ -32,6 +37,7 @@ window/size/viewport_width=1080
 window/size/viewport_height=486
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 

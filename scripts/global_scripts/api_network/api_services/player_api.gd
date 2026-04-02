@@ -14,7 +14,7 @@ func dev_login(dev_name: String = "DevPlayer", device_info: String = "", callbac
 	if device_info != "":
 		body["device_info"] = device_info
 	ApiManager.send_request(self , base_url, "/auth/dev-login", HTTPClient.METHOD_POST,
-		body, false, callback if callback.is_valid() else func(_r): pass)
+		body, false, callback if callback.is_valid() else func(_r): pass )
 
 func signout(callback: Callable = Callable()):
 	ApiManager.send_request(self , base_url, "/auth/signout", HTTPClient.METHOD_POST,
@@ -104,7 +104,7 @@ func get_player_currencies(pid: String, callback: Callable, force_refresh := fal
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_DYNAMIC, "player_dynamic", false,
 		func(cb: Callable):
-			ApiManager.send_request(self , base_url, "/players/" + pid + "/currencies",
+			ApiManager.send_request(self , base_url, "/player-currencies/" + pid,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 
@@ -114,7 +114,7 @@ func get_player_currency(pid: String, currency_type: String, callback: Callable,
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_DYNAMIC, "player_dynamic", false,
 		func(cb: Callable):
-			ApiManager.send_request(self , base_url, "/players/" + pid + "/currencies/" + currency_type,
+			ApiManager.send_request(self , base_url, "/player-currencies/" + pid + "/" + currency_type,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 
@@ -129,6 +129,24 @@ func add_player_currency(data: Dictionary, callback: Callable):
 func update_player_currency(pid: String, currency_type: String, data: Dictionary, callback: Callable):
 	ApiManager.send_request(self , base_url, "/players/" + pid + "/currencies/" + currency_type,
 		HTTPClient.METHOD_PUT, data, true,
+		func(response: Dictionary):
+			if response.ok:
+				CacheManager.invalidate("player_dynamic:currencies:" + pid)
+				CacheManager.invalidate("player_dynamic:currencies:" + pid + ":" + currency_type)
+			callback.call(response))
+
+func deduct_player_currency(pid: String, currency_type: String, data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/player-currencies/" + pid + "/" + currency_type + "/deduct",
+		HTTPClient.METHOD_PATCH, data, true,
+		func(response: Dictionary):
+			if response.ok:
+				CacheManager.invalidate("player_dynamic:currencies:" + pid)
+				CacheManager.invalidate("player_dynamic:currencies:" + pid + ":" + currency_type)
+			callback.call(response))
+
+func add_player_currency_amount(pid: String, currency_type: String, data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/player-currencies/" + pid + "/" + currency_type + "/add",
+		HTTPClient.METHOD_PATCH, data, true,
 		func(response: Dictionary):
 			if response.ok:
 				CacheManager.invalidate("player_dynamic:currencies:" + pid)
