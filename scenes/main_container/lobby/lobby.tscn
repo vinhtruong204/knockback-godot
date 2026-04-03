@@ -35,9 +35,12 @@
 [ext_resource type="PackedScene" uid="uid://crq6tmfroxjug" path="res://scenes/main_container/lobby/shop/shop_character_item.tscn" id="25_8dsj6"]
 [ext_resource type="PackedScene" uid="uid://fppac6rwmf2l" path="res://scenes/main_container/lobby/wheel/wheel_item.tscn" id="26_hmpgm"]
 [ext_resource type="Script" uid="uid://dubuyiby8y7n7" path="res://scripts/main_container/lobby/overlay_panel/wheel/wheel_ui_manager.gd" id="27_y3tir"]
-[ext_resource type="Script" uid="uid://dv6xnleoixny1" path="res://scripts/main_container/lobby/overlay_panel/shop/daily_discount/daily_discount.gd" id="30_pmtkq"]
+[ext_resource type="Script" uid="uid://dv6xnleoixny1" path="res://scripts/main_container/lobby/overlay_panel/shop/daily_discount/shop_daily_discount.gd" id="30_pmtkq"]
+[ext_resource type="Script" uid="uid://o4hv8up8hnac" path="res://scripts/main_container/lobby/overlay_panel/shop/weapon/shop_weapon.gd" id="32_7ftkg"]
+[ext_resource type="Script" uid="uid://ch4f878ym0qrx" path="res://scripts/main_container/lobby/overlay_panel/shop/item/shop_items.gd" id="34_v5bt6"]
 [ext_resource type="Script" uid="uid://cgng515gvynwx" path="res://scripts/main_container/lobby/top_overlay/settings/settings_controller.gd" id="35_hur8o"]
 [ext_resource type="Script" uid="uid://bq3545jnijnhj" path="res://scripts/main_container/lobby/top_overlay/purchase/purchase_controller.gd" id="35_rjdw1"]
+[ext_resource type="Script" uid="uid://c2j2x71erxptf" path="res://scripts/main_container/lobby/overlay_panel/shop/character/shop_character.gd" id="35_v5bt6"]
 [ext_resource type="Script" uid="uid://cfabbtqvvrtxm" path="res://scripts/main_container/lobby/overlay_panel/task/task_panel.gd" id="36_4ossl"]
 [ext_resource type="PackedScene" uid="uid://dbyop0ht6j7ps" path="res://scenes/main_container/lobby/task/task_item.tscn" id="37_7xsny"]
 
@@ -1047,7 +1050,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Equipment" type="Panel" parent="Root/OverlayContainer" unique_id=230209453]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2280,65 +2282,54 @@ theme_override_constants/v_separation = 0
 columns = 4
 
 [node name="Weapon" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1467739191]
+visible = false
+custom_minimum_size = Vector2(750, 309)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -419.5
+offset_top = -154.5
+offset_right = 419.5
+offset_bottom = 154.5
 grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("32_7ftkg")
+shop_weapon_item = ExtResource("23_mmps8")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon" unique_id=735047051]
+custom_minimum_size = Vector2(704, 309)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -704.0
+offset_top = -154.5
+offset_bottom = 154.5
+grow_horizontal = 0
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon" unique_id=568888700]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -347.5
-offset_top = -100.0
-offset_right = 356.5
-offset_bottom = 94.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/ScrollContainer" unique_id=1242920430]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/ScrollContainer/VBoxContainer" unique_id=568888700]
+layout_mode = 2
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 30
 columns = 4
-
-[node name="Control" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=925476186 instance=ExtResource("23_mmps8")]
-layout_mode = 2
-
-[node name="Control2" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=370140062 instance=ExtResource("23_mmps8")]
-layout_mode = 2
-
-[node name="Control3" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=1296620569 instance=ExtResource("23_mmps8")]
-layout_mode = 2
-
-[node name="Control4" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=2142517145 instance=ExtResource("23_mmps8")]
-layout_mode = 2
-
-[node name="Control5" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=1030616022 instance=ExtResource("23_mmps8")]
-layout_mode = 2
-
-[node name="Control6" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=1239928027 instance=ExtResource("23_mmps8")]
-layout_mode = 2
-
-[node name="Control7" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=1958833481 instance=ExtResource("23_mmps8")]
-layout_mode = 2
-
-[node name="Control8" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=689896400 instance=ExtResource("23_mmps8")]
-layout_mode = 2
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon" unique_id=1724814995]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -487.5
-offset_top = -66.5
-offset_right = -398.5
-offset_bottom = 86.5
+offset_top = -76.5
+offset_right = 89.0
+offset_bottom = 76.5
 grow_vertical = 2
 theme_override_constants/separation = 30
 alignment = 1
@@ -2356,7 +2347,7 @@ layout_mode = 2
 text = "Melee"
 
 [node name="Item" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1800100722]
-visible = false
+custom_minimum_size = Vector2(750, 309)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2364,150 +2355,93 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("34_v5bt6")
+shop_item = ExtResource("24_5xf5k")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Item" unique_id=837788115]
+custom_minimum_size = Vector2(704, 309)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -704.0
+offset_top = -154.5
+offset_bottom = 154.5
+grow_horizontal = 0
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Item" unique_id=887390195]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -347.5
-offset_top = -100.0
-offset_right = 356.5
-offset_bottom = 94.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/ScrollContainer" unique_id=527697195]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/ScrollContainer/VBoxContainer" unique_id=2000167428]
+layout_mode = 2
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 30
 columns = 4
-
-[node name="Control" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=62550013 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="Control2" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=1417282567 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="Control3" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=281864766 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="Control4" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=2047159497 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="Control5" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=61097603 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="Control6" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=2081239720 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="Control7" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=1946017984 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="Control8" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=1983361442 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Item" unique_id=155076426]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = -475.5
-offset_top = -15.5
-offset_right = -430.5
-offset_bottom = 15.5
-grow_vertical = 2
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="Button" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/VBoxContainer" unique_id=1200524538]
-layout_mode = 2
-text = "Type"
-
-[node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/VBoxContainer" unique_id=1089931642]
-layout_mode = 2
-text = "Type"
-
-[node name="Button2" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/VBoxContainer" unique_id=488470593]
-layout_mode = 2
-text = "Type"
-
-[node name="Button4" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/VBoxContainer" unique_id=1229591335]
-layout_mode = 2
-text = "Type"
-
-[node name="Button3" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/VBoxContainer" unique_id=1883032084]
-layout_mode = 2
-text = "Type"
 
 [node name="Character" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=587488887]
 visible = false
+custom_minimum_size = Vector2(750, 309)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -400.25
+offset_top = -154.5
+offset_right = 400.25
+offset_bottom = 154.5
 grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("35_v5bt6")
+shop_character_item = ExtResource("25_8dsj6")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Character" unique_id=687586426]
+custom_minimum_size = Vector2(704, 309)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -704.0
+offset_top = -154.5
+offset_bottom = 154.5
+grow_horizontal = 0
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Character" unique_id=1306279992]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -347.5
-offset_top = -100.0
-offset_right = 356.5
-offset_bottom = 94.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/ScrollContainer" unique_id=776840274]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/ScrollContainer/VBoxContainer" unique_id=127842546]
+layout_mode = 2
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 30
 columns = 4
 
-[node name="Control" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=1885284530 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
-[node name="Control2" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=745807808 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
-[node name="Control3" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=1748972806 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
-[node name="Control4" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=1268608115 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
-[node name="Control5" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=2090244273 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
-[node name="Control6" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=435988216 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
-[node name="Control7" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=1126340143 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
-[node name="Control8" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=165746583 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Character" unique_id=1432919524]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = -475.5
-offset_top = -15.5
-offset_right = -430.5
-offset_bottom = 15.5
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -36.0
+offset_right = 45.0
+offset_bottom = 36.0
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Button" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/VBoxContainer" unique_id=43963247]
+custom_minimum_size = Vector2(70, 40)
 layout_mode = 2
 text = "Type"
 
 [node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/VBoxContainer" unique_id=1694142764]
+custom_minimum_size = Vector2(70, 40)
 layout_mode = 2
 text = "Type"
 

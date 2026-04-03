@@ -4,6 +4,7 @@ class_name Enums
 class ItemType:
 	const WEAPON := "weapon"
 	const CHARACTER := "character"
+	const ITEM := "item"
 
 
 class CurrencyType:
