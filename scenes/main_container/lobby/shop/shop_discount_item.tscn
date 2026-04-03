@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://ddil1hqxl3u0d"]
 
+[ext_resource type="Script" uid="uid://cgfvl7m8tve14" path="res://scripts/main_container/lobby/overlay_panel/shop/daily_discount/daily_discount_item.gd" id="1_bby0t"]
 [ext_resource type="Texture2D" uid="uid://coeuiave5xvqf" path="res://assets/lobby/bottom_bar/gun.png" id="1_vddeu"]
 [ext_resource type="Texture2D" uid="uid://6erg825vauqi" path="res://assets/lobby/top_bar/currency/gold.png" id="2_oa2er"]
 
-[node name="Control" type="Control" unique_id=2018053991]
+[node name="ShopDiscountItem" type="Control" unique_id=2018053991]
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_bby0t")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1963058168]
+[node name="ItemTexture" type="TextureRect" parent="." unique_id=1963058168]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -20,7 +22,7 @@ grow_horizontal = 2
 texture = ExtResource("1_vddeu")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="." unique_id=2127766089]
+[node name="BuyBtn" type="Button" parent="." unique_id=2127766089]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -34,7 +36,7 @@ icon = ExtResource("2_oa2er")
 icon_alignment = 2
 expand_icon = true
 
-[node name="Label" type="Label" parent="Button" unique_id=468378416]
+[node name="Discount" type="Label" parent="BuyBtn" unique_id=468378416]
 layout_mode = 0
 offset_left = 122.0
 offset_top = -18.0

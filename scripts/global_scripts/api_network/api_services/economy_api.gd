@@ -18,7 +18,7 @@ func get_shop_items(callback: Callable, item_type := "", currency_type := "", is
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_SEMI, "economy", false,
 		func(cb: Callable):
-			ApiManager.send_request(self, base_url, "/shop-items" + query,
+			ApiManager.send_request(self , base_url, "/shops/" + query,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 
@@ -28,6 +28,6 @@ func get_shop_item(shop_id: int, callback: Callable, force_refresh := false):
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_SEMI, "economy", false,
 		func(cb: Callable):
-			ApiManager.send_request(self, base_url, "/shop-items/%d" % shop_id,
+			ApiManager.send_request(self , base_url, "/shops/%d" % shop_id,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)

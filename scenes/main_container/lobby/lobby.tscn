@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://crq6tmfroxjug" path="res://scenes/main_container/lobby/shop/shop_character_item.tscn" id="25_8dsj6"]
 [ext_resource type="PackedScene" uid="uid://fppac6rwmf2l" path="res://scenes/main_container/lobby/wheel/wheel_item.tscn" id="26_hmpgm"]
 [ext_resource type="Script" uid="uid://dubuyiby8y7n7" path="res://scripts/main_container/lobby/overlay_panel/wheel/wheel_ui_manager.gd" id="27_y3tir"]
+[ext_resource type="Script" uid="uid://dv6xnleoixny1" path="res://scripts/main_container/lobby/overlay_panel/shop/daily_discount/daily_discount.gd" id="30_pmtkq"]
 [ext_resource type="Script" uid="uid://cgng515gvynwx" path="res://scripts/main_container/lobby/top_overlay/settings/settings_controller.gd" id="35_hur8o"]
 [ext_resource type="Script" uid="uid://bq3545jnijnhj" path="res://scripts/main_container/lobby/top_overlay/purchase/purchase_controller.gd" id="35_rjdw1"]
 [ext_resource type="Script" uid="uid://cfabbtqvvrtxm" path="res://scripts/main_container/lobby/overlay_panel/task/task_panel.gd" id="36_4ossl"]
@@ -2032,7 +2033,6 @@ text = "Confirm"
 expand_icon = true
 
 [node name="Shop" type="Panel" parent="Root/OverlayContainer" unique_id=271100709]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2099,6 +2099,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Recommend" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=850079412]
+visible = false
+custom_minimum_size = Vector2(791, 309)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2244,14 +2246,21 @@ expand_icon = true
 
 [node name="Daily Discount" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1884015232]
 visible = false
+custom_minimum_size = Vector2(750, 309)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -154.5
+offset_right = 375.0
+offset_bottom = 154.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("30_pmtkq")
+shop_discount_item = ExtResource("22_nv17j")
 
 [node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount" unique_id=1791656908]
 layout_mode = 1
@@ -2260,42 +2269,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -347.5
-offset_top = -100.0
-offset_right = 356.5
-offset_bottom = 94.0
+offset_left = -355.0
+offset_top = -140.0
+offset_right = 355.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 0
 columns = 4
 
-[node name="Control" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=2018053991 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
-[node name="Control2" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=1284283082 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
-[node name="Control3" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=7993706 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
-[node name="Control4" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=15023937 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
-[node name="Control5" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=1048448705 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
-[node name="Control6" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=594069224 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
-[node name="Control7" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=205584706 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
-[node name="Control8" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=1355310001 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
 [node name="Weapon" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1467739191]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2346,48 +2330,16 @@ layout_mode = 2
 [node name="Control8" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=689896400 instance=ExtResource("23_mmps8")]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon" unique_id=806058477]
+[node name="HBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon" unique_id=1724814995]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = -475.5
-offset_top = -15.5
-offset_right = -430.5
-offset_bottom = 15.5
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -487.5
+offset_top = -66.5
+offset_right = -398.5
+offset_bottom = 86.5
 grow_vertical = 2
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="Button" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/VBoxContainer" unique_id=1100579353]
-layout_mode = 2
-text = "Type"
-
-[node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/VBoxContainer" unique_id=756387129]
-layout_mode = 2
-text = "Type"
-
-[node name="Button2" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/VBoxContainer" unique_id=2021297634]
-layout_mode = 2
-text = "Type"
-
-[node name="Button4" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/VBoxContainer" unique_id=261818469]
-layout_mode = 2
-text = "Type"
-
-[node name="Button3" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/VBoxContainer" unique_id=1387921382]
-layout_mode = 2
-text = "Type"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon" unique_id=754243374]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -137.0
-offset_top = -183.0
-offset_right = 137.0
-offset_bottom = -139.0
-grow_horizontal = 2
 theme_override_constants/separation = 30
 alignment = 1
 
