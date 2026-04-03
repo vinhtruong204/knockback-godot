@@ -1,9 +1,9 @@
 class_name WheelUIManager extends Panel
 
 func _open_gold_wheel():
-	$Control/WheelContainer/GoldWheel.visible = true
-	$Control/WheelContainer/DiamondWheel.visible = false
+	$Control/WheelContainer/GoldWheel.show()
+	$Control/WheelContainer/DiamondWheel.hide()
 
 func _open_diamond_wheel():
-	$Control/WheelContainer/DiamondWheel.visible = true
-	$Control/WheelContainer/GoldWheel.visible = false
+	$Control/WheelContainer/DiamondWheel.show()
+	$Control/WheelContainer/GoldWheel.hide()

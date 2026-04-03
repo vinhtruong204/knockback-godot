@@ -1,0 +1,141 @@
+{
+  "daily": [
+	{
+	  "id": "daily_kill",
+	  "name": "Eliminate Enemies",
+	  "type": "kill",
+	  "target": 10,
+	  "reward_amount": 100,
+	  "currency_type": "gold",
+	  "status": 0
+	},
+	{
+	  "id": "daily_damage",
+	  "name": "Deal Damage",
+	  "type": "damage",
+	  "target": 2000,
+	  "reward_amount": 10,
+	  "currency_type": "diamond",
+	  "status": 0
+	},
+	{
+	  "id": "daily_gold",
+	  "name": "Collect Gold",
+	  "type": "earn_gold",
+	  "target": 500,
+	  "reward_amount": 5,
+	  "currency_type": "diamond",
+	  "status": 0
+	},
+	{
+	  "id": "daily_play",
+	  "name": "Play Matches",
+	  "type": "play_match",
+	  "target": 3,
+	  "reward_amount": 50,
+	  "currency_type": "gold",
+	  "status": 0
+	},
+	{
+	  "id": "daily_win",
+	  "name": "Win a Match",
+	  "type": "win_match",
+	  "target": 1,
+	  "reward_amount": 100,
+	  "currency_type": "gold",
+	  "status": 0
+	}
+  ],
+  "weekly": [
+	{
+	  "id": "weekly_win",
+	  "name": "Win Matches",
+	  "type": "win_match",
+	  "target": 10,
+	  "reward_amount": 500,
+	  "currency_type": "gold",
+	  "status": 0
+	},
+	{
+	  "id": "weekly_kill",
+	  "name": "Kill Enemies",
+	  "type": "kill",
+	  "target": 50,
+	  "reward_amount": 2500,
+	  "currency_type": "gold",
+	  "status": 0
+	},
+	{
+	  "id": "weekly_damage",
+	  "name": "Deal Massive Damage",
+	  "type": "damage",
+	  "target": 10000,
+	  "reward_amount": 50,
+	  "currency_type": "diamond",
+	  "status": 0
+	},
+	{
+	  "id": "weekly_earn_gold",
+	  "name": "Gold Miner",
+	  "type": "earn_gold",
+	  "target": 5000,
+	  "reward_amount": 100,
+	  "currency_type": "diamond",
+	  "status": 0
+	},
+	{
+	  "id": "weekly_play_matches",
+	  "name": "Match Marathon",
+	  "type": "play_match",
+	  "target": 20,
+	  "reward_amount": 1000,
+	  "currency_type": "gold",
+	  "status": 0
+	},
+	{
+	  "id": "weekly_headshot",
+	  "name": "Sharpshooter",
+	  "type": "kill_headshot",
+	  "target": 25,
+	  "reward_amount": 30,
+	  "currency_type": "diamond",
+	  "status": 0
+	},
+	{
+	  "id": "weekly_survive",
+	  "name": "Survivor",
+	  "type": "survive_time",
+	  "target": 3600,
+	  "reward_amount": 1500,
+	  "currency_type": "gold",
+	  "status": 0
+	},
+	{
+	  "id": "weekly_triple_kill",
+	  "name": "Triple Threat",
+	  "type": "triple_kill",
+	  "target": 5,
+	  "reward_amount": 50,
+	  "currency_type": "diamond",
+	  "status": 0
+	},
+	{
+	  "id": "weekly_knockback",
+	  "name": "Long Distance Knock",
+	  "type": "knockback_dist",
+	  "target": 1000,
+	  "reward_amount": 800,
+	  "currency_type": "gold",
+	  "status": 0
+	},
+	{
+	  "id": "weekly_perfect_win",
+	  "name": "Flawless Victory",
+	  "type": "perfect_win",
+	  "target": 3,
+	  "reward_amount": 100,
+	  "currency_type": "diamond",
+	  "status": 0
+	}
+  ]
+}

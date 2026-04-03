@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://crq6tmfroxjug"]
 
 [ext_resource type="Texture2D" uid="uid://b4ib7m3oh0bqc" path="res://assets/lobby/top_bar/player_profile/avatar_1.png" id="1_0mh1g"]
-[ext_resource type="Texture2D" uid="uid://6erg825vauqi" path="res://assets/lobby/top_bar/currency/game-coin.png" id="2_pqmot"]
+[ext_resource type="Texture2D" uid="uid://6erg825vauqi" path="res://assets/lobby/top_bar/currency/gold.png" id="2_pqmot"]
 
 [node name="Control" type="Control" unique_id=2018053991]
 custom_minimum_size = Vector2(100, 100)
