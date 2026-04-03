@@ -4,16 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://bt4436voa0kvl" path="res://assets/lobby/lobby_bg.png" id="1_psu8p"]
 [ext_resource type="Texture2D" uid="uid://dyjtvlq4xa4dc" path="res://assets/lobby/top_bar/player_profile/player_profile_bg.png" id="2_psu8p"]
 [ext_resource type="Texture2D" uid="uid://6erg825vauqi" path="res://assets/lobby/top_bar/currency/game-coin.png" id="4_62jta"]
-[ext_resource type="Script" uid="uid://bs24vnwpb2qoc" path="res://scripts/main_container/lobby/top_bar/player_profile/player_profile_btn.gd" id="4_f82ac"]
+[ext_resource type="Script" uid="uid://bs24vnwpb2qoc" path="res://scripts/main_container/lobby/ui_buttons/top_bar/player_profile/player_profile_btn.gd" id="4_f82ac"]
 [ext_resource type="Texture2D" uid="uid://b4ib7m3oh0bqc" path="res://assets/lobby/top_bar/player_profile/avatar_1.png" id="4_yapo1"]
 [ext_resource type="Texture2D" uid="uid://bu70s8kcb7igl" path="res://assets/lobby/top_bar/currency/diamond.png" id="5_u3wsq"]
-[ext_resource type="Script" uid="uid://ceyogbx00end" path="res://scripts/main_container/lobby/top_bar/currency/currency_container.gd" id="6_5f28n"]
+[ext_resource type="Script" uid="uid://ceyogbx00end" path="res://scripts/main_container/lobby/ui_buttons/top_bar/currency/currency_container.gd" id="6_5f28n"]
 [ext_resource type="Texture2D" uid="uid://ds7nx8256lo5g" path="res://assets/lobby/top_bar/top_right/friend.png" id="6_5ibcn"]
 [ext_resource type="Texture2D" uid="uid://cyef5dnhi63h0" path="res://assets/lobby/top_bar/top_right/mail.png" id="7_hdsot"]
 [ext_resource type="Texture2D" uid="uid://dl36dfjcu1naq" path="res://assets/lobby/top_bar/top_right/settings.png" id="8_cvlo1"]
 [ext_resource type="Texture2D" uid="uid://cxd1mt1hrtcty" path="res://assets/lobby/middle/leaderboard/podium.png" id="9_hdsot"]
 [ext_resource type="Texture2D" uid="uid://cmjudeb8he08g" path="res://assets/lobby/middle/mode_selection/ranking.png" id="9_rmwd2"]
-[ext_resource type="Script" uid="uid://bj633tv1r6en8" path="res://scripts/main_container/lobby/team/team_handle_position.gd" id="10_7huou"]
+[ext_resource type="Script" uid="uid://bj633tv1r6en8" path="res://scripts/main_container/lobby/common/team_handle_position.gd" id="10_7huou"]
 [ext_resource type="Texture2D" uid="uid://blily84q0t8rs" path="res://assets/lobby/middle/mode_selection/marketing.png" id="10_docll"]
 [ext_resource type="Texture2D" uid="uid://d3y4t3u8jp3or" path="res://assets/lobby/middle/mode_selection/lan.png" id="11_hwkks"]
 [ext_resource type="Texture2D" uid="uid://coeuiave5xvqf" path="res://assets/lobby/bottom_bar/gun.png" id="12_1rix5"]
@@ -24,18 +24,18 @@
 [ext_resource type="Texture2D" uid="uid://divp8d6bt1q7s" path="res://assets/lobby/bottom_bar/equipment/rifle.png" id="18_uit80"]
 [ext_resource type="Texture2D" uid="uid://pkh4vcgyq8u1" path="res://assets/lobby/bottom_bar/equipment/water-gun.png" id="19_8vi03"]
 [ext_resource type="Texture2D" uid="uid://6lp2p1pncgxs" path="res://assets/lobby/bottom_bar/equipment/knife.png" id="20_qkvb6"]
-[ext_resource type="Script" uid="uid://0wxgl2n7id6k" path="res://scripts/main_container/lobby/top_bar/player_profile/player_profile_panel.gd" id="21_3nquo"]
+[ext_resource type="Script" uid="uid://0wxgl2n7id6k" path="res://scripts/main_container/lobby/overlay_panel/profile/player_profile_panel.gd" id="21_3nquo"]
 [ext_resource type="Texture2D" uid="uid://cbqjpj6oiapq8" path="res://assets/lobby/bottom_bar/equipment/grenade.png" id="21_qkvb6"]
 [ext_resource type="PackedScene" uid="uid://ddil1hqxl3u0d" path="res://scenes/main_container/lobby/shop/shop_discount_item.tscn" id="22_nv17j"]
-[ext_resource type="Script" uid="uid://byvqrb4x87lhl" path="res://scripts/main_container/lobby/shop/shop_ui_manager.gd" id="23_idp30"]
+[ext_resource type="Script" uid="uid://byvqrb4x87lhl" path="res://scripts/main_container/lobby/overlay_panel/shop/shop_ui_manager.gd" id="23_idp30"]
 [ext_resource type="PackedScene" uid="uid://bcmefd44yuifu" path="res://scenes/main_container/lobby/shop/shop_weapon_item.tscn" id="23_mmps8"]
 [ext_resource type="Script" uid="uid://c0afvvfqkanbr" path="res://scripts/main_container/lobby/fight_btn_handler.gd" id="23_ypnxj"]
 [ext_resource type="PackedScene" uid="uid://f0n6ea4se4q7" path="res://scenes/main_container/lobby/shop/shop_item.tscn" id="24_5xf5k"]
 [ext_resource type="PackedScene" uid="uid://crq6tmfroxjug" path="res://scenes/main_container/lobby/shop/shop_character_item.tscn" id="25_8dsj6"]
 [ext_resource type="PackedScene" uid="uid://fppac6rwmf2l" path="res://scenes/main_container/lobby/wheel/wheel_item.tscn" id="26_hmpgm"]
-[ext_resource type="Script" uid="uid://dubuyiby8y7n7" path="res://scripts/main_container/lobby/wheel/wheel_ui_manager.gd" id="27_y3tir"]
-[ext_resource type="Script" uid="uid://cgng515gvynwx" path="res://scripts/main_container/lobby/settings/settings_controller.gd" id="35_hur8o"]
-[ext_resource type="Script" uid="uid://bq3545jnijnhj" path="res://scripts/main_container/lobby/purchase/purchase_controller.gd" id="35_rjdw1"]
+[ext_resource type="Script" uid="uid://dubuyiby8y7n7" path="res://scripts/main_container/lobby/overlay_panel/wheel/wheel_ui_manager.gd" id="27_y3tir"]
+[ext_resource type="Script" uid="uid://cgng515gvynwx" path="res://scripts/main_container/lobby/top_overlay/settings/settings_controller.gd" id="35_hur8o"]
+[ext_resource type="Script" uid="uid://bq3545jnijnhj" path="res://scripts/main_container/lobby/top_overlay/purchase/purchase_controller.gd" id="35_rjdw1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yapo1"]
 texture = ExtResource("1_psu8p")
@@ -596,6 +596,437 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/ContentContainer/ScrollContainer" unique_id=1518890023]
 layout_mode = 2
+
+[node name="Leaderboard" type="Panel" parent="Root/OverlayContainer" unique_id=1748336464]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+
+[node name="BackBtn" parent="Root/OverlayContainer/Leaderboard" unique_id=310445800 instance=ExtResource("17_1cl6t")]
+layout_mode = 0
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/Leaderboard" unique_id=103081825]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -378.75
+offset_top = -177.5
+offset_right = 378.75
+offset_bottom = 177.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel" unique_id=410703524]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 63.75
+offset_top = -95.0
+offset_right = 141.75
+offset_bottom = 95.0
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="RankBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/VBoxContainer" unique_id=662286677]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Ranking"
+
+[node name="NormalBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/VBoxContainer" unique_id=1890209324]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Normal"
+
+[node name="CollectorBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/VBoxContainer" unique_id=1700520144]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Collector"
+
+[node name="StatsPanel" type="Panel" parent="Root/OverlayContainer/Leaderboard/Panel" unique_id=1661980868]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -585.75
+offset_top = -128.0
+offset_right = -28.75
+offset_bottom = 140.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k63ad")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel" unique_id=1123101147]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Title" type="Control" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer" unique_id=1809322282]
+custom_minimum_size = Vector2(542, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Title" unique_id=719088704]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=1956992574]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=1159703347]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=904228805]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=216309490]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=292833585]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=1844522400]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer" unique_id=2139959935]
+custom_minimum_size = Vector2(542, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control2" unique_id=727610159]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control2/HBoxContainer" unique_id=1187265234]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control2/HBoxContainer" unique_id=1124311098]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control2/HBoxContainer" unique_id=1159245146]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control2/HBoxContainer" unique_id=663197496]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control2/HBoxContainer" unique_id=595853708]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control2/HBoxContainer" unique_id=292772423]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer" unique_id=1643090994]
+custom_minimum_size = Vector2(542, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control3" unique_id=1757901736]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control3/HBoxContainer" unique_id=809995303]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control3/HBoxContainer" unique_id=1591714976]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control3/HBoxContainer" unique_id=1766358521]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control3/HBoxContainer" unique_id=654419928]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control3/HBoxContainer" unique_id=2337811]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control3/HBoxContainer" unique_id=1909308693]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control4" type="Control" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer" unique_id=1959827885]
+custom_minimum_size = Vector2(542, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control4" unique_id=635600035]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control4/HBoxContainer" unique_id=776801588]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control4/HBoxContainer" unique_id=1894476453]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control4/HBoxContainer" unique_id=1063853929]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control4/HBoxContainer" unique_id=2060746125]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control4/HBoxContainer" unique_id=371951542]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control4/HBoxContainer" unique_id=2138452054]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control5" type="Control" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer" unique_id=1735518875]
+custom_minimum_size = Vector2(542, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control5" unique_id=1293946375]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control5/HBoxContainer" unique_id=1547914418]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control5/HBoxContainer" unique_id=385083505]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control5/HBoxContainer" unique_id=2102957152]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control5/HBoxContainer" unique_id=1776581586]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control5/HBoxContainer" unique_id=2079011720]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control5/HBoxContainer" unique_id=1850039690]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control6" type="Control" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer" unique_id=1183876872]
+custom_minimum_size = Vector2(542, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control6" unique_id=1973455776]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control6/HBoxContainer" unique_id=577016256]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control6/HBoxContainer" unique_id=1574494836]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control6/HBoxContainer" unique_id=1326784387]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control6/HBoxContainer" unique_id=914280759]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control6/HBoxContainer" unique_id=1411178151]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control6/HBoxContainer" unique_id=1318140316]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control7" type="Control" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer" unique_id=48677472]
+custom_minimum_size = Vector2(542, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control7" unique_id=1692738890]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control7/HBoxContainer" unique_id=1471036574]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control7/HBoxContainer" unique_id=853151781]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control7/HBoxContainer" unique_id=1723132232]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control7/HBoxContainer" unique_id=1730903118]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control7/HBoxContainer" unique_id=864602752]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/VBoxContainer/Control7/HBoxContainer" unique_id=1980404050]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Equipment" type="Panel" parent="Root/OverlayContainer" unique_id=230209453]
 visible = false
@@ -1297,346 +1728,6 @@ offset_top = -31.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Equip"
-
-[node name="Leaderboard" type="Panel" parent="Root/OverlayContainer" unique_id=1748336464]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
-
-[node name="BackBtn" parent="Root/OverlayContainer/Leaderboard" unique_id=310445800 instance=ExtResource("17_1cl6t")]
-layout_mode = 0
-
-[node name="Panel" type="Panel" parent="Root/OverlayContainer/Leaderboard" unique_id=103081825]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -378.75
-offset_top = -177.5
-offset_right = 378.75
-offset_bottom = 177.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel" unique_id=410703524]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 63.75
-offset_top = -95.0
-offset_right = 141.75
-offset_bottom = 95.0
-grow_vertical = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="RankBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/VBoxContainer" unique_id=662286677]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Ranking"
-
-[node name="NormalBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/VBoxContainer" unique_id=1890209324]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Normal"
-
-[node name="CollectorBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/VBoxContainer" unique_id=1700520144]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Collector"
-
-[node name="StatsPanel" type="Panel" parent="Root/OverlayContainer/Leaderboard/Panel" unique_id=1661980868]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -585.75
-offset_top = -128.0
-offset_right = -28.75
-offset_bottom = 140.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_k63ad")
-
-[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel" unique_id=306478134]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -271.0
-offset_top = -110.5
-offset_right = 271.0
-offset_bottom = 110.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/h_separation = 40
-theme_override_constants/v_separation = 10
-columns = 6
-
-[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1956992574]
-layout_mode = 2
-text = "#"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1159703347]
-layout_mode = 2
-text = "Player Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=904228805]
-layout_mode = 2
-text = "Weapons"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=216309490]
-layout_mode = 2
-text = "Items"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=292833585]
-layout_mode = 2
-text = "Character"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1844522400]
-layout_mode = 2
-text = "Total"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label7" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=808597880]
-layout_mode = 2
-text = "#"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label8" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=805568306]
-layout_mode = 2
-text = "Player Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label9" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=294311293]
-layout_mode = 2
-text = "Weapons"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label10" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=2136991198]
-layout_mode = 2
-text = "Items"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label11" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1849080822]
-layout_mode = 2
-text = "Character"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label12" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=2049847448]
-layout_mode = 2
-text = "Total"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label13" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1681013252]
-layout_mode = 2
-text = "#"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label14" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=548776166]
-layout_mode = 2
-text = "Player Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label15" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=762055230]
-layout_mode = 2
-text = "Weapons"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label16" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1467725680]
-layout_mode = 2
-text = "Items"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label17" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=547948313]
-layout_mode = 2
-text = "Character"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label18" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=313549014]
-layout_mode = 2
-text = "Total"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label19" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1431588919]
-layout_mode = 2
-text = "#"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label20" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=219730552]
-layout_mode = 2
-text = "Player Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label21" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=530923296]
-layout_mode = 2
-text = "Weapons"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label22" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=178683400]
-layout_mode = 2
-text = "Items"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label23" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1266601586]
-layout_mode = 2
-text = "Character"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label24" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=2098464874]
-layout_mode = 2
-text = "Total"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label25" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=923114766]
-layout_mode = 2
-text = "#"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label26" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1024904357]
-layout_mode = 2
-text = "Player Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label27" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=213974850]
-layout_mode = 2
-text = "Weapons"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label28" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1570374290]
-layout_mode = 2
-text = "Items"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label29" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1128785934]
-layout_mode = 2
-text = "Character"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label30" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=515445649]
-layout_mode = 2
-text = "Total"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label31" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1253449305]
-layout_mode = 2
-text = "#"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label32" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=686356996]
-layout_mode = 2
-text = "Player Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label33" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=670274539]
-layout_mode = 2
-text = "Weapons"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label34" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1589824115]
-layout_mode = 2
-text = "Items"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label35" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1308981610]
-layout_mode = 2
-text = "Character"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label36" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=278652045]
-layout_mode = 2
-text = "Total"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label37" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1237015294]
-layout_mode = 2
-text = "#"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label38" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=2067573777]
-layout_mode = 2
-text = "Player Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label39" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1540694325]
-layout_mode = 2
-text = "Weapons"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label40" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1260092816]
-layout_mode = 2
-text = "Items"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label41" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=648324386]
-layout_mode = 2
-text = "Character"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label42" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=2003353010]
-layout_mode = 2
-text = "Total"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Ranking" type="Panel" parent="Root/OverlayContainer" unique_id=1253661110]
 visible = false
@@ -2841,18 +2932,19 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
 layout_mode = 0
 
 [node name="Control" type="Control" parent="Root/OverlayContainer/Task" unique_id=1856341206]
-custom_minimum_size = Vector2(821, 401)
+custom_minimum_size = Vector2(821, 350)
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -410.5
-offset_top = -401.0
+offset_top = -148.0
 offset_right = 410.5
+offset_bottom = 202.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Task/Control" unique_id=331551934]
 layout_mode = 1
@@ -3075,6 +3167,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Purchase" type="Panel" parent="Root/TopOverlay" unique_id=623878866]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
