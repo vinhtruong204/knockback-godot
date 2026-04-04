@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dpilcts7v5hc5"]
+
+[ext_resource type="Texture2D" uid="uid://coeuiave5xvqf" path="res://assets/lobby/bottom_bar/gun.png" id="1_dlgd0"]
+[ext_resource type="Script" uid="uid://clmkxuxd1qh2m" path="res://scripts/main_container/lobby/overlay_panel/equipment/equipment_item.gd" id="2_8dbv7"]
+
+[node name="EquipmentItem" type="TextureButton" unique_id=1227239760]
+custom_minimum_size = Vector2(130, 80)
+texture_normal = ExtResource("1_dlgd0")
+texture_pressed = ExtResource("1_dlgd0")
+texture_hover = ExtResource("1_dlgd0")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_8dbv7")
+
+[node name="EquipBtn" type="Button" parent="." unique_id=411208660]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Equip"

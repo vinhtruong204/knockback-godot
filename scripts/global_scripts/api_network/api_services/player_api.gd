@@ -165,6 +165,16 @@ func get_player_inventory(pid: String, callback: Callable, force_refresh := fals
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 
+func get_inventory_by_type(pid: String, item_type: String, callback: Callable, force_refresh := false):
+	var key := "player_dynamic:inventory:" + pid + ":type:" + item_type
+	if force_refresh:
+		CacheManager.invalidate(key)
+	CacheManager.fetch_or_cache(key, CacheManager.TTL_DYNAMIC, "player_dynamic", false,
+		func(cb: Callable):
+			ApiManager.send_request(self , base_url, "/player-inventory/" + pid + "/type/" + item_type,
+				HTTPClient.METHOD_GET, {}, true, cb),
+		callback)
+
 func get_inventory_item(pid: String, item_id: String, item_type: String, callback: Callable):
 	ApiManager.send_request(self , base_url, "/players/" + pid + "/inventory/" + item_id + "?item_type=" + item_type,
 		HTTPClient.METHOD_GET, {}, true, callback)
@@ -193,7 +203,7 @@ func get_player_equipment(pid: String, callback: Callable, force_refresh := fals
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_DYNAMIC, "player_dynamic", false,
 		func(cb: Callable):
-			ApiManager.send_request(self , base_url, "/players/" + pid + "/equipment",
+			ApiManager.send_request(self , base_url, "/player-equipment?player_id=" + pid,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 
@@ -203,7 +213,7 @@ func get_equipment_slot(pid: String, slot_type: String, callback: Callable, forc
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_DYNAMIC, "player_dynamic", false,
 		func(cb: Callable):
-			ApiManager.send_request(self , base_url, "/players/" + pid + "/equipment/" + slot_type,
+			ApiManager.send_request(self , base_url, "/player-equipment/" + pid + "/" + slot_type,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 
@@ -216,7 +226,7 @@ func equip_item(data: Dictionary, callback: Callable):
 			callback.call(response))
 
 func update_equipment(pid: String, slot_type: String, data: Dictionary, callback: Callable):
-	ApiManager.send_request(self , base_url, "/players/" + pid + "/equipment/" + slot_type,
+	ApiManager.send_request(self , base_url, "/player-equipment/" + pid + "/" + slot_type,
 		HTTPClient.METHOD_PUT, data, true,
 		func(response: Dictionary):
 			if response.ok:
@@ -225,7 +235,7 @@ func update_equipment(pid: String, slot_type: String, data: Dictionary, callback
 			callback.call(response))
 
 func unequip_item(pid: String, slot_type: String, callback: Callable):
-	ApiManager.send_request(self , base_url, "/players/" + pid + "/equipment/" + slot_type,
+	ApiManager.send_request(self , base_url, "/player-equipment/" + pid + "/" + slot_type,
 		HTTPClient.METHOD_DELETE, {}, true,
 		func(response: Dictionary):
 			if response.ok:
@@ -241,12 +251,12 @@ func get_selected_character(pid: String, callback: Callable, force_refresh := fa
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_DYNAMIC, "player_dynamic", false,
 		func(cb: Callable):
-			ApiManager.send_request(self , base_url, "/players/" + pid + "/selected-character",
+			ApiManager.send_request(self , base_url, "/player-selected-characters/" + pid,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 
 func select_character(data: Dictionary, callback: Callable):
-	ApiManager.send_request(self , base_url, "/selected-characters",
+	ApiManager.send_request(self , base_url, "/player-selected-characters",
 		HTTPClient.METHOD_POST, data, true,
 		func(response: Dictionary):
 			if response.ok:
@@ -255,7 +265,7 @@ func select_character(data: Dictionary, callback: Callable):
 			callback.call(response))
 
 func update_selected_character(pid: String, data: Dictionary, callback: Callable):
-	ApiManager.send_request(self , base_url, "/players/" + pid + "/selected-character",
+	ApiManager.send_request(self , base_url, "/player-selected-characters/" + pid,
 		HTTPClient.METHOD_PUT, data, true,
 		func(response: Dictionary):
 			if response.ok:
