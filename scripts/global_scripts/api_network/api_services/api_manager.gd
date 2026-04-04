@@ -51,19 +51,26 @@ func send_request(caller: Node, base_url: String, path: String, method: HTTPClie
 			return
 
 		var ok := response_code >= 200 and response_code < 300
-		var body_text := response_body.get_string_from_utf8()
+		var body_text := response_body.get_string_from_utf8().strip_edges()
 
-		if ok and body_text.strip_edges() == "":
-			response = {"ok": true, "status": response_code, "data": null, "error": ""}
+		if body_text == "":
+			if ok:
+				response = {"ok": true, "status": response_code, "data": null, "error": ""}
+			else:
+				response = {"ok": false, "status": response_code, "data": null, "error": "HTTP " + str(response_code)}
 			callback.call(response)
 			return
 
-		var json = JSON.parse_string(body_text)
-		if json == null:
-			response = {"ok": false, "status": response_code, "data": null, "error": "Invalid server response"}
+		var json_parser := JSON.new()
+		var parse_error := json_parser.parse(body_text)
+		if parse_error != OK:
+			var err_msg := "JSON parse error (line %d): %s" % [json_parser.get_error_line(), json_parser.get_error_message()]
+			push_warning("ApiManager: %s | Body: %s" % [err_msg, body_text.left(200)])
+			response = {"ok": false, "status": response_code, "data": null, "error": err_msg}
 			callback.call(response)
 			return
 
+		var json = json_parser.data
 		if ok:
 			response = {"ok": true, "status": response_code, "data": json, "error": ""}
 		else:

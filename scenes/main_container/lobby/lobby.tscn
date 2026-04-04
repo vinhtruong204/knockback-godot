@@ -3,17 +3,17 @@
 [ext_resource type="Script" uid="uid://c0qtlwkfwu03n" path="res://scripts/main_container/lobby/lobby_ui_manager.gd" id="1_1cl6t"]
 [ext_resource type="Texture2D" uid="uid://bt4436voa0kvl" path="res://assets/lobby/lobby_bg.png" id="1_psu8p"]
 [ext_resource type="Texture2D" uid="uid://dyjtvlq4xa4dc" path="res://assets/lobby/top_bar/player_profile/player_profile_bg.png" id="2_psu8p"]
-[ext_resource type="Texture2D" uid="uid://6erg825vauqi" path="res://assets/lobby/top_bar/currency/game-coin.png" id="4_62jta"]
-[ext_resource type="Script" uid="uid://bs24vnwpb2qoc" path="res://scripts/main_container/lobby/top_bar/player_profile/player_profile_btn.gd" id="4_f82ac"]
+[ext_resource type="Texture2D" uid="uid://6erg825vauqi" path="res://assets/lobby/top_bar/currency/gold.png" id="4_62jta"]
+[ext_resource type="Script" uid="uid://bs24vnwpb2qoc" path="res://scripts/main_container/lobby/ui_buttons/top_bar/player_profile/player_profile_btn.gd" id="4_f82ac"]
 [ext_resource type="Texture2D" uid="uid://b4ib7m3oh0bqc" path="res://assets/lobby/top_bar/player_profile/avatar_1.png" id="4_yapo1"]
 [ext_resource type="Texture2D" uid="uid://bu70s8kcb7igl" path="res://assets/lobby/top_bar/currency/diamond.png" id="5_u3wsq"]
-[ext_resource type="Script" uid="uid://ceyogbx00end" path="res://scripts/main_container/lobby/top_bar/currency/currency_container.gd" id="6_5f28n"]
+[ext_resource type="Script" uid="uid://ceyogbx00end" path="res://scripts/main_container/lobby/ui_buttons/top_bar/currency/currency_container.gd" id="6_5f28n"]
 [ext_resource type="Texture2D" uid="uid://ds7nx8256lo5g" path="res://assets/lobby/top_bar/top_right/friend.png" id="6_5ibcn"]
 [ext_resource type="Texture2D" uid="uid://cyef5dnhi63h0" path="res://assets/lobby/top_bar/top_right/mail.png" id="7_hdsot"]
 [ext_resource type="Texture2D" uid="uid://dl36dfjcu1naq" path="res://assets/lobby/top_bar/top_right/settings.png" id="8_cvlo1"]
 [ext_resource type="Texture2D" uid="uid://cxd1mt1hrtcty" path="res://assets/lobby/middle/leaderboard/podium.png" id="9_hdsot"]
 [ext_resource type="Texture2D" uid="uid://cmjudeb8he08g" path="res://assets/lobby/middle/mode_selection/ranking.png" id="9_rmwd2"]
-[ext_resource type="Script" uid="uid://bj633tv1r6en8" path="res://scripts/main_container/lobby/team/team_handle_position.gd" id="10_7huou"]
+[ext_resource type="Script" uid="uid://bj633tv1r6en8" path="res://scripts/main_container/lobby/common/team_handle_position.gd" id="10_7huou"]
 [ext_resource type="Texture2D" uid="uid://blily84q0t8rs" path="res://assets/lobby/middle/mode_selection/marketing.png" id="10_docll"]
 [ext_resource type="Texture2D" uid="uid://d3y4t3u8jp3or" path="res://assets/lobby/middle/mode_selection/lan.png" id="11_hwkks"]
 [ext_resource type="Texture2D" uid="uid://coeuiave5xvqf" path="res://assets/lobby/bottom_bar/gun.png" id="12_1rix5"]
@@ -24,18 +24,36 @@
 [ext_resource type="Texture2D" uid="uid://divp8d6bt1q7s" path="res://assets/lobby/bottom_bar/equipment/rifle.png" id="18_uit80"]
 [ext_resource type="Texture2D" uid="uid://pkh4vcgyq8u1" path="res://assets/lobby/bottom_bar/equipment/water-gun.png" id="19_8vi03"]
 [ext_resource type="Texture2D" uid="uid://6lp2p1pncgxs" path="res://assets/lobby/bottom_bar/equipment/knife.png" id="20_qkvb6"]
-[ext_resource type="Script" uid="uid://0wxgl2n7id6k" path="res://scripts/main_container/lobby/top_bar/player_profile/player_profile_panel.gd" id="21_3nquo"]
+[ext_resource type="Script" uid="uid://0wxgl2n7id6k" path="res://scripts/main_container/lobby/overlay_panel/profile/player_profile_panel.gd" id="21_3nquo"]
 [ext_resource type="Texture2D" uid="uid://cbqjpj6oiapq8" path="res://assets/lobby/bottom_bar/equipment/grenade.png" id="21_qkvb6"]
 [ext_resource type="PackedScene" uid="uid://ddil1hqxl3u0d" path="res://scenes/main_container/lobby/shop/shop_discount_item.tscn" id="22_nv17j"]
-[ext_resource type="Script" uid="uid://byvqrb4x87lhl" path="res://scripts/main_container/lobby/shop/shop_ui_manager.gd" id="23_idp30"]
+[ext_resource type="Script" uid="uid://8i8mck3xo6h8" path="res://scripts/main_container/lobby/overlay_panel/leaderboard/leaderboard_panel.gd" id="23_3d233"]
+[ext_resource type="Script" uid="uid://byvqrb4x87lhl" path="res://scripts/main_container/lobby/overlay_panel/shop/shop_ui_manager.gd" id="23_idp30"]
 [ext_resource type="PackedScene" uid="uid://bcmefd44yuifu" path="res://scenes/main_container/lobby/shop/shop_weapon_item.tscn" id="23_mmps8"]
 [ext_resource type="Script" uid="uid://c0afvvfqkanbr" path="res://scripts/main_container/lobby/fight_btn_handler.gd" id="23_ypnxj"]
 [ext_resource type="PackedScene" uid="uid://f0n6ea4se4q7" path="res://scenes/main_container/lobby/shop/shop_item.tscn" id="24_5xf5k"]
+[ext_resource type="Script" uid="uid://5sabrdqhx4wv" path="res://scripts/main_container/lobby/overlay_panel/equipment/equipment_panel.gd" id="24_ot44e"]
 [ext_resource type="PackedScene" uid="uid://crq6tmfroxjug" path="res://scenes/main_container/lobby/shop/shop_character_item.tscn" id="25_8dsj6"]
 [ext_resource type="PackedScene" uid="uid://fppac6rwmf2l" path="res://scenes/main_container/lobby/wheel/wheel_item.tscn" id="26_hmpgm"]
-[ext_resource type="Script" uid="uid://dubuyiby8y7n7" path="res://scripts/main_container/lobby/wheel/wheel_ui_manager.gd" id="27_y3tir"]
-[ext_resource type="Script" uid="uid://cgng515gvynwx" path="res://scripts/main_container/lobby/settings/settings_controller.gd" id="35_hur8o"]
-[ext_resource type="Script" uid="uid://bq3545jnijnhj" path="res://scripts/main_container/lobby/purchase/purchase_controller.gd" id="35_rjdw1"]
+[ext_resource type="Script" uid="uid://dubuyiby8y7n7" path="res://scripts/main_container/lobby/overlay_panel/wheel/wheel_ui_manager.gd" id="27_y3tir"]
+[ext_resource type="PackedScene" uid="uid://dpilcts7v5hc5" path="res://scenes/main_container/lobby/equipment/equipment_item.tscn" id="29_k67qq"]
+[ext_resource type="Script" uid="uid://dv6xnleoixny1" path="res://scripts/main_container/lobby/overlay_panel/shop/daily_discount/shop_daily_discount.gd" id="30_pmtkq"]
+[ext_resource type="Script" uid="uid://xp0ftjlsl4mn" path="res://scripts/main_container/lobby/overlay_panel/normal/normal_panel_controller.gd" id="31_6beg1"]
+[ext_resource type="Script" uid="uid://17j41rgitc2" path="res://scripts/main_container/lobby/overlay_panel/lan/lan_panel.gd" id="31_gx6q1"]
+[ext_resource type="Texture2D" uid="uid://1dudpk5w1nx0" path="res://assets/lobby/middle/normal_config/game_mode_icon.png" id="32_1qp4n"]
+[ext_resource type="Script" uid="uid://o4hv8up8hnac" path="res://scripts/main_container/lobby/overlay_panel/shop/weapon/shop_weapon.gd" id="32_7ftkg"]
+[ext_resource type="Texture2D" uid="uid://bxfke4t50iift" path="res://assets/lobby/middle/normal_config/map_icon.png" id="33_cyr2y"]
+[ext_resource type="Texture2D" uid="uid://dh7kjthvb5822" path="res://assets/loading/loading_bg.jpg" id="34_2ieah"]
+[ext_resource type="Texture2D" uid="uid://bnf4q6tmsl55t" path="res://assets/game/map/night.jpg" id="34_cfui6"]
+[ext_resource type="Texture2D" uid="uid://cbbunphpr4sxr" path="res://assets/lobby/middle/normal_config/team_size_icon.png" id="34_iyufi"]
+[ext_resource type="Script" uid="uid://ch4f878ym0qrx" path="res://scripts/main_container/lobby/overlay_panel/shop/item/shop_items.gd" id="34_v5bt6"]
+[ext_resource type="Texture2D" uid="uid://cjqplnu85ued8" path="res://assets/game/map/ice.jpg" id="35_cfui6"]
+[ext_resource type="Script" uid="uid://cgng515gvynwx" path="res://scripts/main_container/lobby/top_overlay/settings/settings_controller.gd" id="35_hur8o"]
+[ext_resource type="Script" uid="uid://bq3545jnijnhj" path="res://scripts/main_container/lobby/top_overlay/purchase/purchase_controller.gd" id="35_rjdw1"]
+[ext_resource type="Script" uid="uid://c2j2x71erxptf" path="res://scripts/main_container/lobby/overlay_panel/shop/character/shop_character.gd" id="35_v5bt6"]
+[ext_resource type="Script" uid="uid://cfabbtqvvrtxm" path="res://scripts/main_container/lobby/overlay_panel/task/task_panel.gd" id="36_4ossl"]
+[ext_resource type="Texture2D" uid="uid://cdhsgl8xpjwio" path="res://assets/game/map/dust.jpg" id="36_d4exx"]
+[ext_resource type="PackedScene" uid="uid://dbyop0ht6j7ps" path="res://scenes/main_container/lobby/task/task_item.tscn" id="37_7xsny"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yapo1"]
 texture = ExtResource("1_psu8p")
@@ -243,13 +261,17 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Root/UIButtons/Middle" unique_id=312975416]
+custom_minimum_size = Vector2(294, 257)
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -349.0
-offset_right = -55.0
+anchor_bottom = 0.5
+offset_left = -318.0
+offset_top = -123.5
+offset_right = -14.0
+offset_bottom = 133.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
@@ -257,6 +279,7 @@ alignment = 1
 
 [node name="Team1Btn" type="Button" parent="Root/UIButtons/Middle/HBoxContainer" unique_id=1223609360]
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 35
 text = "Team1"
 icon = ExtResource("4_yapo1")
@@ -597,6 +620,451 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/ContentContainer/ScrollContainer" unique_id=1518890023]
 layout_mode = 2
 
+[node name="Leaderboard" type="Panel" parent="Root/OverlayContainer" unique_id=1748336464]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+script = ExtResource("23_3d233")
+
+[node name="BackBtn" parent="Root/OverlayContainer/Leaderboard" unique_id=310445800 instance=ExtResource("17_1cl6t")]
+layout_mode = 0
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/Leaderboard" unique_id=103081825]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -378.75
+offset_top = -177.5
+offset_right = 378.75
+offset_bottom = 177.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Root/OverlayContainer/Leaderboard/Panel" unique_id=1378161827]
+custom_minimum_size = Vector2(686.75, 315.5)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -343.375
+offset_top = -157.75
+offset_right = 343.375
+offset_bottom = 157.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/Control" unique_id=410703524]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -95.0
+offset_right = 78.0
+offset_bottom = 95.0
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="RankBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/Control/VBoxContainer" unique_id=662286677]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Ranking"
+
+[node name="NormalBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/Control/VBoxContainer" unique_id=1890209324]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Normal"
+
+[node name="CollectorBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/Control/VBoxContainer" unique_id=1700520144]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Collector"
+
+[node name="StatsPanel" type="Panel" parent="Root/OverlayContainer/Leaderboard/Panel/Control" unique_id=1661980868]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -557.0
+offset_top = -134.0
+offset_bottom = 134.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k63ad")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel" unique_id=1123101147]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Title" type="Control" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer" unique_id=1809322282]
+custom_minimum_size = Vector2(542, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Title" unique_id=719088704]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=1956992574]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=1159703347]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=904228805]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=216309490]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=292833585]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=1844522400]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item1" type="Control" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer" unique_id=2139959935]
+custom_minimum_size = Vector2(542, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item1" unique_id=727610159]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item1/HBoxContainer" unique_id=1187265234]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item1/HBoxContainer" unique_id=1124311098]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item1/HBoxContainer" unique_id=1159245146]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item1/HBoxContainer" unique_id=663197496]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item1/HBoxContainer" unique_id=595853708]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item1/HBoxContainer" unique_id=292772423]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item2" type="Control" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer" unique_id=1643090994]
+custom_minimum_size = Vector2(542, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item2" unique_id=1757901736]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item2/HBoxContainer" unique_id=809995303]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item2/HBoxContainer" unique_id=1591714976]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item2/HBoxContainer" unique_id=1766358521]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item2/HBoxContainer" unique_id=654419928]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item2/HBoxContainer" unique_id=2337811]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item2/HBoxContainer" unique_id=1909308693]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item3" type="Control" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer" unique_id=1959827885]
+custom_minimum_size = Vector2(542, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item3" unique_id=635600035]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item3/HBoxContainer" unique_id=776801588]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item3/HBoxContainer" unique_id=1894476453]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item3/HBoxContainer" unique_id=1063853929]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item3/HBoxContainer" unique_id=2060746125]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item3/HBoxContainer" unique_id=371951542]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item3/HBoxContainer" unique_id=2138452054]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item4" type="Control" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer" unique_id=1735518875]
+custom_minimum_size = Vector2(542, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item4" unique_id=1293946375]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item4/HBoxContainer" unique_id=1547914418]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item4/HBoxContainer" unique_id=385083505]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item4/HBoxContainer" unique_id=2102957152]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item4/HBoxContainer" unique_id=1776581586]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item4/HBoxContainer" unique_id=2079011720]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item4/HBoxContainer" unique_id=1850039690]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item5" type="Control" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer" unique_id=1183876872]
+custom_minimum_size = Vector2(542, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item5" unique_id=1973455776]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item5/HBoxContainer" unique_id=577016256]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item5/HBoxContainer" unique_id=1574494836]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item5/HBoxContainer" unique_id=1326784387]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item5/HBoxContainer" unique_id=914280759]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item5/HBoxContainer" unique_id=1411178151]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item5/HBoxContainer" unique_id=1318140316]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item6" type="Control" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer" unique_id=48677472]
+custom_minimum_size = Vector2(542, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item6" unique_id=1692738890]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item6/HBoxContainer" unique_id=1471036574]
+layout_mode = 2
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item6/HBoxContainer" unique_id=853151781]
+layout_mode = 2
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item6/HBoxContainer" unique_id=1723132232]
+layout_mode = 2
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item6/HBoxContainer" unique_id=1730903118]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item6/HBoxContainer" unique_id=864602752]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item6/HBoxContainer" unique_id=1980404050]
+layout_mode = 2
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Equipment" type="Panel" parent="Root/OverlayContainer" unique_id=230209453]
 visible = false
 layout_mode = 1
@@ -607,11 +1075,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+script = ExtResource("24_ot44e")
+equipment_item = ExtResource("29_k67qq")
 
 [node name="BackBtn" parent="Root/OverlayContainer/Equipment" unique_id=259672230 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
 
-[node name="EquipContainer" type="VBoxContainer" parent="Root/OverlayContainer/Equipment" unique_id=2021346106]
+[node name="EquipmentContainer" type="VBoxContainer" parent="Root/OverlayContainer/Equipment" unique_id=2021346106]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -624,11 +1094,11 @@ grow_vertical = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="Primary" type="Panel" parent="Root/OverlayContainer/Equipment/EquipContainer" unique_id=791656390]
+[node name="Primary" type="Panel" parent="Root/OverlayContainer/Equipment/EquipmentContainer" unique_id=791656390]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/EquipContainer/Primary" unique_id=380367785]
+[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/EquipmentContainer/Primary" unique_id=380367785]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -638,11 +1108,11 @@ grow_vertical = 2
 texture = ExtResource("18_uit80")
 expand_mode = 1
 
-[node name="Secondary" type="Panel" parent="Root/OverlayContainer/Equipment/EquipContainer" unique_id=1619396322]
+[node name="Secondary" type="Panel" parent="Root/OverlayContainer/Equipment/EquipmentContainer" unique_id=1619396322]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/EquipContainer/Secondary" unique_id=807046765]
+[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/EquipmentContainer/Secondary" unique_id=807046765]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -652,11 +1122,11 @@ grow_vertical = 2
 texture = ExtResource("19_8vi03")
 expand_mode = 1
 
-[node name="Melee" type="Panel" parent="Root/OverlayContainer/Equipment/EquipContainer" unique_id=1098461008]
+[node name="Melee" type="Panel" parent="Root/OverlayContainer/Equipment/EquipmentContainer" unique_id=1098461008]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/EquipContainer/Melee" unique_id=1961210661]
+[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/EquipmentContainer/Melee" unique_id=1961210661]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -680,41 +1150,12 @@ offset_bottom = 227.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
-alignment = 1
 
 [node name="Item1" type="Panel" parent="Root/OverlayContainer/Equipment/ItemContainer" unique_id=1627715202]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/ItemContainer/Item1" unique_id=937539617]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("21_qkvb6")
-expand_mode = 1
-
-[node name="Item2" type="Panel" parent="Root/OverlayContainer/Equipment/ItemContainer" unique_id=249128636]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/ItemContainer/Item2" unique_id=801911242]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("21_qkvb6")
-expand_mode = 1
-
-[node name="Item3" type="Panel" parent="Root/OverlayContainer/Equipment/ItemContainer" unique_id=240567897]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/ItemContainer/Item3" unique_id=272871274]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -758,20 +1199,21 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
-[node name="StatsPanel" type="Control" parent="Root/OverlayContainer/Equipment" unique_id=1605780600]
+[node name="SelectControl" type="Control" parent="Root/OverlayContainer/Equipment" unique_id=1605780600]
+custom_minimum_size = Vector2(491, 388)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -508.0
+offset_left = -534.0
 offset_top = -194.0
 offset_bottom = 194.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel" unique_id=1344957682]
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/SelectControl" unique_id=1344957682]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -784,859 +1226,52 @@ grow_horizontal = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="CharacterBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/HBoxContainer" unique_id=1294317994]
-layout_mode = 2
-text = "Character"
-
-[node name="WeaponBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/HBoxContainer" unique_id=821190800]
+[node name="WeaponBtn" type="Button" parent="Root/OverlayContainer/Equipment/SelectControl/HBoxContainer" unique_id=821190800]
+custom_minimum_size = Vector2(70, 40)
 layout_mode = 2
 text = "Weapon"
 
-[node name="ItemBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/HBoxContainer" unique_id=494570790]
+[node name="ItemBtn" type="Button" parent="Root/OverlayContainer/Equipment/SelectControl/HBoxContainer" unique_id=494570790]
+custom_minimum_size = Vector2(70, 40)
 layout_mode = 2
 text = "Item"
 
-[node name="Panel" type="Panel" parent="Root/OverlayContainer/Equipment/StatsPanel" unique_id=1179923222]
+[node name="CharacterBtn" type="Button" parent="Root/OverlayContainer/Equipment/SelectControl/HBoxContainer" unique_id=1294317994]
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 2
+text = "Character"
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/Equipment/SelectControl" unique_id=1179923222]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -266.0
-offset_top = -330.0
-offset_right = 217.5
-offset_bottom = -17.0
+offset_left = -241.75
+offset_top = -313.0
+offset_right = 241.75
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel" unique_id=41135916]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 10.5
-offset_top = 3.0
-offset_right = 116.0
-offset_bottom = 3.0
-grow_vertical = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="TypeBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/VBoxContainer" unique_id=696741320]
-layout_mode = 2
-text = "Type"
-
-[node name="TypeBtn2" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/VBoxContainer" unique_id=1376329495]
-layout_mode = 2
-text = "Type"
-
-[node name="TypeBtn3" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/VBoxContainer" unique_id=1918964187]
-layout_mode = 2
-text = "Type"
-
-[node name="TypeBtn4" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/VBoxContainer" unique_id=1444495262]
-layout_mode = 2
-text = "Type"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel" unique_id=271050522]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -354.5
-offset_top = -135.5
-offset_bottom = 135.5
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer" unique_id=848922195]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1043899909]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer" unique_id=954773318]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("12_1rix5")
-texture_pressed = ExtResource("12_1rix5")
-texture_hover = ExtResource("12_1rix5")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer/TypeBtn" unique_id=2145243505]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer" unique_id=1554820020]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("19_8vi03")
-texture_pressed = ExtResource("19_8vi03")
-texture_hover = ExtResource("19_8vi03")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer/TypeBtn2" unique_id=1818251960]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1172618537]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer2" unique_id=1190977263]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("12_1rix5")
-texture_pressed = ExtResource("12_1rix5")
-texture_hover = ExtResource("12_1rix5")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer2/TypeBtn" unique_id=1956612907]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer2" unique_id=154428234]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("19_8vi03")
-texture_pressed = ExtResource("19_8vi03")
-texture_hover = ExtResource("19_8vi03")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer2/TypeBtn2" unique_id=603437959]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=402265256]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer3" unique_id=1421571732]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("12_1rix5")
-texture_pressed = ExtResource("12_1rix5")
-texture_hover = ExtResource("12_1rix5")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer3/TypeBtn" unique_id=2140202053]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer3" unique_id=280059284]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("19_8vi03")
-texture_pressed = ExtResource("19_8vi03")
-texture_hover = ExtResource("19_8vi03")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer3/TypeBtn2" unique_id=680167190]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1324667271]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer4" unique_id=1184661723]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("12_1rix5")
-texture_pressed = ExtResource("12_1rix5")
-texture_hover = ExtResource("12_1rix5")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer4/TypeBtn" unique_id=1502704904]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer4" unique_id=1677648141]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("19_8vi03")
-texture_pressed = ExtResource("19_8vi03")
-texture_hover = ExtResource("19_8vi03")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer4/TypeBtn2" unique_id=1888753801]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=806002420]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer5" unique_id=688214349]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("12_1rix5")
-texture_pressed = ExtResource("12_1rix5")
-texture_hover = ExtResource("12_1rix5")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer5/TypeBtn" unique_id=687508176]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer5" unique_id=993720176]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("19_8vi03")
-texture_pressed = ExtResource("19_8vi03")
-texture_hover = ExtResource("19_8vi03")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer5/TypeBtn2" unique_id=1043385378]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="HBoxContainer6" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=2132693272]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer6" unique_id=626562475]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("12_1rix5")
-texture_pressed = ExtResource("12_1rix5")
-texture_hover = ExtResource("12_1rix5")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer6/TypeBtn" unique_id=1212069668]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer6" unique_id=1918539860]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("19_8vi03")
-texture_pressed = ExtResource("19_8vi03")
-texture_hover = ExtResource("19_8vi03")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer6/TypeBtn2" unique_id=1958446862]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="HBoxContainer7" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1973858338]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer7" unique_id=1936136378]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("12_1rix5")
-texture_pressed = ExtResource("12_1rix5")
-texture_hover = ExtResource("12_1rix5")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer7/TypeBtn" unique_id=175641561]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer7" unique_id=708925561]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("19_8vi03")
-texture_pressed = ExtResource("19_8vi03")
-texture_hover = ExtResource("19_8vi03")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer7/TypeBtn2" unique_id=1985475597]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="HBoxContainer8" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=1002246348]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer8" unique_id=1743389370]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("12_1rix5")
-texture_pressed = ExtResource("12_1rix5")
-texture_hover = ExtResource("12_1rix5")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer8/TypeBtn" unique_id=1900262814]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer8" unique_id=188211080]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("19_8vi03")
-texture_pressed = ExtResource("19_8vi03")
-texture_hover = ExtResource("19_8vi03")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer8/TypeBtn2" unique_id=1767831605]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="HBoxContainer9" type="HBoxContainer" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2" unique_id=238582576]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="TypeBtn" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer9" unique_id=1325711630]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("12_1rix5")
-texture_pressed = ExtResource("12_1rix5")
-texture_hover = ExtResource("12_1rix5")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer9/TypeBtn" unique_id=313232230]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="TypeBtn2" type="TextureButton" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer9" unique_id=33417770]
-custom_minimum_size = Vector2(150, 70)
-layout_mode = 2
-texture_normal = ExtResource("19_8vi03")
-texture_pressed = ExtResource("19_8vi03")
-texture_hover = ExtResource("19_8vi03")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="EquipBtn" type="Button" parent="Root/OverlayContainer/Equipment/StatsPanel/Panel/ScrollContainer/VBoxContainer2/HBoxContainer9/TypeBtn2" unique_id=1619156872]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Equip"
-
-[node name="Leaderboard" type="Panel" parent="Root/OverlayContainer" unique_id=1748336464]
-visible = false
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Equipment/SelectControl/Panel" unique_id=271050522]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
 
-[node name="BackBtn" parent="Root/OverlayContainer/Leaderboard" unique_id=310445800 instance=ExtResource("17_1cl6t")]
-layout_mode = 0
-
-[node name="Panel" type="Panel" parent="Root/OverlayContainer/Leaderboard" unique_id=103081825]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -378.75
-offset_top = -177.5
-offset_right = 378.75
-offset_bottom = 177.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Leaderboard/Panel" unique_id=410703524]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 63.75
-offset_top = -95.0
-offset_right = 141.75
-offset_bottom = 95.0
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Equipment/SelectControl/Panel/ScrollContainer" unique_id=848922195]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="RankBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/VBoxContainer" unique_id=662286677]
-custom_minimum_size = Vector2(0, 50)
+[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Equipment/SelectControl/Panel/ScrollContainer/VBoxContainer" unique_id=1022429188]
 layout_mode = 2
-text = "Ranking"
-
-[node name="NormalBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/VBoxContainer" unique_id=1890209324]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Normal"
-
-[node name="CollectorBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/VBoxContainer" unique_id=1700520144]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Collector"
-
-[node name="StatsPanel" type="Panel" parent="Root/OverlayContainer/Leaderboard/Panel" unique_id=1661980868]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -585.75
-offset_top = -128.0
-offset_right = -28.75
-offset_bottom = 140.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_k63ad")
-
-[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel" unique_id=306478134]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -271.0
-offset_top = -110.5
-offset_right = 271.0
-offset_bottom = 110.5
-grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/h_separation = 40
-theme_override_constants/v_separation = 10
-columns = 6
-
-[node name="Label1" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1956992574]
-layout_mode = 2
-text = "#"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1159703347]
-layout_mode = 2
-text = "Player Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=904228805]
-layout_mode = 2
-text = "Weapons"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=216309490]
-layout_mode = 2
-text = "Items"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=292833585]
-layout_mode = 2
-text = "Character"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1844522400]
-layout_mode = 2
-text = "Total"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label7" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=808597880]
-layout_mode = 2
-text = "#"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label8" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=805568306]
-layout_mode = 2
-text = "Player Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label9" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=294311293]
-layout_mode = 2
-text = "Weapons"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label10" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=2136991198]
-layout_mode = 2
-text = "Items"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label11" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1849080822]
-layout_mode = 2
-text = "Character"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label12" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=2049847448]
-layout_mode = 2
-text = "Total"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label13" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1681013252]
-layout_mode = 2
-text = "#"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label14" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=548776166]
-layout_mode = 2
-text = "Player Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label15" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=762055230]
-layout_mode = 2
-text = "Weapons"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label16" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1467725680]
-layout_mode = 2
-text = "Items"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label17" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=547948313]
-layout_mode = 2
-text = "Character"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label18" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=313549014]
-layout_mode = 2
-text = "Total"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label19" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1431588919]
-layout_mode = 2
-text = "#"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label20" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=219730552]
-layout_mode = 2
-text = "Player Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label21" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=530923296]
-layout_mode = 2
-text = "Weapons"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label22" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=178683400]
-layout_mode = 2
-text = "Items"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label23" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1266601586]
-layout_mode = 2
-text = "Character"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label24" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=2098464874]
-layout_mode = 2
-text = "Total"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label25" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=923114766]
-layout_mode = 2
-text = "#"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label26" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1024904357]
-layout_mode = 2
-text = "Player Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label27" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=213974850]
-layout_mode = 2
-text = "Weapons"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label28" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1570374290]
-layout_mode = 2
-text = "Items"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label29" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1128785934]
-layout_mode = 2
-text = "Character"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label30" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=515445649]
-layout_mode = 2
-text = "Total"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label31" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1253449305]
-layout_mode = 2
-text = "#"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label32" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=686356996]
-layout_mode = 2
-text = "Player Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label33" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=670274539]
-layout_mode = 2
-text = "Weapons"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label34" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1589824115]
-layout_mode = 2
-text = "Items"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label35" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1308981610]
-layout_mode = 2
-text = "Character"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label36" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=278652045]
-layout_mode = 2
-text = "Total"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label37" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1237015294]
-layout_mode = 2
-text = "#"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label38" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=2067573777]
-layout_mode = 2
-text = "Player Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label39" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1540694325]
-layout_mode = 2
-text = "Weapons"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label40" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=1260092816]
-layout_mode = 2
-text = "Items"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label41" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=648324386]
-layout_mode = 2
-text = "Character"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label42" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/StatsPanel/GridContainer" unique_id=2003353010]
-layout_mode = 2
-text = "Total"
-horizontal_alignment = 1
-vertical_alignment = 1
+columns = 3
 
 [node name="Ranking" type="Panel" parent="Root/OverlayContainer" unique_id=1253661110]
 visible = false
@@ -1733,6 +1368,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+script = ExtResource("31_6beg1")
 
 [node name="BackBtn" parent="Root/OverlayContainer/Normal" unique_id=1223498661 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
@@ -1742,8 +1378,8 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 92.0
-offset_top = -153.0
+offset_left = 111.0
+offset_top = -161.0
 offset_right = 476.0
 offset_bottom = 218.0
 grow_vertical = 2
@@ -1755,53 +1391,167 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -158.0
+offset_top = 16.0
 offset_right = 157.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ModeBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=2043761416]
-custom_minimum_size = Vector2(300, 0)
+[node name="MapBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=313492143]
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 30
-text = "Mode"
-icon = ExtResource("12_1rix5")
+theme_override_font_sizes/font_size = 25
+text = "Map"
+icon = ExtResource("33_cyr2y")
 alignment = 2
 expand_icon = true
 
-[node name="MapBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=313492143]
-custom_minimum_size = Vector2(300, 0)
+[node name="ModeBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=2043761416]
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 30
-text = "Map"
-icon = ExtResource("12_1rix5")
+theme_override_font_sizes/font_size = 25
+text = "Free for all"
+icon = ExtResource("32_1qp4n")
 alignment = 2
 expand_icon = true
 
 [node name="TeamSizeBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=1840610809]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 25
 text = "1v1"
-icon = ExtResource("12_1rix5")
+icon = ExtResource("34_iyufi")
 alignment = 2
 expand_icon = true
 
 [node name="FightBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=2132890294]
-custom_minimum_size = Vector2(180, 0)
+custom_minimum_size = Vector2(180, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
 text = "Fight"
 icon = ExtResource("12_1rix5")
+expand_icon = true
+
+[node name="PopupChooseMap" type="Panel" parent="Root/OverlayContainer/Normal" unique_id=739059599]
+visible = false
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/Normal/PopupChooseMap" unique_id=2134092941]
+custom_minimum_size = Vector2(615, 362)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -307.5
+offset_top = -181.0
+offset_right = 307.5
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CloseBtn" type="Button" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel" unique_id=496440661]
+custom_minimum_size = Vector2(50, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_bottom = 31.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "X"
+
+[node name="Label" type="Label" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel" unique_id=1515358276]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+text = "Choose Map"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel" unique_id=432124381]
+custom_minimum_size = Vector2(580, 300)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -290.0
+offset_top = -300.0
+offset_right = 290.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer" unique_id=1383839041]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer" unique_id=1163033717]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=706817740]
+custom_minimum_size = Vector2(280, 220)
+layout_mode = 2
+text = "Nightmare"
+icon = ExtResource("34_cfui6")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button2" type="Button" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=1760720652]
+custom_minimum_size = Vector2(280, 220)
+layout_mode = 2
+text = "Ice"
+icon = ExtResource("35_cfui6")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button3" type="Button" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=1337822544]
+custom_minimum_size = Vector2(280, 220)
+layout_mode = 2
+text = "Dust"
+icon = ExtResource("36_d4exx")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button4" type="Button" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=2019292016]
+custom_minimum_size = Vector2(280, 220)
+layout_mode = 2
+text = "Forest"
+icon = ExtResource("34_2ieah")
+icon_alignment = 1
+vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="LAN" type="Panel" parent="Root/OverlayContainer" unique_id=1440337544]
@@ -1814,6 +1564,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+script = ExtResource("31_gx6q1")
 
 [node name="BackBtn" parent="Root/OverlayContainer/LAN" unique_id=1087116649 instance=ExtResource("17_1cl6t")]
 layout_mode = 1
@@ -1824,73 +1575,67 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 82.0
+offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
 alignment = 1
 
 [node name="Panel" type="Panel" parent="Root/OverlayContainer/LAN/HBoxContainer" unique_id=275758030]
-custom_minimum_size = Vector2(384, 371)
+custom_minimum_size = Vector2(360, 371)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel" unique_id=678340075]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -158.0
-offset_right = 157.0
+anchor_bottom = 0.5
+offset_left = -157.5
+offset_top = -162.0
+offset_right = 157.5
+offset_bottom = 162.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 40
 alignment = 1
 
 [node name="ModeBtn" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel/VBoxContainer" unique_id=259189158]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(300, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
 text = "Mode"
-icon = ExtResource("12_1rix5")
+icon = ExtResource("32_1qp4n")
 alignment = 2
 expand_icon = true
 
 [node name="MapBtn" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel/VBoxContainer" unique_id=197223290]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(300, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
 text = "Map"
-icon = ExtResource("12_1rix5")
+icon = ExtResource("33_cyr2y")
 alignment = 2
 expand_icon = true
 
 [node name="TeamSizeBtn" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel/VBoxContainer" unique_id=709049474]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(300, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
 text = "1v1"
-icon = ExtResource("12_1rix5")
+icon = ExtResource("34_iyufi")
 alignment = 2
 expand_icon = true
 
-[node name="FightBtn" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel/VBoxContainer" unique_id=573031633]
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-theme_override_font_sizes/font_size = 30
-text = "Fight"
-icon = ExtResource("12_1rix5")
-expand_icon = true
-
 [node name="Panel2" type="Panel" parent="Root/OverlayContainer/LAN/HBoxContainer" unique_id=1710462101]
-custom_minimum_size = Vector2(384, 371)
+custom_minimum_size = Vector2(360, 371)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel2" unique_id=1545277014]
@@ -1906,6 +1651,16 @@ grow_vertical = 2
 theme_override_constants/separation = 40
 alignment = 1
 
+[node name="OptionButton" type="OptionButton" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel2/VBoxContainer" unique_id=1613685447]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Host"
+popup/item_0/id = 0
+popup/item_1/text = "Client"
+popup/item_1/id = 1
+
 [node name="Host" type="TextEdit" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel2/VBoxContainer" unique_id=871121226]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -1916,11 +1671,11 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 placeholder_text = "PORT"
 
-[node name="SaveBtn" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel2/VBoxContainer" unique_id=1627927441]
+[node name="StartButton" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel2/VBoxContainer" unique_id=1627927441]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Confirm"
+text = "Start"
 expand_icon = true
 
 [node name="Shop" type="Panel" parent="Root/OverlayContainer" unique_id=271100709]
@@ -1991,6 +1746,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Recommend" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=850079412]
+visible = false
+custom_minimum_size = Vector2(791, 309)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2136,14 +1893,21 @@ expand_icon = true
 
 [node name="Daily Discount" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1884015232]
 visible = false
+custom_minimum_size = Vector2(750, 309)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -154.5
+offset_right = 375.0
+offset_bottom = 154.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("30_pmtkq")
+shop_discount_item = ExtResource("22_nv17j")
 
 [node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount" unique_id=1791656908]
 layout_mode = 1
@@ -2152,134 +1916,66 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -347.5
-offset_top = -100.0
-offset_right = 356.5
-offset_bottom = 94.0
+offset_left = -355.0
+offset_top = -140.0
+offset_right = 355.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 0
 columns = 4
 
-[node name="Control" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=2018053991 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
-[node name="Control2" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=1284283082 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
-[node name="Control3" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=7993706 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
-[node name="Control4" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=15023937 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
-[node name="Control5" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=1048448705 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
-[node name="Control6" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=594069224 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
-[node name="Control7" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=205584706 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
-[node name="Control8" parent="Root/OverlayContainer/Shop/ItemsContainer/Daily Discount/GridContainer" unique_id=1355310001 instance=ExtResource("22_nv17j")]
-layout_mode = 2
-
 [node name="Weapon" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1467739191]
 visible = false
+custom_minimum_size = Vector2(750, 309)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -419.5
+offset_top = -154.5
+offset_right = 419.5
+offset_bottom = 154.5
 grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("32_7ftkg")
+shop_weapon_item = ExtResource("23_mmps8")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon" unique_id=735047051]
+custom_minimum_size = Vector2(704, 309)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -704.0
+offset_top = -154.5
+offset_bottom = 154.5
+grow_horizontal = 0
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon" unique_id=568888700]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -347.5
-offset_top = -100.0
-offset_right = 356.5
-offset_bottom = 94.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/ScrollContainer" unique_id=1242920430]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/ScrollContainer/VBoxContainer" unique_id=568888700]
+layout_mode = 2
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 30
 columns = 4
 
-[node name="Control" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=925476186 instance=ExtResource("23_mmps8")]
-layout_mode = 2
-
-[node name="Control2" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=370140062 instance=ExtResource("23_mmps8")]
-layout_mode = 2
-
-[node name="Control3" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=1296620569 instance=ExtResource("23_mmps8")]
-layout_mode = 2
-
-[node name="Control4" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=2142517145 instance=ExtResource("23_mmps8")]
-layout_mode = 2
-
-[node name="Control5" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=1030616022 instance=ExtResource("23_mmps8")]
-layout_mode = 2
-
-[node name="Control6" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=1239928027 instance=ExtResource("23_mmps8")]
-layout_mode = 2
-
-[node name="Control7" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=1958833481 instance=ExtResource("23_mmps8")]
-layout_mode = 2
-
-[node name="Control8" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/GridContainer" unique_id=689896400 instance=ExtResource("23_mmps8")]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon" unique_id=806058477]
+[node name="HBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon" unique_id=1724814995]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = -475.5
-offset_top = -15.5
-offset_right = -430.5
-offset_bottom = 15.5
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -76.5
+offset_right = 89.0
+offset_bottom = 76.5
 grow_vertical = 2
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="Button" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/VBoxContainer" unique_id=1100579353]
-layout_mode = 2
-text = "Type"
-
-[node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/VBoxContainer" unique_id=756387129]
-layout_mode = 2
-text = "Type"
-
-[node name="Button2" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/VBoxContainer" unique_id=2021297634]
-layout_mode = 2
-text = "Type"
-
-[node name="Button4" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/VBoxContainer" unique_id=261818469]
-layout_mode = 2
-text = "Type"
-
-[node name="Button3" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/VBoxContainer" unique_id=1387921382]
-layout_mode = 2
-text = "Type"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon" unique_id=754243374]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -137.0
-offset_top = -183.0
-offset_right = 137.0
-offset_bottom = -139.0
-grow_horizontal = 2
 theme_override_constants/separation = 30
 alignment = 1
 
@@ -2296,7 +1992,7 @@ layout_mode = 2
 text = "Melee"
 
 [node name="Item" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1800100722]
-visible = false
+custom_minimum_size = Vector2(750, 309)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2304,150 +2000,93 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("34_v5bt6")
+shop_item = ExtResource("24_5xf5k")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Item" unique_id=837788115]
+custom_minimum_size = Vector2(704, 309)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -704.0
+offset_top = -154.5
+offset_bottom = 154.5
+grow_horizontal = 0
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Item" unique_id=887390195]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -347.5
-offset_top = -100.0
-offset_right = 356.5
-offset_bottom = 94.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/ScrollContainer" unique_id=527697195]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/ScrollContainer/VBoxContainer" unique_id=2000167428]
+layout_mode = 2
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 30
 columns = 4
-
-[node name="Control" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=62550013 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="Control2" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=1417282567 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="Control3" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=281864766 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="Control4" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=2047159497 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="Control5" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=61097603 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="Control6" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=2081239720 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="Control7" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=1946017984 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="Control8" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/GridContainer" unique_id=1983361442 instance=ExtResource("24_5xf5k")]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Item" unique_id=155076426]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = -475.5
-offset_top = -15.5
-offset_right = -430.5
-offset_bottom = 15.5
-grow_vertical = 2
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="Button" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/VBoxContainer" unique_id=1200524538]
-layout_mode = 2
-text = "Type"
-
-[node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/VBoxContainer" unique_id=1089931642]
-layout_mode = 2
-text = "Type"
-
-[node name="Button2" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/VBoxContainer" unique_id=488470593]
-layout_mode = 2
-text = "Type"
-
-[node name="Button4" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/VBoxContainer" unique_id=1229591335]
-layout_mode = 2
-text = "Type"
-
-[node name="Button3" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Item/VBoxContainer" unique_id=1883032084]
-layout_mode = 2
-text = "Type"
 
 [node name="Character" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=587488887]
 visible = false
+custom_minimum_size = Vector2(750, 309)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -400.25
+offset_top = -154.5
+offset_right = 400.25
+offset_bottom = 154.5
 grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("35_v5bt6")
+shop_character_item = ExtResource("25_8dsj6")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Character" unique_id=687586426]
+custom_minimum_size = Vector2(704, 309)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -704.0
+offset_top = -154.5
+offset_bottom = 154.5
+grow_horizontal = 0
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Character" unique_id=1306279992]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -347.5
-offset_top = -100.0
-offset_right = 356.5
-offset_bottom = 94.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/ScrollContainer" unique_id=776840274]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/ScrollContainer/VBoxContainer" unique_id=127842546]
+layout_mode = 2
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 30
 columns = 4
 
-[node name="Control" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=1885284530 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
-[node name="Control2" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=745807808 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
-[node name="Control3" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=1748972806 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
-[node name="Control4" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=1268608115 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
-[node name="Control5" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=2090244273 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
-[node name="Control6" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=435988216 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
-[node name="Control7" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=1126340143 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
-[node name="Control8" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/GridContainer" unique_id=165746583 instance=ExtResource("25_8dsj6")]
-layout_mode = 2
-
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Character" unique_id=1432919524]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = -475.5
-offset_top = -15.5
-offset_right = -430.5
-offset_bottom = 15.5
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -36.0
+offset_right = 45.0
+offset_bottom = 36.0
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Button" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/VBoxContainer" unique_id=43963247]
+custom_minimum_size = Vector2(70, 40)
 layout_mode = 2
 text = "Type"
 
 [node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/VBoxContainer" unique_id=1694142764]
+custom_minimum_size = Vector2(70, 40)
 layout_mode = 2
 text = "Type"
 
@@ -2836,23 +2475,26 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+script = ExtResource("36_4ossl")
+task_item = ExtResource("37_7xsny")
 
 [node name="BackBtn" parent="Root/OverlayContainer/Task" unique_id=1670354976 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
 
 [node name="Control" type="Control" parent="Root/OverlayContainer/Task" unique_id=1856341206]
-custom_minimum_size = Vector2(821, 401)
+custom_minimum_size = Vector2(821, 350)
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -410.5
-offset_top = -401.0
+offset_top = -148.0
 offset_right = 410.5
+offset_bottom = 202.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Task/Control" unique_id=331551934]
 layout_mode = 1
@@ -2866,17 +2508,17 @@ grow_vertical = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Button" type="Button" parent="Root/OverlayContainer/Task/Control/VBoxContainer" unique_id=406655341]
+[node name="Daily" type="Button" parent="Root/OverlayContainer/Task/Control/VBoxContainer" unique_id=406655341]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Daily "
 
-[node name="Button2" type="Button" parent="Root/OverlayContainer/Task/Control/VBoxContainer" unique_id=1012983784]
+[node name="Weekly" type="Button" parent="Root/OverlayContainer/Task/Control/VBoxContainer" unique_id=1012983784]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Weekly"
 
-[node name="Panel" type="Panel" parent="Root/OverlayContainer/Task/Control" unique_id=18616367]
+[node name="DailyPanel" type="Panel" parent="Root/OverlayContainer/Task/Control" unique_id=18616367]
 custom_minimum_size = Vector2(603, 305)
 layout_mode = 1
 anchors_preset = 6
@@ -2890,7 +2532,7 @@ offset_bottom = 152.5
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Task/Control/Panel" unique_id=1211698831]
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Task/Control/DailyPanel" unique_id=1211698831]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2898,171 +2540,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer" unique_id=1681496323]
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Task/Control/DailyPanel/ScrollContainer" unique_id=1681496323]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 2
 
-[node name="Panel" type="Panel" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer" unique_id=258783364]
-custom_minimum_size = Vector2(550, 100)
-layout_mode = 2
-
-[node name="Task" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel" unique_id=1855518739]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 25
-text = "Task..........................."
-
-[node name="Progress" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel" unique_id=1007767083]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -42.0
-offset_right = 63.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 30
-text = "1/12"
-
-[node name="Button" type="Button" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel" unique_id=1150428330]
+[node name="WeeklyPanel" type="Panel" parent="Root/OverlayContainer/Task/Control" unique_id=1937483915]
+visible = false
+custom_minimum_size = Vector2(603, 305)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -143.5
-offset_top = -24.5
-offset_bottom = 24.5
+offset_left = -603.0
+offset_top = -152.5
+offset_bottom = 152.5
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "100"
-icon = ExtResource("5_u3wsq")
-icon_alignment = 2
-expand_icon = true
 
-[node name="Panel2" type="Panel" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer" unique_id=1961755777]
-custom_minimum_size = Vector2(550, 100)
-layout_mode = 2
-
-[node name="Task" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel2" unique_id=669850453]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 25
-text = "Task..........................."
-
-[node name="Progress" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel2" unique_id=844863140]
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Task/Control/WeeklyPanel" unique_id=1319027333]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -42.0
-offset_right = 63.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 30
-text = "1/12"
-
-[node name="Button" type="Button" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel2" unique_id=1856936806]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -143.5
-offset_top = -24.5
-offset_bottom = 24.5
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "100"
-icon = ExtResource("5_u3wsq")
-icon_alignment = 2
-expand_icon = true
-
-[node name="Panel3" type="Panel" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer" unique_id=302486869]
-custom_minimum_size = Vector2(550, 100)
-layout_mode = 2
-
-[node name="Task" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel3" unique_id=1316982211]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 25
-text = "Task..........................."
-
-[node name="Progress" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel3" unique_id=710458027]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -42.0
-offset_right = 63.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 30
-text = "1/12"
-
-[node name="Button" type="Button" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel3" unique_id=1001579398]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -143.5
-offset_top = -24.5
-offset_bottom = 24.5
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "100"
-icon = ExtResource("5_u3wsq")
-icon_alignment = 2
-expand_icon = true
 
-[node name="Panel4" type="Panel" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer" unique_id=1639596341]
-custom_minimum_size = Vector2(550, 100)
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Task/Control/WeeklyPanel/ScrollContainer" unique_id=1840926123]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-
-[node name="Task" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel4" unique_id=796165854]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 25
-text = "Task..........................."
-
-[node name="Progress" type="Label" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel4" unique_id=693720920]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -42.0
-offset_right = 63.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 30
-text = "1/12"
-
-[node name="Button" type="Button" parent="Root/OverlayContainer/Task/Control/Panel/ScrollContainer/VBoxContainer/Panel4" unique_id=1165183820]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -143.5
-offset_top = -24.5
-offset_bottom = 24.5
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "100"
-icon = ExtResource("5_u3wsq")
-icon_alignment = 2
-expand_icon = true
+size_flags_horizontal = 6
+size_flags_vertical = 2
 
 [node name="TopOverlay" type="Control" parent="Root" unique_id=308563002]
 z_index = 1
@@ -3075,6 +2586,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Purchase" type="Panel" parent="Root/TopOverlay" unique_id=623878866]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3324,12 +2836,24 @@ text = "Sign out"
 [connection signal="pressed" from="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer/RankingBtn" to="Root/OverlayContainer/PlayerProfile" method="on_ranking_button_pressed"]
 [connection signal="pressed" from="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer/NormalBtn" to="Root/OverlayContainer/PlayerProfile" method="on_normal_button_pressed"]
 [connection signal="pressed" from="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer/AchivementBtn" to="Root/OverlayContainer/PlayerProfile" method="on_achivement_button_pressed"]
+[connection signal="pressed" from="Root/OverlayContainer/Leaderboard/Panel/Control/VBoxContainer/RankBtn" to="Root/OverlayContainer/Leaderboard" method="_on_ranking_button_pressed"]
+[connection signal="pressed" from="Root/OverlayContainer/Leaderboard/Panel/Control/VBoxContainer/NormalBtn" to="Root/OverlayContainer/Leaderboard" method="_on_normal_button_pressed"]
+[connection signal="pressed" from="Root/OverlayContainer/Leaderboard/Panel/Control/VBoxContainer/CollectorBtn" to="Root/OverlayContainer/Leaderboard" method="_on_collector_button_pressed"]
+[connection signal="pressed" from="Root/OverlayContainer/Equipment/SelectControl/HBoxContainer/WeaponBtn" to="Root/OverlayContainer/Equipment" method="_on_weapon_btn_pressed"]
+[connection signal="pressed" from="Root/OverlayContainer/Equipment/SelectControl/HBoxContainer/ItemBtn" to="Root/OverlayContainer/Equipment" method="_on_item_btn_pressed"]
+[connection signal="pressed" from="Root/OverlayContainer/Equipment/SelectControl/HBoxContainer/CharacterBtn" to="Root/OverlayContainer/Equipment" method="_on_character_btn_pressed"]
 [connection signal="pressed" from="Root/OverlayContainer/Ranking/BackBtn" to="Root/UIButtons/Middle" method="reset_position"]
 [connection signal="pressed" from="Root/OverlayContainer/Ranking/Panel/FightBtn" to="Root/OverlayContainer/Ranking/Panel/FightBtn" method="_on_fight_pressed"]
 [connection signal="pressed" from="Root/OverlayContainer/Ranking/Panel/Server" to="Root/OverlayContainer/Ranking/Panel/FightBtn" method="_on_server_pressed"]
 [connection signal="pressed" from="Root/OverlayContainer/Normal/BackBtn" to="Root/UIButtons/Middle" method="reset_position"]
+[connection signal="pressed" from="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer/Button" to="Root/OverlayContainer/Normal" method="_on_map_selected" binds= ["Nightmare"]]
+[connection signal="pressed" from="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer/Button2" to="Root/OverlayContainer/Normal" method="_on_map_selected" binds= ["Ice"]]
+[connection signal="pressed" from="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer/Button3" to="Root/OverlayContainer/Normal" method="_on_map_selected" binds= ["Dust"]]
+[connection signal="pressed" from="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer/Button4" to="Root/OverlayContainer/Normal" method="_on_map_selected" binds= ["Forest"]]
 [connection signal="pressed" from="Root/OverlayContainer/Wheel/Control/HBoxContainer/GoldBtn" to="Root/OverlayContainer/Wheel" method="_open_gold_wheel"]
 [connection signal="pressed" from="Root/OverlayContainer/Wheel/Control/HBoxContainer/DiamondBtn" to="Root/OverlayContainer/Wheel" method="_open_diamond_wheel"]
+[connection signal="pressed" from="Root/OverlayContainer/Task/Control/VBoxContainer/Daily" to="Root/OverlayContainer/Task" method="show_daily_tasks"]
+[connection signal="pressed" from="Root/OverlayContainer/Task/Control/VBoxContainer/Weekly" to="Root/OverlayContainer/Task" method="show_weekly_tasks"]
 [connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [10000, "diamond"]]
 [connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button2" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [5000, "diamond"]]
 [connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button3" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [1000, "diamond"]]

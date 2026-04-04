@@ -131,6 +131,7 @@ class LevelConfigModel:
 
 class RankConfigModel:
 	var rank_id: int
+	var name: String
 	var min_point: int
 	var max_point: int
 	var image: String
@@ -138,6 +139,7 @@ class RankConfigModel:
 	static func from_dict(data: Dictionary) -> RankConfigModel:
 		var model := RankConfigModel.new()
 		model.rank_id = data.get("rank_id", 0)
+		model.name = data.get("name", "")
 		model.min_point = data.get("min_point", 0)
 		model.max_point = data.get("max_point", 0)
 		model.image = data.get("image", "")
@@ -152,6 +154,7 @@ class RankConfigModel:
 	func to_dict() -> Dictionary:
 		return {
 			"rank_id": rank_id,
+			"name": name,
 			"min_point": min_point,
 			"max_point": max_point,
 			"image": image,

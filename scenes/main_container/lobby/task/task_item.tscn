@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dbyop0ht6j7ps"]
+
+[ext_resource type="Texture2D" uid="uid://bu70s8kcb7igl" path="res://assets/lobby/top_bar/currency/diamond.png" id="1_efii3"]
+
+[node name="Panel" type="Panel" unique_id=1269436225]
+custom_minimum_size = Vector2(550, 100)
+
+[node name="TaskName" type="Label" parent="." unique_id=635718559]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "Eliminate Enemies"
+
+[node name="Progress" type="Label" parent="." unique_id=1372693143]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 63.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "0/10"
+
+[node name="RewardBtn" type="Button" parent="." unique_id=1936055649]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -24.5
+offset_bottom = 24.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "100"
+icon = ExtResource("1_efii3")
+icon_alignment = 2
+expand_icon = true

@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://f0n6ea4se4q7"]
 
+[ext_resource type="Script" uid="uid://cr5xxywieqiq4" path="res://scripts/main_container/lobby/overlay_panel/shop/item/shop_item_scene.gd" id="1_2tfay"]
 [ext_resource type="Texture2D" uid="uid://cbqjpj6oiapq8" path="res://assets/lobby/bottom_bar/equipment/grenade.png" id="1_vddeu"]
-[ext_resource type="Texture2D" uid="uid://6erg825vauqi" path="res://assets/lobby/top_bar/currency/game-coin.png" id="2_oa2er"]
+[ext_resource type="Texture2D" uid="uid://6erg825vauqi" path="res://assets/lobby/top_bar/currency/gold.png" id="2_oa2er"]
 
-[node name="Control" type="Control" unique_id=2018053991]
+[node name="ShopItem" type="Control" unique_id=2018053991]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_2tfay")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1963058168]
 layout_mode = 1
@@ -23,7 +25,7 @@ grow_vertical = 2
 texture = ExtResource("1_vddeu")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="." unique_id=2127766089]
+[node name="BuyButton" type="Button" parent="." unique_id=2127766089]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
