@@ -38,12 +38,21 @@
 [ext_resource type="Script" uid="uid://dubuyiby8y7n7" path="res://scripts/main_container/lobby/overlay_panel/wheel/wheel_ui_manager.gd" id="27_y3tir"]
 [ext_resource type="PackedScene" uid="uid://dpilcts7v5hc5" path="res://scenes/main_container/lobby/equipment/equipment_item.tscn" id="29_k67qq"]
 [ext_resource type="Script" uid="uid://dv6xnleoixny1" path="res://scripts/main_container/lobby/overlay_panel/shop/daily_discount/shop_daily_discount.gd" id="30_pmtkq"]
+[ext_resource type="Script" uid="uid://xp0ftjlsl4mn" path="res://scripts/main_container/lobby/overlay_panel/normal/normal_panel_controller.gd" id="31_6beg1"]
+[ext_resource type="Script" uid="uid://17j41rgitc2" path="res://scripts/main_container/lobby/overlay_panel/lan/lan_panel.gd" id="31_gx6q1"]
+[ext_resource type="Texture2D" uid="uid://1dudpk5w1nx0" path="res://assets/lobby/middle/normal_config/game_mode_icon.png" id="32_1qp4n"]
 [ext_resource type="Script" uid="uid://o4hv8up8hnac" path="res://scripts/main_container/lobby/overlay_panel/shop/weapon/shop_weapon.gd" id="32_7ftkg"]
+[ext_resource type="Texture2D" uid="uid://bxfke4t50iift" path="res://assets/lobby/middle/normal_config/map_icon.png" id="33_cyr2y"]
+[ext_resource type="Texture2D" uid="uid://dh7kjthvb5822" path="res://assets/loading/loading_bg.jpg" id="34_2ieah"]
+[ext_resource type="Texture2D" uid="uid://bnf4q6tmsl55t" path="res://assets/game/map/night.jpg" id="34_cfui6"]
+[ext_resource type="Texture2D" uid="uid://cbbunphpr4sxr" path="res://assets/lobby/middle/normal_config/team_size_icon.png" id="34_iyufi"]
 [ext_resource type="Script" uid="uid://ch4f878ym0qrx" path="res://scripts/main_container/lobby/overlay_panel/shop/item/shop_items.gd" id="34_v5bt6"]
+[ext_resource type="Texture2D" uid="uid://cjqplnu85ued8" path="res://assets/game/map/ice.jpg" id="35_cfui6"]
 [ext_resource type="Script" uid="uid://cgng515gvynwx" path="res://scripts/main_container/lobby/top_overlay/settings/settings_controller.gd" id="35_hur8o"]
 [ext_resource type="Script" uid="uid://bq3545jnijnhj" path="res://scripts/main_container/lobby/top_overlay/purchase/purchase_controller.gd" id="35_rjdw1"]
 [ext_resource type="Script" uid="uid://c2j2x71erxptf" path="res://scripts/main_container/lobby/overlay_panel/shop/character/shop_character.gd" id="35_v5bt6"]
 [ext_resource type="Script" uid="uid://cfabbtqvvrtxm" path="res://scripts/main_container/lobby/overlay_panel/task/task_panel.gd" id="36_4ossl"]
+[ext_resource type="Texture2D" uid="uid://cdhsgl8xpjwio" path="res://assets/game/map/dust.jpg" id="36_d4exx"]
 [ext_resource type="PackedScene" uid="uid://dbyop0ht6j7ps" path="res://scenes/main_container/lobby/task/task_item.tscn" id="37_7xsny"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yapo1"]
@@ -1057,6 +1066,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Equipment" type="Panel" parent="Root/OverlayContainer" unique_id=230209453]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1358,6 +1368,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+script = ExtResource("31_6beg1")
 
 [node name="BackBtn" parent="Root/OverlayContainer/Normal" unique_id=1223498661 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
@@ -1367,8 +1378,8 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 92.0
-offset_top = -153.0
+offset_left = 111.0
+offset_top = -161.0
 offset_right = 476.0
 offset_bottom = 218.0
 grow_vertical = 2
@@ -1380,53 +1391,167 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -158.0
+offset_top = 16.0
 offset_right = 157.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ModeBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=2043761416]
-custom_minimum_size = Vector2(300, 0)
+[node name="MapBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=313492143]
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 30
-text = "Mode"
-icon = ExtResource("12_1rix5")
+theme_override_font_sizes/font_size = 25
+text = "Map"
+icon = ExtResource("33_cyr2y")
 alignment = 2
 expand_icon = true
 
-[node name="MapBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=313492143]
-custom_minimum_size = Vector2(300, 0)
+[node name="ModeBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=2043761416]
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 30
-text = "Map"
-icon = ExtResource("12_1rix5")
+theme_override_font_sizes/font_size = 25
+text = "Free for all"
+icon = ExtResource("32_1qp4n")
 alignment = 2
 expand_icon = true
 
 [node name="TeamSizeBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=1840610809]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 25
 text = "1v1"
-icon = ExtResource("12_1rix5")
+icon = ExtResource("34_iyufi")
 alignment = 2
 expand_icon = true
 
 [node name="FightBtn" type="Button" parent="Root/OverlayContainer/Normal/Panel/VBoxContainer" unique_id=2132890294]
-custom_minimum_size = Vector2(180, 0)
+custom_minimum_size = Vector2(180, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
 text = "Fight"
 icon = ExtResource("12_1rix5")
+expand_icon = true
+
+[node name="PopupChooseMap" type="Panel" parent="Root/OverlayContainer/Normal" unique_id=739059599]
+visible = false
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Root/OverlayContainer/Normal/PopupChooseMap" unique_id=2134092941]
+custom_minimum_size = Vector2(615, 362)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -307.5
+offset_top = -181.0
+offset_right = 307.5
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CloseBtn" type="Button" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel" unique_id=496440661]
+custom_minimum_size = Vector2(50, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_bottom = 31.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "X"
+
+[node name="Label" type="Label" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel" unique_id=1515358276]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+text = "Choose Map"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel" unique_id=432124381]
+custom_minimum_size = Vector2(580, 300)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -290.0
+offset_top = -300.0
+offset_right = 290.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer" unique_id=1383839041]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GridContainer" type="GridContainer" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer" unique_id=1163033717]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="Button" type="Button" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=706817740]
+custom_minimum_size = Vector2(280, 220)
+layout_mode = 2
+text = "Nightmare"
+icon = ExtResource("34_cfui6")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button2" type="Button" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=1760720652]
+custom_minimum_size = Vector2(280, 220)
+layout_mode = 2
+text = "Ice"
+icon = ExtResource("35_cfui6")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button3" type="Button" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=1337822544]
+custom_minimum_size = Vector2(280, 220)
+layout_mode = 2
+text = "Dust"
+icon = ExtResource("36_d4exx")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button4" type="Button" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=2019292016]
+custom_minimum_size = Vector2(280, 220)
+layout_mode = 2
+text = "Forest"
+icon = ExtResource("34_2ieah")
+icon_alignment = 1
+vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="LAN" type="Panel" parent="Root/OverlayContainer" unique_id=1440337544]
@@ -1439,6 +1564,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+script = ExtResource("31_gx6q1")
 
 [node name="BackBtn" parent="Root/OverlayContainer/LAN" unique_id=1087116649 instance=ExtResource("17_1cl6t")]
 layout_mode = 1
@@ -1449,73 +1575,67 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 82.0
+offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
 alignment = 1
 
 [node name="Panel" type="Panel" parent="Root/OverlayContainer/LAN/HBoxContainer" unique_id=275758030]
-custom_minimum_size = Vector2(384, 371)
+custom_minimum_size = Vector2(360, 371)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel" unique_id=678340075]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -158.0
-offset_right = 157.0
+anchor_bottom = 0.5
+offset_left = -157.5
+offset_top = -162.0
+offset_right = 157.5
+offset_bottom = 162.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 40
 alignment = 1
 
 [node name="ModeBtn" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel/VBoxContainer" unique_id=259189158]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(300, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
 text = "Mode"
-icon = ExtResource("12_1rix5")
+icon = ExtResource("32_1qp4n")
 alignment = 2
 expand_icon = true
 
 [node name="MapBtn" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel/VBoxContainer" unique_id=197223290]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(300, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
 text = "Map"
-icon = ExtResource("12_1rix5")
+icon = ExtResource("33_cyr2y")
 alignment = 2
 expand_icon = true
 
 [node name="TeamSizeBtn" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel/VBoxContainer" unique_id=709049474]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(300, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
 text = "1v1"
-icon = ExtResource("12_1rix5")
+icon = ExtResource("34_iyufi")
 alignment = 2
 expand_icon = true
 
-[node name="FightBtn" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel/VBoxContainer" unique_id=573031633]
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-theme_override_font_sizes/font_size = 30
-text = "Fight"
-icon = ExtResource("12_1rix5")
-expand_icon = true
-
 [node name="Panel2" type="Panel" parent="Root/OverlayContainer/LAN/HBoxContainer" unique_id=1710462101]
-custom_minimum_size = Vector2(384, 371)
+custom_minimum_size = Vector2(360, 371)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel2" unique_id=1545277014]
@@ -1531,6 +1651,16 @@ grow_vertical = 2
 theme_override_constants/separation = 40
 alignment = 1
 
+[node name="OptionButton" type="OptionButton" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel2/VBoxContainer" unique_id=1613685447]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Host"
+popup/item_0/id = 0
+popup/item_1/text = "Client"
+popup/item_1/id = 1
+
 [node name="Host" type="TextEdit" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel2/VBoxContainer" unique_id=871121226]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -1541,11 +1671,11 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 placeholder_text = "PORT"
 
-[node name="SaveBtn" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel2/VBoxContainer" unique_id=1627927441]
+[node name="StartButton" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel2/VBoxContainer" unique_id=1627927441]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Confirm"
+text = "Start"
 expand_icon = true
 
 [node name="Shop" type="Panel" parent="Root/OverlayContainer" unique_id=271100709]
@@ -2716,6 +2846,10 @@ text = "Sign out"
 [connection signal="pressed" from="Root/OverlayContainer/Ranking/Panel/FightBtn" to="Root/OverlayContainer/Ranking/Panel/FightBtn" method="_on_fight_pressed"]
 [connection signal="pressed" from="Root/OverlayContainer/Ranking/Panel/Server" to="Root/OverlayContainer/Ranking/Panel/FightBtn" method="_on_server_pressed"]
 [connection signal="pressed" from="Root/OverlayContainer/Normal/BackBtn" to="Root/UIButtons/Middle" method="reset_position"]
+[connection signal="pressed" from="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer/Button" to="Root/OverlayContainer/Normal" method="_on_map_selected" binds= ["Nightmare"]]
+[connection signal="pressed" from="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer/Button2" to="Root/OverlayContainer/Normal" method="_on_map_selected" binds= ["Ice"]]
+[connection signal="pressed" from="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer/Button3" to="Root/OverlayContainer/Normal" method="_on_map_selected" binds= ["Dust"]]
+[connection signal="pressed" from="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer/Button4" to="Root/OverlayContainer/Normal" method="_on_map_selected" binds= ["Forest"]]
 [connection signal="pressed" from="Root/OverlayContainer/Wheel/Control/HBoxContainer/GoldBtn" to="Root/OverlayContainer/Wheel" method="_open_gold_wheel"]
 [connection signal="pressed" from="Root/OverlayContainer/Wheel/Control/HBoxContainer/DiamondBtn" to="Root/OverlayContainer/Wheel" method="_open_diamond_wheel"]
 [connection signal="pressed" from="Root/OverlayContainer/Task/Control/VBoxContainer/Daily" to="Root/OverlayContainer/Task" method="show_daily_tasks"]
