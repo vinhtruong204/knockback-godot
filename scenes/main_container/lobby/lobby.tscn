@@ -252,13 +252,17 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Root/UIButtons/Middle" unique_id=312975416]
+custom_minimum_size = Vector2(294, 257)
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -349.0
-offset_right = -55.0
+anchor_bottom = 0.5
+offset_left = -318.0
+offset_top = -123.5
+offset_right = -14.0
+offset_bottom = 133.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
@@ -266,6 +270,7 @@ alignment = 1
 
 [node name="Team1Btn" type="Button" parent="Root/UIButtons/Middle/HBoxContainer" unique_id=1223609360]
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 35
 text = "Team1"
 icon = ExtResource("4_yapo1")

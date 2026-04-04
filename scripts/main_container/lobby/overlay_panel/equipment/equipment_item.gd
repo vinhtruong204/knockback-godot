@@ -1,10 +1,10 @@
 class_name EquipmentItem extends TextureButton
 
-signal item_selected(item_details: Dictionary)
+signal item_selected(item: EquipmentItem)
 
 @onready var equip_btn: Button = $EquipBtn
-var _item: Dictionary
-var _item_details: Dictionary
+var _item_data: Dictionary
+var item_details: Dictionary
 
 func _ready() -> void:
 	equip_btn.pressed.connect(_on_equip_btn_pressed)
@@ -15,12 +15,12 @@ func _ready() -> void:
 { "damage": 33.0, "fire_rate": 11.0, "name": "M4A1", "weapon_id": 52.0, "weapon_type": "primary" }
 '''
 func _on_equip_btn_pressed() -> void:
-	var item_type = _item.get("item_type")
+	var item_type = _item_data.get("item_type")
 
 	match item_type:
 		Enums.ItemType.WEAPON:
-			var slot := str(_item_details["weapon_type"])
-			var weapon_id := int(_item["item_id"])
+			var slot := str(item_details["weapon_type"])
+			var weapon_id := int(_item_data["item_id"])
 			PlayerApi.equip_item({"player_id": ApiManager.player_id, "slot_type": slot, "weapon_id": weapon_id}, func(response: Dictionary) -> void:
 				if response.get("ok", false):
 					print("Item equipped successfully")
@@ -29,12 +29,12 @@ func _on_equip_btn_pressed() -> void:
 						if update_response.get("ok", false):
 							print("Item equipped successfully")
 						else:
-							print("Failed to equip item")
+							print("Failed to equip _item_data")
 					)
 			)
 
 		Enums.ItemType.CHARACTER:
-			var character_id := int(_item["item_id"])
+			var character_id := int(_item_data["item_id"])
 			PlayerApi.select_character({"player_id": ApiManager.player_id, "character_id": character_id}, func(response: Dictionary) -> void:
 				if response.get("ok", false):
 					print("Item equipped successfully")
@@ -48,29 +48,29 @@ func _on_equip_btn_pressed() -> void:
 			)
 
 	# Emit to update equipment panel
-	item_selected.emit(_item_details)
+	item_selected.emit(self )
 
 
-func set_equipment_item(item: Dictionary) -> void:
-	_item = item
+func set_equipment_item(item_data: Dictionary) -> void:
+	_item_data = item_data
 
-	# Get item details from economy api
-	match _item["item_type"]:
+	# Get _item_data details from economy api
+	match _item_data["item_type"]:
 		Enums.ItemType.WEAPON:
-			ConfigApi.get_weapon(_item["item_id"], func(response: Dictionary) -> void:
+			ConfigApi.get_weapon(_item_data["item_id"], func(response: Dictionary) -> void:
 				if response.get("ok", false):
-					_item_details = response.get("data", {})
-					print(_item_details)
+					item_details = response.get("data", {})
+					print(item_details)
 				else:
-					print("Failed to get item details")
+					print("Failed to get item_data details")
 			)
 		Enums.ItemType.CHARACTER:
-			ConfigApi.get_character(_item["item_id"], func(response: Dictionary) -> void:
+			ConfigApi.get_character(_item_data["item_id"], func(response: Dictionary) -> void:
 				if response.get("ok", false):
-					_item_details = response.get("data", {})
-					print(_item_details)
+					item_details = response.get("data", {})
+					print(item_details)
 				else:
-					print("Failed to get item details")
+					print("Failed to get item_data details")
 			)
 
 	# TODO: set texture
