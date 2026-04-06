@@ -313,12 +313,12 @@ func get_player_ranks(pid: String, callback: Callable, force_refresh := false):
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_SEMI, "player", false,
 		func(cb: Callable):
-			ApiManager.send_request(self , base_url, "/players/" + pid + "/ranks",
+			ApiManager.send_request(self , base_url, "/player-ranks/" + pid,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 
 func get_player_rank(pid: String, season_id: String, callback: Callable):
-	ApiManager.send_request(self , base_url, "/players/" + pid + "/ranks/" + season_id,
+	ApiManager.send_request(self , base_url, "/player-ranks/" + pid + "/" + season_id,
 		HTTPClient.METHOD_GET, {}, true, callback)
 
 func create_player_rank(data: Dictionary, callback: Callable):

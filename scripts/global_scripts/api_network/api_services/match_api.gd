@@ -64,11 +64,11 @@ func get_mode(mode_id: int, callback: Callable, force_refresh := false):
 # --- Match Players (no cache - real-time) ---
 
 func get_match_players(match_id: String, callback: Callable):
-	ApiManager.send_request(self, base_url, "/matches/" + match_id + "/players",
+	ApiManager.send_request(self, base_url, "/match-players/?match_id=" + match_id,
 		HTTPClient.METHOD_GET, {}, true, callback)
 
 func get_match_player(match_id: String, pid: String, callback: Callable):
-	ApiManager.send_request(self, base_url, "/matches/" + match_id + "/players/" + pid,
+	ApiManager.send_request(self, base_url, "/match-players/" + match_id + "/" + pid,
 		HTTPClient.METHOD_GET, {}, true, callback)
 
 func add_match_player(data: Dictionary, callback: Callable):
@@ -76,5 +76,19 @@ func add_match_player(data: Dictionary, callback: Callable):
 		HTTPClient.METHOD_POST, data, true, callback)
 
 func update_match_player(match_id: String, pid: String, data: Dictionary, callback: Callable):
-	ApiManager.send_request(self, base_url, "/matches/" + match_id + "/players/" + pid,
+	ApiManager.send_request(self, base_url, "/match-players/" + match_id + "/" + pid,
 		HTTPClient.METHOD_PUT, data, true, callback)
+
+# --- Matchmaking (no cache - real-time) ---
+
+func join_matchmaking(rank_point: int, callback: Callable):
+	ApiManager.send_request(self, base_url, "/matchmaking/join",
+		HTTPClient.METHOD_POST, {"rank_point": rank_point}, true, callback)
+
+func get_matchmaking_status(callback: Callable):
+	ApiManager.send_request(self, base_url, "/matchmaking/status",
+		HTTPClient.METHOD_GET, {}, true, callback)
+
+func leave_matchmaking(callback: Callable):
+	ApiManager.send_request(self, base_url, "/matchmaking/leave",
+		HTTPClient.METHOD_DELETE, {}, true, callback)
