@@ -1897,7 +1897,6 @@ text = "Start"
 expand_icon = true
 
 [node name="Shop" type="Panel" parent="Root/OverlayContainer" unique_id=271100709]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1964,7 +1963,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Recommend" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=850079412]
-visible = false
 custom_minimum_size = Vector2(791, 309)
 layout_mode = 1
 anchors_preset = 15
@@ -2210,6 +2208,7 @@ layout_mode = 2
 text = "Melee"
 
 [node name="Item" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1800100722]
+visible = false
 custom_minimum_size = Vector2(750, 309)
 layout_mode = 1
 anchors_preset = 8

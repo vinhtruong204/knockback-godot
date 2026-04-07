@@ -153,6 +153,16 @@ func add_player_currency_amount(pid: String, currency_type: String, data: Dictio
 				CacheManager.invalidate("player_dynamic:currencies:" + pid + ":" + currency_type)
 			callback.call(response))
 
+# --- Purchase ---
+
+func purchase_item(data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/purchases/",
+		HTTPClient.METHOD_POST, data, true,
+		func(response: Dictionary):
+			if response.ok:
+				CacheManager.invalidate_category("player_dynamic")
+			callback.call(response))
+
 # --- Player Inventory ---
 
 func get_player_inventory(pid: String, callback: Callable, force_refresh := false):

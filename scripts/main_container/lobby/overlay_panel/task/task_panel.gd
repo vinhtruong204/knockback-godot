@@ -67,21 +67,17 @@ func is_completed(task: Dictionary) -> bool:
 
 
 func _on_task_completed(task: Dictionary):
-	print("Task completed: ", task["name"])
-	
 	var reward_amount = task["reward_amount"]
 	var currency_type = task["currency_type"]
-
+	var global_ui: GlobalUI = get_tree().root.get_node("Main/GlobalUi")
 
 	PlayerApi.add_player_currency_amount(ApiManager.player_id, currency_type, {"amount": reward_amount},
 		func(response: Dictionary):
 			if response.get("ok", false):
-				print("Task completed: ", task["name"])
-
-				# update currency UI
 				currency_ui.update_currency()
+				global_ui.show_reward_notification(task["name"], reward_amount, currency_type)
 			else:
-				print("Failed to complete task: ", task["name"])
+				global_ui.show_error_notification("Failed to claim reward")
 	)
 
 

@@ -58,7 +58,7 @@ func _ready():
 func _process(_delta: float) -> void:
 	if matchmaking_state == MatchmakingState.SEARCHING:
 		var elapsed := Time.get_ticks_msec() / 1000.0 - search_start_time
-		var minutes := int(elapsed) / 60
+		var minutes := int(elapsed / 60.0)
 		var seconds := int(elapsed) % 60
 		timer_label.text = "%02d:%02d" % [minutes, seconds]
 
