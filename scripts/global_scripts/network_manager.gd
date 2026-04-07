@@ -11,6 +11,7 @@ var login_scene_path := "res://scenes/main_container/login/login.tscn"
 var current_match_id: int = 0
 var current_match_players: Array = []  # Array of {player_id, team_id} dicts
 var current_player_name: String = ""
+var current_map_name: String = ""
 
 
 func _ready():

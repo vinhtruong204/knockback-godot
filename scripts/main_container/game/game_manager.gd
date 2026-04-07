@@ -2,6 +2,7 @@ class_name GameManager extends Node2D
 
 # ── Match context ──
 var match_id: int = 0
+var map_name: String = ""
 var peer_to_player_id: Dictionary = {} # {int peer_id: String player_id}
 var peer_to_name: Dictionary = {} # {int peer_id: String name}
 
@@ -51,13 +52,14 @@ func _register_with_server() -> void:
 	var player_name := NetworkManager.current_player_name
 	if player_name == "":
 		player_name = str(multiplayer.get_unique_id())
-	register_player.rpc_id(1, ApiManager.player_id, match_id, player_name)
+	var p_map_name := NetworkManager.current_map_name
+	register_player.rpc_id(1, ApiManager.player_id, match_id, player_name, p_map_name)
 
 
 # ── Registration RPC (client → server) ──
 
 @rpc("any_peer", "call_remote", "reliable")
-func register_player(player_id: String, p_match_id: int, player_name: String) -> void:
+func register_player(player_id: String, p_match_id: int, player_name: String, p_map_name: String = "") -> void:
 	if not multiplayer.is_server(): return
 	var sender := multiplayer.get_remote_sender_id()
 	peer_to_player_id[sender] = player_id
@@ -66,6 +68,8 @@ func register_player(player_id: String, p_match_id: int, player_name: String) ->
 	deaths[sender] = 0
 	if match_id == 0:
 		match_id = p_match_id
+	if map_name == "" and p_map_name != "":
+		map_name = p_map_name
 
 	# Once all players registered, broadcast names to clients (after spawn delay)
 	if peer_to_name.size() >= 2:

@@ -1453,6 +1453,7 @@ columns = 2
 [node name="Button" type="Button" parent="Root/OverlayContainer/Ranking/PopupAllRankInfor/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=237630625]
 custom_minimum_size = Vector2(280, 200)
 layout_mode = 2
+mouse_filter = 2
 text = "Bronze: 0 - 499"
 icon = ExtResource("32_bbxsu")
 icon_alignment = 1
@@ -1462,6 +1463,7 @@ expand_icon = true
 [node name="Button2" type="Button" parent="Root/OverlayContainer/Ranking/PopupAllRankInfor/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=1934276867]
 custom_minimum_size = Vector2(280, 200)
 layout_mode = 2
+mouse_filter = 2
 text = "Silver: 500 - 999"
 icon = ExtResource("33_7vi1o")
 icon_alignment = 1
@@ -1471,6 +1473,7 @@ expand_icon = true
 [node name="Button3" type="Button" parent="Root/OverlayContainer/Ranking/PopupAllRankInfor/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=1373569510]
 custom_minimum_size = Vector2(280, 200)
 layout_mode = 2
+mouse_filter = 2
 text = "Gold: 1000 - 1499"
 icon = ExtResource("34_8od1p")
 icon_alignment = 1
@@ -1480,6 +1483,7 @@ expand_icon = true
 [node name="Button4" type="Button" parent="Root/OverlayContainer/Ranking/PopupAllRankInfor/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=365596436]
 custom_minimum_size = Vector2(280, 200)
 layout_mode = 2
+mouse_filter = 2
 text = "Platinum: 1500 - 1999"
 icon = ExtResource("35_n1kpd")
 icon_alignment = 1
@@ -1489,6 +1493,7 @@ expand_icon = true
 [node name="Button5" type="Button" parent="Root/OverlayContainer/Ranking/PopupAllRankInfor/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=172296732]
 custom_minimum_size = Vector2(280, 200)
 layout_mode = 2
+mouse_filter = 2
 text = "Diamond: 2000 - 2499"
 icon = ExtResource("31_l8m0j")
 icon_alignment = 1
@@ -1498,6 +1503,7 @@ expand_icon = true
 [node name="Button6" type="Button" parent="Root/OverlayContainer/Ranking/PopupAllRankInfor/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=763283439]
 custom_minimum_size = Vector2(280, 200)
 layout_mode = 2
+mouse_filter = 2
 text = "Master: 2500 - 9999"
 icon = ExtResource("36_7vi1o")
 icon_alignment = 1

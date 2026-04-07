@@ -159,6 +159,7 @@ func _handle_match_found(match_data) -> void:
 	# Store match context for the game scene
 	NetworkManager.current_match_id = match_data.match_id
 	NetworkManager.current_match_players = []
+	NetworkManager.current_map_name = match_data.map_name
 	for p in match_data.players:
 		NetworkManager.current_match_players.append(p.to_dict())
 
