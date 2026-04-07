@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dkgg0bf0dgsdq"]
 
+[ext_resource type="Script" uid="uid://bijoea80cemaf" path="res://scripts/main_container/game/game_manager.gd" id="0_gm"]
+[ext_resource type="PackedScene" uid="uid://cirhr4v6ea1xe" path="res://scenes/main_container/game/ui/match_result/match_result_panel.tscn" id="0_mrp"]
 [ext_resource type="Script" uid="uid://fl37psjgvksq" path="res://addons/virtual_joystick_plus/virtual_joystick_plus.gd" id="1_h7arf"]
 [ext_resource type="Texture2D" uid="uid://dll0wmd7v2ohb" path="res://assets/game/ui/ui_control_player/joystick_outer.png" id="2_h7arf"]
 [ext_resource type="Script" uid="uid://b03wyjw2q1euh" path="res://scripts/main_container/game/spawners/player_spawner.gd" id="2_u7cc6"]
@@ -31,6 +33,7 @@
 bg_color = Color(0.08078333, 0.08078336, 0.08078327, 1)
 
 [node name="Game" type="Node2D" unique_id=43312602]
+script = ExtResource("0_gm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1502320093]
 
@@ -66,6 +69,7 @@ offset_top = -300.0
 offset_right = 300.0
 grow_vertical = 0
 pivot_offset = Vector2(150, 150)
+mouse_filter = 1
 script = ExtResource("1_h7arf")
 joystick_texture = ExtResource("2_h7arf")
 joystick_opacity = 1.0
@@ -519,6 +523,10 @@ offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Leave"
+
+[node name="MatchResultOverlay" parent="CanvasLayer/Root" unique_id=443816895 instance=ExtResource("0_mrp")]
+visible = false
+layout_mode = 1
 
 [node name="World" type="Node2D" parent="." unique_id=1477937842]
 

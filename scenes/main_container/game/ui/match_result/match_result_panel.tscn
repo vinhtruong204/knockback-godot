@@ -1,0 +1,227 @@
+[gd_scene format=3 uid="uid://cirhr4v6ea1xe"]
+
+[ext_resource type="Script" uid="uid://cndcw5e3ww2cw" path="res://scripts/main_container/game/ui/match_result/match_result_panel.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.1, 0.1, 0.15, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.4, 0.5, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="MatchResultPanel" type="Control" unique_id=408843256]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="BgOverlay" type="ColorRect" parent="." unique_id=220295746]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Panel" type="PanelContainer" parent="BgOverlay" unique_id=226001186]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -175.0
+offset_right = 325.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="MarginContainer" type="MarginContainer" parent="BgOverlay/Panel" unique_id=2023275628]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BgOverlay/Panel/MarginContainer" unique_id=1866133893]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="ResultLabel" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer" unique_id=745003883]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "VICTORY"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="BgOverlay/Panel/MarginContainer/VBoxContainer" unique_id=1900627547]
+layout_mode = 2
+
+[node name="HeaderRow" type="HBoxContainer" parent="BgOverlay/Panel/MarginContainer/VBoxContainer" unique_id=1075775973]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HName" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/HeaderRow" unique_id=1041066606]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "Name"
+horizontal_alignment = 1
+
+[node name="HKill" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/HeaderRow" unique_id=643346563]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "Kill"
+horizontal_alignment = 1
+
+[node name="HDead" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/HeaderRow" unique_id=1808128510]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "Dead"
+horizontal_alignment = 1
+
+[node name="HGold" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/HeaderRow" unique_id=60738030]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "Gold"
+horizontal_alignment = 1
+
+[node name="HExp" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/HeaderRow" unique_id=1099512752]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "EXP"
+horizontal_alignment = 1
+
+[node name="HRank" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/HeaderRow" unique_id=1301455339]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "Rank"
+horizontal_alignment = 1
+
+[node name="Player1Row" type="HBoxContainer" parent="BgOverlay/Panel/MarginContainer/VBoxContainer" unique_id=2105393449]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="P1Name" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/Player1Row" unique_id=1944438378]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 16
+text = "Player1"
+horizontal_alignment = 1
+
+[node name="P1Kill" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/Player1Row" unique_id=1609037991]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "0"
+horizontal_alignment = 1
+
+[node name="P1Dead" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/Player1Row" unique_id=817906973]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "0"
+horizontal_alignment = 1
+
+[node name="P1Gold" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/Player1Row" unique_id=1635833603]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "+0"
+horizontal_alignment = 1
+
+[node name="P1Exp" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/Player1Row" unique_id=1534857511]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "+0"
+horizontal_alignment = 1
+
+[node name="P1Rank" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/Player1Row" unique_id=267107504]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "+0"
+horizontal_alignment = 1
+
+[node name="Player2Row" type="HBoxContainer" parent="BgOverlay/Panel/MarginContainer/VBoxContainer" unique_id=1531057725]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="P2Name" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/Player2Row" unique_id=347413966]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 16
+text = "Player2"
+horizontal_alignment = 1
+
+[node name="P2Kill" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/Player2Row" unique_id=1858414006]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "0"
+horizontal_alignment = 1
+
+[node name="P2Dead" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/Player2Row" unique_id=2107518939]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "0"
+horizontal_alignment = 1
+
+[node name="P2Gold" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/Player2Row" unique_id=1044244209]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "+0"
+horizontal_alignment = 1
+
+[node name="P2Exp" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/Player2Row" unique_id=1812196781]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "+0"
+horizontal_alignment = 1
+
+[node name="P2Rank" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/Player2Row" unique_id=379344376]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "+0"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="BgOverlay/Panel/MarginContainer/VBoxContainer" unique_id=865588236]
+layout_mode = 2
+
+[node name="ConfirmBtn" type="Button" parent="BgOverlay/Panel/MarginContainer/VBoxContainer" unique_id=1398057687]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+text = "Confirm"

@@ -336,7 +336,7 @@ func create_player_rank(data: Dictionary, callback: Callable):
 		HTTPClient.METHOD_POST, data, true, callback)
 
 func update_player_rank(pid: String, season_id: String, data: Dictionary, callback: Callable):
-	ApiManager.send_request(self , base_url, "/players/" + pid + "/ranks/" + season_id,
+	ApiManager.send_request(self , base_url, "/player-ranks/" + pid + "/" + season_id,
 		HTTPClient.METHOD_PUT, data, true,
 		func(response: Dictionary):
 			if response.ok:

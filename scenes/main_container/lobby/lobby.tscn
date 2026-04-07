@@ -1897,6 +1897,7 @@ text = "Start"
 expand_icon = true
 
 [node name="Shop" type="Panel" parent="Root/OverlayContainer" unique_id=271100709]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

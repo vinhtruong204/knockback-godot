@@ -17,6 +17,10 @@ func create_match(data: Dictionary, callback: Callable):
 	ApiManager.send_request(self, base_url, "/matches",
 		HTTPClient.METHOD_POST, data, true, callback)
 
+func update_match(match_id: String, data: Dictionary, callback: Callable):
+	ApiManager.send_request(self, base_url, "/matches/" + match_id,
+		HTTPClient.METHOD_PUT, data, true, callback)
+
 # --- Maps (cached) ---
 
 func get_maps(callback: Callable, force_refresh := false):

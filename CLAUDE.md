@@ -23,7 +23,7 @@ There are no separate build, lint, or test commands — this is a Godot project 
 
 | Singleton | Script | Role |
 |-----------|--------|------|
-| SceneLoader | `scripts/global_scripts/scene_loader.gd` | Threaded scene loading with transitions |
+| SceneLoader | `scripts/global_scripts/scene_loader.gd` | Threaded scene loading with progress tracking |
 | NetworkManager | `scripts/global_scripts/network_manager.gd` | ENet multiplayer peer setup (server/client) |
 | ApiManager | `scripts/global_scripts/api_network/api_services/api_manager.gd` | Base HTTP client, session token, auth headers |
 | PlayerApi | `scripts/global_scripts/api_network/api_services/player_api.gd` | Auth, profiles, inventory, equipment, currency |
@@ -38,11 +38,11 @@ There are no separate build, lint, or test commands — this is a Godot project 
 ```
 Main (main.tscn)
 ├── SceneContainer  ← SceneLoader swaps scenes here
-├── GlobalUi        ← Persistent loading screen, transitions
-└── TransitionLayer
+├── GlobalUi        ← Persistent loading screen, notifications, confirmations
+└── TransitionLayer ← Fade in/out animations between scenes
 
 Flow: Login → Lobby → Game
-- Dedicated server skips login/lobby, loads game scene directly
+- Dedicated server: OS.has_feature("dedicated_server") → skips login/lobby, loads game directly
 - Client: Login (Google/dev) → Lobby (UI panels) → Game (on match start)
 ```
 
@@ -59,31 +59,103 @@ Base URL: `http://100.96.156.107`
 
 Auth: Bearer token via `Authorization` header. Session stored at `user://auth.cfg`.
 
+### API Callback & Caching Pattern
+
+All API calls follow the same callback pattern with a standard response shape:
+
+```gdscript
+# Calling an API method:
+PlayerApi.get_player_profile(player_id, func(response):
+    if response.get("ok", false):
+        var data = response["data"]  # parsed model or dict
+    else:
+        var error = response.get("error", "Unknown error")
+)
+
+# Response format: {ok: bool, status: int, data: Variant, error: String}
+```
+
+API services use CacheManager with `fetch_or_cache()` before making HTTP requests:
+
+```gdscript
+func get_resource(id, callback, force_refresh := false):
+    var key := "category:resource:" + str(id)
+    if force_refresh:
+        CacheManager.invalidate(key)
+    CacheManager.fetch_or_cache(key, TTL, "category", persist_flag,
+        func(cb): ApiManager.send_request(...),
+        callback)
+```
+
+Cache TTL tiers and invalidation:
+
+| Category | TTL | Use Case | Persist to disk |
+|----------|-----|----------|-----------------|
+| config | 3600s | Weapons, characters, maps, modes | Yes |
+| match_config | 3600s | Maps, modes | Yes |
+| economy | 300s | Shop items | No |
+| player | 300s | Profile, stats, achievements | No |
+| player_dynamic | 30s | Currency, inventory, equipment | No |
+
+After any write operation (purchase, equip, currency change), invalidate relevant cache:
+- `CacheManager.invalidate("player:profile:" + pid)` — single key
+- `CacheManager.invalidate_category("player_dynamic")` — all keys in category
+- `CacheManager.invalidate_player(pid)` — all keys containing player ID
+
+### GlobalUI System
+
+GlobalUI is persistent across scenes. Access from any script via:
+```gdscript
+get_tree().root.get_node("Main/GlobalUi")
+```
+
+Three subsystems:
+- **LoadingContainer** — `show_loading_screen()`, auto-polls `SceneLoader.get_progress()`, auto-hides at 100%
+- **NotificationPanel** — `show_purchase_notification()`, `show_reward_notification()`, `show_error_notification()`
+- **ConfirmationContainer** — `show_confirm_purchase(item_type, price, currency_type, on_confirm: Callable)`
+
 ### Multiplayer Networking
 
 - **Protocol:** ENetMultiplayerPeer (UDP), server at `100.96.156.107:9543`
 - **Authority model:** Server is authority. Clients send RPC requests, server validates and executes.
 - **Spawners:** `MultiplayerSpawner` nodes for players, bullets, bombs, maps — server-side only.
-- **RPC pattern:**
-  - Client → server: `func_name.rpc_id(1, args)` (1 = server peer ID)
-  - Server → clients: `@rpc("authority", "call_remote", "reliable")`
-  - Damage: `@rpc("any_peer", "call_remote", "reliable")` with authority check
 - **Max players:** 2 per match
+
+**RPC patterns used throughout the codebase:**
+
+```gdscript
+# Client → server (1 = server peer ID):
+func_name.rpc_id(1, args)
+
+# Server → all clients:
+@rpc("authority", "call_remote", "reliable")
+func do_something(): ...
+
+# Any peer → server with authority check:
+@rpc("any_peer", "call_remote", "reliable")
+func take_damage_rpc(damage: int):
+    if not multiplayer.is_server(): return
+    # server-side logic
+
+# Authority guards:
+if not is_multiplayer_authority(): return  # only local player processes input
+if not multiplayer.is_server(): return     # only server processes game logic
+```
 
 ### Player System (component-based)
 
-Scripts in `scripts/main_container/game/player/`:
+Scripts in `scripts/main_container/game/player/`. Components communicate via signals.
 
-| Component | Responsibility |
-|-----------|---------------|
-| `player_controller.gd` | CharacterBody2D root, camera setup, death/respawn |
-| `player_input.gd` | Reads joystick/keyboard, emits jump/shoot/throw_bomb signals |
-| `player_movement.gd` | Gravity, velocity, knockback blending, platform drop-through |
-| `player_health.gd` | HP (100) + hearts (3), damage RPC, death on 0 hearts |
-| `player_knockback.gd` | Applies knockback/bomb force vectors via RPC |
-| `player_flip.gd` | Sprite direction (LEFT/RIGHT) based on input |
-| `player_attack.gd` | Shoot RPC → server spawns bullet |
-| `player_throw_bomb.gd` | Throw bomb RPC → server spawns bomb |
+| Component | Responsibility | Key Signals |
+|-----------|---------------|-------------|
+| `player_controller.gd` | CharacterBody2D root, camera, death/respawn | — |
+| `player_input.gd` | Reads joystick/keyboard (authority only) | `jump`, `drop_down`, `shoot`, `throw_bomb`, `switch_weapon` |
+| `player_movement.gd` | Gravity, velocity, knockback blending, platform drop-through | Listens to `jump`, `drop_down` |
+| `player_health.gd` | HP (100) + hearts (3), damage RPC, death on 0 hearts | `health_changed`, `heart_changed`, `oponent_heart_changed` |
+| `player_knockback.gd` | Applies knockback/bomb force vectors via RPC | — |
+| `player_flip.gd` | Sprite direction (LEFT/RIGHT) based on input | — |
+| `player_attack.gd` | Shoot RPC → server spawns bullet via BulletSpawner | Listens to `shoot` |
+| `player_throw_bomb.gd` | Throw bomb RPC → server spawns bomb | Listens to `throw_bomb` |
 
 ### Physics Collision Layers
 
@@ -94,17 +166,24 @@ Scripts in `scripts/main_container/game/player/`:
 - `player_jump` → Space
 - `player_attack` → Right Arrow
 - `player_throw_bomb` → E
-- Mobile: VirtualJoystickPlus plugin for movement, on-screen buttons for actions
+- Mobile: VirtualJoystickPlus addon for movement (`get_value() → Vector2`), on-screen buttons for actions
 
 ### Data Models & Enums
 
 Defined in `scripts/global_scripts/api_network/models/`:
 - `enums.gd`: ItemType, CurrencyType, MatchStatus, MatchResult, GameMode, SlotType
-- `player_models.gd`, `match_models.gd`, etc.: API response models with `from_dict()`/`to_dict()`
+- `player_models.gd`, `match_models.gd`, etc.: API response models with `from_dict()`/`from_array()`/`to_dict()`
 
 ### Lobby UI
 
-`scripts/main_container/lobby/` manages overlay panels: shop, equipment, normal matchmaking, LAN, leaderboard, rank, profile, tasks, wheel. Each panel is a separate scene loaded into the lobby overlay.
+`scripts/main_container/lobby/` manages overlay panels: shop, equipment, normal matchmaking, LAN, leaderboard, rank, profile, tasks, wheel. Each panel is a separate scene loaded into the lobby overlay. Panel visibility is toggled via `_open_[panel_name]()` methods in `lobby_ui_manager.gd`.
+
+### Login & Auth Flow
+
+- **Android:** Google Sign-In plugin → `id_token` → `PlayerApi.login(id_token, callback)` → save session
+- **Non-Android (dev):** `PlayerApi.dev_login("DevPlayer", "", callback)` → same flow
+- **Session check:** `ApiManager.is_logged_in()` on startup; if true, skip login and go to lobby
+- **Sign out:** `PlayerApi.signout()` → clear ApiManager session → `CacheManager` clear all → reload login scene
 
 ### Key Conventions
 
@@ -113,3 +192,4 @@ Defined in `scripts/global_scripts/api_network/models/`:
 - `is_multiplayer_authority()` guard on input processing (only local player processes input)
 - API services return parsed model objects; cache is checked before HTTP requests
 - Scene paths referenced by `res://` paths in script constants
+- Addons: `google_sign_in` (Android auth), `virtual_joystick_plus` (mobile input)

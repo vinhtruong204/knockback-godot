@@ -156,6 +156,12 @@ func _handle_match_found(match_data) -> void:
 	timer_label.text = match_data.map_name
 	cancel_btn.visible = false
 
+	# Store match context for the game scene
+	NetworkManager.current_match_id = match_data.match_id
+	NetworkManager.current_match_players = []
+	for p in match_data.players:
+		NetworkManager.current_match_players.append(p.to_dict())
+
 	get_tree().create_timer(1.0).timeout.connect(func():
 		NetworkManager.create_client()
 	)

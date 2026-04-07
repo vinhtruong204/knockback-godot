@@ -29,7 +29,6 @@ horizontal_alignment = 1
 [node name="ContentLabel" type="Label" parent="VBoxContainer" unique_id=1637316047]
 layout_mode = 2
 horizontal_alignment = 1
-autowrap_mode = 2
 
 [node name="PriceContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1398281833]
 layout_mode = 2

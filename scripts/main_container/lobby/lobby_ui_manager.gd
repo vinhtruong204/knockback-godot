@@ -5,6 +5,7 @@ func _init() -> void:
 	PlayerApi.get_player(ApiManager.player_id, func(response: Dictionary):
 		if response.get("ok", false):
 			var player = response.get("data")
+			NetworkManager.current_player_name = player.get("name", "")
 			print(player)
 	)
 

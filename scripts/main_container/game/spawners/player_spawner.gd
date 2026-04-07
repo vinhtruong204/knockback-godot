@@ -7,6 +7,7 @@ const SPAWN_X_OFFSET := 200
 
 signal all_player_joined()
 signal player_spawned(player: Node)
+signal player_disconnected(peer_id: int)
 
 func _ready():
 	spawn_function = _spawn_player
@@ -35,9 +36,10 @@ func _on_peer_connected(peer_id: int):
 
 func _on_peer_disconnected(peer_id: int):
 	if not multiplayer.is_server(): return
-	
-	var player = _players_list.get(peer_id)
 
+	player_disconnected.emit(peer_id)
+
+	var player = _players_list.get(peer_id)
 	if player:
 		player.queue_free()
 		_players_list.erase(peer_id)
