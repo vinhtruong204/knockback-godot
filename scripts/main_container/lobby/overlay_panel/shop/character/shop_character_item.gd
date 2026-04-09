@@ -8,7 +8,13 @@ var currency_ui: CurrencyContainer
 
 func set_shop_item(item: Dictionary) -> void:
 	_item_data = item
-	# character_texture.texture = load(item["image"])
+	var item_id = int(item.get("item_id", 0))
+	ConfigApi.get_character(item_id, func(response: Dictionary):
+		if response.get("ok", false):
+			var texture_name = response.get("data", {}).get("texture", "")
+			if texture_name != "":
+				character_texture.texture = load("res://assets/game/player/%s" % texture_name)
+	)
 	var price = int(item.get("price", 0))
 	var currency_type = item.get("currency_type", "")
 

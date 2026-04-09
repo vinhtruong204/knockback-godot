@@ -60,7 +60,9 @@ func set_equipment_item(item_data: Dictionary) -> void:
 			ConfigApi.get_weapon(_item_data["item_id"], func(response: Dictionary) -> void:
 				if response.get("ok", false):
 					item_details = response.get("data", {})
-					print(item_details)
+					var image_name = item_details.get("image", "")
+					if image_name != "":
+						texture_normal = load("res://assets/game/weapon/static/%s" % image_name)
 				else:
 					print("Failed to get item_data details")
 			)
@@ -68,9 +70,9 @@ func set_equipment_item(item_data: Dictionary) -> void:
 			ConfigApi.get_character(_item_data["item_id"], func(response: Dictionary) -> void:
 				if response.get("ok", false):
 					item_details = response.get("data", {})
-					print(item_details)
+					var texture_name = item_details.get("texture", "")
+					if texture_name != "":
+						texture_normal = load("res://assets/game/player/%s" % texture_name)
 				else:
 					print("Failed to get item_data details")
 			)
-
-	# TODO: set texture

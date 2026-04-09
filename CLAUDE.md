@@ -8,6 +8,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Target platforms: Android (primary) and Windows (dedicated server).
 
+**Display:** 1080x486 viewport, `canvas_items` stretch mode, `expand` aspect, VSync off, mouse-to-touch emulation enabled for desktop testing.
+
 ## Running the Project
 
 - Open in Godot 4.6 editor and run (F5), or use CLI: `godot --path .`
@@ -142,6 +144,26 @@ if not is_multiplayer_authority(): return  # only local player processes input
 if not multiplayer.is_server(): return     # only server processes game logic
 ```
 
+### Match Lifecycle
+
+The match flow spans `game_manager.gd` → `match_result_panel.gd` → API services:
+
+1. **Pre-match:** Matchmaking sets `NetworkManager.current_match_id`, `.current_match_players`, `.current_map_name`, `.current_player_name` before connecting to the game server.
+2. **Registration:** Client calls `register_player.rpc_id(1, player_id, match_id, name, map_name)`. Server tracks peers in `peer_to_player_id` / `peer_to_name` dicts. Once both registered, server broadcasts names to clients for UI.
+3. **Match end:** Triggered by `player_eliminated` signal (hearts=0) or client disconnect (forfeit). `GameManager._end_match()` broadcasts `_receive_match_result.rpc()` with per-player stats and rewards.
+4. **Post-match (client):** `MatchResultPanel` shows stats with 5s auto-confirm countdown, then executes sequential API calls: add gold → update match-player record → add exp → update cumulative stats → update rank → invalidate caches → `NetworkManager.leave_game()` → lobby.
+5. **Server cleanup:** 10s after broadcasting results, server resets state and reloads game scene via `SceneLoader`.
+
+**Reward constants** (in `GameManager`):
+
+| Result | Gold | EXP | Rank Points |
+|--------|------|-----|-------------|
+| Win | 50 | 100 | +15 |
+| Lose | 20 | 50 | -10 |
+| Forfeit | 0 | 0 | -20 |
+
+Key files: `scripts/main_container/game/game_manager.gd`, `scripts/main_container/game/ui/match_result/match_result_panel.gd`
+
 ### Player System (component-based)
 
 Scripts in `scripts/main_container/game/player/`. Components communicate via signals.
@@ -156,6 +178,11 @@ Scripts in `scripts/main_container/game/player/`. Components communicate via sig
 | `player_flip.gd` | Sprite direction (LEFT/RIGHT) based on input | — |
 | `player_attack.gd` | Shoot RPC → server spawns bullet via BulletSpawner | Listens to `shoot` |
 | `player_throw_bomb.gd` | Throw bomb RPC → server spawns bomb | Listens to `throw_bomb` |
+| `weapon_hold_handler.gd` | Manages 3 weapon nodes (PRIMARY, SECONDARY, MELEE), swaps on `weapon_switched` signal | — |
+
+**Projectile values** (affect game balance):
+- **Bullet:** 200 px/s speed, 4s lifetime, 50 damage, owner-excluded
+- **Bomb:** 3s fuse, 30 damage + dir*150 knockback force, owner-excluded
 
 ### Physics Collision Layers
 

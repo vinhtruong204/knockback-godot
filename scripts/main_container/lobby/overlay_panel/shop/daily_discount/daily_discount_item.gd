@@ -12,6 +12,24 @@ func set_shop_item(item: Dictionary) -> void:
 	if not buy_btn:
 		return
 
+	var item_id = int(item.get("item_id", 0))
+	var item_type = item.get("item_type", "")
+	match item_type:
+		Enums.ItemType.WEAPON:
+			ConfigApi.get_weapon(item_id, func(response: Dictionary):
+				if response.get("ok", false):
+					var image_name = response.get("data", {}).get("image", "")
+					if image_name != "":
+						item_texture.texture = load("res://assets/game/weapon/static/%s" % image_name)
+			)
+		Enums.ItemType.CHARACTER:
+			ConfigApi.get_character(item_id, func(response: Dictionary):
+				if response.get("ok", false):
+					var texture_name = response.get("data", {}).get("texture", "")
+					if texture_name != "":
+						item_texture.texture = load("res://assets/game/player/%s" % texture_name)
+			)
+
 	if discount_label:
 		discount_label.text = "%d%%" % (item.get("discount", 0) * 100)
 
