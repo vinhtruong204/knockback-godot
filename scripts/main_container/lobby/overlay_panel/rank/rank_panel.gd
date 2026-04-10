@@ -10,7 +10,7 @@ class_name RankPanel extends Panel
 @onready var timer_label: Label = $MatchmakingPopup/Panel/TimerLabel
 @onready var cancel_btn: Button = $MatchmakingPopup/Panel/CancelBtn
 
-enum MatchmakingState { IDLE, SEARCHING, MATCH_FOUND }
+enum MatchmakingState {IDLE, SEARCHING, MATCH_FOUND}
 
 var rank_data: Dictionary = {}
 var rank_config: Dictionary = {}
@@ -65,6 +65,10 @@ func _process(_delta: float) -> void:
 
 # ─── Fight Button ────────────────────────────────────────────
 func _on_fight_pressed():
+	# test run game directly
+	NetworkManager.create_client()
+	return
+
 	if matchmaking_state != MatchmakingState.IDLE:
 		return
 
