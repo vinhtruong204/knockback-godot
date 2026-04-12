@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnf4q6tmsl55t"
-path="res://.godot/imported/night.jpg-05d75fdc9c7308ef5faba65f4803fcc6.ctex"
+uid="uid://dddied6tnu8rj"
+path="res://.godot/imported/forest.png-2a12b0002a34ccf58d288b9814e3b24c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game/map/night.jpg"
-dest_files=["res://.godot/imported/night.jpg-05d75fdc9c7308ef5faba65f4803fcc6.ctex"]
+source_file="res://assets/game/map/forest.png"
+dest_files=["res://.godot/imported/forest.png-2a12b0002a34ccf58d288b9814e3b24c.ctex"]
 
 [params]
 

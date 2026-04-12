@@ -120,7 +120,6 @@ Three subsystems:
 
 - **Protocol:** ENetMultiplayerPeer (UDP), server at `100.96.156.107:9543`
 - **Authority model:** Server is authority. Clients send RPC requests, server validates and executes.
-- **Spawners:** `MultiplayerSpawner` nodes for players, bullets, bombs, maps — server-side only.
 - **Max players:** 2 per match
 
 **RPC patterns used throughout the codebase:**
@@ -143,6 +142,26 @@ func take_damage_rpc(damage: int):
 if not is_multiplayer_authority(): return  # only local player processes input
 if not multiplayer.is_server(): return     # only server processes game logic
 ```
+
+### Spawner System
+
+All spawners extend `MultiplayerSpawner` with a `spawn_function` callback. Server is authority for all spawners. Scripts in `scripts/main_container/game/spawners/`.
+
+**Game startup signal chain (server-side):**
+1. Both peers connect → `PlayerSpawner` detects `_players_list.size() == MAX_PLAYER`
+2. 1s delay → `all_player_joined` signal emitted
+3. `MapSpawner` listens for `all_player_joined` → spawns map with dynamic texture from `res://assets/game/map/{name}.png`
+4. `PlayerSpawner` spawns both players with random X offset (±200px)
+
+**Spawn data pattern** — all spawners pass dictionaries to `spawn()`:
+```gdscript
+# PlayerSpawner: {"peer_id": int, "pos": Vector2}
+# BulletSpawner: {"peer_id": int, "pos": Vector2, "direction": Vector2}
+# BombSpawner:   {"peer_id": int, "pos": Vector2, "force": Vector2}
+# MapSpawner:    {"map_texture_name": String}
+```
+
+Player authority is set to the owning peer (`player.set_multiplayer_authority(data["peer_id"])`). Bullets, bombs, and maps have server authority.
 
 ### Match Lifecycle
 
@@ -214,9 +233,11 @@ Defined in `scripts/global_scripts/api_network/models/`:
 
 ### Key Conventions
 
-- GDScript with `class_name` declarations on model/enum files
+- GDScript with `class_name` declarations on model/enum files and spawners
 - Signals for intra-component communication within player system
 - `is_multiplayer_authority()` guard on input processing (only local player processes input)
+- `multiplayer.is_server()` guard at the top of any server-only RPC handler
 - API services return parsed model objects; cache is checked before HTTP requests
 - Scene paths referenced by `res://` paths in script constants
-- Addons: `google_sign_in` (Android auth), `virtual_joystick_plus` (mobile input)
+- Addons: `google_sign_in` (Android auth, path: `addons/addons/google_sign_in`), `virtual_joystick_plus` (mobile input)
+- Rendering: Mobile renderer, D3D12 driver on Windows, ETC2/ASTC texture compression for Android

@@ -16,7 +16,7 @@ func _ready() -> void:
 func _on_all_player_joined() -> void:
 	print("All player joined")
 	# Get map name from GameManager
-	var game_manager = get_tree().root.get_node_or_null("Main/SceneContainer/Game")
+	var game_manager = get_tree().root.get_node_or_null("Main/SceneContainer/Game") as GameManager
 	var map_texture_name := DEFAULT_MAP
 	if game_manager and game_manager.map_name != "":
 		map_texture_name = game_manager.map_name.to_lower()
@@ -30,7 +30,7 @@ func _spawn_map(data: Dictionary) -> Node:
 
 	# Set map texture
 	var texture_name: String = data.get("map_texture_name", DEFAULT_MAP)
-	var texture_path := MAP_TEXTURE_PATH + texture_name + ".jpg"
+	var texture_path := MAP_TEXTURE_PATH + texture_name + ".png"
 	var texture = load(texture_path)
 	if texture:
 		var sprite: Sprite2D = map.get_node_or_null("Sprite2D")

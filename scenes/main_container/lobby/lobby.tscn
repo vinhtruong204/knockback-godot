@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b21va7keqlyqd"]
 
 [ext_resource type="Script" uid="uid://c0qtlwkfwu03n" path="res://scripts/main_container/lobby/lobby_ui_manager.gd" id="1_1cl6t"]
-[ext_resource type="Texture2D" uid="uid://bt4436voa0kvl" path="res://assets/lobby/lobby_bg.png" id="1_psu8p"]
+[ext_resource type="Texture2D" uid="uid://cglqw50q13g10" path="res://assets/lobby/lobby_bg.png" id="1_psu8p"]
 [ext_resource type="Texture2D" uid="uid://dyjtvlq4xa4dc" path="res://assets/lobby/top_bar/player_profile/player_profile_bg.png" id="2_psu8p"]
 [ext_resource type="Texture2D" uid="uid://6erg825vauqi" path="res://assets/lobby/top_bar/currency/gold.png" id="4_62jta"]
 [ext_resource type="Script" uid="uid://bs24vnwpb2qoc" path="res://scripts/main_container/lobby/ui_buttons/top_bar/player_profile/player_profile_btn.gd" id="4_f82ac"]
@@ -46,20 +46,20 @@
 [ext_resource type="Texture2D" uid="uid://bmx62ytrv56vl" path="res://assets/lobby/middle/rank/bronze.png" id="32_bbxsu"]
 [ext_resource type="Texture2D" uid="uid://dsllho6a602j0" path="res://assets/lobby/middle/rank/silver.png" id="33_7vi1o"]
 [ext_resource type="Texture2D" uid="uid://bxfke4t50iift" path="res://assets/lobby/middle/normal_config/map_icon.png" id="33_cyr2y"]
-[ext_resource type="Texture2D" uid="uid://dh7kjthvb5822" path="res://assets/loading/loading_bg.jpg" id="34_2ieah"]
 [ext_resource type="Texture2D" uid="uid://cqaq60yiorv4y" path="res://assets/lobby/middle/rank/gold.png" id="34_8od1p"]
-[ext_resource type="Texture2D" uid="uid://bnf4q6tmsl55t" path="res://assets/game/map/night.jpg" id="34_cfui6"]
 [ext_resource type="Texture2D" uid="uid://cbbunphpr4sxr" path="res://assets/lobby/middle/normal_config/team_size_icon.png" id="34_iyufi"]
 [ext_resource type="Script" uid="uid://ch4f878ym0qrx" path="res://scripts/main_container/lobby/overlay_panel/shop/item/shop_items.gd" id="34_v5bt6"]
-[ext_resource type="Texture2D" uid="uid://cjqplnu85ued8" path="res://assets/game/map/ice.jpg" id="35_cfui6"]
 [ext_resource type="Script" uid="uid://cgng515gvynwx" path="res://scripts/main_container/lobby/top_overlay/settings/settings_controller.gd" id="35_hur8o"]
 [ext_resource type="Texture2D" uid="uid://dfbdwtxhasppi" path="res://assets/lobby/middle/rank/platinum.png" id="35_n1kpd"]
 [ext_resource type="Script" uid="uid://bq3545jnijnhj" path="res://scripts/main_container/lobby/top_overlay/purchase/purchase_controller.gd" id="35_rjdw1"]
 [ext_resource type="Script" uid="uid://c2j2x71erxptf" path="res://scripts/main_container/lobby/overlay_panel/shop/character/shop_character.gd" id="35_v5bt6"]
 [ext_resource type="Script" uid="uid://cfabbtqvvrtxm" path="res://scripts/main_container/lobby/overlay_panel/task/task_panel.gd" id="36_4ossl"]
 [ext_resource type="Texture2D" uid="uid://bwgfpd86uysw5" path="res://assets/lobby/middle/rank/master.png" id="36_7vi1o"]
-[ext_resource type="Texture2D" uid="uid://cdhsgl8xpjwio" path="res://assets/game/map/dust.jpg" id="36_d4exx"]
 [ext_resource type="PackedScene" uid="uid://dbyop0ht6j7ps" path="res://scenes/main_container/lobby/task/task_item.tscn" id="37_7xsny"]
+[ext_resource type="Texture2D" uid="uid://cub3evny7fhhc" path="res://assets/game/map/night.png" id="41_7vi1o"]
+[ext_resource type="Texture2D" uid="uid://bvg26bqss1tbc" path="res://assets/game/map/ice.png" id="42_8od1p"]
+[ext_resource type="Texture2D" uid="uid://c3ro70cm8ivmw" path="res://assets/game/map/dust.png" id="43_7vi1o"]
+[ext_resource type="Texture2D" uid="uid://dddied6tnu8rj" path="res://assets/game/map/forest.png" id="44_8od1p"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yapo1"]
 texture = ExtResource("1_psu8p")
@@ -1746,7 +1746,7 @@ columns = 2
 custom_minimum_size = Vector2(280, 220)
 layout_mode = 2
 text = "Nightmare"
-icon = ExtResource("34_cfui6")
+icon = ExtResource("41_7vi1o")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
@@ -1755,7 +1755,7 @@ expand_icon = true
 custom_minimum_size = Vector2(280, 220)
 layout_mode = 2
 text = "Ice"
-icon = ExtResource("35_cfui6")
+icon = ExtResource("42_8od1p")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
@@ -1764,7 +1764,7 @@ expand_icon = true
 custom_minimum_size = Vector2(280, 220)
 layout_mode = 2
 text = "Dust"
-icon = ExtResource("36_d4exx")
+icon = ExtResource("43_7vi1o")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
@@ -1773,7 +1773,7 @@ expand_icon = true
 custom_minimum_size = Vector2(280, 220)
 layout_mode = 2
 text = "Forest"
-icon = ExtResource("34_2ieah")
+icon = ExtResource("44_8od1p")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true

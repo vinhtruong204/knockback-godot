@@ -67,6 +67,21 @@ func _process(_delta: float) -> void:
 func _on_fight_pressed():
 	# test run game directly
 	NetworkManager.create_client()
+	
+	# Handle random map
+	var map_name := ""
+	var random_map := randi() % 3
+	if random_map == 0:
+		map_name = "dust"
+	elif random_map == 1:
+		map_name = "forest"
+	elif random_map == 2:
+		map_name = "ice"
+	else:
+		map_name = "night"
+	
+	NetworkManager.current_map_name = map_name
+	
 	return
 
 	if matchmaking_state != MatchmakingState.IDLE:

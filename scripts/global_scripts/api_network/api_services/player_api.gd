@@ -342,3 +342,15 @@ func update_player_rank(pid: String, season_id: String, data: Dictionary, callba
 			if response.ok:
 				CacheManager.invalidate("player:ranks:" + pid)
 			callback.call(response))
+
+# --- Leaderboard ---
+
+func get_leaderboard(mode: String, callback: Callable, force_refresh := false):
+	var key := "player:leaderboard:" + mode
+	if force_refresh:
+		CacheManager.invalidate(key)
+	CacheManager.fetch_or_cache(key, CacheManager.TTL_SEMI, "player", false,
+		func(cb: Callable):
+			ApiManager.send_request(self, base_url, "/leaderboard/" + mode,
+				HTTPClient.METHOD_GET, {}, true, cb),
+		callback)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdhsgl8xpjwio"
-path="res://.godot/imported/dust.jpg-2cc212c4d8558d4731e68fe4c744bba1.ctex"
+uid="uid://c3ro70cm8ivmw"
+path="res://.godot/imported/dust.png-c7cbfdd1ab17d6053e06431507b16c5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game/map/dust.jpg"
-dest_files=["res://.godot/imported/dust.jpg-2cc212c4d8558d4731e68fe4c744bba1.ctex"]
+source_file="res://assets/game/map/dust.png"
+dest_files=["res://.godot/imported/dust.png-c7cbfdd1ab17d6053e06431507b16c5b.ctex"]
 
 [params]
 
