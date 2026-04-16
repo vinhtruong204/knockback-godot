@@ -33,7 +33,7 @@ There are no separate build, lint, or test commands — this is a Godot project 
 | EconomyApi | `scripts/global_scripts/api_network/api_services/economy_api.gd` | Shop items, currency |
 | MatchApi | `scripts/global_scripts/api_network/api_services/match_api.gd` | Matches, matchmaking, maps, modes |
 | CacheManager | `scripts/global_scripts/api_network/api_services/cache_manager.gd` | Multi-tier caching (static 1h, semi 5m, dynamic 30s) with disk persistence |
-| AudioManager | `scripts/global_scripts/audio/audio_manager.gd` | Audio bus volume control (Music, SFX) |
+| AudioManager | `scripts/global_scripts/audio/audio_manager.gd` | Audio bus volume control (Music, SFX), persists to `user://settings.cfg` |
 
 ### Scene Flow
 
@@ -111,10 +111,11 @@ GlobalUI is persistent across scenes. Access from any script via:
 get_tree().root.get_node("Main/GlobalUi")
 ```
 
-Three subsystems:
+Four subsystems:
 - **LoadingContainer** — `show_loading_screen()`, auto-polls `SceneLoader.get_progress()`, auto-hides at 100%
 - **NotificationPanel** — `show_purchase_notification()`, `show_reward_notification()`, `show_error_notification()`
 - **ConfirmationContainer** — `show_confirm_purchase(item_type, price, currency_type, on_confirm: Callable)`
+- **TopOverlay** — Settings and purchase panels accessible from lobby via `_open_settings()` / `_open_purchase()`
 
 ### Multiplayer Networking
 
@@ -157,7 +158,7 @@ All spawners extend `MultiplayerSpawner` with a `spawn_function` callback. Serve
 ```gdscript
 # PlayerSpawner: {"peer_id": int, "pos": Vector2}
 # BulletSpawner: {"peer_id": int, "pos": Vector2, "direction": Vector2}
-# BombSpawner:   {"peer_id": int, "pos": Vector2, "force": Vector2}
+# BombSpawner:   {"peer_id": int, "pos": Vector2, "direction": Vector2}
 # MapSpawner:    {"map_texture_name": String}
 ```
 
@@ -199,6 +200,16 @@ Scripts in `scripts/main_container/game/player/`. Components communicate via sig
 | `player_throw_bomb.gd` | Throw bomb RPC → server spawns bomb | Listens to `throw_bomb` |
 | `weapon_hold_handler.gd` | Manages 3 weapon nodes (PRIMARY, SECONDARY, MELEE), swaps on `weapon_switched` signal | — |
 
+**MovementStateMachine** (`scripts/main_container/game/player/state_machine/`):
+- `MovementStateMachine` extends Node, resolves state each `_process()` frame (authority only)
+- `MovementState` enum class: `IDLE`, `RUN`, `JUMP`, `FALL`, `FIRE` (StringName constants like `&"idle"`)
+- State resolution: not on floor → (velocity.y < 0 ? JUMP : FALL); on floor → (input != zero ? RUN : IDLE)
+- Emits `state_changed(new_state_name)` signal, used for animation transitions
+
+**Player movement constants** (in `player_movement.gd`): SPEED=300, JUMP_VELOCITY=-600, KNOCKBACK_DECAY=200, MAX_SPEED=500
+
+**Health constants** (in `player_health.gd`): MAX_HEALTH=100, MAX_HEART=3
+
 **Projectile values** (affect game balance):
 - **Bullet:** 200 px/s speed, 4s lifetime, 50 damage, owner-excluded
 - **Bomb:** 3s fuse, 30 damage + dir*150 knockback force, owner-excluded
@@ -230,6 +241,32 @@ Defined in `scripts/global_scripts/api_network/models/`:
 - **Non-Android (dev):** `PlayerApi.dev_login("DevPlayer", "", callback)` → same flow
 - **Session check:** `ApiManager.is_logged_in()` on startup; if true, skip login and go to lobby
 - **Sign out:** `PlayerApi.signout()` → clear ApiManager session → `CacheManager` clear all → reload login scene
+
+### Persistent Storage (`user://` paths)
+
+| Path | Purpose | Format |
+|------|---------|--------|
+| `user://auth.cfg` | Session token + player_id | ConfigFile |
+| `user://settings.cfg` | Audio volume settings | ConfigFile |
+| `user://cache/{category}.json` | API response cache (disk-persisted categories only) | JSON |
+
+### Hardcoded Server Addresses
+
+The server IP `100.96.156.107` appears in two places — both must be updated together when changing environments:
+- `NetworkManager` (`network_manager.gd:3`): `const ADDRESS` — game server (ENet, port 9543)
+- `ApiManager` (`api_manager.gd:5`): `var host` — REST API base URL (ports 8000-8003)
+
+### Platform Detection
+
+```gdscript
+OS.has_feature("dedicated_server")  # Dedicated server export (skips login/lobby)
+OS.get_name() == "Android"          # Android platform (Google Sign-In, touch UI)
+Engine.has_singleton("GoogleSignIn") # Google Sign-In plugin available
+```
+
+### API Request Lifecycle
+
+`ApiManager.send_request()` dynamically creates an `HTTPRequest` child node on the **caller** node, connects to `request_completed`, and `queue_free()`s the HTTPRequest after the callback fires. This means the caller node must remain in the scene tree until the response arrives.
 
 ### Key Conventions
 

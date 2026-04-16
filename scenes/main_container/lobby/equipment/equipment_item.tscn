@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://dpilcts7v5hc5"]
 
-[ext_resource type="Texture2D" uid="uid://coeuiave5xvqf" path="res://assets/lobby/bottom_bar/gun.png" id="1_dlgd0"]
+[ext_resource type="Texture2D" uid="uid://cm5grwlxf0lba" path="res://assets/game/weapon/static/frag-grenade.png" id="1_8dbv7"]
 [ext_resource type="Script" uid="uid://clmkxuxd1qh2m" path="res://scripts/main_container/lobby/overlay_panel/equipment/equipment_item.gd" id="2_8dbv7"]
 
 [node name="EquipmentItem" type="TextureButton" unique_id=1227239760]
 custom_minimum_size = Vector2(130, 80)
-texture_normal = ExtResource("1_dlgd0")
-texture_pressed = ExtResource("1_dlgd0")
-texture_hover = ExtResource("1_dlgd0")
+texture_normal = ExtResource("1_8dbv7")
+texture_pressed = ExtResource("1_8dbv7")
+texture_hover = ExtResource("1_8dbv7")
 ignore_texture_size = true
-stretch_mode = 0
+stretch_mode = 5
 script = ExtResource("2_8dbv7")
 
 [node name="EquipBtn" type="Button" parent="." unique_id=411208660]

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" path="res://scenes/global_ui/notification_panel.tscn" id="2_notif"]
 [ext_resource type="PackedScene" path="res://scenes/global_ui/confirmation_dialog.tscn" id="3_confirm"]
 [ext_resource type="Script" uid="uid://fk3re4ugb277" path="res://scripts/global_ui/confirmation_container.gd" id="5_saj8a"]
+[ext_resource type="PackedScene" path="res://scenes/global_ui/item_detail_panel.tscn" id="6_detail"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wdeuj"]
 texture = ExtResource("1_rigpo")
@@ -92,3 +93,24 @@ color = Color(0, 0, 0, 0.5)
 [node name="ConfirmationContainer" parent="ConfirmContainer" unique_id=1059861338 instance=ExtResource("3_confirm")]
 layout_mode = 1
 script = ExtResource("5_saj8a")
+
+[node name="ItemDetailContainer" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BgOverlay" type="ColorRect" parent="ItemDetailContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="ItemDetailPanel" parent="ItemDetailContainer" instance=ExtResource("6_detail")]
+layout_mode = 1

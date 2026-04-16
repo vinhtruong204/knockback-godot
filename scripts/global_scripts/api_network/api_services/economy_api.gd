@@ -31,3 +31,13 @@ func get_shop_item(shop_id: int, callback: Callable, force_refresh := false):
 			ApiManager.send_request(self , base_url, "/shops/%d" % shop_id,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
+
+func get_wheel_items(wheel_type: String, callback: Callable, force_refresh := false):
+	var key := "economy:wheel_items:" + wheel_type
+	if force_refresh:
+		CacheManager.invalidate(key)
+	CacheManager.fetch_or_cache(key, CacheManager.TTL_SEMI, "economy", false,
+		func(cb: Callable):
+			ApiManager.send_request(self, base_url, "/lucky-wheel/?wheel_type=" + wheel_type,
+				HTTPClient.METHOD_GET, {}, true, cb),
+		callback)

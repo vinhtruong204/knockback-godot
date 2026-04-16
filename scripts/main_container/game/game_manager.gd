@@ -5,6 +5,7 @@ var match_id: int = 0
 var map_name: String = ""
 var peer_to_player_id: Dictionary = {} # {int peer_id: String player_id}
 var peer_to_name: Dictionary = {} # {int peer_id: String name}
+var peer_to_weapons: Dictionary = {} # {int peer_id: Dictionary weapon_images}
 
 # ── In-match stats (server-only) ──
 var kills: Dictionary = {} # {int peer_id: int count}
@@ -53,17 +54,54 @@ func _register_with_server() -> void:
 	if player_name == "":
 		player_name = str(multiplayer.get_unique_id())
 	var p_map_name := NetworkManager.current_map_name
-	register_player.rpc_id(1, ApiManager.player_id, match_id, player_name, p_map_name)
+
+	# Fetch own equipment before registering
+	_fetch_own_equipment(func(weapon_images: Dictionary):
+		register_player.rpc_id(1, ApiManager.player_id, match_id, player_name, p_map_name, weapon_images)
+	)
+
+
+func _fetch_own_equipment(callback: Callable) -> void:
+	var weapon_images := {}
+	PlayerApi.get_player_equipment(ApiManager.player_id, func(response: Dictionary):
+		if not response.get("ok", false):
+			callback.call(weapon_images)
+			return
+		var equips = response.get("data", [])
+		var pending := 0
+		for equip in equips:
+			var slot = equip.get("slot_type", "")
+			var wid = int(equip.get("weapon_id", 0))
+			if wid <= 0 or slot == Enums.SlotType.CHARACTER:
+				continue
+			pending += 1
+			_fetch_weapon_image(wid, slot, weapon_images, func():
+				pending -= 1
+				if pending == 0:
+					callback.call(weapon_images)
+			)
+		if pending == 0:
+			callback.call(weapon_images)
+	, true)
+
+
+func _fetch_weapon_image(weapon_id: int, slot_type: String, weapon_images: Dictionary, done: Callable) -> void:
+	ConfigApi.get_weapon(weapon_id, func(resp: Dictionary):
+		if resp.get("ok", false):
+			weapon_images[slot_type] = resp.get("data", {}).get("image", "")
+		done.call()
+	)
 
 
 # ── Registration RPC (client → server) ──
 
 @rpc("any_peer", "call_remote", "reliable")
-func register_player(player_id: String, p_match_id: int, player_name: String, p_map_name: String = "") -> void:
+func register_player(player_id: String, p_match_id: int, player_name: String, p_map_name: String = "", weapon_images: Dictionary = {}) -> void:
 	if not multiplayer.is_server(): return
 	var sender := multiplayer.get_remote_sender_id()
 	peer_to_player_id[sender] = player_id
 	peer_to_name[sender] = player_name
+	peer_to_weapons[sender] = weapon_images
 	kills[sender] = 0
 	deaths[sender] = 0
 	if match_id == 0:
@@ -71,43 +109,57 @@ func register_player(player_id: String, p_match_id: int, player_name: String, p_
 	if map_name == "" and p_map_name != "":
 		map_name = p_map_name
 
-	# Once all players registered, broadcast names to clients (after spawn delay)
+	# Once all players registered, broadcast data to clients (after spawn delay)
 	if peer_to_name.size() >= 2:
-		_broadcast_names_delayed()
+		_broadcast_player_data_delayed()
 
 
-func _broadcast_names_delayed() -> void:
-	# Wait for player spawning to complete before sending names
+func _broadcast_player_data_delayed() -> void:
 	await get_tree().create_timer(2.0).timeout
-	var name_map: Dictionary = {}
+	var data_map: Dictionary = {}
 	for pid in peer_to_name:
-		name_map[str(pid)] = peer_to_name[pid]
-	_receive_player_names.rpc(name_map)
+		data_map[str(pid)] = {
+			"name": peer_to_name[pid],
+			"weapons": peer_to_weapons.get(pid, {})
+		}
+	_receive_player_data.rpc(data_map)
 
 
-# ── Client: Receive player names and update UI ──
+# ── Client: Receive player data (names + weapons) and update UI ──
 
 @rpc("authority", "call_remote", "reliable")
-func _receive_player_names(name_map: Dictionary) -> void:
+func _receive_player_data(data_map: Dictionary) -> void:
 	if multiplayer.is_server(): return
 	var my_peer := str(multiplayer.get_unique_id())
 
-	# Update character name labels on player nodes
 	var spawn_point = get_node_or_null("World/PlayerSpawner/PlayerSpawnPoint")
 	if spawn_point:
 		for child in spawn_point.get_children():
-			var peer_name: String = name_map.get(child.name, "")
+			var data: Dictionary = data_map.get(child.name, {})
+			# Apply name
+			var peer_name: String = data.get("name", "")
 			if peer_name != "":
 				var label = child.get_node_or_null("PlayerName")
 				if label:
 					label.text = peer_name
+			# Apply weapon textures
+			var weapons: Dictionary = data.get("weapons", {})
+			_apply_weapon_textures(child, weapons)
 
 	# Update opponent name in TopUI
-	for peer_key in name_map:
+	for peer_key in data_map:
 		if peer_key != my_peer:
 			var opponent_label = get_node_or_null("CanvasLayer/Root/TopUI/OpponentInfor/Name")
 			if opponent_label:
-				opponent_label.text = name_map[peer_key]
+				opponent_label.text = data_map[peer_key].get("name", "")
+
+
+func _apply_weapon_textures(player_node: Node, weapons: Dictionary) -> void:
+	if weapons.is_empty():
+		return
+	var weapon_handler = player_node.get_node_or_null("ChracterSprites/WeaponHoldHandler")
+	if weapon_handler and weapon_handler.has_method("set_weapon_textures"):
+		weapon_handler.set_weapon_textures(weapons)
 
 
 # ── Server: Player spawned — connect health signals ──
@@ -243,6 +295,7 @@ func _on_server_disconnected() -> void:
 func _reset_server_state() -> void:
 	peer_to_player_id.clear()
 	peer_to_name.clear()
+	peer_to_weapons.clear()
 	kills.clear()
 	deaths.clear()
 	match_id = 0

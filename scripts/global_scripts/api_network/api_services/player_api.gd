@@ -163,6 +163,16 @@ func purchase_item(data: Dictionary, callback: Callable):
 				CacheManager.invalidate_category("player_dynamic")
 			callback.call(response))
 
+# --- Lucky Wheel Spin ---
+
+func spin_wheel(data: Dictionary, callback: Callable):
+	ApiManager.send_request(self, base_url, "/spins/",
+		HTTPClient.METHOD_POST, data, true,
+		func(response: Dictionary):
+			if response.ok:
+				CacheManager.invalidate_category("player_dynamic")
+			callback.call(response))
+
 # --- Player Inventory ---
 
 func get_player_inventory(pid: String, callback: Callable, force_refresh := false):
@@ -171,7 +181,7 @@ func get_player_inventory(pid: String, callback: Callable, force_refresh := fals
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_DYNAMIC, "player_dynamic", false,
 		func(cb: Callable):
-			ApiManager.send_request(self , base_url, "/players/" + pid + "/inventory",
+			ApiManager.send_request(self , base_url, "/player-inventory/?player_id=" + pid,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 
@@ -213,7 +223,7 @@ func get_player_equipment(pid: String, callback: Callable, force_refresh := fals
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_DYNAMIC, "player_dynamic", false,
 		func(cb: Callable):
-			ApiManager.send_request(self , base_url, "/player-equipment?player_id=" + pid,
+			ApiManager.send_request(self , base_url, "/player-equipment/?player_id=" + pid,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 

@@ -30,3 +30,20 @@ func _ready() -> void:
 
 func _on_switch_weapon(weapon_type: SwitchWeaponHandler.WeaponType) -> void:
 	self.current_weapon_type = weapon_type
+
+
+func set_weapon_textures(weapon_images: Dictionary) -> void:
+	for slot_type in weapon_images:
+		var image_name: String = weapon_images[slot_type]
+		if image_name == "":
+			continue
+		var tex = load("res://assets/game/weapon/static/%s" % image_name)
+		if not tex:
+			continue
+		match slot_type:
+			Enums.SlotType.PRIMARY:
+				$Primary.get_child(0).texture = tex
+			Enums.SlotType.SECONDARY:
+				$Secondary.get_child(0).texture = tex
+			Enums.SlotType.MELEE:
+				$Melee.get_child(0).texture = tex
