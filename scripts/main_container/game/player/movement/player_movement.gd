@@ -1,7 +1,7 @@
 class_name PlayerMovement extends Node
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -620.0
 const KNOCKBACK_DECAY = 200.0
 const MAX_SPEED = 500.0
 
