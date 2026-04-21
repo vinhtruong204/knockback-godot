@@ -57,9 +57,9 @@
 [ext_resource type="Texture2D" uid="uid://bwgfpd86uysw5" path="res://assets/lobby/middle/rank/master.png" id="36_7vi1o"]
 [ext_resource type="PackedScene" uid="uid://dbyop0ht6j7ps" path="res://scenes/main_container/lobby/task/task_item.tscn" id="37_7xsny"]
 [ext_resource type="Texture2D" uid="uid://cub3evny7fhhc" path="res://assets/game/map/night.png" id="41_7vi1o"]
-[ext_resource type="Texture2D" uid="uid://bvg26bqss1tbc" path="res://assets/game/map/ice.png" id="42_8od1p"]
-[ext_resource type="Texture2D" uid="uid://c3ro70cm8ivmw" path="res://assets/game/map/dust.png" id="43_7vi1o"]
-[ext_resource type="Texture2D" uid="uid://dddied6tnu8rj" path="res://assets/game/map/forest.png" id="44_8od1p"]
+[ext_resource type="Texture2D" uid="uid://bdlul4woss37y" path="res://assets/game/map/ice.png" id="42_8od1p"]
+[ext_resource type="Texture2D" uid="uid://csdlfa7nl6wrt" path="res://assets/game/map/dust.png" id="43_7vi1o"]
+[ext_resource type="Texture2D" uid="uid://liyn7lejfts3" path="res://assets/game/map/forest.png" id="44_8od1p"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yapo1"]
 texture = ExtResource("1_psu8p")
@@ -1739,7 +1739,7 @@ columns = 2
 [node name="Button" type="Button" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=706817740]
 custom_minimum_size = Vector2(280, 220)
 layout_mode = 2
-text = "Nightmare"
+text = "Night"
 icon = ExtResource("41_7vi1o")
 icon_alignment = 1
 vertical_icon_alignment = 0
