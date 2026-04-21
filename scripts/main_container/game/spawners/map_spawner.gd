@@ -1,7 +1,7 @@
 class_name MapSpawner extends MultiplayerSpawner
 
 const MAP_TEXTURE_PATH := "res://assets/game/map/"
-const DEFAULT_MAP := "night"
+const DEFAULT_MAP := "dust"
 
 @export var map_scene: PackedScene
 

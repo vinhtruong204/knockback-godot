@@ -69,16 +69,16 @@ func _on_fight_pressed():
 	NetworkManager.create_client()
 	
 	# Handle random map
-	var map_name := ""
-	var random_map := randi() % 3
-	if random_map == 0:
-		map_name = "dust"
-	elif random_map == 1:
-		map_name = "forest"
-	elif random_map == 2:
-		map_name = "ice"
-	else:
-		map_name = "night"
+	var map_name := "ice"
+	# var random_map := randi() % 3
+	# if random_map == 0:
+	# 	map_name = "dust"
+	# elif random_map == 1:
+	# 	map_name = "forest"
+	# elif random_map == 2:
+	# 	map_name = "ice"
+	# else:
+	# 	map_name = "night"
 	
 	NetworkManager.current_map_name = map_name
 	

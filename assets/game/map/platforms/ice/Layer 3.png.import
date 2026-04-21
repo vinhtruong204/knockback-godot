@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csdlfa7nl6wrt"
-path="res://.godot/imported/dust.png-c7cbfdd1ab17d6053e06431507b16c5b.ctex"
+uid="uid://dt8666letcxk3"
+path="res://.godot/imported/Layer 3.png-0ef9015d0ccedacf634f7a713a7e15d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game/map/dust.png"
-dest_files=["res://.godot/imported/dust.png-c7cbfdd1ab17d6053e06431507b16c5b.ctex"]
+source_file="res://assets/game/map/platforms/ice/Layer 3.png"
+dest_files=["res://.godot/imported/Layer 3.png-0ef9015d0ccedacf634f7a713a7e15d1.ctex"]
 
 [params]
 

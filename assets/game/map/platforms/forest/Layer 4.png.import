@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csdlfa7nl6wrt"
-path="res://.godot/imported/dust.png-c7cbfdd1ab17d6053e06431507b16c5b.ctex"
+uid="uid://c0qdtuw7k1eq2"
+path="res://.godot/imported/Layer 4.png-367ceccb3f94a5c313016b616f7a0a7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game/map/dust.png"
-dest_files=["res://.godot/imported/dust.png-c7cbfdd1ab17d6053e06431507b16c5b.ctex"]
+source_file="res://assets/game/map/platforms/forest/Layer 4.png"
+dest_files=["res://.godot/imported/Layer 4.png-367ceccb3f94a5c313016b616f7a0a7c.ctex"]
 
 [params]
 
