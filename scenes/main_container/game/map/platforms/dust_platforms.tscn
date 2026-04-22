@@ -20,7 +20,7 @@ size = Vector2(271, 20)
 size = Vector2(268, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qenn2"]
-size = Vector2(271, 22)
+size = Vector2(271, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v20rg"]
 size = Vector2(182, 20)
@@ -63,7 +63,7 @@ shape = SubResource("RectangleShape2D_prors")
 one_way_collision = true
 
 [node name="StaticBody2D10" type="StaticBody2D" parent="." unique_id=1690971617]
-position = Vector2(681, 238)
+position = Vector2(655, 253)
 collision_layer = 2
 metadata/is_bottom_platform = false
 
@@ -105,7 +105,7 @@ shape = SubResource("RectangleShape2D_v20rg")
 one_way_collision = true
 
 [node name="StaticBody2D13" type="StaticBody2D" parent="." unique_id=784963780]
-position = Vector2(-483, 215)
+position = Vector2(-483, 219)
 collision_layer = 2
 metadata/is_bottom_platform = false
 
@@ -114,7 +114,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_slavb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D13" unique_id=1900637624]
-position = Vector2(2.5, -22)
+position = Vector2(2.5, -18.5)
 shape = SubResource("RectangleShape2D_qenn2")
 one_way_collision = true
 
@@ -133,7 +133,7 @@ shape = SubResource("RectangleShape2D_kwebs")
 one_way_collision = true
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=1460332468]
-position = Vector2(-746, 62)
+position = Vector2(-709, 7)
 collision_layer = 2
 metadata/is_bottom_platform = false
 
@@ -160,7 +160,7 @@ position = Vector2(1.5, 3.5)
 shape = SubResource("RectangleShape2D_1wsdr")
 
 [node name="StaticBody2D7" type="StaticBody2D" parent="." unique_id=2036557687]
-position = Vector2(244, 440)
+position = Vector2(339, 458)
 collision_layer = 2
 metadata/is_bottom_platform = false
 

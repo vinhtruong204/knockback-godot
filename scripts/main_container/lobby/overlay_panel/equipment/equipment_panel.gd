@@ -22,6 +22,12 @@ func _ready():
 	load_equipped_display()
 	load_equipment_items()
 	_setup_slot_click_handlers()
+	visibility_changed.connect(_on_visibility_changed)
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		load_equipped_display()
 
 
 func _setup_slot_click_handlers():
