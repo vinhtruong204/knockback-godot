@@ -235,6 +235,8 @@ Defined in `scripts/global_scripts/api_network/models/`:
 
 `scripts/main_container/lobby/` manages overlay panels: shop, equipment, normal matchmaking, LAN, leaderboard, rank, profile, tasks, wheel. Each panel is a separate scene loaded into the lobby overlay. Panel visibility is toggled via `_open_[panel_name]()` methods in `lobby_ui_manager.gd`.
 
+The Team1/Team2 buttons in `lobby_ui_manager.gd` display the currently selected character's texture (resolved via `PlayerApi.get_selected_character()` → `ConfigApi.get_character()` → `res://assets/game/player/{texture}`). They re-fetch on lobby ready and whenever the Equipment panel's visibility changes to false — this is how character changes made in Equipment propagate back to the lobby.
+
 ### Login & Auth Flow
 
 - **Android:** Google Sign-In plugin → `id_token` → `PlayerApi.login(id_token, callback)` → save session

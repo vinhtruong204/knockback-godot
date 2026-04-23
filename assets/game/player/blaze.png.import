@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ca8xaw8t7lxwu"
-path="res://.godot/imported/player.png-e2b2fbd512ae77637f37fbe487e3659d.ctex"
+path="res://.godot/imported/blaze.png-a98bff83861721804a08acf8521e800c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game/player/player.png"
-dest_files=["res://.godot/imported/player.png-e2b2fbd512ae77637f37fbe487e3659d.ctex"]
+source_file="res://assets/game/player/blaze.png"
+dest_files=["res://.godot/imported/blaze.png-a98bff83861721804a08acf8521e800c.ctex"]
 
 [params]
 
