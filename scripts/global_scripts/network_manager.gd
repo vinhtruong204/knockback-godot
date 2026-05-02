@@ -7,6 +7,12 @@ var game_scene_path := "res://scenes/main_container/game/game.tscn"
 var lobby_scene_path := "res://scenes/main_container/lobby/lobby.tscn"
 var login_scene_path := "res://scenes/main_container/login/login.tscn"
 
+# Match context — set by matchmaking before connecting, read by GameManager
+var current_match_id: int = 0
+var current_match_players: Array = []  # Array of {player_id, team_id} dicts
+var current_player_name: String = ""
+var current_map_name: String = ""
+
 
 func _ready():
 	if OS.has_feature("dedicated_server"):
@@ -48,5 +54,7 @@ func create_server(port: int = PORT) -> void:
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 
 func leave_game() -> void:
+	current_match_id = 0
+	current_match_players = []
 	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 	SceneLoader.load_scene(lobby_scene_path)

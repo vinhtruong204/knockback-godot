@@ -15,9 +15,14 @@ func _on_player_spawned(player: Node) -> void:
 	if player.get_multiplayer_authority() == multiplayer.get_unique_id() and health_node:
 		health_node.heart_changed.connect(_on_heart_changed)
 		health_node.health_changed.connect(_on_health_changed)
+		health_node.max_health_changed.connect(_on_max_health_changed)
+		health_bar.max_value = health_node.MAX_HEALTH
 
 func _on_heart_changed(heart: int) -> void:
 	heart_number.text = str(heart)
 
 func _on_health_changed(health: int) -> void:
 	health_bar.value = health
+
+func _on_max_health_changed(max_health: int) -> void:
+	health_bar.max_value = max_health

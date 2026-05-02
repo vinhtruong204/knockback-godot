@@ -39,4 +39,8 @@ func _process(_delta):
 			is_loaded = true
 
 			var container = get_tree().root.get_node("Main/SceneContainer")
+			# Remove any lingering children to prevent name conflicts
+			for child in container.get_children():
+				container.remove_child(child)
+				child.queue_free()
 			container.add_child(scene)

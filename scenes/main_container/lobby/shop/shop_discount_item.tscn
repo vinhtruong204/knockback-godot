@@ -21,6 +21,7 @@ offset_bottom = 99.0
 grow_horizontal = 2
 texture = ExtResource("1_vddeu")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="BuyBtn" type="Button" parent="." unique_id=2127766089]
 layout_mode = 1

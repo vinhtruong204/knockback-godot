@@ -153,6 +153,26 @@ func add_player_currency_amount(pid: String, currency_type: String, data: Dictio
 				CacheManager.invalidate("player_dynamic:currencies:" + pid + ":" + currency_type)
 			callback.call(response))
 
+# --- Purchase ---
+
+func purchase_item(data: Dictionary, callback: Callable):
+	ApiManager.send_request(self , base_url, "/purchases/",
+		HTTPClient.METHOD_POST, data, true,
+		func(response: Dictionary):
+			if response.ok:
+				CacheManager.invalidate_category("player_dynamic")
+			callback.call(response))
+
+# --- Lucky Wheel Spin ---
+
+func spin_wheel(data: Dictionary, callback: Callable):
+	ApiManager.send_request(self, base_url, "/spins/",
+		HTTPClient.METHOD_POST, data, true,
+		func(response: Dictionary):
+			if response.ok:
+				CacheManager.invalidate_category("player_dynamic")
+			callback.call(response))
+
 # --- Player Inventory ---
 
 func get_player_inventory(pid: String, callback: Callable, force_refresh := false):
@@ -161,7 +181,7 @@ func get_player_inventory(pid: String, callback: Callable, force_refresh := fals
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_DYNAMIC, "player_dynamic", false,
 		func(cb: Callable):
-			ApiManager.send_request(self , base_url, "/players/" + pid + "/inventory",
+			ApiManager.send_request(self , base_url, "/player-inventory/?player_id=" + pid,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 
@@ -203,7 +223,7 @@ func get_player_equipment(pid: String, callback: Callable, force_refresh := fals
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_DYNAMIC, "player_dynamic", false,
 		func(cb: Callable):
-			ApiManager.send_request(self , base_url, "/player-equipment?player_id=" + pid,
+			ApiManager.send_request(self , base_url, "/player-equipment/?player_id=" + pid,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 
@@ -313,12 +333,12 @@ func get_player_ranks(pid: String, callback: Callable, force_refresh := false):
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_SEMI, "player", false,
 		func(cb: Callable):
-			ApiManager.send_request(self , base_url, "/players/" + pid + "/ranks",
+			ApiManager.send_request(self , base_url, "/player-ranks/" + pid,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 
 func get_player_rank(pid: String, season_id: String, callback: Callable):
-	ApiManager.send_request(self , base_url, "/players/" + pid + "/ranks/" + season_id,
+	ApiManager.send_request(self , base_url, "/player-ranks/" + pid + "/" + season_id,
 		HTTPClient.METHOD_GET, {}, true, callback)
 
 func create_player_rank(data: Dictionary, callback: Callable):
@@ -326,9 +346,21 @@ func create_player_rank(data: Dictionary, callback: Callable):
 		HTTPClient.METHOD_POST, data, true, callback)
 
 func update_player_rank(pid: String, season_id: String, data: Dictionary, callback: Callable):
-	ApiManager.send_request(self , base_url, "/players/" + pid + "/ranks/" + season_id,
+	ApiManager.send_request(self , base_url, "/player-ranks/" + pid + "/" + season_id,
 		HTTPClient.METHOD_PUT, data, true,
 		func(response: Dictionary):
 			if response.ok:
 				CacheManager.invalidate("player:ranks:" + pid)
 			callback.call(response))
+
+# --- Leaderboard ---
+
+func get_leaderboard(mode: String, callback: Callable, force_refresh := false):
+	var key := "player:leaderboard:" + mode
+	if force_refresh:
+		CacheManager.invalidate(key)
+	CacheManager.fetch_or_cache(key, CacheManager.TTL_SEMI, "player", false,
+		func(cb: Callable):
+			ApiManager.send_request(self, base_url, "/leaderboard/" + mode,
+				HTTPClient.METHOD_GET, {}, true, cb),
+		callback)

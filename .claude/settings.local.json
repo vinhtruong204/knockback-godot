@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh vinh@database-server *)",
+      "Read(//d/final-project/api/**)",
+      "Bash(python seed_additional.py)"
+    ]
+  }
+}

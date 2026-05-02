@@ -32,24 +32,64 @@ func _on_visibility_changed() -> void:
 		)
 
 func on_ranking_button_pressed() -> void:
-	stats_text.text = """Current rank: Diamond
+	stats_text.text = "Loading..."
+	var pid := ApiManager.player_id
 
-Rank points: 3200
+	PlayerApi.get_player_stats_by_mode(pid, Enums.GameMode.RANK, func(stats_response: Dictionary):
+		var stats: Dictionary = stats_response.get("data", {}) if stats_response.get("ok", false) else {}
 
-Totals game: 50
+		PlayerApi.get_player_rank(pid, "1", func(rank_response: Dictionary):
+			if rank_response.get("ok", false):
+				var rank_data: Dictionary = rank_response.get("data", {})
 
-Win rate: 50%
+				ConfigApi.get_rank_config(rank_data.get("rank_id", 0), func(config_response: Dictionary):
+					var rank_name := "Unknown"
+					if config_response.get("ok", false):
+						rank_name = config_response.get("data", {}).get("name", "Unknown")
 
-KDA: 2.3"""
+					stats_text.text = "Current rank: %s\n\nRank points: %d\n\nTotal games: %d\n\nWin rate: %s%%\n\nKDA: %s" % [
+						rank_name,
+						rank_data.get("current_point", 0),
+						stats.get("total_game", 0),
+						_calc_win_rate(stats.get("number_games_win", 0), stats.get("total_game", 0)),
+						_calc_kda(stats.get("kill", 0), stats.get("dead", 0)),
+					]
+				)
+			else:
+				stats_text.text = "Total games: %d\n\nWin rate: %s%%\n\nKDA: %s" % [
+					stats.get("total_game", 0),
+					_calc_win_rate(stats.get("number_games_win", 0), stats.get("total_game", 0)),
+					_calc_kda(stats.get("kill", 0), stats.get("dead", 0)),
+				]
+		)
+	)
 
 
 func on_normal_button_pressed() -> void:
-	stats_text.text = """Total games: 50
+	stats_text.text = "Loading..."
+	var pid := ApiManager.player_id
 
-Win rate: 50%
-
-KDA: 2.3"""
+	PlayerApi.get_player_stats_by_mode(pid, Enums.GameMode.NORMAL, func(response: Dictionary):
+		var stats: Dictionary = response.get("data", {}) if response.get("ok", false) else {}
+		stats_text.text = "Total games: %d\n\nWin rate: %s%%\n\nKDA: %s" % [
+			stats.get("total_game", 0),
+			_calc_win_rate(stats.get("number_games_win", 0), stats.get("total_game", 0)),
+			_calc_kda(stats.get("kill", 0), stats.get("dead", 0)),
+		]
+	)
 
 
 func on_achivement_button_pressed() -> void:
-	stats_text.text = """"""
+	stats_text.text = ""
+
+
+func _calc_win_rate(wins: int, total: int) -> String:
+	if total == 0:
+		return "0"
+	return "%.1f" % (float(wins) / total * 100.0)
+
+
+func _calc_kda(kills: int, deaths: int) -> String:
+	if deaths == 0:
+		return str(kills)
+	return "%.2f" % (float(kills) / deaths)

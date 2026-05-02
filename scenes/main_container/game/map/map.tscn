@@ -1,57 +1,14 @@
 [gd_scene format=3 uid="uid://yw0c4fpfxk8i"]
 
-[ext_resource type="Texture2D" uid="uid://bnf4q6tmsl55t" path="res://assets/game/map/night.jpg" id="1_5wlb3"]
-[ext_resource type="Texture2D" uid="uid://dyjtvlq4xa4dc" path="res://assets/lobby/top_bar/player_profile/player_profile_bg.png" id="1_634g2"]
+[ext_resource type="Texture2D" uid="uid://csdlfa7nl6wrt" path="res://assets/game/map/dust.png" id="1_u05x7"]
+[ext_resource type="PackedScene" uid="uid://caljydg84ylxu" path="res://scenes/main_container/game/map/platforms/dust_platforms.tscn" id="2_u05x7"]
 [ext_resource type="PackedScene" uid="uid://dbnp1ulccd0wi" path="res://scenes/main_container/game/map/death_zone.tscn" id="3_u05x7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_634g2"]
-size = Vector2(3938.9834, 399.48996)
 
 [node name="Map" type="Node2D" unique_id=1512980749]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1750878947]
-texture = ExtResource("1_5wlb3")
+texture = ExtResource("1_u05x7")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=493944478]
-position = Vector2(-336, 216)
-collision_layer = 2
-metadata/is_bottom_platform = true
-
-[node name="PlayerProfileBg" type="Sprite2D" parent="StaticBody2D" unique_id=476970109]
-scale = Vector2(0.1400442, 0.06915136)
-texture = ExtResource("1_634g2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=207387511]
-scale = Vector2(0.101549044, 0.12515962)
-shape = SubResource("RectangleShape2D_634g2")
-one_way_collision = true
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1175421666]
-position = Vector2(235, 207)
-collision_layer = 2
-metadata/is_bottom_platform = true
-
-[node name="PlayerProfileBg" type="Sprite2D" parent="StaticBody2D2" unique_id=1935680972]
-scale = Vector2(0.1400442, 0.06915136)
-texture = ExtResource("1_634g2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=878761751]
-scale = Vector2(0.101549044, 0.12515962)
-shape = SubResource("RectangleShape2D_634g2")
-one_way_collision = true
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=681403248]
-position = Vector2(4, 29)
-collision_layer = 2
-metadata/is_bottom_platform = false
-
-[node name="PlayerProfileBg" type="Sprite2D" parent="StaticBody2D3" unique_id=1812194450]
-scale = Vector2(0.1400442, 0.06915136)
-texture = ExtResource("1_634g2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=575872721]
-scale = Vector2(0.101549044, 0.12515962)
-shape = SubResource("RectangleShape2D_634g2")
-one_way_collision = true
+[node name="DustPlatforms" parent="." unique_id=2050163370 instance=ExtResource("2_u05x7")]
 
 [node name="DeathZone" parent="." unique_id=1933175393 instance=ExtResource("3_u05x7")]

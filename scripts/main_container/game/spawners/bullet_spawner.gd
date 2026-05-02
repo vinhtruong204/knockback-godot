@@ -19,5 +19,6 @@ func _spawn_bullet(data: Dictionary) -> Node:
 	bullet.global_position = data["pos"]
 	bullet.direction = data["direction"]
 	bullet.owner_id = data["peer_id"]
-	
+	bullet.damage = int(data.get("damage", BulletController.DEFAULT_DAMAGE))
+
 	return bullet

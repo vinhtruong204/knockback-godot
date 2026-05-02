@@ -1,8 +1,10 @@
 class_name BulletController extends Area2D
 
 const BULLET_SPEED: float = 200.0
+const DEFAULT_DAMAGE: int = 50
 var direction: PlayerFlip.Direction
 var owner_id: int
+var damage: int = DEFAULT_DAMAGE
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,5 +38,5 @@ func _on_body_entered(body: Node) -> void:
 		print("Hit:", body.name)
 
 		# body.get_node("PlayerKnockback").apply_knockback_rpc.rpc_id(body.get_multiplayer_authority(), direction, 200.0)
-		body.get_node("PlayerHealth").take_damage_rpc.rpc_id(body.get_multiplayer_authority(), 50)
+		body.get_node("PlayerHealth").take_damage_rpc.rpc_id(body.get_multiplayer_authority(), damage)
 		self.queue_free()
