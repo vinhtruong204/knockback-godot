@@ -68,10 +68,10 @@ All API calls follow the same callback pattern with a standard response shape:
 ```gdscript
 # Calling an API method:
 PlayerApi.get_player_profile(player_id, func(response):
-    if response.get("ok", false):
-        var data = response["data"]  # parsed model or dict
-    else:
-        var error = response.get("error", "Unknown error")
+	if response.get("ok", false):
+		var data = response["data"]  # parsed model or dict
+	else:
+		var error = response.get("error", "Unknown error")
 )
 
 # Response format: {ok: bool, status: int, data: Variant, error: String}
@@ -81,12 +81,12 @@ API services use CacheManager with `fetch_or_cache()` before making HTTP request
 
 ```gdscript
 func get_resource(id, callback, force_refresh := false):
-    var key := "category:resource:" + str(id)
-    if force_refresh:
-        CacheManager.invalidate(key)
-    CacheManager.fetch_or_cache(key, TTL, "category", persist_flag,
-        func(cb): ApiManager.send_request(...),
-        callback)
+	var key := "category:resource:" + str(id)
+	if force_refresh:
+		CacheManager.invalidate(key)
+	CacheManager.fetch_or_cache(key, TTL, "category", persist_flag,
+		func(cb): ApiManager.send_request(...),
+		callback)
 ```
 
 Cache TTL tiers and invalidation:
@@ -136,8 +136,8 @@ func do_something(): ...
 # Any peer → server with authority check:
 @rpc("any_peer", "call_remote", "reliable")
 func take_damage_rpc(damage: int):
-    if not multiplayer.is_server(): return
-    # server-side logic
+	if not multiplayer.is_server(): return
+	# server-side logic
 
 # Authority guards:
 if not is_multiplayer_authority(): return  # only local player processes input
@@ -193,7 +193,7 @@ Scripts in `scripts/main_container/game/player/`. Components communicate via sig
 | `player_controller.gd` | CharacterBody2D root, camera, death/respawn | — |
 | `player_input.gd` | Reads joystick/keyboard (authority only) | `jump`, `drop_down`, `shoot`, `throw_bomb`, `switch_weapon` |
 | `player_movement.gd` | Gravity, velocity, knockback blending, platform drop-through | Listens to `jump`, `drop_down` |
-| `player_health.gd` | HP (100) + hearts (3), damage RPC, death on 0 hearts | `health_changed`, `heart_changed`, `oponent_heart_changed` |
+| `player_health.gd` | HP + hearts (5), damage RPC, death on 0 hearts. `MAX_HEALTH` is dynamic (set via `set_max_health()`); `MAX_HEART` is const | `health_changed`, `heart_changed`, `oponent_heart_changed`, `max_health_changed` |
 | `player_knockback.gd` | Applies knockback/bomb force vectors via RPC | — |
 | `player_flip.gd` | Sprite direction (LEFT/RIGHT) based on input | — |
 | `player_attack.gd` | Shoot RPC → server spawns bullet via BulletSpawner | Listens to `shoot` |
@@ -206,13 +206,23 @@ Scripts in `scripts/main_container/game/player/`. Components communicate via sig
 - State resolution: not on floor → (velocity.y < 0 ? JUMP : FALL); on floor → (input != zero ? RUN : IDLE)
 - Emits `state_changed(new_state_name)` signal, used for animation transitions
 
-**Player movement constants** (in `player_movement.gd`): SPEED=300, JUMP_VELOCITY=-600, KNOCKBACK_DECAY=200, MAX_SPEED=500
+**Player movement constants** (in `player_movement.gd`): `DEFAULT_SPEED=200`, `JUMP_VELOCITY=-620`, `KNOCKBACK_DECAY=200`, `MAX_SPEED=300`. `SPEED` is a runtime var settable via `set_speed()` — typically `DEFAULT_SPEED * character.run_speed`.
 
-**Health constants** (in `player_health.gd`): MAX_HEALTH=100, MAX_HEART=3
+**Health constants** (in `player_health.gd`): `DEFAULT_MAX_HEALTH=100`, `MAX_HEART=5`. `MAX_HEALTH` is a runtime var set via `set_max_health()` from `CharacterModel.hp`.
 
-**Projectile values** (affect game balance):
-- **Bullet:** 200 px/s speed, 4s lifetime, 50 damage, owner-excluded
-- **Bomb:** 3s fuse, 30 damage + dir*150 knockback force, owner-excluded
+**Projectile defaults** (`bullet_controller.gd`, `bomb_controller.gd`):
+- **Bullet:** `BULLET_SPEED=200` px/s, `DEFAULT_DAMAGE=50`, owner-excluded. `damage` is settable per-spawn via `set_damage()`.
+- **Bomb:** `DEFAULT_DAMAGE=30`, knockback `dir * 150` on explode, owner-excluded. `damage` is settable per-spawn.
+
+### Config-driven stats (character & weapon)
+
+Player and projectile stats are **not hardcoded at the entity** — they come from backend configs (`ConfigApi`) and are wired in by `GameManager` after each player spawns:
+
+- **Character → player:** `CharacterModel.hp` → `PlayerHealth.set_max_health()`; `CharacterModel.run_speed` (multiplier) → `PlayerMovement.set_speed(DEFAULT_SPEED * run_speed)`. The selected character is read via `PlayerApi.get_selected_character()` → `ConfigApi.get_character()`.
+- **Weapon → projectile:** `WeaponModel.damage` is forwarded into spawn data (`{"damage": ...}`); `BulletSpawner` / `BombSpawner` call `set_damage()` on the spawned node before it's added to the tree. Bullet `fire_rate` and `ammo` come from the same model.
+- **Texture resolution:** `CharacterModel.texture` → `res://assets/game/player/{texture}` (used by lobby Team1/Team2 buttons and the in-game player sprite).
+
+Wiring location: `game_manager.gd` (search for `set_max_health` / `set_speed`); `bomb_spawner.gd` / `bullet_spawner.gd` for projectile damage. When adjusting balance, change the backend config — not the script constants — unless you're tuning the fallback default.
 
 ### Physics Collision Layers
 

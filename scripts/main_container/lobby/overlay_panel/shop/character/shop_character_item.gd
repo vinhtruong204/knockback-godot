@@ -67,12 +67,15 @@ func _do_purchase() -> void:
 	PlayerApi.purchase_item(
 		{"item_id": item_id, "item_type": item_type, "currency_type": currency_type, "price": price},
 		func(response: Dictionary) -> void:
-			buy_button.disabled = false
 			if response.get("ok", false):
 				if currency_ui:
 					currency_ui.update_currency()
 				global_ui.show_purchase_notification(item_type, price, currency_type)
+				_is_owned = true
+				buy_button.text = "Owned"
+				buy_button.icon = null
 			else:
+				buy_button.disabled = false
 				var error = response.get("error", "Purchase failed")
 				global_ui.show_error_notification(error)
 	)

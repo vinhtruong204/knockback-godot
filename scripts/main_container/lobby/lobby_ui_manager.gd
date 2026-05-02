@@ -1,7 +1,7 @@
 class_name LobbyUIManager extends Control
 
-@onready var _team_1_btn: Button = $UIButtons/Middle/HBoxContainer/Team1Btn
-@onready var _team_2_btn: Button = $UIButtons/Middle/HBoxContainer/Team2Btn
+@onready var _team_1_btn: TextureButton = $UIButtons/Middle/HBoxContainer/Team1Btn
+@onready var _team_1_weapon_overlay: TextureRect = $UIButtons/Middle/HBoxContainer/Team1Btn/WeaponOverlay
 @onready var _equipment_panel: Panel = $OverlayContainer/Equipment
 
 func _init() -> void:
@@ -38,9 +38,38 @@ func _refresh_character_team_buttons() -> void:
 			if texture_name == "":
 				return
 			var tex = load("res://assets/game/player/%s" % texture_name)
-			_team_1_btn.icon = tex
-			_team_2_btn.icon = tex
+			_team_1_btn.texture_normal = tex
+			_team_1_btn.texture_pressed = tex
+			_team_1_btn.texture_hover = tex
 		)
+	, true)
+	_refresh_primary_weapon_overlay()
+
+
+func _refresh_primary_weapon_overlay() -> void:
+	# Hide while we fetch so a stale image isn't shown if the new fetch fails.
+	_team_1_weapon_overlay.visible = false
+	PlayerApi.get_player_equipment(ApiManager.player_id, func(response: Dictionary):
+		if not response.get("ok", false):
+			return
+		for equip in response.get("data", []):
+			if equip.get("slot_type", "") != Enums.SlotType.PRIMARY:
+				continue
+			var weapon_id := int(equip.get("weapon_id", 0))
+			if weapon_id <= 0:
+				return
+			ConfigApi.get_weapon(weapon_id, func(weapon_response: Dictionary):
+				if not weapon_response.get("ok", false):
+					return
+				var image_name: String = weapon_response.get("data", {}).get("image", "")
+				if image_name == "":
+					return
+				var tex = load("res://assets/game/weapon/static/%s" % image_name)
+				if tex:
+					_team_1_weapon_overlay.texture = tex
+					_team_1_weapon_overlay.visible = true
+			)
+			return
 	, true)
 
 func _ignore_ui_buttons_input():

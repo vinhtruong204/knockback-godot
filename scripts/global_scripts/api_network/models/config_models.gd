@@ -8,6 +8,7 @@ class WeaponModel:
 	var damage: int
 	var fire_rate: float
 	var image: String
+	var ammo: int
 
 	static func from_dict(data: Dictionary) -> WeaponModel:
 		var model := WeaponModel.new()
@@ -17,6 +18,7 @@ class WeaponModel:
 		model.damage = data.get("damage", 0)
 		model.fire_rate = data.get("fire_rate", 0.0)
 		model.image = data.get("image", "")
+		model.ammo = data.get("ammo", 0)
 		return model
 
 	static func from_array(arr: Array) -> Array[WeaponModel]:
@@ -33,6 +35,7 @@ class WeaponModel:
 			"damage": damage,
 			"fire_rate": fire_rate,
 			"image": image,
+			"ammo": ammo,
 		}
 
 

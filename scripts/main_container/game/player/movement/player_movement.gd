@@ -1,9 +1,17 @@
 class_name PlayerMovement extends Node
 
-const SPEED = 300.0
+const DEFAULT_SPEED := 200.0
 const JUMP_VELOCITY = -620.0
 const KNOCKBACK_DECAY = 200.0
-const MAX_SPEED = 500.0
+const MAX_SPEED = 300.0
+
+var SPEED: float = DEFAULT_SPEED
+
+
+func set_speed(value: float) -> void:
+	if value <= 0.0:
+		return
+	SPEED = value
 
 @onready var player_input: PlayerInput = $"../PlayerInput"
 @onready var player: CharacterBody2D = $"../"

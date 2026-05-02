@@ -1,9 +1,11 @@
 class_name PlayerThrowBomb extends Node
 
+@onready var player: PlayerController = $"../"
 @onready var player_input: PlayerInput = $"../PlayerInput"
 @onready var bomb_spawner: BombSpawner = get_tree().root.get_node("Main/SceneContainer/Game/World/BombSpawner")
 @onready var bomb_barrel: Node2D = $BombBarrel
 @onready var player_flip: PlayerFlip = $"../PlayerFlip"
+@onready var weapon_hold_handler: WeaponHoldHandler = $"../ChracterSprites/WeaponHoldHandler"
 
 func _ready() -> void:
 	if is_multiplayer_authority():
@@ -11,20 +13,28 @@ func _ready() -> void:
 
 
 func _on_throw_bomb() -> void:
+	if not weapon_hold_handler.consume_grenade():
+		return
+
 	var bomb_barrel_position: Vector2 = Vector2()
 	var direction: PlayerFlip.Direction = player_flip.get_player_direction()
 
 	match direction:
 		PlayerFlip.Direction.LEFT:
-			bomb_barrel_position = get_parent().global_position - bomb_barrel.position
+			bomb_barrel_position = player.global_position - bomb_barrel.position
 		PlayerFlip.Direction.RIGHT:
-			bomb_barrel_position = get_parent().global_position + bomb_barrel.position
+			bomb_barrel_position = player.global_position + bomb_barrel.position
 
-	request_throw_bomb.rpc_id(1, multiplayer.get_unique_id(), bomb_barrel_position, direction)
+	request_throw_bomb.rpc_id(1, multiplayer.get_unique_id(), bomb_barrel_position, direction, player.grenade_damage)
 
 
 @rpc("authority", "call_remote", "reliable")
-func request_throw_bomb(peer_id: int, pos: Vector2, direction: PlayerFlip.Direction) -> void:
+func request_throw_bomb(peer_id: int, pos: Vector2, direction: PlayerFlip.Direction, damage: int = BombController.DEFAULT_DAMAGE) -> void:
 	if not multiplayer.is_server(): return
-	
-	bomb_spawner.spawn({"peer_id": peer_id, "pos": pos, "direction": direction})
+
+	bomb_spawner.spawn({
+		"peer_id": peer_id,
+		"pos": pos,
+		"direction": direction,
+		"damage": damage,
+	})
