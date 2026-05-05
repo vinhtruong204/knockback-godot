@@ -55,7 +55,7 @@ func get_achievements(callback: Callable, skip := 0, limit := 100, force_refresh
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_STATIC, "config", true,
 		func(cb: Callable):
-			ApiManager.send_request(self, base_url, "/achievements?skip=%d&limit=%d" % [skip, limit],
+			ApiManager.send_request(self, base_url, "/achievements/?skip=%d&limit=%d" % [skip, limit],
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 

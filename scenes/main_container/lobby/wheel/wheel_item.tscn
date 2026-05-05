@@ -22,6 +22,16 @@ offset_right = 80.0
 offset_bottom = 60.0
 script = ExtResource("1_script")
 
+[node name="CardBg" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"Card"
+
 [node name="HighlightBorder" type="Panel" parent="."]
 visible = false
 layout_mode = 1

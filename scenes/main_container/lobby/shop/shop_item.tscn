@@ -10,6 +10,16 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_2tfay")
 
+[node name="CardBg" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"Card"
+
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1963058168]
 layout_mode = 1
 anchors_preset = 14

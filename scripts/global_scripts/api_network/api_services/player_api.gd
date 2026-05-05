@@ -300,7 +300,7 @@ func get_player_achievements(pid: String, callback: Callable, force_refresh := f
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_SEMI, "player", false,
 		func(cb: Callable):
-			ApiManager.send_request(self , base_url, "/players/" + pid + "/achievements",
+			ApiManager.send_request(self , base_url, "/player-achievements/?player_id=" + pid,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 

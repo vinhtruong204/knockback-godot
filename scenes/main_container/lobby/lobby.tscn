@@ -62,12 +62,16 @@
 [ext_resource type="Texture2D" uid="uid://bdlul4woss37y" path="res://assets/game/map/ice.png" id="42_8od1p"]
 [ext_resource type="Texture2D" uid="uid://csdlfa7nl6wrt" path="res://assets/game/map/dust.png" id="43_7vi1o"]
 [ext_resource type="Texture2D" uid="uid://liyn7lejfts3" path="res://assets/game/map/forest.png" id="44_8od1p"]
+[ext_resource type="Texture2D" uid="uid://dyrf5s2c144ki" path="res://assets/lobby/background_overlay/shop_bg.png" id="50_errxf"]
+[ext_resource type="Texture2D" uid="uid://caqrygjgvg3bm" path="res://assets/lobby/background_overlay/lucky_wheel.png" id="60_vk22e"]
+[ext_resource type="PackedScene" uid="uid://bq0tjg1s7a731" path="res://scenes/main_container/lobby/achievement/achievement_card.tscn" id="90_achiev"]
+[ext_resource type="Theme" uid="uid://c2fgmjus4cmtj" path="res://assets/ui/lobby_buttons.tres" id="99_lobby_theme"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yapo1"]
 texture = ExtResource("1_psu8p")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkvb6"]
-bg_color = Color(0.27314222, 0.27314225, 0.27314213, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vk22e"]
+texture = ExtResource("50_errxf")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygewx"]
 bg_color = Color(0.23029937, 0.23029937, 0.23029937, 0.63529414)
@@ -89,6 +93,9 @@ corner_radius_bottom_left = 10
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n1kpd"]
 load_path = "res://.godot/imported/p90.png-e7572846593b8430b63d722a7ec0cd4b.ctex"
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_exon6"]
+texture = ExtResource("60_vk22e")
+
 [node name="Lobby" type="CanvasLayer" unique_id=745962393]
 
 [node name="Root" type="Control" parent="." unique_id=2076833974]
@@ -98,6 +105,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("99_lobby_theme")
 script = ExtResource("1_1cl6t")
 
 [node name="BGPanel" type="Panel" parent="Root" unique_id=1278228187]
@@ -135,6 +143,17 @@ texture_pressed = ExtResource("2_psu8p")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("4_f82ac")
+
+[node name="Frame" type="Panel" parent="Root/UIButtons/TopBar/ProfileBtn" unique_id=1177055747]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"IconPanel"
 
 [node name="PlayerName" type="Label" parent="Root/UIButtons/TopBar/ProfileBtn" unique_id=663447556]
 layout_mode = 1
@@ -175,6 +194,7 @@ offset_right = 81.0
 grow_vertical = 2
 texture = ExtResource("4_yapo1")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="CurrencyContainer" type="HBoxContainer" parent="Root/UIButtons/TopBar" unique_id=1182588072]
 z_index = 10
@@ -193,6 +213,7 @@ script = ExtResource("6_5f28n")
 [node name="GoldBtn" type="Button" parent="Root/UIButtons/TopBar/CurrencyContainer" unique_id=1858132688]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "10000000"
 icon = ExtResource("4_62jta")
 alignment = 2
@@ -202,6 +223,7 @@ expand_icon = true
 [node name="DiamondBtn" type="Button" parent="Root/UIButtons/TopBar/CurrencyContainer" unique_id=1583615788]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "10000000"
 icon = ExtResource("5_u3wsq")
 alignment = 2
@@ -219,30 +241,27 @@ grow_horizontal = 0
 theme_override_constants/separation = 20
 alignment = 2
 
-[node name="FriendBtn" type="TextureButton" parent="Root/UIButtons/TopBar/RightContainer" unique_id=1169760456]
+[node name="FriendBtn" type="Button" parent="Root/UIButtons/TopBar/RightContainer" unique_id=1169760456]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture_normal = ExtResource("6_5ibcn")
-texture_pressed = ExtResource("6_5ibcn")
-ignore_texture_size = true
-stretch_mode = 5
+theme_type_variation = &"IconButton"
+icon = ExtResource("6_5ibcn")
+expand_icon = true
 
-[node name="MailBtn" type="TextureButton" parent="Root/UIButtons/TopBar/RightContainer" unique_id=795767844]
+[node name="MailBtn" type="Button" parent="Root/UIButtons/TopBar/RightContainer" unique_id=795767844]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture_normal = ExtResource("7_hdsot")
-texture_pressed = ExtResource("7_hdsot")
-ignore_texture_size = true
-stretch_mode = 5
+theme_type_variation = &"IconButton"
+icon = ExtResource("7_hdsot")
+expand_icon = true
 
-[node name="SettingsBtn" type="TextureButton" parent="Root/UIButtons/TopBar/RightContainer" unique_id=337693450]
+[node name="SettingsBtn" type="Button" parent="Root/UIButtons/TopBar/RightContainer" unique_id=337693450]
 z_index = 10
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture_normal = ExtResource("8_cvlo1")
-texture_pressed = ExtResource("8_cvlo1")
-ignore_texture_size = true
-stretch_mode = 5
+theme_type_variation = &"IconButton"
+icon = ExtResource("8_cvlo1")
+expand_icon = true
 
 [node name="Middle" type="Control" parent="Root/UIButtons" unique_id=1837770972]
 layout_mode = 1
@@ -265,6 +284,7 @@ offset_top = -47.5
 offset_right = 108.0
 offset_bottom = 60.5
 grow_vertical = 2
+theme_type_variation = &"PanelButton"
 text = "Leaderboard"
 icon = ExtResource("9_hdsot")
 icon_alignment = 1
@@ -334,6 +354,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 113.0
 grow_horizontal = 2
+theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 35
 text = "Ranking"
 icon = ExtResource("9_rmwd2")
@@ -347,6 +368,7 @@ anchor_bottom = 1.0
 offset_top = -76.0
 offset_right = 206.0
 grow_vertical = 0
+theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 35
 text = "Normal"
 icon = ExtResource("10_docll")
@@ -363,6 +385,7 @@ offset_left = -189.0
 offset_top = -76.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 35
 text = "LAN"
 icon = ExtResource("11_hwkks")
@@ -391,6 +414,7 @@ alignment = 1
 [node name="EquipmentBtn" type="Button" parent="Root/UIButtons/BottomBar/LeftContainer" unique_id=107425365]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 25
 text = "Equip"
 icon = ExtResource("12_1rix5")
@@ -401,6 +425,7 @@ expand_icon = true
 [node name="TaskBtn" type="Button" parent="Root/UIButtons/BottomBar/LeftContainer" unique_id=1473755039]
 layout_mode = 2
 size_flags_horizontal = 8
+theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 25
 text = "Task"
 icon = ExtResource("13_nkg57")
@@ -423,6 +448,7 @@ alignment = 1
 
 [node name="LuckyWheelBtn" type="Button" parent="Root/UIButtons/BottomBar/RightContainer" unique_id=1396503956]
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 25
 text = "Wheel"
 icon = ExtResource("14_rmwd2")
@@ -432,6 +458,7 @@ expand_icon = true
 
 [node name="ShopBtn" type="Button" parent="Root/UIButtons/BottomBar/RightContainer" unique_id=45823176]
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 25
 text = "Shop"
 icon = ExtResource("15_trvm1")
@@ -457,8 +484,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+theme_override_styles/panel = SubResource("StyleBoxTexture_vk22e")
 script = ExtResource("21_3nquo")
+achievement_card_scene = ExtResource("90_achiev")
 
 [node name="BackBtn" parent="Root/OverlayContainer/PlayerProfile" unique_id=1003464806 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
@@ -524,6 +552,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_yapo1")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="SloganEditor" type="TextEdit" parent="Root/OverlayContainer/PlayerProfile/ProfilePanel" unique_id=1400067158]
 layout_mode = 1
@@ -572,15 +601,18 @@ alignment = 1
 
 [node name="RankingBtn" type="Button" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer" unique_id=1387583681]
 layout_mode = 2
+theme_type_variation = &"TabButton"
 text = "Ranking"
 
 [node name="NormalBtn" type="Button" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer" unique_id=1379107573]
 layout_mode = 2
+theme_type_variation = &"TabButton"
 text = "Normal
 "
 
 [node name="AchivementBtn" type="Button" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer" unique_id=1041056605]
 layout_mode = 2
+theme_type_variation = &"TabButton"
 text = "Achivement"
 
 [node name="ContentContainer" type="Control" parent="Root/OverlayContainer/PlayerProfile/StatsPanel" unique_id=215379027]
@@ -637,9 +669,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/ContentContainer/ScrollContainer" unique_id=1518890023]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Leaderboard" type="Panel" parent="Root/OverlayContainer" unique_id=1748336464]
 visible = false
@@ -650,7 +684,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+theme_override_styles/panel = SubResource("StyleBoxTexture_vk22e")
 script = ExtResource("23_3d233")
 
 [node name="BackBtn" parent="Root/OverlayContainer/Leaderboard" unique_id=310445800 instance=ExtResource("17_1cl6t")]
@@ -694,16 +728,19 @@ alignment = 1
 [node name="RankBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/Control/VBoxContainer" unique_id=662286677]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_type_variation = &"TabButton"
 text = "Ranking"
 
 [node name="NormalBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/Control/VBoxContainer" unique_id=1890209324]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_type_variation = &"TabButton"
 text = "Normal"
 
 [node name="CollectorBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/Control/VBoxContainer" unique_id=1700520144]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_type_variation = &"TabButton"
 text = "Collector"
 
 [node name="StatsPanel" type="Panel" parent="Root/OverlayContainer/Leaderboard/Panel/Control" unique_id=1661980868]
@@ -1089,7 +1126,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+theme_override_styles/panel = SubResource("StyleBoxTexture_vk22e")
 script = ExtResource("24_ot44e")
 equipment_item = ExtResource("29_k67qq")
 
@@ -1112,6 +1149,7 @@ alignment = 1
 [node name="Primary" type="Panel" parent="Root/OverlayContainer/Equipment/EquipmentContainer" unique_id=791656390]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_type_variation = &"GlowCard"
 
 [node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/EquipmentContainer/Primary" unique_id=380367785]
 layout_mode = 1
@@ -1127,6 +1165,7 @@ stretch_mode = 5
 [node name="Secondary" type="Panel" parent="Root/OverlayContainer/Equipment/EquipmentContainer" unique_id=1619396322]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_type_variation = &"GlowCard"
 
 [node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/EquipmentContainer/Secondary" unique_id=807046765]
 layout_mode = 1
@@ -1142,6 +1181,7 @@ stretch_mode = 5
 [node name="Melee" type="Panel" parent="Root/OverlayContainer/Equipment/EquipmentContainer" unique_id=1098461008]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_type_variation = &"GlowCard"
 
 [node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Equipment/EquipmentContainer/Melee" unique_id=1961210661]
 layout_mode = 1
@@ -1257,16 +1297,19 @@ alignment = 1
 [node name="WeaponBtn" type="Button" parent="Root/OverlayContainer/Equipment/SelectControl/HBoxContainer" unique_id=821190800]
 custom_minimum_size = Vector2(70, 40)
 layout_mode = 2
+theme_type_variation = &"TabButton"
 text = "Weapon"
 
 [node name="ItemBtn" type="Button" parent="Root/OverlayContainer/Equipment/SelectControl/HBoxContainer" unique_id=494570790]
 custom_minimum_size = Vector2(70, 40)
 layout_mode = 2
+theme_type_variation = &"TabButton"
 text = "Item"
 
 [node name="CharacterBtn" type="Button" parent="Root/OverlayContainer/Equipment/SelectControl/HBoxContainer" unique_id=1294317994]
 custom_minimum_size = Vector2(70, 40)
 layout_mode = 2
+theme_type_variation = &"TabButton"
 text = "Character"
 
 [node name="Panel" type="Panel" parent="Root/OverlayContainer/Equipment/SelectControl" unique_id=1179923222]
@@ -1310,7 +1353,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+theme_override_styles/panel = SubResource("StyleBoxTexture_vk22e")
 script = ExtResource("30_l8m0j")
 
 [node name="BackBtn" parent="Root/OverlayContainer/Ranking" unique_id=1517319978 instance=ExtResource("17_1cl6t")]
@@ -1336,6 +1379,7 @@ anchor_right = 1.0
 offset_left = -50.0
 offset_bottom = 42.0
 grow_horizontal = 0
+theme_type_variation = &"IconButton"
 theme_override_font_sizes/font_size = 24
 text = "?"
 
@@ -1390,6 +1434,7 @@ offset_right = 102.5
 offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_type_variation = &"PrimaryButton"
 theme_override_font_sizes/font_size = 30
 text = "Fight"
 icon = ExtResource("12_1rix5")
@@ -1429,6 +1474,7 @@ anchor_right = 1.0
 offset_left = -18.0
 offset_bottom = 31.0
 grow_horizontal = 0
+theme_type_variation = &"IconButton"
 theme_override_font_sizes/font_size = 24
 text = "X"
 
@@ -1613,7 +1659,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+theme_override_styles/panel = SubResource("StyleBoxTexture_vk22e")
 script = ExtResource("31_6beg1")
 
 [node name="BackBtn" parent="Root/OverlayContainer/Normal" unique_id=1223498661 instance=ExtResource("17_1cl6t")]
@@ -1649,6 +1695,7 @@ custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 25
 text = "Map"
 icon = ExtResource("33_cyr2y")
@@ -1660,6 +1707,7 @@ custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 25
 text = "Free for all"
 icon = ExtResource("32_1qp4n")
@@ -1671,6 +1719,7 @@ custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 25
 text = "1v1"
 icon = ExtResource("34_iyufi")
@@ -1682,6 +1731,7 @@ custom_minimum_size = Vector2(180, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_type_variation = &"PrimaryButton"
 theme_override_font_sizes/font_size = 30
 text = "Fight"
 icon = ExtResource("12_1rix5")
@@ -1721,6 +1771,7 @@ anchor_right = 1.0
 offset_left = -18.0
 offset_bottom = 31.0
 grow_horizontal = 0
+theme_type_variation = &"IconButton"
 theme_override_font_sizes/font_size = 24
 text = "X"
 
@@ -1767,6 +1818,7 @@ columns = 2
 [node name="Button" type="Button" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=706817740]
 custom_minimum_size = Vector2(280, 220)
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "Night"
 icon = ExtResource("41_7vi1o")
 icon_alignment = 1
@@ -1776,6 +1828,7 @@ expand_icon = true
 [node name="Button2" type="Button" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=1760720652]
 custom_minimum_size = Vector2(280, 220)
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "Ice"
 icon = ExtResource("42_8od1p")
 icon_alignment = 1
@@ -1785,6 +1838,7 @@ expand_icon = true
 [node name="Button3" type="Button" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=1337822544]
 custom_minimum_size = Vector2(280, 220)
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "Dust"
 icon = ExtResource("43_7vi1o")
 icon_alignment = 1
@@ -1794,6 +1848,7 @@ expand_icon = true
 [node name="Button4" type="Button" parent="Root/OverlayContainer/Normal/PopupChooseMap/Panel/ScrollContainer/VBoxContainer/GridContainer" unique_id=2019292016]
 custom_minimum_size = Vector2(280, 220)
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "Forest"
 icon = ExtResource("44_8od1p")
 icon_alignment = 1
@@ -1809,7 +1864,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+theme_override_styles/panel = SubResource("StyleBoxTexture_vk22e")
 script = ExtResource("31_gx6q1")
 
 [node name="BackBtn" parent="Root/OverlayContainer/LAN" unique_id=1087116649 instance=ExtResource("17_1cl6t")]
@@ -1852,6 +1907,7 @@ custom_minimum_size = Vector2(300, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 30
 text = "Mode"
 icon = ExtResource("32_1qp4n")
@@ -1863,6 +1919,7 @@ custom_minimum_size = Vector2(300, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 30
 text = "Map"
 icon = ExtResource("33_cyr2y")
@@ -1874,6 +1931,7 @@ custom_minimum_size = Vector2(300, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 30
 text = "1v1"
 icon = ExtResource("34_iyufi")
@@ -1920,6 +1978,7 @@ placeholder_text = "PORT"
 [node name="StartButton" type="Button" parent="Root/OverlayContainer/LAN/HBoxContainer/Panel2/VBoxContainer" unique_id=1627927441]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
+theme_type_variation = &"PrimaryButton"
 theme_override_font_sizes/font_size = 30
 text = "Start"
 expand_icon = true
@@ -1933,8 +1992,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+theme_override_styles/panel = SubResource("StyleBoxTexture_vk22e")
 script = ExtResource("23_idp30")
+
+[node name="Dimmer" type="ColorRect" parent="Root/OverlayContainer/Shop" unique_id=282109741]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.55)
 
 [node name="BackBtn" parent="Root/OverlayContainer/Shop" unique_id=1687888561 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
@@ -1945,36 +2014,43 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -27.5
 offset_top = -94.0
+offset_right = 27.5
 offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 50
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="RecommendedBtn" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=1303582635]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_type_variation = &"TabButton"
+theme_override_font_sizes/font_size = 22
 text = "Recommended"
 
 [node name="DailyDiscountBtn" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=1525398718]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_type_variation = &"TabButton"
+theme_override_font_sizes/font_size = 22
 text = "Daily Discount"
 
 [node name="WeaponBtn" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=802948477]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_type_variation = &"TabButton"
+theme_override_font_sizes/font_size = 22
 text = "Weapon"
 
 [node name="ItemBtn" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=2101376796]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_type_variation = &"TabButton"
+theme_override_font_sizes/font_size = 22
 text = "Item"
 
 [node name="CharacterBtn" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=1074166852]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_type_variation = &"TabButton"
+theme_override_font_sizes/font_size = 22
 text = "Character"
 
 [node name="ItemsContainer" type="Control" parent="Root/OverlayContainer/Shop" unique_id=1370765152]
@@ -1992,6 +2068,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Recommend" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=850079412]
+visible = false
 custom_minimum_size = Vector2(791, 309)
 layout_mode = 1
 anchors_preset = 15
@@ -2013,6 +2090,7 @@ alignment = 1
 [node name="Panel" type="Panel" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer" unique_id=224189099]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
+theme_type_variation = &"GlowCard"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel" unique_id=115520139]
 layout_mode = 1
@@ -2055,6 +2133,7 @@ expand_icon = true
 [node name="Panel2" type="Panel" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer" unique_id=1963220034]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
+theme_type_variation = &"GlowCard"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2" unique_id=444588639]
 layout_mode = 1
@@ -2097,6 +2176,7 @@ expand_icon = true
 [node name="Panel3" type="Panel" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer" unique_id=1401309630]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
+theme_type_variation = &"GlowCard"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3" unique_id=1857585628]
 layout_mode = 1
@@ -2137,7 +2217,6 @@ icon_alignment = 2
 expand_icon = true
 
 [node name="Daily Discount" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1884015232]
-visible = false
 custom_minimum_size = Vector2(750, 309)
 layout_mode = 1
 anchors_preset = 8
@@ -2168,7 +2247,7 @@ offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 50
-theme_override_constants/v_separation = 0
+theme_override_constants/v_separation = 30
 columns = 4
 
 [node name="Weapon" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1467739191]
@@ -2226,14 +2305,17 @@ alignment = 1
 
 [node name="Button" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/HBoxContainer" unique_id=238826099]
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "Primary"
 
 [node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/HBoxContainer" unique_id=59211790]
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "Secondary"
 
 [node name="Button2" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/HBoxContainer" unique_id=582030692]
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "Melee"
 
 [node name="Item" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1800100722]
@@ -2314,28 +2396,6 @@ theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 30
 columns = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Character" unique_id=1432919524]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -36.0
-offset_right = 45.0
-offset_bottom = 36.0
-grow_vertical = 2
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="Button" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/VBoxContainer" unique_id=43963247]
-custom_minimum_size = Vector2(70, 40)
-layout_mode = 2
-text = "Type"
-
-[node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Character/VBoxContainer" unique_id=1694142764]
-custom_minimum_size = Vector2(70, 40)
-layout_mode = 2
-text = "Type"
-
 [node name="Wheel" type="Panel" parent="Root/OverlayContainer" unique_id=273721717]
 visible = false
 layout_mode = 1
@@ -2345,8 +2405,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+theme_override_styles/panel = SubResource("StyleBoxTexture_exon6")
 script = ExtResource("27_y3tir")
+
+[node name="Dimmer" type="ColorRect" parent="Root/OverlayContainer/Wheel" unique_id=687143979]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.55)
 
 [node name="BackBtn" parent="Root/OverlayContainer/Wheel" unique_id=1834917779 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
@@ -2378,11 +2448,13 @@ alignment = 1
 
 [node name="GoldBtn" type="Button" parent="Root/OverlayContainer/Wheel/Control/HBoxContainer" unique_id=1530425717]
 layout_mode = 2
+theme_type_variation = &"TabButton"
 theme_override_font_sizes/font_size = 30
 text = "Gold"
 
 [node name="DiamondBtn" type="Button" parent="Root/OverlayContainer/Wheel/Control/HBoxContainer" unique_id=1854966229]
 layout_mode = 2
+theme_type_variation = &"TabButton"
 theme_override_font_sizes/font_size = 30
 text = "Diamond"
 
@@ -2537,6 +2609,7 @@ offset_top = -25.5
 offset_right = 153.0
 offset_bottom = 25.5
 grow_vertical = 2
+theme_type_variation = &"PanelButton"
 text = "1000 | 1x"
 icon = ExtResource("4_62jta")
 icon_alignment = 2
@@ -2554,6 +2627,7 @@ offset_top = -25.5
 offset_bottom = 25.5
 grow_horizontal = 0
 grow_vertical = 2
+theme_type_variation = &"PanelButton"
 text = "10000 | 10x"
 icon = ExtResource("4_62jta")
 icon_alignment = 2
@@ -2689,6 +2763,7 @@ offset_top = -25.5
 offset_right = 153.0
 offset_bottom = 25.5
 grow_vertical = 2
+theme_type_variation = &"PanelButton"
 text = "1000 | 1x"
 icon = ExtResource("5_u3wsq")
 icon_alignment = 2
@@ -2706,6 +2781,7 @@ offset_top = -25.5
 offset_bottom = 25.5
 grow_horizontal = 0
 grow_vertical = 2
+theme_type_variation = &"PanelButton"
 text = "10000 | 10x"
 icon = ExtResource("5_u3wsq")
 icon_alignment = 2
@@ -2720,7 +2796,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+theme_override_styles/panel = SubResource("StyleBoxTexture_vk22e")
 script = ExtResource("36_4ossl")
 task_item = ExtResource("37_7xsny")
 
@@ -2757,11 +2833,13 @@ alignment = 1
 [node name="Daily" type="Button" parent="Root/OverlayContainer/Task/Control/VBoxContainer" unique_id=406655341]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_type_variation = &"TabButton"
 text = "Daily "
 
 [node name="Weekly" type="Button" parent="Root/OverlayContainer/Task/Control/VBoxContainer" unique_id=1012983784]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_type_variation = &"TabButton"
 text = "Weekly"
 
 [node name="DailyPanel" type="Panel" parent="Root/OverlayContainer/Task/Control" unique_id=18616367]
@@ -2840,8 +2918,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+theme_override_styles/panel = SubResource("StyleBoxTexture_vk22e")
 script = ExtResource("35_rjdw1")
+
+[node name="Dimmer" type="ColorRect" parent="Root/TopOverlay/Purchase"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.55)
 
 [node name="BackBtn" parent="Root/TopOverlay/Purchase" unique_id=1944590998 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
@@ -2866,6 +2954,7 @@ columns = 4
 [node name="Button" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=633894300]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "10.000
 1.000.000 VND"
 icon = ExtResource("5_u3wsq")
@@ -2875,6 +2964,7 @@ expand_icon = true
 [node name="Button2" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=2008505003]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "5.000
 500.000 VND"
 icon = ExtResource("5_u3wsq")
@@ -2884,6 +2974,7 @@ expand_icon = true
 [node name="Button3" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=1435665214]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "1.000
 100.000 VND"
 icon = ExtResource("5_u3wsq")
@@ -2893,6 +2984,7 @@ expand_icon = true
 [node name="Button4" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=1424307285]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "500
 50.000 VND	"
 icon = ExtResource("5_u3wsq")
@@ -2902,6 +2994,7 @@ expand_icon = true
 [node name="Button6" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=943975743]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "10.000
 10.000 VND"
 icon = ExtResource("4_62jta")
@@ -2911,6 +3004,7 @@ expand_icon = true
 [node name="Button7" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=567568817]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "5.000
 10.000 VND"
 icon = ExtResource("4_62jta")
@@ -2920,6 +3014,7 @@ expand_icon = true
 [node name="Button5" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=984419443]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "50
 FREE (0/3)"
 icon = ExtResource("5_u3wsq")
@@ -2929,6 +3024,7 @@ expand_icon = true
 [node name="Button8" type="Button" parent="Root/TopOverlay/Purchase/GridContainer" unique_id=2083834190]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
+theme_type_variation = &"PanelButton"
 text = "500
 FREE (0/3)"
 icon = ExtResource("4_62jta")
@@ -2943,8 +3039,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qkvb6")
+theme_override_styles/panel = SubResource("StyleBoxTexture_vk22e")
 script = ExtResource("35_hur8o")
+
+[node name="Dimmer" type="ColorRect" parent="Root/TopOverlay/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.55)
 
 [node name="BackBtn" parent="Root/TopOverlay/Settings" unique_id=20028794 instance=ExtResource("17_1cl6t")]
 layout_mode = 0
@@ -2971,7 +3077,9 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Root/TopOverlay/Settings/VBoxContainer/MusicContainer" unique_id=1449236400]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 30
 text = "Music"
 
@@ -2990,7 +3098,9 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Root/TopOverlay/Settings/VBoxContainer/SoundContainer" unique_id=1590649805]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 30
 text = "Sound"
 
@@ -3011,7 +3121,9 @@ layout_mode = 0
 offset_top = 5.0
 offset_right = 51.0
 offset_bottom = 47.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 30
 text = "FPS"
 
@@ -3034,16 +3146,19 @@ theme_override_constants/separation = 50
 
 [node name="LowBtn" type="Button" parent="Root/TopOverlay/Settings/VBoxContainer/FPS/HBoxContainer" unique_id=1553863695]
 layout_mode = 2
+theme_type_variation = &"TabButton"
 theme_override_font_sizes/font_size = 32
 text = "LOW"
 
 [node name="MediumBtn" type="Button" parent="Root/TopOverlay/Settings/VBoxContainer/FPS/HBoxContainer" unique_id=988226059]
 layout_mode = 2
+theme_type_variation = &"TabButton"
 theme_override_font_sizes/font_size = 32
 text = "MEDIUM"
 
 [node name="HighBtn" type="Button" parent="Root/TopOverlay/Settings/VBoxContainer/FPS/HBoxContainer" unique_id=707795126]
 layout_mode = 2
+theme_type_variation = &"TabButton"
 theme_override_font_sizes/font_size = 32
 text = "HIGH"
 
@@ -3061,6 +3176,7 @@ offset_right = 50.0
 offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_type_variation = &"TabButton"
 text = "Sign out"
 
 [connection signal="pressed" from="Root/UIButtons/TopBar/ProfileBtn" to="Root" method="_open_player_profile"]
