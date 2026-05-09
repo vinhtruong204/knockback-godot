@@ -65,32 +65,17 @@ func _process(_delta: float) -> void:
 
 # ─── Fight Button ────────────────────────────────────────────
 func _on_fight_pressed():
-	# test run game directly
-	NetworkManager.create_client()
-	
-	# Handle random map
-	var map_name := "ice"
-	# var random_map := randi() % 3
-	# if random_map == 0:
-	# 	map_name = "dust"
-	# elif random_map == 1:
-	# 	map_name = "forest"
-	# elif random_map == 2:
-	# 	map_name = "ice"
-	# else:
-	# 	map_name = "night"
-	
-	NetworkManager.current_map_name = map_name
-	
-	return
-
 	if matchmaking_state != MatchmakingState.IDLE:
 		return
 
 	var rank_point := int(rank_data.get("current_point", 0))
 	fight_btn.disabled = true
 
-	MatchApi.join_matchmaking(rank_point, func(response: Dictionary) -> void:
+	MatchApi.join_matchmaking({
+		"rank_point": rank_point,
+		"game_mode": NetworkManager.GAME_MODE_RANK,
+		"players_per_team": 1,
+	}, func(response: Dictionary) -> void:
 		if response.get("ok", false):
 			var data: Dictionary = response.get("data", {})
 			var parsed = MatchModels.parse_matchmaking_response(data)
@@ -176,14 +161,18 @@ func _handle_match_found(match_data) -> void:
 	cancel_btn.visible = false
 
 	# Store match context for the game scene
-	NetworkManager.current_match_id = match_data.match_id
-	NetworkManager.current_match_players = []
-	NetworkManager.current_map_name = match_data.map_name
+	var players: Array = []
 	for p in match_data.players:
-		NetworkManager.current_match_players.append(p.to_dict())
+		players.append(p.to_dict())
 
 	get_tree().create_timer(1.0).timeout.connect(func():
-		NetworkManager.create_client()
+		NetworkManager.start_online_match({
+			"game_mode": NetworkManager.GAME_MODE_RANK,
+			"match_id": match_data.match_id,
+			"players": players,
+			"map_name": match_data.map_name,
+			"map_key": NetworkManager.get_map_key(match_data.map_name),
+		})
 	)
 
 

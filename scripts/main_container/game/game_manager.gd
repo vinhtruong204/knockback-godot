@@ -3,6 +3,7 @@ class_name GameManager extends Node2D
 # ── Match context ──
 var match_id: int = 0
 var map_name: String = ""
+var game_mode: String = "rank"
 var peer_to_player_id: Dictionary = {} # {int peer_id: String player_id}
 var peer_to_name: Dictionary = {} # {int peer_id: String name}
 var peer_to_weapons: Dictionary = {} # {int peer_id: Dictionary weapon_loadout {slot: {image, damage, fire_rate}}}
@@ -12,6 +13,7 @@ var peer_to_character: Dictionary = {} # {int peer_id: Dictionary character {tex
 var kills: Dictionary = {} # {int peer_id: int count}
 var deaths: Dictionary = {} # {int peer_id: int count}
 var match_ended: bool = false
+var match_started: bool = false
 var _registered: bool = false
 
 # ── Reward constants ──
@@ -29,10 +31,13 @@ const FORFEIT_RANK_CHANGE := -20
 
 
 func _ready() -> void:
+	game_mode = NetworkManager.current_game_mode
 	if multiplayer.is_server():
 		# Server: listen for player spawn and disconnect events
 		player_spawner.player_spawned.connect(_on_player_spawned_server)
 		player_spawner.player_disconnected.connect(_on_player_disconnected)
+		if NetworkManager.current_game_mode == NetworkManager.GAME_MODE_LAN and NetworkManager.is_lan_host_player:
+			get_tree().create_timer(0.3).timeout.connect(_register_lan_host_player)
 	else:
 		# Client: send registration to server once connected
 		match_id = NetworkManager.current_match_id
@@ -54,15 +59,33 @@ func _register_with_server() -> void:
 	var player_name := NetworkManager.current_player_name
 	if player_name == "":
 		player_name = str(multiplayer.get_unique_id())
-	var p_map_name := NetworkManager.current_map_name
+	var p_map_name := NetworkManager.current_map_key
+	if p_map_name == "":
+		p_map_name = NetworkManager.current_map_name
 
-	# Fetch own loadout (weapons + character) before registering
-	_fetch_own_loadout(func(weapons: Dictionary, character: Dictionary):
-		register_player.rpc_id(1, ApiManager.player_id, match_id, player_name, p_map_name, weapons, character)
+	# Fetch own loadout (weapons + character) before registering.
+	_fetch_loadout_for_player(ApiManager.player_id, func(weapons: Dictionary, character: Dictionary):
+		register_player.rpc_id(1, ApiManager.player_id, match_id, player_name, p_map_name, weapons, character, NetworkManager.current_game_mode)
 	)
 
 
-func _fetch_own_loadout(callback: Callable) -> void:
+func _register_lan_host_player() -> void:
+	if _registered: return
+	_registered = true
+	match_id = 0
+	var player_name := NetworkManager.current_player_name
+	if player_name == "":
+		player_name = str(multiplayer.get_unique_id())
+	var p_map_name := NetworkManager.current_map_key
+	if p_map_name == "":
+		p_map_name = NetworkManager.current_map_name
+
+	_fetch_loadout_for_player(ApiManager.player_id, func(weapons: Dictionary, character: Dictionary):
+		_register_player_for_peer(multiplayer.get_unique_id(), ApiManager.player_id, match_id, player_name, p_map_name, weapons, character, NetworkManager.GAME_MODE_LAN)
+	)
+
+
+func _fetch_loadout_for_player(player_id: String, callback: Callable) -> void:
 	var weapons := {}
 	var character := {}
 	var pending := {"count": 2}
@@ -73,23 +96,24 @@ func _fetch_own_loadout(callback: Callable) -> void:
 			callback.call(weapons, character)
 
 	# Equipment (all weapon slots, including grenade; excluding character slot)
-	PlayerApi.get_player_equipment(ApiManager.player_id, func(response: Dictionary):
+	PlayerApi.get_player_equipment(player_id, func(response: Dictionary):
 		if not response.get("ok", false):
+			print("[GameManager] Failed to fetch equipment for player ", player_id, ": ", response.get("error", "unknown error"))
 			maybe_done.call()
 			return
 		var equips = response.get("data", [])
-		var weapon_pending := 0
+		var weapon_pending := {"count": 0}
 		var any_started := false
 		for equip in equips:
-			var slot = equip.get("slot_type", "")
-			var wid = int(equip.get("weapon_id", 0))
-			if wid <= 0 or slot == Enums.SlotType.CHARACTER:
+			var slot_type := str(equip.get("slot_type", ""))
+			var weapon_id := int(equip.get("weapon_id", 0))
+			if weapon_id <= 0 or slot_type == Enums.SlotType.CHARACTER:
 				continue
-			weapon_pending += 1
+			weapon_pending["count"] += 1
 			any_started = true
-			_fetch_weapon_info(wid, slot, weapons, func():
-				weapon_pending -= 1
-				if weapon_pending == 0:
+			_fetch_weapon_info(weapon_id, slot_type, weapons, func():
+				weapon_pending["count"] -= 1
+				if weapon_pending["count"] == 0:
 					maybe_done.call()
 			)
 		if not any_started:
@@ -97,8 +121,9 @@ func _fetch_own_loadout(callback: Callable) -> void:
 	, true)
 
 	# Selected character
-	PlayerApi.get_selected_character(ApiManager.player_id, func(response: Dictionary):
+	PlayerApi.get_selected_character(player_id, func(response: Dictionary):
 		if not response.get("ok", false):
+			print("[GameManager] Failed to fetch selected character for player ", player_id, ": ", response.get("error", "unknown error"))
 			maybe_done.call()
 			return
 		var data: Dictionary = response.get("data", {})
@@ -112,6 +137,8 @@ func _fetch_own_loadout(callback: Callable) -> void:
 				character["texture"] = cdata.get("texture", "")
 				character["hp"] = int(cdata.get("hp", 0))
 				character["run_speed"] = float(cdata.get("run_speed", 0.0))
+			else:
+				print("[GameManager] Failed to fetch character config ", char_id, " for player ", player_id, ": ", resp.get("error", "unknown error"))
 			maybe_done.call()
 		)
 	, true)
@@ -122,37 +149,58 @@ func _fetch_weapon_info(weapon_id: int, slot_type: String, weapons: Dictionary, 
 		if resp.get("ok", false):
 			var data: Dictionary = resp.get("data", {})
 			weapons[slot_type] = {
+				"weapon_id": weapon_id,
+				"slot_type": slot_type,
 				"image": data.get("image", ""),
 				"damage": int(data.get("damage", 0)),
 				"fire_rate": float(data.get("fire_rate", 0.0)),
 				"ammo": int(data.get("ammo", 0)),
 			}
+		else:
+			print("[GameManager] Failed to fetch weapon config ", weapon_id, " for slot ", slot_type, ": ", resp.get("error", "unknown error"))
 		done.call()
-	)
+	, true)
 
 
 # ── Registration RPC (client → server) ──
 
 @rpc("any_peer", "call_remote", "reliable")
-func register_player(player_id: String, p_match_id: int, player_name: String, p_map_name: String = "", weapons: Dictionary = {}, character: Dictionary = {}) -> void:
+func register_player(player_id: String, p_match_id: int, player_name: String, p_map_name: String = "", weapons: Dictionary = {}, character: Dictionary = {}, p_game_mode: String = "") -> void:
 	if not multiplayer.is_server(): return
 	var sender := multiplayer.get_remote_sender_id()
-	peer_to_player_id[sender] = player_id
-	peer_to_name[sender] = player_name
-	peer_to_weapons[sender] = weapons
-	peer_to_character[sender] = character
-	kills[sender] = 0
-	deaths[sender] = 0
+	_register_player_for_peer(sender, player_id, p_match_id, player_name, p_map_name, weapons, character, p_game_mode)
+
+
+func _register_player_for_peer(peer_id: int, player_id: String, p_match_id: int, player_name: String, p_map_name: String = "", weapons: Dictionary = {}, character: Dictionary = {}, p_game_mode: String = "") -> void:
+	if not multiplayer.is_server(): return
+	if match_started:
+		print("[GameManager] Ignoring registration after match start for peer ", peer_id)
+		return
+
+	peer_to_player_id[peer_id] = player_id
+	peer_to_name[peer_id] = player_name
+	peer_to_weapons[peer_id] = weapons
+	peer_to_character[peer_id] = character
+	kills[peer_id] = 0
+	deaths[peer_id] = 0
+	print("[GameManager] Registered peer ", peer_id, " player ", player_id, " name ", player_name, " weapons ", weapons)
+	if weapons.is_empty():
+		print("[GameManager] Empty weapon loadout for peer ", peer_id, " player ", player_id, "; using defaults")
+	if character.is_empty():
+		print("[GameManager] Empty character loadout for peer ", peer_id, " player ", player_id, "; using defaults")
 	if match_id == 0:
 		match_id = p_match_id
 	if map_name == "" and p_map_name != "":
 		map_name = p_map_name
+	if p_game_mode != "":
+		game_mode = p_game_mode
 
 	# Once both peers have registered (their loadout dicts may be empty if
-	# _fetch_own_loadout failed — instant-start flow), kick off the match.
+	# loadout fetch failed, kick off the match with fallback defaults.
 	# PlayerSpawner.start_match bakes the loadout into spawn data so clients
 	# instantiate players with full equipment from frame 1 (no 2s pop-in).
-	if peer_to_name.size() >= 2:
+	if peer_to_name.size() >= PlayerSpawner.MAX_PLAYER and not match_started:
+		match_started = true
 		player_spawner.start_match(_build_peer_data())
 
 
@@ -215,10 +263,13 @@ func _end_match(winner_peer: int, loser_peer: int, is_forfeit: bool) -> void:
 	var loser_player_id: String = peer_to_player_id.get(loser_peer, "")
 	var winner_name: String = peer_to_name.get(winner_peer, str(winner_peer))
 	var loser_name: String = peer_to_name.get(loser_peer, str(loser_peer))
+	var rewards_enabled := game_mode != NetworkManager.GAME_MODE_LAN
+	var rank_enabled := game_mode == NetworkManager.GAME_MODE_RANK
 
 	var result_data := {
 		"match_id": match_id,
 		"is_forfeit": is_forfeit,
+		"game_mode": game_mode,
 		"players": {
 			str(winner_peer): {
 				"player_id": winner_player_id,
@@ -226,9 +277,9 @@ func _end_match(winner_peer: int, loser_peer: int, is_forfeit: bool) -> void:
 				"result": Enums.MatchResult.WIN,
 				"kill": kills.get(winner_peer, 0),
 				"dead": deaths.get(winner_peer, 0),
-				"reward_gold": WINNER_GOLD,
-				"exp_earned": WINNER_EXP,
-				"rank_point_change": WINNER_RANK_CHANGE,
+				"reward_gold": WINNER_GOLD if rewards_enabled else 0,
+				"exp_earned": WINNER_EXP if rewards_enabled else 0,
+				"rank_point_change": WINNER_RANK_CHANGE if rank_enabled else 0,
 			},
 			str(loser_peer): {
 				"player_id": loser_player_id,
@@ -236,26 +287,30 @@ func _end_match(winner_peer: int, loser_peer: int, is_forfeit: bool) -> void:
 				"result": Enums.MatchResult.LOSE,
 				"kill": kills.get(loser_peer, 0),
 				"dead": deaths.get(loser_peer, 0),
-				"reward_gold": 0 if is_forfeit else LOSER_GOLD,
-				"exp_earned": 0 if is_forfeit else LOSER_EXP,
-				"rank_point_change": FORFEIT_RANK_CHANGE if is_forfeit else LOSER_RANK_CHANGE,
+				"reward_gold": 0 if is_forfeit or not rewards_enabled else LOSER_GOLD,
+				"exp_earned": 0 if is_forfeit or not rewards_enabled else LOSER_EXP,
+				"rank_point_change": (FORFEIT_RANK_CHANGE if is_forfeit else LOSER_RANK_CHANGE) if rank_enabled else 0,
 			},
 		}
 	}
 
 	# Send results to all connected clients
 	_receive_match_result.rpc(result_data)
+	if game_mode == NetworkManager.GAME_MODE_LAN and NetworkManager.is_lan_host_player:
+		_receive_match_result(result_data)
 
 	# Schedule server cleanup
-	await get_tree().create_timer(10.0).timeout
-	_reset_server_state()
+	if game_mode != NetworkManager.GAME_MODE_LAN:
+		await get_tree().create_timer(10.0).timeout
+		_reset_server_state()
 
 
 # ── Client: Receive match result via RPC ──
 
 @rpc("authority", "call_remote", "reliable")
 func _receive_match_result(result_data: Dictionary) -> void:
-	if multiplayer.is_server(): return
+	if multiplayer.is_server() and not (game_mode == NetworkManager.GAME_MODE_LAN and NetworkManager.is_lan_host_player):
+		return
 	match_ended = true
 
 	var my_peer := str(multiplayer.get_unique_id())
@@ -306,6 +361,7 @@ func _reset_server_state() -> void:
 	deaths.clear()
 	match_id = 0
 	match_ended = false
+	match_started = false
 	# Reload entire game scene so all spawners start fresh
 	SceneLoader.load_scene(NetworkManager.game_scene_path)
 

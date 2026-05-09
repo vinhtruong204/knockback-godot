@@ -19,7 +19,7 @@ func _on_all_player_joined() -> void:
 	var game_manager = get_tree().root.get_node_or_null("Main/SceneContainer/Game") as GameManager
 	var map_texture_name := DEFAULT_MAP
 	if game_manager and game_manager.map_name != "":
-		map_texture_name = game_manager.map_name.to_lower()
+		map_texture_name = NetworkManager.get_map_key(game_manager.map_name)
 	spawn({"map_texture_name": map_texture_name})
 
 func _spawn_map(data: Dictionary) -> Node:

@@ -6,6 +6,7 @@
 [node name="BackBtn" type="Button" unique_id=1003464806]
 offset_right = 143.0
 offset_bottom = 71.0
+theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 28
 text = "Lobby"
 icon = ExtResource("1_13v3x")

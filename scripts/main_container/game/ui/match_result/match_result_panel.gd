@@ -21,6 +21,7 @@ var my_rank_point_change: int = 0
 var my_result: String = ""
 var my_kills: int = 0
 var my_deaths: int = 0
+var result_game_mode: String = "rank"
 
 const COUNTDOWN_SECONDS := 5
 var _countdown: int = COUNTDOWN_SECONDS
@@ -41,6 +42,7 @@ func _ready() -> void:
 
 func show_result(my_data: Dictionary, opponent_data: Dictionary) -> void:
 	visible = true
+	result_game_mode = NetworkManager.current_game_mode
 
 	my_result = my_data.get("result", "")
 	my_reward_gold = my_data.get("reward_gold", 0)
@@ -106,6 +108,10 @@ func _on_confirm_pressed() -> void:
 	confirm_btn.text = "Leaving..."
 	var pid := ApiManager.player_id
 
+	if result_game_mode == NetworkManager.GAME_MODE_LAN:
+		_finalize_and_leave()
+		return
+
 	# 1. Add gold reward
 	if my_reward_gold > 0:
 		PlayerApi.add_player_currency_amount(pid, Enums.CurrencyType.GOLD,
@@ -131,7 +137,8 @@ func _on_confirm_pressed() -> void:
 		, true)
 
 	# 4. Update cumulative player stats (kill, dead, total_game, wins)
-	PlayerApi.get_player_stats_by_mode(pid, Enums.GameMode.RANK, func(stats_response: Dictionary):
+	var stats_mode := Enums.GameMode.RANK if result_game_mode == NetworkManager.GAME_MODE_RANK else Enums.GameMode.NORMAL
+	PlayerApi.get_player_stats_by_mode(pid, stats_mode, func(stats_response: Dictionary):
 		if stats_response.get("ok", false):
 			var stats: Dictionary = stats_response.get("data", {})
 			var update_data := {
@@ -140,10 +147,14 @@ func _on_confirm_pressed() -> void:
 				"total_game": stats.get("total_game", 0) + 1,
 				"number_games_win": stats.get("number_games_win", 0) + (1 if my_result == Enums.MatchResult.WIN else 0),
 			}
-			PlayerApi.update_player_stats(pid, Enums.GameMode.RANK, update_data, func(_r): pass)
+			PlayerApi.update_player_stats(pid, stats_mode, update_data, func(_r): pass)
 	, true)
 
 	# 5. Fetch current rank, compute new value, then update
+	if result_game_mode != NetworkManager.GAME_MODE_RANK:
+		_finalize_and_leave()
+		return
+
 	PlayerApi.get_player_rank(pid, "1", func(response: Dictionary):
 		if response.get("ok", false):
 			var current_point: int = response.get("data", {}).get("current_point", 0)
@@ -158,7 +169,7 @@ func _on_confirm_pressed() -> void:
 
 func _finalize_and_leave() -> void:
 	# Winner updates match status to finished with end_time
-	if my_result == Enums.MatchResult.WIN:
+	if result_game_mode != NetworkManager.GAME_MODE_LAN and my_result == Enums.MatchResult.WIN:
 		var mid := str(NetworkManager.current_match_id)
 		if mid != "0":
 			MatchApi.update_match(mid, {

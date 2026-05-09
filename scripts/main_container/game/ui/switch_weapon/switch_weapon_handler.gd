@@ -33,6 +33,7 @@ func _ready() -> void:
 
 func bind_local_player(weapon_handler: WeaponHoldHandler, weapons_loadout: Dictionary) -> void:
 	_weapon_handler_ref = weapon_handler
+	_reset_buttons()
 	_build_loadout(weapons_loadout)
 	_refresh_button(primary_button, Enums.SlotType.PRIMARY)
 	_refresh_button(secondary_button, Enums.SlotType.SECONDARY)
@@ -46,20 +47,18 @@ func bind_local_player(weapon_handler: WeaponHoldHandler, weapons_loadout: Dicti
 
 func _build_loadout(weapons_loadout: Dictionary) -> void:
 	_loadout.clear()
-	for slot in weapons_loadout:
-		var info: Dictionary = weapons_loadout[slot]
+	for slot_key in weapons_loadout:
+		var slot := str(slot_key)
+		var info: Dictionary = weapons_loadout[slot_key]
 		var image_name: String = info.get("image", "")
-		var icon: Texture2D = null
-		if image_name != "":
-			icon = load("res://assets/game/weapon/static/%s" % image_name)
+		var icon := _load_weapon_icon(image_name, slot, int(info.get("weapon_id", 0)))
 		_loadout[slot] = {"icon": icon}
 
 
 func _refresh_button(btn: Button, slot: String) -> void:
 	var entry: Dictionary = _loadout.get(slot, {})
 	var icon = entry.get("icon", null)
-	if icon != null:
-		btn.icon = icon
+	btn.icon = icon
 	btn.text = _format_ammo_text(slot)
 
 
@@ -82,8 +81,7 @@ func _set_active(slot: String) -> void:
 	_active_slot = slot
 	var entry: Dictionary = _loadout.get(slot, {})
 	var icon = entry.get("icon", null)
-	if icon != null:
-		current_weapon_button.icon = icon
+	current_weapon_button.icon = icon
 	if slot == Enums.SlotType.MELEE:
 		current_weapon_button.text = ""
 	else:
@@ -143,9 +141,29 @@ func _on_active_slot_changed(slot: String) -> void:
 	_active_slot = slot
 	var entry: Dictionary = _loadout.get(slot, {})
 	var icon = entry.get("icon", null)
-	if icon != null:
-		current_weapon_button.icon = icon
+	current_weapon_button.icon = icon
 	if slot == Enums.SlotType.MELEE:
 		current_weapon_button.text = ""
 	else:
 		current_weapon_button.text = _format_ammo_text(slot)
+
+
+func _reset_buttons() -> void:
+	for btn in [current_weapon_button, primary_button, secondary_button, melee_button]:
+		btn.icon = null
+		btn.text = ""
+
+
+func _load_weapon_icon(image_name: String, slot: String, weapon_id: int) -> Texture2D:
+	if image_name == "":
+		print("[SwitchWeaponHandler] Empty icon image for weapon ", weapon_id, " slot ", slot)
+		return null
+	var path := "res://assets/game/weapon/static/%s" % image_name
+	if not ResourceLoader.exists(path):
+		print("[SwitchWeaponHandler] Missing weapon icon ", path, " for weapon ", weapon_id, " slot ", slot)
+		return null
+	var tex = load(path)
+	if tex is Texture2D:
+		return tex
+	print("[SwitchWeaponHandler] Invalid weapon icon ", path, " for weapon ", weapon_id, " slot ", slot)
+	return null

@@ -19,7 +19,8 @@ func _ready():
 
 func _on_peer_connected(peer_id: int):
 	if not multiplayer.is_server(): return
-	_players_list.set(peer_id, null)
+	if not _players_list.has(peer_id):
+		_players_list.set(peer_id, null)
 	# Spawn is triggered by GameManager.start_match() once both peers have
 	# completed register_player (which carries their loadout). This guarantees
 	# equipment is known before a player is ever instantiated.
@@ -31,18 +32,29 @@ func start_match(peer_data: Dictionary) -> void:
 
 	# MapSpawner listens for this signal — fire it before spawning players so
 	# the map is in place underneath them.
-	all_player_joined.emit()
-
+	var spawn_data: Array[Dictionary] = []
 	var rng := RandomNumberGenerator.new()
 	for peer_id in peer_data:
+		if has_live_player(peer_id):
+			print("[PlayerSpawner] Skipping duplicate spawn for peer ", peer_id)
+			continue
+
 		var entry: Dictionary = peer_data[peer_id]
-		self.spawn({
+		spawn_data.append({
 			"peer_id": peer_id,
 			"pos": Vector2(rng.randf_range(-SPAWN_X_OFFSET, SPAWN_X_OFFSET), 0),
 			"name": entry.get("name", ""),
 			"weapons": entry.get("weapons", {}),
 			"character": entry.get("character", {}),
 		})
+
+	if spawn_data.is_empty():
+		return
+
+	all_player_joined.emit()
+
+	for data in spawn_data:
+		self.spawn(data)
 
 func _on_peer_disconnected(peer_id: int):
 	if not multiplayer.is_server(): return
@@ -59,16 +71,20 @@ func _on_peer_disconnected(peer_id: int):
 # so the first _ready() (and the first _physics_process tick) sees the correct
 # stats and weapon textures — no post-spawn pop-in.
 func _spawn_player(data: Dictionary) -> Node:
-	var player := player_scene.instantiate()
-	player.set_multiplayer_authority(data["peer_id"])
+	var peer_id := int(data["peer_id"])
+	if has_live_player(peer_id):
+		return _players_list[peer_id]
 
-	player.name = str(data["peer_id"])
+	var player := player_scene.instantiate()
+	player.set_multiplayer_authority(peer_id)
+
+	player.name = str(peer_id)
 	player.global_position = data["pos"]
 
 	var character: Dictionary = data.get("character", {})
 	var weapons: Dictionary = data.get("weapons", {})
 	var display_name: String = data.get("name", "")
-	var is_own: bool = data["peer_id"] == multiplayer.get_unique_id()
+	var is_own: bool = peer_id == multiplayer.get_unique_id()
 
 	# Stash values that PlayerController applies in _ready (after @onready vars
 	# resolve): the display name label and the character sprite texture.
@@ -78,9 +94,9 @@ func _spawn_player(data: Dictionary) -> Node:
 	if texture_name != "":
 		player.set_meta("character_texture_name", texture_name)
 
-	# Owning-peer stats: empty / zero values fall through to the DEFAULT_*
+	# Spawned-player stats: empty / zero values fall through to the DEFAULT_*
 	# constants in each component.
-	if is_own:
+	if peer_id > 0:
 		# HP: stashed as metadata and applied in PlayerHealth._ready().
 		# set_max_health writes to the `health` var, whose setter calls
 		# is_multiplayer_authority() — illegal before the node enters the tree.
@@ -120,8 +136,13 @@ func _spawn_player(data: Dictionary) -> Node:
 			if opponent_label:
 				opponent_label.text = display_name
 
-	_players_list[data["peer_id"]] = player
+	_players_list[peer_id] = player
 
 	player_spawned.emit(player)
 
 	return player
+
+
+func has_live_player(peer_id: int) -> bool:
+	var player = _players_list.get(peer_id)
+	return is_instance_valid(player) and player.is_inside_tree()

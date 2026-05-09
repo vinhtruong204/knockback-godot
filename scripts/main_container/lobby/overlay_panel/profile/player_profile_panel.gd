@@ -1,17 +1,29 @@
 class_name PlayerProfilePanel extends Panel
 
+@export var achievement_card_scene: PackedScene
+
 @onready var level_label: Label = $ProfilePanel/Level
 @onready var name_label: Label = $ProfilePanel/PlayerName/Label
 @onready var avatar: TextureRect = $ProfilePanel/Avatar
 @onready var slogan_edit: TextEdit = $ProfilePanel/SloganEditor
 @onready var stats_text: RichTextLabel = $StatsPanel/ContentContainer/StatsText
+@onready var scroll_container: ScrollContainer = $StatsPanel/ContentContainer/ScrollContainer
+@onready var achievement_list: VBoxContainer = $StatsPanel/ContentContainer/ScrollContainer/VBoxContainer
 
 func _ready() -> void:
 	self.visibility_changed.connect(_on_visibility_changed)
 	slogan_edit.connect("focus_exited", _on_slogan_edit_focus_exited)
 
 	# Default to ranking tab
+	_show_tab("stats")
 	on_ranking_button_pressed()
+
+
+func _show_tab(tab: String) -> void:
+	# tab: "stats" (Ranking + Normal share StatsText) or "achievement"
+	var is_stats := tab == "stats"
+	stats_text.visible = is_stats
+	scroll_container.visible = not is_stats
 
 func _on_slogan_edit_focus_exited() -> void:
 	PlayerApi.update_player(ApiManager.player_id, {"slogan": slogan_edit.text}, func(response: Dictionary) -> void:
@@ -32,6 +44,7 @@ func _on_visibility_changed() -> void:
 		)
 
 func on_ranking_button_pressed() -> void:
+	_show_tab("stats")
 	stats_text.text = "Loading..."
 	var pid := ApiManager.player_id
 
@@ -66,6 +79,7 @@ func on_ranking_button_pressed() -> void:
 
 
 func on_normal_button_pressed() -> void:
+	_show_tab("stats")
 	stats_text.text = "Loading..."
 	var pid := ApiManager.player_id
 
@@ -80,7 +94,37 @@ func on_normal_button_pressed() -> void:
 
 
 func on_achivement_button_pressed() -> void:
-	stats_text.text = ""
+	_show_tab("achievement")
+	_load_achievements()
+
+
+func _load_achievements() -> void:
+	for child in achievement_list.get_children():
+		child.queue_free()
+
+	var pid := ApiManager.player_id
+	ConfigApi.get_achievements(func(catalog_response: Dictionary):
+		if not catalog_response.get("ok", false):
+			print("[PlayerProfile] Failed to load achievements catalog: ", catalog_response.get("error", ""))
+			return
+		var catalog: Array = catalog_response.get("data", [])
+
+		PlayerApi.get_player_achievements(pid, func(progress_response: Dictionary):
+			var progress_by_id: Dictionary = {}
+			if progress_response.get("ok", false):
+				for entry in progress_response.get("data", []):
+					progress_by_id[int(entry.get("achievement_id", -1))] = entry
+			else:
+				print("[PlayerProfile] Failed to load player achievements: ", progress_response.get("error", ""))
+
+			for achievement in catalog:
+				var card = achievement_card_scene.instantiate()
+				achievement_list.add_child(card)
+				var aid := int(achievement.get("achievement_id", -1))
+				var progress = progress_by_id.get(aid, null)
+				card.set_data(achievement, progress)
+		)
+	)
 
 
 func _calc_win_rate(wins: int, total: int) -> String:

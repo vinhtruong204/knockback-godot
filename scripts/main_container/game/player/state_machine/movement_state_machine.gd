@@ -37,7 +37,7 @@ func resolve_state() -> StringName:
 		else:
 			return MovementState.FALL
 	
-	if player_input.get_dir() != Vector2.ZERO:
+	if player_input.has_movement_input():
 		return MovementState.RUN
 
 	return MovementState.IDLE

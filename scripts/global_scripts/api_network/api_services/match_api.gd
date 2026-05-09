@@ -85,9 +85,15 @@ func update_match_player(match_id: String, pid: String, data: Dictionary, callba
 
 # --- Matchmaking (no cache - real-time) ---
 
-func join_matchmaking(rank_point: int, callback: Callable):
+func join_matchmaking(rank_point_or_data: Variant, callback: Callable):
+	var payload: Dictionary = {}
+	if rank_point_or_data is Dictionary:
+		payload = rank_point_or_data.duplicate()
+	else:
+		payload = {"rank_point": int(rank_point_or_data)}
+
 	ApiManager.send_request(self, base_url, "/matchmaking/join",
-		HTTPClient.METHOD_POST, {"rank_point": rank_point}, true, callback)
+		HTTPClient.METHOD_POST, payload, true, callback)
 
 func get_matchmaking_status(callback: Callable):
 	ApiManager.send_request(self, base_url, "/matchmaking/status",

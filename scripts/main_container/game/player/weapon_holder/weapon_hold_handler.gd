@@ -43,6 +43,8 @@ signal ammo_changed(slot: String, mag: int, reserve: int)
 signal grenade_count_changed(count: int)
 signal active_slot_changed(slot: String)
 signal out_of_ammo(slot: String)
+signal reload_started(slot: String)
+signal reload_finished(slot: String)
 
 
 func _ready() -> void:
@@ -69,24 +71,48 @@ func _on_switch_weapon(weapon_type: SwitchWeaponHandler.WeaponType) -> void:
 
 
 func set_weapon_loadout(weapons: Dictionary) -> void:
-	for slot_type in weapons:
-		var info: Dictionary = weapons[slot_type]
+	_clear_weapon_textures()
+	for slot_key in weapons:
+		var slot_type := str(slot_key)
+		var info: Dictionary = weapons[slot_key]
 		var image_name: String = info.get("image", "")
-		if image_name != "":
-			var tex = load("res://assets/game/weapon/static/%s" % image_name)
-			if tex:
-				match slot_type:
-					Enums.SlotType.PRIMARY:
-						$Primary.get_child(0).texture = tex
-					Enums.SlotType.SECONDARY:
-						$Secondary.get_child(0).texture = tex
-					Enums.SlotType.MELEE:
-						$Melee.get_child(0).texture = tex
+		var tex := _load_weapon_texture(image_name, slot_type, int(info.get("weapon_id", 0)))
+		_set_slot_texture(slot_type, tex)
 		_stats_by_slot[slot_type] = {
 			"damage": int(info.get("damage", DEFAULT_DAMAGE)),
 			"fire_rate": float(info.get("fire_rate", DEFAULT_FIRE_RATE)),
 		}
 		_init_ammo_for_slot(slot_type, info)
+
+
+func _clear_weapon_textures() -> void:
+	for slot_type in [Enums.SlotType.PRIMARY, Enums.SlotType.SECONDARY, Enums.SlotType.MELEE]:
+		_set_slot_texture(slot_type, null)
+
+
+func _load_weapon_texture(image_name: String, slot_type: String, weapon_id: int) -> Texture2D:
+	if image_name == "":
+		print("[WeaponHoldHandler] Empty image for weapon ", weapon_id, " slot ", slot_type)
+		return null
+	var path := "res://assets/game/weapon/static/%s" % image_name
+	if not ResourceLoader.exists(path):
+		print("[WeaponHoldHandler] Missing weapon texture ", path, " for weapon ", weapon_id, " slot ", slot_type)
+		return null
+	var tex = load(path)
+	if tex is Texture2D:
+		return tex
+	print("[WeaponHoldHandler] Invalid weapon texture ", path, " for weapon ", weapon_id, " slot ", slot_type)
+	return null
+
+
+func _set_slot_texture(slot_type: String, tex: Texture2D) -> void:
+	match slot_type:
+		Enums.SlotType.PRIMARY:
+			$Primary.get_child(0).texture = tex
+		Enums.SlotType.SECONDARY:
+			$Secondary.get_child(0).texture = tex
+		Enums.SlotType.MELEE:
+			$Melee.get_child(0).texture = tex
 
 
 func get_active_stats() -> Dictionary:
@@ -95,6 +121,10 @@ func get_active_stats() -> Dictionary:
 		"damage": DEFAULT_DAMAGE,
 		"fire_rate": DEFAULT_FIRE_RATE,
 	})
+
+
+func get_active_slot() -> String:
+	return _slot_for_weapon_type(current_weapon_type)
 
 
 func get_ammo_state(slot: String) -> Dictionary:
@@ -167,6 +197,8 @@ func _init_ammo_for_slot(slot: String, info: Dictionary) -> void:
 
 func _try_start_reload(slot: String) -> void:
 	var s: Dictionary = _ammo_by_slot[slot]
+	if bool(s.get("is_reloading", false)):
+		return
 	var infinite := int(s.get("reserve", 0)) == SECONDARY_RESERVE_INFINITE
 	if not infinite and int(s.get("reserve", 0)) <= 0:
 		# Literal 0/0 — out of ammo entirely
@@ -175,6 +207,7 @@ func _try_start_reload(slot: String) -> void:
 		return
 	s["is_reloading"] = true
 	_ammo_by_slot[slot] = s
+	reload_started.emit(slot)
 	await get_tree().create_timer(RELOAD_DELAY).timeout
 	if not is_inside_tree():
 		return
@@ -189,6 +222,7 @@ func _try_start_reload(slot: String) -> void:
 	s2["is_reloading"] = false
 	_ammo_by_slot[slot] = s2
 	ammo_changed.emit(slot, int(s2["mag"]), int(s2["reserve"]))
+	reload_finished.emit(slot)
 
 
 func _try_auto_switch(empty_slot: String) -> void:

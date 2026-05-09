@@ -5,19 +5,29 @@
 [ext_resource type="Texture2D" uid="uid://6erg825vauqi" path="res://assets/lobby/top_bar/currency/gold.png" id="2_oa2er"]
 
 [node name="ShopDiscountItem" type="Control" unique_id=2018053991]
-custom_minimum_size = Vector2(140, 140)
+custom_minimum_size = Vector2(140, 110)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_bby0t")
+
+[node name="CardBg" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"Card"
 
 [node name="ItemTexture" type="TextureRect" parent="." unique_id=1963058168]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -55.0
-offset_right = 55.0
-offset_bottom = 99.0
+offset_left = -45.0
+offset_right = 45.0
+offset_bottom = 70.0
 grow_horizontal = 2
 texture = ExtResource("1_vddeu")
 expand_mode = 1

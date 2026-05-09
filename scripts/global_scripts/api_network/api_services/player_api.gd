@@ -200,7 +200,7 @@ func get_inventory_item(pid: String, item_id: String, item_type: String, callbac
 		HTTPClient.METHOD_GET, {}, true, callback)
 
 func add_inventory_item(data: Dictionary, callback: Callable):
-	ApiManager.send_request(self , base_url, "/player-inventory",
+	ApiManager.send_request(self , base_url, "/player-inventory/",
 		HTTPClient.METHOD_POST, data, true,
 		func(response: Dictionary):
 			if response.ok:
@@ -300,7 +300,7 @@ func get_player_achievements(pid: String, callback: Callable, force_refresh := f
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_SEMI, "player", false,
 		func(cb: Callable):
-			ApiManager.send_request(self , base_url, "/players/" + pid + "/achievements",
+			ApiManager.send_request(self , base_url, "/player-achievements/?player_id=" + pid,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 
