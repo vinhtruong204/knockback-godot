@@ -1,5 +1,7 @@
 class_name PlayerFlip extends Node
 
+const FLIP_HORIZONTAL_THRESHOLD: float = 0.15
+
 enum Direction {
 	LEFT,
 	RIGHT
@@ -18,9 +20,9 @@ func _physics_process(_delta: float) -> void:
 	
 	var dir := player_input.get_dir()
 	
-	if dir.x > 0:
+	if dir.x >= FLIP_HORIZONTAL_THRESHOLD:
 		character_sprite.scale.x = -1
 		_player_direction = Direction.RIGHT
-	elif dir.x < 0:
+	elif dir.x <= -FLIP_HORIZONTAL_THRESHOLD:
 		character_sprite.scale.x = 1
 		_player_direction = Direction.LEFT

@@ -161,93 +161,33 @@ func _do_spin(wheel_type: String, spin_count: int) -> void:
 	_set_buttons_disabled(true)
 	_is_spinning = true
 
-	var cost := 1000 * spin_count
-	var pid := ApiManager.player_id
-
-	# Step 1: Deduct currency
-	PlayerApi.deduct_player_currency(pid, wheel_type, {"amount": cost}, func(deduct_response: Dictionary) -> void:
-		if not deduct_response.get("ok", false):
+	PlayerApi.spin_wheel({"wheel_type": wheel_type, "spin_count": spin_count}, func(response: Dictionary) -> void:
+		if not response.get("ok", false):
 			var global_ui: GlobalUI = get_tree().root.get_node("Main/GlobalUi")
-			global_ui.show_error_notification(deduct_response.get("error", "Insufficient funds"))
+			global_ui.show_error_notification(response.get("error", "Spin failed"))
 			_is_spinning = false
 			_set_buttons_disabled(false)
 			return
 
-		# Step 2: Weighted random selection (client-side)
-		var wheel_data: Array = _gold_wheel_data if wheel_type == "gold" else _diamond_wheel_data
-		var results: Array = []
-		for _i in range(spin_count):
-			var selected := _weighted_random(wheel_data)
-			results.append(selected)
+		var data: Dictionary = response.get("data", {})
+		var results: Array = data.get("results", [])
+		if results.is_empty():
+			var global_ui_empty: GlobalUI = get_tree().root.get_node("Main/GlobalUi")
+			global_ui_empty.show_error_notification("Spin returned no rewards")
+			_is_spinning = false
+			_set_buttons_disabled(false)
+			return
 
-		# Step 3: Process rewards sequentially
 		var items: Array = _gold_items if wheel_type == "gold" else _diamond_items
-		_process_rewards(results, wheel_type, 0, func() -> void:
-			# Step 4: Play animation and show results
-			var winning_index: int = int(results[0].get("slot_index", 0))
-			_play_spin_animation(items, winning_index, func() -> void:
-				if spin_count == 1:
-					_show_single_result(results[0], wheel_type)
-				else:
-					_show_multi_results(results, wheel_type)
-				_refresh_after_spin()
-			)
+		var winning_index: int = int(results[0].get("slot_index", 0))
+		_play_spin_animation(items, winning_index, func() -> void:
+			if spin_count == 1:
+				_show_single_result(results[0], wheel_type)
+			else:
+				_show_multi_results(results, wheel_type)
+			_refresh_after_spin()
 		)
 	)
-
-
-func _weighted_random(wheel_data: Array) -> Dictionary:
-	var total_weight := 0
-	for item in wheel_data:
-		total_weight += int(item.get("weight", 100))
-
-	var roll := randi() % total_weight
-	var cumulative := 0
-	for item in wheel_data:
-		cumulative += int(item.get("weight", 100))
-		if roll < cumulative:
-			return item.duplicate()
-
-	return wheel_data[0].duplicate()
-
-
-func _process_rewards(results: Array, wheel_type: String, index: int, on_complete: Callable) -> void:
-	if index >= results.size():
-		on_complete.call()
-		return
-
-	var result: Dictionary = results[index]
-	var pid := ApiManager.player_id
-
-	if result.get("currency_reward") != null:
-		# Currency reward: add to player balance
-		var amount: int = int(result.get("currency_reward", 0))
-		PlayerApi.add_player_currency_amount(pid, wheel_type, {"amount": amount}, func(_r: Dictionary) -> void:
-			_process_rewards(results, wheel_type, index + 1, on_complete)
-		)
-	elif result.get("item_id") != null and result.get("item_type") != null:
-		var item_id: int = int(result.get("item_id", 0))
-		var item_type: String = str(result.get("item_type", ""))
-		var key := str(item_id) + ":" + item_type
-
-		if _owned_item_keys.has(key):
-			# Duplicate: compensate with currency
-			var shop_price: int = int(result.get("shop_price", 0))
-			var compensation := maxi(int(shop_price * 0.5), 1)
-			result["is_duplicate"] = true
-			result["compensation_amount"] = compensation
-			PlayerApi.add_player_currency_amount(pid, wheel_type, {"amount": compensation}, func(_r: Dictionary) -> void:
-				_process_rewards(results, wheel_type, index + 1, on_complete)
-			)
-		else:
-			# New item: add to inventory
-			var inv_data := {"player_id": pid, "item_id": item_id, "item_type": item_type, "quantity": 1}
-			PlayerApi.add_inventory_item(inv_data, func(_r: Dictionary) -> void:
-				_owned_item_keys[key] = true
-				_process_rewards(results, wheel_type, index + 1, on_complete)
-			)
-	else:
-		_process_rewards(results, wheel_type, index + 1, on_complete)
 
 
 func _set_buttons_disabled(disabled: bool) -> void:

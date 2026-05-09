@@ -71,24 +71,48 @@ func _on_switch_weapon(weapon_type: SwitchWeaponHandler.WeaponType) -> void:
 
 
 func set_weapon_loadout(weapons: Dictionary) -> void:
-	for slot_type in weapons:
-		var info: Dictionary = weapons[slot_type]
+	_clear_weapon_textures()
+	for slot_key in weapons:
+		var slot_type := str(slot_key)
+		var info: Dictionary = weapons[slot_key]
 		var image_name: String = info.get("image", "")
-		if image_name != "":
-			var tex = load("res://assets/game/weapon/static/%s" % image_name)
-			if tex:
-				match slot_type:
-					Enums.SlotType.PRIMARY:
-						$Primary.get_child(0).texture = tex
-					Enums.SlotType.SECONDARY:
-						$Secondary.get_child(0).texture = tex
-					Enums.SlotType.MELEE:
-						$Melee.get_child(0).texture = tex
+		var tex := _load_weapon_texture(image_name, slot_type, int(info.get("weapon_id", 0)))
+		_set_slot_texture(slot_type, tex)
 		_stats_by_slot[slot_type] = {
 			"damage": int(info.get("damage", DEFAULT_DAMAGE)),
 			"fire_rate": float(info.get("fire_rate", DEFAULT_FIRE_RATE)),
 		}
 		_init_ammo_for_slot(slot_type, info)
+
+
+func _clear_weapon_textures() -> void:
+	for slot_type in [Enums.SlotType.PRIMARY, Enums.SlotType.SECONDARY, Enums.SlotType.MELEE]:
+		_set_slot_texture(slot_type, null)
+
+
+func _load_weapon_texture(image_name: String, slot_type: String, weapon_id: int) -> Texture2D:
+	if image_name == "":
+		print("[WeaponHoldHandler] Empty image for weapon ", weapon_id, " slot ", slot_type)
+		return null
+	var path := "res://assets/game/weapon/static/%s" % image_name
+	if not ResourceLoader.exists(path):
+		print("[WeaponHoldHandler] Missing weapon texture ", path, " for weapon ", weapon_id, " slot ", slot_type)
+		return null
+	var tex = load(path)
+	if tex is Texture2D:
+		return tex
+	print("[WeaponHoldHandler] Invalid weapon texture ", path, " for weapon ", weapon_id, " slot ", slot_type)
+	return null
+
+
+func _set_slot_texture(slot_type: String, tex: Texture2D) -> void:
+	match slot_type:
+		Enums.SlotType.PRIMARY:
+			$Primary.get_child(0).texture = tex
+		Enums.SlotType.SECONDARY:
+			$Secondary.get_child(0).texture = tex
+		Enums.SlotType.MELEE:
+			$Melee.get_child(0).texture = tex
 
 
 func get_active_stats() -> Dictionary:

@@ -137,14 +137,19 @@ func clear_all() -> void:
 func fetch_or_cache(key: String, ttl: float, category: String, persist: bool, fetch_fn: Callable, callback: Callable) -> void:
 	var entry := get_entry(key)
 	if entry != null:
-		callback.call({"ok": true, "status": 200, "data": entry.data, "error": ""})
+		_call_if_valid(callback, {"ok": true, "status": 200, "data": entry.data, "error": ""})
 		return
 
 	fetch_fn.call(func(response: Dictionary):
 		if response.get("ok", false):
 			set_data(key, response.get("data"), ttl, category, persist)
-		callback.call(response)
+		_call_if_valid(callback, response)
 	)
+
+
+func _call_if_valid(callback: Callable, response: Dictionary) -> void:
+	if callback.is_valid():
+		callback.call(response)
 
 
 # --- Disk Persistence ---

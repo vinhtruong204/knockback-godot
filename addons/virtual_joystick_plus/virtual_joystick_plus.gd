@@ -321,23 +321,31 @@ func _gui_input(event: InputEvent) -> void:
 
 	if event is InputEventScreenTouch:
 		if event.pressed:
-			_touch_index = event.index
-
-			if visibility_mode == VisibilityMode.VISIBILITY_WHEN_TOUCHED:
-				_visible_runtime = true
-				queue_redraw()
+			if _touch_index != -1:
+				return
 
 			match joystick_mode:
 				JoystickMode.NORMAL:
 					distance = event.position.distance_to(_joystick.position)
 					_drag_started_inside = distance <= _joystick.radius * _joystick.scale + _joystick.width / 2
-					if _drag_started_inside:
-						_click_in = true
-						_update_stick(event.position)
-					else:
+					if not _drag_started_inside:
 						_click_in = false
+						return
+
+					_touch_index = event.index
+					if visibility_mode == VisibilityMode.VISIBILITY_WHEN_TOUCHED:
+						_visible_runtime = true
+						queue_redraw()
+
+					_click_in = true
+					_update_stick(event.position)
 
 				JoystickMode.DYNAMIC, JoystickMode.FOLLOW:
+					_touch_index = event.index
+					if visibility_mode == VisibilityMode.VISIBILITY_WHEN_TOUCHED:
+						_visible_runtime = true
+						queue_redraw()
+
 					_dynamic_active = true
 					_click_in = true
 					_drag_started_inside = true

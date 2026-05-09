@@ -94,9 +94,9 @@ func _spawn_player(data: Dictionary) -> Node:
 	if texture_name != "":
 		player.set_meta("character_texture_name", texture_name)
 
-	# Owning-peer stats: empty / zero values fall through to the DEFAULT_*
+	# Spawned-player stats: empty / zero values fall through to the DEFAULT_*
 	# constants in each component.
-	if is_own:
+	if peer_id > 0:
 		# HP: stashed as metadata and applied in PlayerHealth._ready().
 		# set_max_health writes to the `health` var, whose setter calls
 		# is_multiplayer_authority() — illegal before the node enters the tree.
