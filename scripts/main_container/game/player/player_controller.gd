@@ -2,10 +2,18 @@ class_name PlayerController extends CharacterBody2D
 
 const DEFAULT_GRENADE_DAMAGE: int = 30
 
+const BOMB_SHAKE_STRENGTH: float = 8.0
+const BOMB_SHAKE_DURATION: float = 0.3
+
 @onready var player_name: Label = $PlayerName
 @onready var character_sprite: Sprite2D = $ChracterSprites/CharacterBody/Sprite2D
 
 var grenade_damage: int = DEFAULT_GRENADE_DAMAGE
+
+var _camera: Camera2D
+var _shake_strength: float = 0.0
+var _shake_duration: float = 0.0
+var _shake_time_left: float = 0.0
 
 
 func set_character_texture(tex: Texture2D) -> void:
@@ -43,18 +51,46 @@ func _ready() -> void:
 	
 	# Setup camera for player object
 	if is_multiplayer_authority():
-		$Camera2D.make_current()
-		
+		_camera = $Camera2D
+		_camera.make_current()
+
 		# Get map
 		var map_sprite = get_tree().get_root().get_node("Main/SceneContainer/Game/World/MapSpawner/MapSpawnPoint/Map/Sprite2D")
 		var sprite_size = map_sprite.get_rect().size
 
-		$Camera2D.limit_left = 0 - sprite_size.x / 2
-		$Camera2D.limit_right = 0 + sprite_size.x / 2
-		$Camera2D.limit_top = 0 - sprite_size.y / 2
-		$Camera2D.limit_bottom = 0 + sprite_size.y / 2
+		_camera.limit_left = 0 - sprite_size.x / 2
+		_camera.limit_right = 0 + sprite_size.x / 2
+		_camera.limit_top = 0 - sprite_size.y / 2
+		_camera.limit_bottom = 0 + sprite_size.y / 2
 	else:
 		$Camera2D.queue_free()
+
+
+func _process(delta: float) -> void:
+	if _shake_time_left > 0.0 and _camera != null:
+		_shake_time_left = max(_shake_time_left - delta, 0.0)
+		var t: float = _shake_time_left / _shake_duration
+		var amp: float = _shake_strength * t
+		if _shake_time_left == 0.0:
+			_camera.offset = Vector2.ZERO
+		else:
+			_camera.offset = Vector2(
+				randf_range(-amp, amp),
+				randf_range(-amp, amp)
+			)
+
+
+func shake_camera(strength: float, duration: float) -> void:
+	if _camera == null or duration <= 0.0:
+		return
+	_shake_strength = strength
+	_shake_duration = duration
+	_shake_time_left = duration
+
+
+@rpc("any_peer", "call_local", "unreliable")
+func shake_camera_rpc(strength: float, duration: float) -> void:
+	shake_camera(strength, duration)
 
 
 func reset() -> void:

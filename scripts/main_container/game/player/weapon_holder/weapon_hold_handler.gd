@@ -43,6 +43,8 @@ signal ammo_changed(slot: String, mag: int, reserve: int)
 signal grenade_count_changed(count: int)
 signal active_slot_changed(slot: String)
 signal out_of_ammo(slot: String)
+signal reload_started(slot: String)
+signal reload_finished(slot: String)
 
 
 func _ready() -> void:
@@ -95,6 +97,10 @@ func get_active_stats() -> Dictionary:
 		"damage": DEFAULT_DAMAGE,
 		"fire_rate": DEFAULT_FIRE_RATE,
 	})
+
+
+func get_active_slot() -> String:
+	return _slot_for_weapon_type(current_weapon_type)
 
 
 func get_ammo_state(slot: String) -> Dictionary:
@@ -167,6 +173,8 @@ func _init_ammo_for_slot(slot: String, info: Dictionary) -> void:
 
 func _try_start_reload(slot: String) -> void:
 	var s: Dictionary = _ammo_by_slot[slot]
+	if bool(s.get("is_reloading", false)):
+		return
 	var infinite := int(s.get("reserve", 0)) == SECONDARY_RESERVE_INFINITE
 	if not infinite and int(s.get("reserve", 0)) <= 0:
 		# Literal 0/0 — out of ammo entirely
@@ -175,6 +183,7 @@ func _try_start_reload(slot: String) -> void:
 		return
 	s["is_reloading"] = true
 	_ammo_by_slot[slot] = s
+	reload_started.emit(slot)
 	await get_tree().create_timer(RELOAD_DELAY).timeout
 	if not is_inside_tree():
 		return
@@ -189,6 +198,7 @@ func _try_start_reload(slot: String) -> void:
 	s2["is_reloading"] = false
 	_ammo_by_slot[slot] = s2
 	ammo_changed.emit(slot, int(s2["mag"]), int(s2["reserve"]))
+	reload_finished.emit(slot)
 
 
 func _try_auto_switch(empty_slot: String) -> void:

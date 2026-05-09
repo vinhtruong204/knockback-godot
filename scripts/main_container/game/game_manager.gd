@@ -12,6 +12,7 @@ var peer_to_character: Dictionary = {} # {int peer_id: Dictionary character {tex
 var kills: Dictionary = {} # {int peer_id: int count}
 var deaths: Dictionary = {} # {int peer_id: int count}
 var match_ended: bool = false
+var match_started: bool = false
 var _registered: bool = false
 
 # ── Reward constants ──
@@ -78,18 +79,18 @@ func _fetch_own_loadout(callback: Callable) -> void:
 			maybe_done.call()
 			return
 		var equips = response.get("data", [])
-		var weapon_pending := 0
+		var weapon_pending := {"count": 0}
 		var any_started := false
 		for equip in equips:
 			var slot = equip.get("slot_type", "")
 			var wid = int(equip.get("weapon_id", 0))
 			if wid <= 0 or slot == Enums.SlotType.CHARACTER:
 				continue
-			weapon_pending += 1
+			weapon_pending["count"] += 1
 			any_started = true
 			_fetch_weapon_info(wid, slot, weapons, func():
-				weapon_pending -= 1
-				if weapon_pending == 0:
+				weapon_pending["count"] -= 1
+				if weapon_pending["count"] == 0:
 					maybe_done.call()
 			)
 		if not any_started:
@@ -137,6 +138,10 @@ func _fetch_weapon_info(weapon_id: int, slot_type: String, weapons: Dictionary, 
 func register_player(player_id: String, p_match_id: int, player_name: String, p_map_name: String = "", weapons: Dictionary = {}, character: Dictionary = {}) -> void:
 	if not multiplayer.is_server(): return
 	var sender := multiplayer.get_remote_sender_id()
+	if match_started:
+		print("[GameManager] Ignoring registration after match start for peer ", sender)
+		return
+
 	peer_to_player_id[sender] = player_id
 	peer_to_name[sender] = player_name
 	peer_to_weapons[sender] = weapons
@@ -152,7 +157,8 @@ func register_player(player_id: String, p_match_id: int, player_name: String, p_
 	# _fetch_own_loadout failed — instant-start flow), kick off the match.
 	# PlayerSpawner.start_match bakes the loadout into spawn data so clients
 	# instantiate players with full equipment from frame 1 (no 2s pop-in).
-	if peer_to_name.size() >= 2:
+	if peer_to_name.size() >= 2 and not match_started:
+		match_started = true
 		player_spawner.start_match(_build_peer_data())
 
 
@@ -306,6 +312,7 @@ func _reset_server_state() -> void:
 	deaths.clear()
 	match_id = 0
 	match_ended = false
+	match_started = false
 	# Reload entire game scene so all spawners start fresh
 	SceneLoader.load_scene(NetworkManager.game_scene_path)
 
