@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://btwmb4tvced4s" path="res://scripts/global_ui/notification_panel.gd" id="1_script"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vea88"]
+bg_color = Color(0.15775329, 0.15775335, 0.1577532, 1)
+
 [node name="NotificationPanel" type="PanelContainer" unique_id=686771084]
 custom_minimum_size = Vector2(400, 200)
 anchors_preset = 8
@@ -15,11 +18,13 @@ offset_right = 200.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vea88")
 script = ExtResource("1_script")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1659184917]
 layout_mode = 2
 theme_override_constants/separation = 12
+alignment = 1
 
 [node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=118299639]
 layout_mode = 2

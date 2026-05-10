@@ -27,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://pkh4vcgyq8u1" path="res://assets/lobby/bottom_bar/equipment/water-gun.png" id="19_8vi03"]
 [ext_resource type="Texture2D" uid="uid://6lp2p1pncgxs" path="res://assets/lobby/bottom_bar/equipment/knife.png" id="20_qkvb6"]
 [ext_resource type="Script" uid="uid://0wxgl2n7id6k" path="res://scripts/main_container/lobby/overlay_panel/profile/player_profile_panel.gd" id="21_3nquo"]
-[ext_resource type="Texture2D" uid="uid://cbqjpj6oiapq8" path="res://assets/lobby/bottom_bar/equipment/grenade.png" id="21_qkvb6"]
 [ext_resource type="PackedScene" uid="uid://ddil1hqxl3u0d" path="res://scenes/main_container/lobby/shop/shop_discount_item.tscn" id="22_nv17j"]
 [ext_resource type="Script" uid="uid://8i8mck3xo6h8" path="res://scripts/main_container/lobby/overlay_panel/leaderboard/leaderboard_panel.gd" id="23_3d233"]
 [ext_resource type="Script" uid="uid://byvqrb4x87lhl" path="res://scripts/main_container/lobby/overlay_panel/shop/shop_ui_manager.gd" id="23_idp30"]
@@ -51,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://cqaq60yiorv4y" path="res://assets/lobby/middle/rank/gold.png" id="34_8od1p"]
 [ext_resource type="Texture2D" uid="uid://cbbunphpr4sxr" path="res://assets/lobby/middle/normal_config/team_size_icon.png" id="34_iyufi"]
 [ext_resource type="Script" uid="uid://ch4f878ym0qrx" path="res://scripts/main_container/lobby/overlay_panel/shop/item/shop_items.gd" id="34_v5bt6"]
+[ext_resource type="Texture2D" uid="uid://cm5grwlxf0lba" path="res://assets/game/weapon/static/frag-grenade.png" id="34_vk22e"]
 [ext_resource type="Script" uid="uid://cgng515gvynwx" path="res://scripts/main_container/lobby/top_overlay/settings/settings_controller.gd" id="35_hur8o"]
 [ext_resource type="Texture2D" uid="uid://dfbdwtxhasppi" path="res://assets/lobby/middle/rank/platinum.png" id="35_n1kpd"]
 [ext_resource type="Script" uid="uid://bq3545jnijnhj" path="res://scripts/main_container/lobby/top_overlay/purchase/purchase_controller.gd" id="35_rjdw1"]
@@ -66,6 +66,7 @@
 [ext_resource type="Texture2D" uid="uid://caqrygjgvg3bm" path="res://assets/lobby/background_overlay/lucky_wheel.png" id="60_vk22e"]
 [ext_resource type="PackedScene" uid="uid://bq0tjg1s7a731" path="res://scenes/main_container/lobby/achievement/achievement_card.tscn" id="90_achiev"]
 [ext_resource type="Theme" uid="uid://c2fgmjus4cmtj" path="res://assets/ui/lobby_buttons.tres" id="99_lobby_theme"]
+[ext_resource type="Script" uid="uid://b1icm6i4gg3x7" path="res://scripts/main_container/lobby/overlay_panel/shop/recommended/shop_recommended.gd" id="200_recmd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yapo1"]
 texture = ExtResource("1_psu8p")
@@ -1220,8 +1221,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("21_qkvb6")
+texture = ExtResource("34_vk22e")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="CharacterContainer" type="HBoxContainer" parent="Root/OverlayContainer/Equipment" unique_id=1659902422]
 layout_mode = 1
@@ -2077,6 +2079,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("200_recmd")
+shop_weapon_item = ExtResource("23_mmps8")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend" unique_id=207956449]
 layout_mode = 1
@@ -2087,135 +2091,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
 alignment = 1
-
-[node name="Panel" type="Panel" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer" unique_id=224189099]
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-theme_type_variation = &"GlowCard"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel" unique_id=115520139]
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -65.5
-offset_right = 65.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 14
-alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel/VBoxContainer" unique_id=729895993]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("18_uit80")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel/VBoxContainer" unique_id=125169344]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("12_1rix5")
-expand_mode = 1
-
-[node name="TextureRect3" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel/VBoxContainer" unique_id=929328942]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("20_qkvb6")
-expand_mode = 1
-
-[node name="BuyBtn" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel/VBoxContainer" unique_id=1750978681]
-layout_mode = 2
-text = "10000"
-icon = ExtResource("4_62jta")
-icon_alignment = 2
-expand_icon = true
-
-[node name="Panel2" type="Panel" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer" unique_id=1963220034]
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-theme_type_variation = &"GlowCard"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2" unique_id=444588639]
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -65.5
-offset_right = 65.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 14
-alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2/VBoxContainer" unique_id=617193942]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("18_uit80")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2/VBoxContainer" unique_id=1873130795]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("12_1rix5")
-expand_mode = 1
-
-[node name="TextureRect3" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2/VBoxContainer" unique_id=1603467233]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("20_qkvb6")
-expand_mode = 1
-
-[node name="BuyBtn" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2/VBoxContainer" unique_id=368162815]
-layout_mode = 2
-text = "10000"
-icon = ExtResource("4_62jta")
-icon_alignment = 2
-expand_icon = true
-
-[node name="Panel3" type="Panel" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer" unique_id=1401309630]
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-theme_type_variation = &"GlowCard"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3" unique_id=1857585628]
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -65.5
-offset_right = 65.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 14
-alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3/VBoxContainer" unique_id=1476724639]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("18_uit80")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3/VBoxContainer" unique_id=238468107]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("12_1rix5")
-expand_mode = 1
-
-[node name="TextureRect3" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3/VBoxContainer" unique_id=1694306382]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("20_qkvb6")
-expand_mode = 1
-
-[node name="BuyBtn" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3/VBoxContainer" unique_id=511404244]
-layout_mode = 2
-text = "1000"
-icon = ExtResource("5_u3wsq")
-icon_alignment = 2
-expand_icon = true
 
 [node name="Daily Discount" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1884015232]
 custom_minimum_size = Vector2(750, 309)
@@ -3216,10 +3091,10 @@ text = "Sign out"
 [connection signal="pressed" from="Root/OverlayContainer/Wheel/Control/HBoxContainer/DiamondBtn" to="Root/OverlayContainer/Wheel" method="_open_diamond_wheel"]
 [connection signal="pressed" from="Root/OverlayContainer/Task/Control/VBoxContainer/Daily" to="Root/OverlayContainer/Task" method="show_daily_tasks"]
 [connection signal="pressed" from="Root/OverlayContainer/Task/Control/VBoxContainer/Weekly" to="Root/OverlayContainer/Task" method="show_weekly_tasks"]
-[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [10000, "diamond"]]
-[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button2" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [5000, "diamond"]]
-[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button3" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [1000, "diamond"]]
-[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button4" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [500, "diamond"]]
-[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button6" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [10000, "gold"]]
-[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button7" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [5000, "gold"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= ["diamond_pack_10000"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button2" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= ["diamond_pack_5000"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button3" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= ["diamond_pack_1000"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button4" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= ["diamond_pack_500"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button6" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= ["gold_pack_10000"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button7" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= ["gold_pack_5000"]]
 [connection signal="pressed" from="Root/TopOverlay/Settings/SignOutBtn" to="Root" method="_sign_out"]

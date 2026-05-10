@@ -163,6 +163,23 @@ func purchase_item(data: Dictionary, callback: Callable):
 				CacheManager.invalidate_category("player_dynamic")
 			callback.call(response))
 
+func verify_google_purchase(purchase_token: String, sku: String, callback: Callable):
+	var data := {
+		"purchase_token": purchase_token,
+		"sku": sku,
+		"platform": "google_play",
+	}
+	ApiManager.send_request(self , base_url, "/purchases/google-verify",
+		HTTPClient.METHOD_POST, data, true,
+		func(response: Dictionary):
+			if response.ok:
+				var pid := ApiManager.player_id
+				var currency_type: String = response.get("data", {}).get("currency_type", "")
+				CacheManager.invalidate("player_dynamic:currencies:" + pid)
+				if currency_type != "":
+					CacheManager.invalidate("player_dynamic:currencies:" + pid + ":" + currency_type)
+			callback.call(response))
+
 # --- Lucky Wheel Spin ---
 
 func spin_wheel(data: Dictionary, callback: Callable):

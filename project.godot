@@ -30,6 +30,7 @@ MatchApi="*uid://dgtx0ok3jp58q"
 PlayerApi="*uid://ckquj3nr7huqk"
 CacheManager="*uid://bnw61bjcsgjj6"
 AudioManager="*uid://ciyv1qco4h3wq"
+BillingService="*res://scripts/global_scripts/billing/billing_service.gd"
 
 [display]
 

@@ -2,9 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dh7kjthvb5822" path="res://assets/loading/loading_bg.jpg" id="1_rigpo"]
 [ext_resource type="Script" uid="uid://ccxc8xtmoilgi" path="res://scripts/global_ui/global_ui.gd" id="1_wdeuj"]
-[ext_resource type="PackedScene" path="res://scenes/global_ui/notification_panel.tscn" id="2_notif"]
-[ext_resource type="PackedScene" path="res://scenes/global_ui/confirmation_dialog.tscn" id="3_confirm"]
-[ext_resource type="Script" uid="uid://fk3re4ugb277" path="res://scripts/global_ui/confirmation_container.gd" id="5_saj8a"]
+[ext_resource type="PackedScene" uid="uid://t48okm81vmp1" path="res://scenes/global_ui/notification_panel.tscn" id="2_notif"]
+[ext_resource type="PackedScene" uid="uid://1ffcuthbv8yw" path="res://scenes/global_ui/confirmation_dialog.tscn" id="3_confirm"]
 [ext_resource type="PackedScene" path="res://scenes/global_ui/item_detail_panel.tscn" id="6_detail"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wdeuj"]
@@ -92,9 +91,8 @@ color = Color(0, 0, 0, 0.5)
 
 [node name="ConfirmationContainer" parent="ConfirmContainer" unique_id=1059861338 instance=ExtResource("3_confirm")]
 layout_mode = 1
-script = ExtResource("5_saj8a")
 
-[node name="ItemDetailContainer" type="Control" parent="."]
+[node name="ItemDetailContainer" type="Control" parent="." unique_id=580960248]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -103,7 +101,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BgOverlay" type="ColorRect" parent="ItemDetailContainer"]
+[node name="BgOverlay" type="ColorRect" parent="ItemDetailContainer" unique_id=1184737854]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,5 +110,5 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5)
 
-[node name="ItemDetailPanel" parent="ItemDetailContainer" instance=ExtResource("6_detail")]
+[node name="ItemDetailPanel" parent="ItemDetailContainer" unique_id=319283120 instance=ExtResource("6_detail")]
 layout_mode = 1
