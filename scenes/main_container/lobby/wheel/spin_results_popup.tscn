@@ -23,7 +23,7 @@ theme_override_constants/separation = 8
 [node name="TitleLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "Spin Results"
+text = "WHEEL_RESULTS_TITLE"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
@@ -42,4 +42,4 @@ theme_override_constants/v_separation = 4
 custom_minimum_size = Vector2(100, 35)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "OK"
+text = "COMMON_OK"

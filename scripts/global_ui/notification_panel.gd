@@ -11,19 +11,19 @@ func _ready() -> void:
 
 
 func show_purchase(item_type: String, _price: int, _currency_type: String) -> void:
-	title_label.text = "Purchase Successful!"
-	content_label.text = "You bought a %s" % item_type.capitalize()
+	title_label.text = tr("NOTIF_PURCHASE_SUCCESS")
+	content_label.text = tr("NOTIF_PURCHASE_BODY_FMT") % item_type.capitalize()
 	price_container.visible = true
 
 
 func show_reward(item_name: String, amount: int, currency_type: String) -> void:
-	title_label.text = "Reward Claimed!"
-	content_label.text = "%s\n+%d %s" % [item_name, amount, currency_type.capitalize()]
+	title_label.text = tr("NOTIF_REWARD_CLAIMED")
+	content_label.text = tr("NOTIF_REWARD_BODY_FMT") % [item_name, amount, currency_type.capitalize()]
 	price_container.visible = false
 
 
 func show_error(message: String) -> void:
-	title_label.text = "Error"
+	title_label.text = tr("NOTIF_ERROR")
 	content_label.text = message
 	price_container.visible = false
 

@@ -402,7 +402,7 @@ offset_right = 48.5
 offset_bottom = 35.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 25
-text = "Settings"
+text = "SETTINGS_TITLE"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel" unique_id=1384977792]
 custom_minimum_size = Vector2(350, 336)
@@ -435,7 +435,7 @@ offset_right = 70.0
 offset_bottom = 17.5
 grow_vertical = 2
 theme_override_font_sizes/font_size = 25
-text = "Music"
+text = "SETTINGS_MUSIC"
 
 [node name="HSlider" type="HSlider" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer/Music" unique_id=1065848334]
 layout_mode = 1
@@ -466,7 +466,7 @@ offset_right = 70.0
 offset_bottom = 17.5
 grow_vertical = 2
 theme_override_font_sizes/font_size = 25
-text = "Music"
+text = "SETTINGS_SOUND"
 
 [node name="HSlider" type="HSlider" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer/Sound" unique_id=2003943851]
 layout_mode = 1
@@ -501,7 +501,7 @@ offset_right = 106.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Continue"
+text = "SETTINGS_CONTINUE"
 
 [node name="Leave" type="Control" parent="CanvasLayer/Root/SettingOverlay/SettingsPanel/VBoxContainer" unique_id=630367337]
 custom_minimum_size = Vector2(0, 50)
@@ -522,7 +522,7 @@ offset_right = 106.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Leave"
+text = "SETTINGS_LEAVE"
 
 [node name="MatchResultOverlay" parent="CanvasLayer/Root" unique_id=443816895 instance=ExtResource("0_mrp")]
 visible = false

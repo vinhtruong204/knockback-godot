@@ -103,10 +103,10 @@ theme_override_constants/separation = 16
 custom_minimum_size = Vector2(90, 36)
 layout_mode = 2
 theme_type_variation = &"TabButton"
-text = "Cancel"
+text = "COMMON_CANCEL"
 
 [node name="BuyButton" type="Button" parent="MarginContainer/HBoxContainer/InfoColumn/ButtonRow"]
 custom_minimum_size = Vector2(90, 36)
 layout_mode = 2
 theme_type_variation = &"PrimaryButton"
-text = "Buy"
+text = "COMMON_BUY"

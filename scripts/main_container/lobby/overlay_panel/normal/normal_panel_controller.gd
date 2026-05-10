@@ -21,6 +21,7 @@ var _maps: Array = []
 var _modes: Array = []
 var _selected_map_display: String = ""
 var _selected_map_key: String = ""
+var _current_mode_value: String = "Free for all"
 
 
 func _ready() -> void:
@@ -30,8 +31,9 @@ func _ready() -> void:
 	team_size_btn.pressed.connect(_on_team_size_btn_pressed)
 	fight_btn.pressed.connect(_on_fight_btn_pressed)
 
-	team_size_btn.text = "1v1"
+	team_size_btn.text = tr("MODE_1V1")
 	team_size_btn.disabled = true
+	mode_btn.text = tr("MODE_FREE_FOR_ALL")
 
 	poll_timer = Timer.new()
 	poll_timer.wait_time = 2.0
@@ -68,21 +70,23 @@ func _on_map_selected(map: String) -> void:
 
 
 func _on_mode_btn_pressed() -> void:
-	if mode_btn.text == "Free for all":
-		mode_btn.text = "Search & Destroy"
+	if _current_mode_value == "Free for all":
+		_current_mode_value = "Search & Destroy"
+		mode_btn.text = tr("MODE_SEARCH_DESTROY")
 	else:
-		mode_btn.text = "Free for all"
+		_current_mode_value = "Free for all"
+		mode_btn.text = tr("MODE_FREE_FOR_ALL")
 
 
 func _on_team_size_btn_pressed() -> void:
-	team_size_btn.text = "1v1"
+	team_size_btn.text = tr("MODE_1V1")
 
 
 func _on_fight_btn_pressed() -> void:
 	if matchmaking_state != MatchmakingState.IDLE:
 		return
 	if _selected_map_key == "":
-		_show_error("Please choose a map first")
+		_show_error(tr("MM_PLEASE_CHOOSE_MAP"))
 		return
 
 	fight_btn.disabled = true
@@ -113,13 +117,13 @@ func _join_normal_matchmaking() -> void:
 			elif parsed is MatchModels.MatchmakingMatchFoundModel:
 				_handle_match_found(parsed)
 			else:
-				_show_error("Unexpected matchmaking status")
+				_show_error(tr("MM_UNEXPECTED_STATUS"))
 				_enter_idle_state()
 		else:
 			if response.get("status", 0) == 409:
 				_enter_searching_state()
 			else:
-				_show_error("Failed to join matchmaking")
+				_show_error(tr("MM_JOIN_FAILED"))
 				_enter_idle_state()
 	)
 
@@ -148,7 +152,7 @@ func _on_poll_timer_timeout() -> void:
 			elif parsed is MatchModels.MatchmakingMatchedModel:
 				_handle_match_found(parsed)
 			elif parsed is MatchModels.MatchmakingWaitingModel:
-				status_label.text = "Searching... (position %d)" % parsed.position
+				status_label.text = tr("MM_SEARCHING_POS_FMT") % parsed.position
 			elif parsed is MatchModels.MatchmakingNoneModel:
 				_enter_idle_state()
 		else:
@@ -161,7 +165,7 @@ func _enter_searching_state() -> void:
 	search_start_time = Time.get_ticks_msec() / 1000.0
 	fight_btn.disabled = true
 	matchmaking_popup.visible = true
-	status_label.text = "Searching for match..."
+	status_label.text = tr("MM_SEARCHING")
 	timer_label.text = "00:00"
 	cancel_btn.visible = true
 	cancel_btn.disabled = false
@@ -178,7 +182,7 @@ func _enter_idle_state() -> void:
 func _handle_match_found(match_data) -> void:
 	matchmaking_state = MatchmakingState.MATCH_FOUND
 	poll_timer.stop()
-	status_label.text = "Match Found!"
+	status_label.text = tr("MM_FOUND")
 	var matched_map_name := str(match_data.map_name).strip_edges()
 	if matched_map_name == "":
 		matched_map_name = _selected_map_display
@@ -244,7 +248,7 @@ func _find_selected_map_id() -> int:
 
 func _find_selected_mode_id() -> int:
 	var fallback := 0
-	var wanted := mode_btn.text.strip_edges().to_lower()
+	var wanted := _current_mode_value.strip_edges().to_lower()
 	for item in _modes:
 		if not (item is Dictionary):
 			continue
@@ -263,13 +267,13 @@ func _display_map_name(map: String) -> String:
 	var key := NetworkManager.get_map_key(map)
 	match key:
 		"night":
-			return "Night"
+			return tr("MAP_NIGHT")
 		"ice":
-			return "Ice"
+			return tr("MAP_ICE")
 		"dust":
-			return "Dust"
+			return tr("MAP_DUST")
 		"forest":
-			return "Forest"
+			return tr("MAP_FOREST")
 		_:
 			return map
 
@@ -295,7 +299,7 @@ func _build_matchmaking_popup() -> void:
 
 	status_label = Label.new()
 	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	status_label.text = "Searching for match..."
+	status_label.text = tr("MM_SEARCHING")
 	status_label.add_theme_font_size_override("font_size", 26)
 	container.add_child(status_label)
 
@@ -306,7 +310,7 @@ func _build_matchmaking_popup() -> void:
 	container.add_child(timer_label)
 
 	cancel_btn = Button.new()
-	cancel_btn.text = "Cancel"
+	cancel_btn.text = tr("COMMON_CANCEL")
 	cancel_btn.custom_minimum_size = Vector2(160, 50)
 	cancel_btn.pressed.connect(_on_cancel_pressed)
 	container.add_child(cancel_btn)

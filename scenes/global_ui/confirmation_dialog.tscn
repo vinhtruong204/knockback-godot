@@ -28,7 +28,7 @@ alignment = 1
 
 [node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=1473885018]
 layout_mode = 2
-text = "Confirm Purchase"
+text = "DIALOG_CONFIRM_PURCHASE_TITLE"
 horizontal_alignment = 1
 
 [node name="ContentLabel" type="Label" parent="VBoxContainer" unique_id=824117552]
@@ -44,9 +44,9 @@ alignment = 1
 [node name="CancelButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=373150279]
 custom_minimum_size = Vector2(100, 36)
 layout_mode = 2
-text = "Cancel"
+text = "COMMON_CANCEL"
 
 [node name="ConfirmButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1262636952]
 custom_minimum_size = Vector2(100, 36)
 layout_mode = 2
-text = "Buy"
+text = "COMMON_BUY"

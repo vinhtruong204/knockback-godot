@@ -2,6 +2,8 @@ class_name SettingsController extends Panel
 
 @onready var music_slider: HSlider = $VBoxContainer/MusicContainer/HSlider
 @onready var sfx_slider: HSlider = $VBoxContainer/SoundContainer/HSlider
+@onready var en_btn: Button = $VBoxContainer/LanguageContainer/HBoxContainer/EnBtn
+@onready var vi_btn: Button = $VBoxContainer/LanguageContainer/HBoxContainer/ViBtn
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +17,15 @@ func _ready() -> void:
 	# Connect signals
 	music_slider.value_changed.connect(_on_music_slider_value_changed)
 	sfx_slider.value_changed.connect(_on_sfx_slider_value_changed)
+
+	en_btn.pressed.connect(func(): LocaleManager.set_locale(&"en"))
+	vi_btn.pressed.connect(func(): LocaleManager.set_locale(&"vi"))
+	LocaleManager.locale_changed.connect(_refresh_locale_buttons)
+	_refresh_locale_buttons(LocaleManager.current_locale)
+
+func _refresh_locale_buttons(code: StringName) -> void:
+	en_btn.disabled = (code == &"en")
+	vi_btn.disabled = (code == &"vi")
 
 func _on_music_slider_value_changed(value: float) -> void:
 	AudioManager.set_music_volume(value)

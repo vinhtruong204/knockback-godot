@@ -31,6 +31,7 @@ PlayerApi="*uid://ckquj3nr7huqk"
 CacheManager="*uid://bnw61bjcsgjj6"
 AudioManager="*uid://ciyv1qco4h3wq"
 BillingService="*res://scripts/global_scripts/billing/billing_service.gd"
+LocaleManager="*res://scripts/global_scripts/locale/locale_manager.gd"
 
 [display]
 
@@ -65,6 +66,10 @@ player_throw_bomb={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://locale/translations.en.translation", "res://locale/translations.vi.translation")
 
 [layer_names]
 

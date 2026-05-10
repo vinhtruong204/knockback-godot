@@ -32,7 +32,7 @@ func _ready() -> void:
 		multiplayer.connection_failed.connect(func():
 			var global_ui = get_tree().root.get_node_or_null("Main/GlobalUi")
 			if global_ui:
-				global_ui.show_error_notification("Could not connect to game server")
+				global_ui.show_error_notification(tr("NETWORK_CONNECT_FAIL"))
 			leave_game()
 		)
 
@@ -81,7 +81,7 @@ func create_client(address: String = ADDRESS, port: int = PORT) -> void:
 	if err != OK:
 		var global_ui = get_tree().root.get_node_or_null("Main/GlobalUi")
 		if global_ui:
-			global_ui.show_error_notification("Could not create client: " + str(err))
+			global_ui.show_error_notification(tr("NETWORK_CLIENT_ERR_PREFIX") + str(err))
 		return
 
 	multiplayer.multiplayer_peer = peer
@@ -98,7 +98,7 @@ func create_server(port: int = PORT, load_game_scene: bool = true) -> void:
 	if err != OK:
 		var global_ui = get_tree().root.get_node_or_null("Main/GlobalUi")
 		if global_ui:
-			global_ui.show_error_notification("Could not start server on port " + str(port))
+			global_ui.show_error_notification(tr("NETWORK_SERVER_ERR_PREFIX") + str(port))
 		return
 
 	multiplayer.multiplayer_peer = peer

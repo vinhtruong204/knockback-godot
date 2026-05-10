@@ -36,13 +36,13 @@ theme_override_constants/separation = 4
 [node name="Name" type="Label" parent="Margin/HBox/TextColumn" unique_id=1258307492]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "Achievement Name"
+text = "ACH_PLACEHOLDER_NAME"
 
 [node name="Requirement" type="Label" parent="Margin/HBox/TextColumn" unique_id=695265841]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 14
-text = "Requirement description"
+text = "ACH_PLACEHOLDER_DESC"
 autowrap_mode = 2
 
 [node name="StatusLabel" type="Label" parent="Margin/HBox/TextColumn" unique_id=621323139]
@@ -56,4 +56,4 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 24
 disabled = true
-text = "--"
+text = "COMMON_DASH"

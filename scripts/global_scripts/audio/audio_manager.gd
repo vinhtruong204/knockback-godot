@@ -88,6 +88,7 @@ func bind_button_sfx(root: Node) -> void:
 
 func save_settings():
 	var config = ConfigFile.new()
+	config.load(SETTINGS_PATH)
 
 	config.set_value("audio", "music_volume", music_volume)
 	config.set_value("audio", "sfx_volume", sfx_volume)

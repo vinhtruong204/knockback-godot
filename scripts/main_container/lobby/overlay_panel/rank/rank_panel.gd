@@ -21,6 +21,22 @@ const DEFAULT_RANK_CONFIGS: Array[Dictionary] = [
 	{"rank_id": 6, "min_point": 2500, "max_point": 9999, "image": "master.png", "name": "Master"},
 ]
 
+const RANK_NAME_KEYS := {
+	"Bronze": "RANK_BRONZE",
+	"Silver": "RANK_SILVER",
+	"Gold": "RANK_GOLD",
+	"Platinum": "RANK_PLATINUM",
+	"Diamond": "RANK_DIAMOND",
+	"Master": "RANK_MASTER",
+}
+
+
+func _translate_rank_name(name: String) -> String:
+	var key: String = RANK_NAME_KEYS.get(name, "")
+	if key == "":
+		return name
+	return tr(key)
+
 var rank_data: Dictionary = {}
 var rank_config: Dictionary = {}
 var matchmaking_state: MatchmakingState = MatchmakingState.IDLE
@@ -41,7 +57,23 @@ func _ready():
 
 	matchmaking_popup.visible = false
 	visibility_changed.connect(_on_visibility_changed)
+	_populate_tier_info_buttons()
 	_refresh_rank_display()
+
+
+func _populate_tier_info_buttons() -> void:
+	var grid := $PopupAllRankInfor/Panel/ScrollContainer/VBoxContainer/GridContainer
+	var buttons := grid.get_children()
+	for i in range(min(buttons.size(), DEFAULT_RANK_CONFIGS.size())):
+		var cfg := DEFAULT_RANK_CONFIGS[i]
+		var btn := buttons[i] as Button
+		if btn == null:
+			continue
+		btn.text = tr("RANK_TIER_FMT") % [
+			_translate_rank_name(str(cfg.get("name", ""))),
+			int(cfg.get("min_point", 0)),
+			int(cfg.get("max_point", 0)),
+		]
 
 
 func _refresh_rank_display() -> void:
@@ -127,7 +159,7 @@ func _resolve_rank_config_for_points(points: int, rank_configs: Array) -> Dictio
 
 func _apply_rank_config(config: Dictionary) -> void:
 	rank_config = config
-	rank_name.text = str(rank_config.get("name", ""))
+	rank_name.text = _translate_rank_name(str(rank_config.get("name", "")))
 	_set_rank_texture(str(rank_config.get("image", "")))
 	current_point.text = "%d / %d" % [
 		int(rank_data.get("current_point", 0)),
@@ -217,7 +249,7 @@ func _on_poll_timer_timeout():
 			elif parsed is MatchModels.MatchmakingMatchedModel:
 				_handle_match_found(parsed)
 			elif parsed is MatchModels.MatchmakingWaitingModel:
-				status_label.text = "Searching... (position %d)" % parsed.position
+				status_label.text = tr("MM_SEARCHING_POS_FMT") % parsed.position
 			elif parsed is MatchModels.MatchmakingNoneModel:
 				_enter_idle_state()
 		else:
@@ -231,7 +263,7 @@ func _enter_searching_state():
 	search_start_time = Time.get_ticks_msec() / 1000.0
 	fight_btn.disabled = true
 	matchmaking_popup.visible = true
-	status_label.text = "Searching for match..."
+	status_label.text = tr("MM_SEARCHING")
 	timer_label.text = "00:00"
 	cancel_btn.visible = true
 	cancel_btn.disabled = false
@@ -249,7 +281,7 @@ func _handle_match_found(match_data) -> void:
 	matchmaking_state = MatchmakingState.MATCH_FOUND
 	poll_timer.stop()
 
-	status_label.text = "Match Found!"
+	status_label.text = tr("MM_FOUND")
 	timer_label.text = match_data.map_name
 	cancel_btn.visible = false
 

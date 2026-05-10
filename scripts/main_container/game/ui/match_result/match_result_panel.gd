@@ -53,19 +53,19 @@ func show_result(my_data: Dictionary, opponent_data: Dictionary) -> void:
 
 	# Header
 	if my_result == Enums.MatchResult.WIN:
-		result_label.text = "VICTORY"
+		result_label.text = tr("MATCH_RESULT_VICTORY")
 		result_label.add_theme_color_override("font_color", Color.GREEN)
 	else:
-		result_label.text = "DEFEAT"
+		result_label.text = tr("MATCH_RESULT_DEFEAT")
 		result_label.add_theme_color_override("font_color", Color.RED)
 
 	# Your row
 	p1_name.text = my_data.get("name", "You")
 	p1_kill.text = str(my_data.get("kill", 0))
 	p1_dead.text = str(my_data.get("dead", 0))
-	p1_gold.text = "+%d" % my_reward_gold
-	p1_exp.text = "+%d" % my_exp_earned
-	p1_rank.text = "%+d" % my_rank_point_change
+	p1_gold.text = tr("MATCH_DELTA_FMT") % my_reward_gold
+	p1_exp.text = tr("MATCH_DELTA_FMT") % my_exp_earned
+	p1_rank.text = tr("MATCH_RANK_DELTA_FMT") % my_rank_point_change
 
 	# Highlight your row
 	if my_result == Enums.MatchResult.WIN:
@@ -77,13 +77,13 @@ func show_result(my_data: Dictionary, opponent_data: Dictionary) -> void:
 	p2_name.text = opponent_data.get("name", "Opponent")
 	p2_kill.text = str(opponent_data.get("kill", 0))
 	p2_dead.text = str(opponent_data.get("dead", 0))
-	p2_gold.text = "+%d" % opponent_data.get("reward_gold", 0)
-	p2_exp.text = "+%d" % opponent_data.get("exp_earned", 0)
-	p2_rank.text = "%+d" % opponent_data.get("rank_point_change", 0)
+	p2_gold.text = tr("MATCH_DELTA_FMT") % opponent_data.get("reward_gold", 0)
+	p2_exp.text = tr("MATCH_DELTA_FMT") % opponent_data.get("exp_earned", 0)
+	p2_rank.text = tr("MATCH_RANK_DELTA_FMT") % opponent_data.get("rank_point_change", 0)
 
 	# Start countdown
 	_countdown = COUNTDOWN_SECONDS
-	confirm_btn.text = "Confirm (%d)" % _countdown
+	confirm_btn.text = tr("MATCH_CONFIRM_FMT") % _countdown
 	_countdown_timer.start()
 
 
@@ -99,13 +99,13 @@ func _on_countdown_tick() -> void:
 		_countdown_timer.stop()
 		_on_confirm_pressed()
 	else:
-		confirm_btn.text = "Confirm (%d)" % _countdown
+		confirm_btn.text = tr("MATCH_CONFIRM_FMT") % _countdown
 
 
 func _on_confirm_pressed() -> void:
 	_countdown_timer.stop()
 	confirm_btn.disabled = true
-	confirm_btn.text = "Leaving..."
+	confirm_btn.text = tr("MATCH_LEAVING")
 	var pid := ApiManager.player_id
 
 	if result_game_mode == NetworkManager.GAME_MODE_LAN:

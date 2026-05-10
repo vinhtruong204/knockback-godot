@@ -26,7 +26,7 @@ func set_data(achievement: Dictionary, progress) -> void:
 	requirement_label.text = str(achievement.get("requirement", ""))
 
 	reward_btn.disabled = true
-	reward_btn.text = "--"
+	reward_btn.text = tr("COMMON_DASH")
 
 	var unlock_at: String = ""
 	var current_progress := 0
@@ -38,10 +38,10 @@ func set_data(achievement: Dictionary, progress) -> void:
 	_set_icon(achievement, is_unlocked)
 
 	if is_unlocked:
-		status_label.text = "Unlocked %s" % _format_unlock_date(unlock_at)
+		status_label.text = tr("ACH_UNLOCKED_FMT") % _format_unlock_date(unlock_at)
 		status_label.modulate = Color(0.4, 1.0, 0.5)
 	else:
-		status_label.text = "Progress: %d" % current_progress
+		status_label.text = tr("ACH_PROGRESS_FMT") % current_progress
 		status_label.modulate = Color(0.8, 0.8, 0.8)
 
 

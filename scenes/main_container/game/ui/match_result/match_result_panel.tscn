@@ -63,7 +63,7 @@ alignment = 1
 [node name="ResultLabel" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer" unique_id=745003883]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "VICTORY"
+text = "MATCH_RESULT_VICTORY"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="BgOverlay/Panel/MarginContainer/VBoxContainer" unique_id=1900627547]
@@ -79,7 +79,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
 theme_override_font_sizes/font_size = 14
-text = "Name"
+text = "MATCH_COL_NAME"
 horizontal_alignment = 1
 
 [node name="HKill" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/HeaderRow" unique_id=643346563]
@@ -87,7 +87,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
 theme_override_font_sizes/font_size = 14
-text = "Kill"
+text = "MATCH_COL_KILL"
 horizontal_alignment = 1
 
 [node name="HDead" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/HeaderRow" unique_id=1808128510]
@@ -95,7 +95,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
 theme_override_font_sizes/font_size = 14
-text = "Dead"
+text = "MATCH_COL_DEAD"
 horizontal_alignment = 1
 
 [node name="HGold" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/HeaderRow" unique_id=60738030]
@@ -103,7 +103,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
 theme_override_font_sizes/font_size = 14
-text = "Gold"
+text = "MATCH_COL_GOLD"
 horizontal_alignment = 1
 
 [node name="HExp" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/HeaderRow" unique_id=1099512752]
@@ -111,7 +111,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
 theme_override_font_sizes/font_size = 14
-text = "EXP"
+text = "MATCH_COL_EXP"
 horizontal_alignment = 1
 
 [node name="HRank" type="Label" parent="BgOverlay/Panel/MarginContainer/VBoxContainer/HeaderRow" unique_id=1301455339]
@@ -119,7 +119,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
 theme_override_font_sizes/font_size = 14
-text = "Rank"
+text = "MATCH_COL_RANK"
 horizontal_alignment = 1
 
 [node name="Player1Row" type="HBoxContainer" parent="BgOverlay/Panel/MarginContainer/VBoxContainer" unique_id=2105393449]
@@ -224,4 +224,4 @@ custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 16
-text = "Confirm"
+text = "COMMON_CONFIRM"

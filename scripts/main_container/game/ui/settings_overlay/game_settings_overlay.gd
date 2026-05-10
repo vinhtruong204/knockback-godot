@@ -2,13 +2,11 @@ class_name GameSettingsOverlay extends Control
 
 @onready var music_slider: HSlider = $SettingsPanel/VBoxContainer/Music/HSlider
 @onready var sfx_slider: HSlider = $SettingsPanel/VBoxContainer/Sound/HSlider
-@onready var sound_label: Label = $SettingsPanel/VBoxContainer/Sound/Label
 
 
 func _ready() -> void:
 	_configure_audio_slider(music_slider)
 	_configure_audio_slider(sfx_slider)
-	sound_label.text = "Sound"
 
 	music_slider.value = AudioManager.music_volume
 	sfx_slider.value = AudioManager.sfx_volume

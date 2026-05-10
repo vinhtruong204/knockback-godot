@@ -23,4 +23,4 @@ offset_left = -52.0
 offset_top = -31.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Equip"
+text = "LOBBY_EQUIP"

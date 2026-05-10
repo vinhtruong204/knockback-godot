@@ -25,7 +25,7 @@ func _on_purchase_succeeded(sku: String, amount: int, currency_type: String) -> 
 		return
 	var global_ui: GlobalUI = get_tree().root.get_node("Main/GlobalUi")
 	currency_ui.update_currency(true)
-	global_ui.show_reward_notification("Currency Top-Up", amount, currency_type)
+	global_ui.show_reward_notification(tr("PURCHASE_NOTIF_TITLE"), amount, currency_type)
 	_finish()
 
 
@@ -33,7 +33,7 @@ func _on_purchase_failed(sku: String, error: String) -> void:
 	if sku != _pending_sku:
 		return
 	var global_ui: GlobalUI = get_tree().root.get_node("Main/GlobalUi")
-	global_ui.show_error_notification("Purchase failed: %s" % error)
+	global_ui.show_error_notification(tr("PURCHASE_FAIL_FMT") % str(error))
 	_finish()
 
 
