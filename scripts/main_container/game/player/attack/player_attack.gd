@@ -39,6 +39,7 @@ func _on_shoot() -> void:
 	if active_slot == Enums.SlotType.MELEE:
 		if fire_rate > 0.0:
 			_next_shot_time_ms = now_ms + int(1000.0 / fire_rate)
+		AudioManager.play_sfx(&"melee_stabbing")
 		melee_attack_fired.emit()
 		request_melee_attack.rpc_id(1, multiplayer.get_unique_id(), direction, damage)
 		return
@@ -47,6 +48,7 @@ func _on_shoot() -> void:
 		return
 	if fire_rate > 0.0:
 		_next_shot_time_ms = now_ms + int(1000.0 / fire_rate)
+	_play_shoot_sfx(active_slot)
 
 	# Calculate gun barrel position based on player direction
 	var gun_barrel_position: Vector2 = Vector2()
@@ -59,6 +61,14 @@ func _on_shoot() -> void:
 
 	shot_fired.emit()
 	request_shoot.rpc_id(1, multiplayer.get_unique_id(), gun_barrel_position, direction, damage)
+
+
+func _play_shoot_sfx(slot: String) -> void:
+	match slot:
+		Enums.SlotType.SECONDARY:
+			AudioManager.play_sfx(&"secondary_shoot")
+		_:
+			AudioManager.play_sfx(&"primary_shoot")
 
 
 @rpc("authority", "call_remote", "reliable")

@@ -31,6 +31,8 @@ const FORFEIT_RANK_CHANGE := -20
 
 
 func _ready() -> void:
+	AudioManager.play_music(&"ingame")
+	AudioManager.bind_button_sfx($CanvasLayer/Root)
 	game_mode = NetworkManager.current_game_mode
 	if multiplayer.is_server():
 		# Server: listen for player spawn and disconnect events
@@ -312,6 +314,7 @@ func _receive_match_result(result_data: Dictionary) -> void:
 	if multiplayer.is_server() and not (game_mode == NetworkManager.GAME_MODE_LAN and NetworkManager.is_lan_host_player):
 		return
 	match_ended = true
+	AudioManager.play_music(&"lobby")
 
 	var my_peer := str(multiplayer.get_unique_id())
 	var my_data: Dictionary = {}

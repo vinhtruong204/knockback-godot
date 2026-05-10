@@ -208,6 +208,7 @@ func _try_start_reload(slot: String) -> void:
 	s["is_reloading"] = true
 	_ammo_by_slot[slot] = s
 	reload_started.emit(slot)
+	_play_reload_sfx(slot)
 	await get_tree().create_timer(RELOAD_DELAY).timeout
 	if not is_inside_tree():
 		return
@@ -245,3 +246,11 @@ func _slot_for_weapon_type(weapon_type: SwitchWeaponHandler.WeaponType) -> Strin
 		SwitchWeaponHandler.WeaponType.MELEE:
 			return Enums.SlotType.MELEE
 	return Enums.SlotType.PRIMARY
+
+
+func _play_reload_sfx(slot: String) -> void:
+	match slot:
+		Enums.SlotType.PRIMARY:
+			AudioManager.play_sfx(&"primary_reload")
+		Enums.SlotType.SECONDARY:
+			AudioManager.play_sfx(&"secondary_reload")

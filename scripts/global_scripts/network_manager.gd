@@ -111,6 +111,7 @@ func create_server(port: int = PORT, load_game_scene: bool = true) -> void:
 
 
 func leave_game() -> void:
+	AudioManager.play_music(&"lobby")
 	current_match_id = 0
 	current_match_players = []
 	current_map_name = ""

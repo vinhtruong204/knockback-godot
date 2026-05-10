@@ -338,6 +338,8 @@ func get_player_ranks(pid: String, callback: Callable, force_refresh := false):
 		callback)
 
 func get_player_rank(pid: String, season_id: String, callback: Callable):
+	# Keep season-specific rank reads uncached so milestone changes are visible
+	# immediately when the lobby ranking panel refreshes.
 	ApiManager.send_request(self , base_url, "/player-ranks/" + pid + "/" + season_id,
 		HTTPClient.METHOD_GET, {}, true, callback)
 
@@ -351,6 +353,7 @@ func update_player_rank(pid: String, season_id: String, data: Dictionary, callba
 		func(response: Dictionary):
 			if response.ok:
 				CacheManager.invalidate("player:ranks:" + pid)
+				CacheManager.invalidate("player:ranks:" + pid + ":" + season_id)
 			callback.call(response))
 
 # --- Leaderboard ---

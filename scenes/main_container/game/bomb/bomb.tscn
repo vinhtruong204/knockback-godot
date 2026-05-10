@@ -1,19 +1,13 @@
 [gd_scene format=3 uid="uid://b1nfrg52j82it"]
 
-[ext_resource type="Texture2D" uid="uid://cbqjpj6oiapq8" path="res://assets/lobby/bottom_bar/equipment/grenade.png" id="1_lk0yo"]
 [ext_resource type="Script" uid="uid://p6uw2ne7pmw8" path="res://scripts/main_container/game/bomb/bomb_controller.gd" id="1_ukrfg"]
-[ext_resource type="Texture2D" path="res://assets/game/effects/explosion_frag_grenade.png" id="3_xplod"]
+[ext_resource type="Texture2D" uid="uid://cm5grwlxf0lba" path="res://assets/game/weapon/static/frag-grenade.png" id="2_nvmuv"]
+[ext_resource type="Texture2D" uid="uid://b7ptxgdsorrwt" path="res://assets/game/effects/explosion_frag_grenade.png" id="3_xplod"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lk0yo"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ukrfg"]
-radius = 13.038404
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_nvmuv"]
-radius = 104.019226
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_explosion_0"]
 atlas = ExtResource("3_xplod")
@@ -79,6 +73,12 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ukrfg"]
+radius = 13.038404
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nvmuv"]
+radius = 104.019226
+
 [node name="Bomb" type="RigidBody2D" unique_id=139451095]
 collision_layer = 8
 collision_mask = 2
@@ -89,7 +89,7 @@ replication_config = SubResource("SceneReplicationConfig_lk0yo")
 
 [node name="Grenade" type="Sprite2D" parent="." unique_id=2122312443]
 scale = Vector2(0.08, 0.08)
-texture = ExtResource("1_lk0yo")
+texture = ExtResource("2_nvmuv")
 
 [node name="ExplosionAnimation" type="AnimatedSprite2D" parent="." unique_id=1096119307]
 visible = false

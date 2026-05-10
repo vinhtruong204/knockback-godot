@@ -15,6 +15,8 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	AudioManager.play_music(&"lobby")
+	AudioManager.bind_button_sfx(self)
 	_refresh_character_team_buttons()
 	_equipment_panel.visibility_changed.connect(_on_equipment_visibility_changed)
 

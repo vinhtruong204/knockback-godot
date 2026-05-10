@@ -5,6 +5,9 @@ class_name SettingsController extends Panel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_configure_audio_slider(music_slider)
+	_configure_audio_slider(sfx_slider)
+
 	# Get current audio settings
 	music_slider.value = AudioManager.music_volume
 	sfx_slider.value = AudioManager.sfx_volume
@@ -18,6 +21,11 @@ func _on_music_slider_value_changed(value: float) -> void:
 
 func _on_sfx_slider_value_changed(value: float) -> void:
 	AudioManager.set_sfx_volume(value)
+
+func _configure_audio_slider(slider: HSlider) -> void:
+	slider.min_value = 0.0
+	slider.max_value = 1.0
+	slider.step = 0.01
 
 func _on_low_fps_button_pressed() -> void:
 	Engine.max_fps = 30

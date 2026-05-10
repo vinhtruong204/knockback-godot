@@ -25,6 +25,7 @@ func _ready() -> void:
 func _on_jump() -> void:
 	if not player.is_on_floor(): return
 	player.velocity.y = JUMP_VELOCITY
+	AudioManager.play_sfx(&"character_jump")
 
 func _on_drop_down() -> void:
 	if not player.is_on_floor(): return

@@ -155,16 +155,68 @@ func _on_confirm_pressed() -> void:
 		_finalize_and_leave()
 		return
 
+	_update_player_rank_after_match(pid)
+
+
+func _update_player_rank_after_match(pid: String) -> void:
 	PlayerApi.get_player_rank(pid, "1", func(response: Dictionary):
 		if response.get("ok", false):
 			var current_point: int = response.get("data", {}).get("current_point", 0)
 			var new_point: int = max(0, current_point + my_rank_point_change)
-			PlayerApi.update_player_rank(pid, "1", {"current_point": new_point}, func(_r2):
-				_finalize_and_leave()
+
+			CacheManager.invalidate("config:rank_configs")
+			ConfigApi.get_rank_configs(func(config_response: Dictionary) -> void:
+				var update_data := {"current_point": new_point}
+				if config_response.get("ok", false):
+					var resolved_rank_id := _resolve_rank_id_for_points(
+						new_point,
+						_extract_rank_configs(config_response.get("data", [])),
+						int(response.get("data", {}).get("rank_id", 0))
+					)
+					if resolved_rank_id > 0:
+						update_data["rank_id"] = resolved_rank_id
+				else:
+					print("Failed to get rank configs while updating rank: ", config_response.get("error", ""))
+
+				PlayerApi.update_player_rank(pid, "1", update_data, func(_r2):
+					_finalize_and_leave()
+				)
 			)
 		else:
 			_finalize_and_leave()
 	)
+
+
+func _extract_rank_configs(data: Variant) -> Array:
+	if data is Array:
+		return data
+
+	if data is Dictionary:
+		for key in ["items", "results", "rank_configs", "data"]:
+			var nested = data.get(key)
+			if nested is Array:
+				return nested
+
+	return []
+
+
+func _resolve_rank_id_for_points(points: int, rank_configs: Array, fallback_rank_id: int) -> int:
+	var configs: Array = []
+	for config in rank_configs:
+		if config is Dictionary:
+			configs.append(config)
+	if configs.is_empty():
+		return fallback_rank_id
+
+	configs.sort_custom(func(a, b): return int(a.get("min_point", 0)) < int(b.get("min_point", 0)))
+
+	var resolved_rank_id := int(configs[0].get("rank_id", fallback_rank_id))
+	for config in configs:
+		if points >= int(config.get("min_point", 0)):
+			resolved_rank_id = int(config.get("rank_id", resolved_rank_id))
+		else:
+			break
+	return resolved_rank_id
 
 
 func _finalize_and_leave() -> void:

@@ -1409,6 +1409,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("31_l8m0j")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="CurrentPoint" type="Label" parent="Root/OverlayContainer/Ranking/Panel" unique_id=1829864765]
 layout_mode = 0
@@ -2921,7 +2922,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_vk22e")
 script = ExtResource("35_rjdw1")
 
-[node name="Dimmer" type="ColorRect" parent="Root/TopOverlay/Purchase"]
+[node name="Dimmer" type="ColorRect" parent="Root/TopOverlay/Purchase" unique_id=1028136326]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3042,7 +3043,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_vk22e")
 script = ExtResource("35_hur8o")
 
-[node name="Dimmer" type="ColorRect" parent="Root/TopOverlay/Settings"]
+[node name="Dimmer" type="ColorRect" parent="Root/TopOverlay/Settings" unique_id=893117807]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

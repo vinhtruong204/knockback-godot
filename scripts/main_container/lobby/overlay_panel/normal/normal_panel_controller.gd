@@ -179,7 +179,11 @@ func _handle_match_found(match_data) -> void:
 	matchmaking_state = MatchmakingState.MATCH_FOUND
 	poll_timer.stop()
 	status_label.text = "Match Found!"
-	timer_label.text = _selected_map_display
+	var matched_map_name := str(match_data.map_name).strip_edges()
+	if matched_map_name == "":
+		matched_map_name = _selected_map_display
+	var matched_map_key := NetworkManager.get_map_key(matched_map_name)
+	timer_label.text = _display_map_name(matched_map_name)
 	cancel_btn.visible = false
 
 	var players: Array = []
@@ -191,8 +195,8 @@ func _handle_match_found(match_data) -> void:
 			"game_mode": NetworkManager.GAME_MODE_NORMAL,
 			"match_id": match_data.match_id,
 			"players": players,
-			"map_name": _selected_map_display,
-			"map_key": _selected_map_key,
+			"map_name": matched_map_name,
+			"map_key": matched_map_key,
 		})
 	)
 
