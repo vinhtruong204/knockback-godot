@@ -17,6 +17,6 @@ func _spawn_bomb(data: Dictionary) -> Node:
 		bomb.global_position = data["pos"]
 		bomb.set_owner_id(data["peer_id"])
 		bomb.set_damage(int(data.get("damage", BombController.DEFAULT_DAMAGE)))
-		bomb.add_initial_impulse(data["direction"])
+		bomb.set_throw_direction(data["direction"])
 
 	return bomb

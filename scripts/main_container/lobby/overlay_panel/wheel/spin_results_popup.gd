@@ -53,7 +53,7 @@ func _create_result_entry(result: Dictionary, wheel_type: String) -> HBoxContain
 	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 	var name_label := Label.new()
-	name_label.text = result.get("display_name", "Unknown")
+	name_label.text = result.get("display_name", tr("COMMON_UNKNOWN"))
 	name_label.add_theme_font_size_override("font_size", 10)
 	vbox.add_child(name_label)
 
@@ -65,13 +65,13 @@ func _create_result_entry(result: Dictionary, wheel_type: String) -> HBoxContain
 	var currency_reward = result.get("currency_reward")
 
 	if is_duplicate:
-		status_label.text = "Owned → +%d %s" % [compensation, wheel_type.capitalize()]
+		status_label.text = tr("WHEEL_DUPLICATE_FMT") % [compensation, wheel_type.capitalize()]
 		status_label.add_theme_color_override("font_color", Color(1, 0.85, 0))
 	elif currency_reward != null:
-		status_label.text = "+%d %s" % [int(currency_reward), wheel_type.capitalize()]
+		status_label.text = tr("WHEEL_REWARD_FMT") % [int(currency_reward), wheel_type.capitalize()]
 		status_label.add_theme_color_override("font_color", Color(0.6, 0.85, 1))
 	else:
-		status_label.text = "NEW!"
+		status_label.text = tr("COMMON_NEW")
 		status_label.add_theme_color_override("font_color", Color(0.3, 1, 0.3))
 
 	vbox.add_child(status_label)

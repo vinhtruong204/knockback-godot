@@ -25,7 +25,8 @@ var _dirty_categories: Dictionary = {}
 
 func _ready() -> void:
 	_ensure_cache_dir()
-	load_from_disk()
+	# Force the first data read in each app session to hit the backend.
+	clear_all()
 
 
 func _notification(what: int) -> void:

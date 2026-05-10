@@ -1,12 +1,17 @@
 class_name BombController extends RigidBody2D
 
-const BOMB_FORCE: float = 100.0
 const DEFAULT_DAMAGE: int = 30
 const EXPLOSION_DURATION: float = 8.0 / 24.0
+
+@export var throw_speed: float = 320.0
+@export var throw_gravity_scale: float = 1.0
+@export var throw_angular_velocity: float = 8.0
 
 var _owner_id: int
 var damage: int = DEFAULT_DAMAGE
 var _has_exploded: bool = false
+var _throw_direction: PlayerFlip.Direction = PlayerFlip.Direction.RIGHT
+var _has_pending_throw: bool = false
 
 @onready var explosion_area: Area2D = $ExplosionArea
 @onready var grenade_sprite: Sprite2D = $Grenade
@@ -24,14 +29,27 @@ func set_damage(value: int) -> void:
 
 func _ready() -> void:
 	if is_multiplayer_authority():
+		gravity_scale = throw_gravity_scale
+		_apply_pending_throw()
 		get_tree().create_timer(3).timeout.connect(_on_timer_timeout)
 
-func add_initial_impulse(direction: PlayerFlip.Direction) -> void:
-	match direction:
+func set_throw_direction(direction: PlayerFlip.Direction) -> void:
+	_throw_direction = direction
+	_has_pending_throw = true
+
+func _apply_pending_throw() -> void:
+	if not _has_pending_throw:
+		return
+
+	_has_pending_throw = false
+
+	match _throw_direction:
 		PlayerFlip.Direction.LEFT:
-			apply_central_impulse(Vector2(-BOMB_FORCE, 0))
+			linear_velocity = Vector2(-throw_speed, 0)
+			angular_velocity = -throw_angular_velocity
 		PlayerFlip.Direction.RIGHT:
-			apply_central_impulse(Vector2(BOMB_FORCE, 0))
+			linear_velocity = Vector2(throw_speed, 0)
+			angular_velocity = throw_angular_velocity
 
 func _on_timer_timeout() -> void:
 	if not is_multiplayer_authority() or _has_exploded:
@@ -69,6 +87,7 @@ func _shake_player_camera(body: PlayerController, authority: int) -> void:
 
 @rpc("authority", "call_local", "reliable")
 func play_explosion_rpc() -> void:
+	AudioManager.play_sfx(&"explode")
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0.0
 	freeze = true

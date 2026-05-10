@@ -1,6 +1,7 @@
 class_name BulletController extends Area2D
 
 const BULLET_SPEED: float = 200.0
+const BULLET_KNOCKBACK_FORCE: float = 200.0
 const DEFAULT_DAMAGE: int = 50
 var direction: PlayerFlip.Direction
 var owner_id: int
@@ -37,6 +38,14 @@ func _on_body_entered(body: Node) -> void:
 	if body.get_multiplayer_authority() != owner_id:
 		print("Hit:", body.name)
 
-		# body.get_node("PlayerKnockback").apply_knockback_rpc.rpc_id(body.get_multiplayer_authority(), direction, 200.0)
-		body.get_node("PlayerHealth").take_damage_rpc.rpc_id(body.get_multiplayer_authority(), damage)
+		var authority: int = body.get_multiplayer_authority()
+		body.get_node("PlayerHealth").take_damage_rpc.rpc_id(authority, damage)
+
+		var knockback_dir := Vector2.RIGHT
+		if direction == PlayerFlip.Direction.LEFT:
+			knockback_dir = Vector2.LEFT
+		body.get_node("PlayerKnockback").apply_bomb_force_rpc.rpc_id(
+			authority,
+			knockback_dir * BULLET_KNOCKBACK_FORCE
+		)
 		self.queue_free()

@@ -6,10 +6,10 @@ enum Mode {
 	COLLECTOR
 }
 
-const title_item: Dictionary[Mode, String] = {
-	Mode.RAKING: "#\tPlayer Name\tWin rate\tKDA\tRank\t",
-	Mode.NORMAL: "#\tPlayer Name\tWin rate\tKDA\tTotal Games\t",
-	Mode.COLLECTOR: "#\tPlayer Name\tWeapons\tItems\tCharacters\tTotal"
+const title_keys: Dictionary[Mode, Array] = {
+	Mode.RAKING: ["#", "LB_COL_PLAYER_NAME", "LB_COL_WIN_RATE", "LB_COL_KDA", "LB_COL_RANK", ""],
+	Mode.NORMAL: ["#", "LB_COL_PLAYER_NAME", "LB_COL_WIN_RATE", "LB_COL_KDA", "LB_COL_TOTAL_GAMES", ""],
+	Mode.COLLECTOR: ["#", "LB_COL_PLAYER_NAME", "LB_COL_WEAPONS", "LB_COL_ITEMS", "LB_COL_CHARACTER", "LB_COL_TOTAL"]
 }
 
 const mode_to_api: Dictionary[Mode, String] = {
@@ -59,10 +59,11 @@ func _update_leaderboard() -> void:
 func _update_title_row() -> void:
 	var vbox_children = vbox_containter.get_children()
 	var item0 = vbox_children[0] as Control
-	var title_split = title_item[current_mode].split("\t")
+	var keys = title_keys[current_mode]
 	var title_labels = item0.get_node("HBoxContainer").get_children()
-	for i in range(title_split.size()):
-		title_labels[i].text = title_split[i]
+	for i in range(keys.size()):
+		var k: String = keys[i]
+		title_labels[i].text = "" if k == "" else (k if k == "#" else tr(k))
 
 func _clear_data_rows() -> void:
 	var vbox_children = vbox_containter.get_children()

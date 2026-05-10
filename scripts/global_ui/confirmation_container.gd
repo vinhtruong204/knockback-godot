@@ -15,8 +15,8 @@ func _ready() -> void:
 
 func show_confirm(item_type: String, price: int, currency_type: String, on_confirm: Callable) -> void:
 	_on_confirm = on_confirm
-	title_label.text = "Confirm Purchase"
-	content_label.text = "Buy %s for %d %s?" % [item_type.capitalize(), price, currency_type.capitalize()]
+	title_label.text = tr("DIALOG_CONFIRM_PURCHASE_TITLE")
+	content_label.text = tr("DIALOG_CONFIRM_PURCHASE_FMT") % [item_type.capitalize(), price, currency_type.capitalize()]
 
 
 func _on_confirm_pressed() -> void:

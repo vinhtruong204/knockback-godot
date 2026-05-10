@@ -53,19 +53,19 @@ func show_result(my_data: Dictionary, opponent_data: Dictionary) -> void:
 
 	# Header
 	if my_result == Enums.MatchResult.WIN:
-		result_label.text = "VICTORY"
+		result_label.text = tr("MATCH_RESULT_VICTORY")
 		result_label.add_theme_color_override("font_color", Color.GREEN)
 	else:
-		result_label.text = "DEFEAT"
+		result_label.text = tr("MATCH_RESULT_DEFEAT")
 		result_label.add_theme_color_override("font_color", Color.RED)
 
 	# Your row
 	p1_name.text = my_data.get("name", "You")
 	p1_kill.text = str(my_data.get("kill", 0))
 	p1_dead.text = str(my_data.get("dead", 0))
-	p1_gold.text = "+%d" % my_reward_gold
-	p1_exp.text = "+%d" % my_exp_earned
-	p1_rank.text = "%+d" % my_rank_point_change
+	p1_gold.text = tr("MATCH_DELTA_FMT") % my_reward_gold
+	p1_exp.text = tr("MATCH_DELTA_FMT") % my_exp_earned
+	p1_rank.text = tr("MATCH_RANK_DELTA_FMT") % my_rank_point_change
 
 	# Highlight your row
 	if my_result == Enums.MatchResult.WIN:
@@ -77,13 +77,13 @@ func show_result(my_data: Dictionary, opponent_data: Dictionary) -> void:
 	p2_name.text = opponent_data.get("name", "Opponent")
 	p2_kill.text = str(opponent_data.get("kill", 0))
 	p2_dead.text = str(opponent_data.get("dead", 0))
-	p2_gold.text = "+%d" % opponent_data.get("reward_gold", 0)
-	p2_exp.text = "+%d" % opponent_data.get("exp_earned", 0)
-	p2_rank.text = "%+d" % opponent_data.get("rank_point_change", 0)
+	p2_gold.text = tr("MATCH_DELTA_FMT") % opponent_data.get("reward_gold", 0)
+	p2_exp.text = tr("MATCH_DELTA_FMT") % opponent_data.get("exp_earned", 0)
+	p2_rank.text = tr("MATCH_RANK_DELTA_FMT") % opponent_data.get("rank_point_change", 0)
 
 	# Start countdown
 	_countdown = COUNTDOWN_SECONDS
-	confirm_btn.text = "Confirm (%d)" % _countdown
+	confirm_btn.text = tr("MATCH_CONFIRM_FMT") % _countdown
 	_countdown_timer.start()
 
 
@@ -99,13 +99,13 @@ func _on_countdown_tick() -> void:
 		_countdown_timer.stop()
 		_on_confirm_pressed()
 	else:
-		confirm_btn.text = "Confirm (%d)" % _countdown
+		confirm_btn.text = tr("MATCH_CONFIRM_FMT") % _countdown
 
 
 func _on_confirm_pressed() -> void:
 	_countdown_timer.stop()
 	confirm_btn.disabled = true
-	confirm_btn.text = "Leaving..."
+	confirm_btn.text = tr("MATCH_LEAVING")
 	var pid := ApiManager.player_id
 
 	if result_game_mode == NetworkManager.GAME_MODE_LAN:
@@ -155,16 +155,68 @@ func _on_confirm_pressed() -> void:
 		_finalize_and_leave()
 		return
 
+	_update_player_rank_after_match(pid)
+
+
+func _update_player_rank_after_match(pid: String) -> void:
 	PlayerApi.get_player_rank(pid, "1", func(response: Dictionary):
 		if response.get("ok", false):
 			var current_point: int = response.get("data", {}).get("current_point", 0)
 			var new_point: int = max(0, current_point + my_rank_point_change)
-			PlayerApi.update_player_rank(pid, "1", {"current_point": new_point}, func(_r2):
-				_finalize_and_leave()
+
+			CacheManager.invalidate("config:rank_configs")
+			ConfigApi.get_rank_configs(func(config_response: Dictionary) -> void:
+				var update_data := {"current_point": new_point}
+				if config_response.get("ok", false):
+					var resolved_rank_id := _resolve_rank_id_for_points(
+						new_point,
+						_extract_rank_configs(config_response.get("data", [])),
+						int(response.get("data", {}).get("rank_id", 0))
+					)
+					if resolved_rank_id > 0:
+						update_data["rank_id"] = resolved_rank_id
+				else:
+					print("Failed to get rank configs while updating rank: ", config_response.get("error", ""))
+
+				PlayerApi.update_player_rank(pid, "1", update_data, func(_r2):
+					_finalize_and_leave()
+				)
 			)
 		else:
 			_finalize_and_leave()
 	)
+
+
+func _extract_rank_configs(data: Variant) -> Array:
+	if data is Array:
+		return data
+
+	if data is Dictionary:
+		for key in ["items", "results", "rank_configs", "data"]:
+			var nested = data.get(key)
+			if nested is Array:
+				return nested
+
+	return []
+
+
+func _resolve_rank_id_for_points(points: int, rank_configs: Array, fallback_rank_id: int) -> int:
+	var configs: Array = []
+	for config in rank_configs:
+		if config is Dictionary:
+			configs.append(config)
+	if configs.is_empty():
+		return fallback_rank_id
+
+	configs.sort_custom(func(a, b): return int(a.get("min_point", 0)) < int(b.get("min_point", 0)))
+
+	var resolved_rank_id := int(configs[0].get("rank_id", fallback_rank_id))
+	for config in configs:
+		if points >= int(config.get("min_point", 0)):
+			resolved_rank_id = int(config.get("rank_id", resolved_rank_id))
+		else:
+			break
+	return resolved_rank_id
 
 
 func _finalize_and_leave() -> void:

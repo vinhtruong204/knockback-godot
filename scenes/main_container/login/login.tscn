@@ -52,7 +52,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Google" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer" unique_id=13569719]
 layout_mode = 2
-tooltip_text = "Google"
+tooltip_text = "LOGIN_TOOLTIP_GOOGLE"
 texture_normal = ExtResource("1_1qgm1")
 texture_pressed = ExtResource("2_74lrb")
 
@@ -64,7 +64,7 @@ offset_right = 195.0
 offset_bottom = 90.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-text = "GOOGLE"
+text = "LOGIN_GOOGLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -72,7 +72,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-tooltip_text = "Guest"
+tooltip_text = "LOGIN_TOOLTIP_GUEST"
 texture_normal = ExtResource("3_0msd8")
 texture_pressed = ExtResource("4_wc656")
 
@@ -84,7 +84,7 @@ offset_right = 195.0
 offset_bottom = 90.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-text = "GUEST"
+text = "LOGIN_GUEST"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -97,7 +97,7 @@ offset_left = -118.0
 offset_bottom = 73.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
-text = "Sign Out"
+text = "LOGIN_SIGN_OUT"
 
 [node name="TextEdit" type="TextEdit" parent="CanvasLayer/Control" unique_id=539872184]
 layout_mode = 0

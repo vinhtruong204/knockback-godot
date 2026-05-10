@@ -1,0 +1,140 @@
+keys,en,vi
+SETTINGS_TITLE,Settings,Cài đặt
+SETTINGS_MUSIC,Music,Nhạc
+SETTINGS_SOUND,Sound,Âm thanh
+SETTINGS_FPS,FPS,FPS
+SETTINGS_FPS_LOW,LOW,THẤP
+SETTINGS_FPS_MEDIUM,MEDIUM,TRUNG BÌNH
+SETTINGS_FPS_HIGH,HIGH,CAO
+SETTINGS_SIGN_OUT,Sign out,Đăng xuất
+SETTINGS_LANGUAGE,Language,Ngôn ngữ
+SETTINGS_CONTINUE,Continue,Tiếp tục
+SETTINGS_LEAVE,Leave,Rời trận
+COMMON_OK,OK,OK
+COMMON_CANCEL,Cancel,Hủy
+COMMON_BUY,Buy,Mua
+COMMON_CONFIRM,Confirm,Xác nhận
+COMMON_BACK,Lobby,Sảnh chờ
+COMMON_OWNED,Owned,Đã sở hữu
+COMMON_NEW,NEW!,MỚI!
+COMMON_UNKNOWN,Unknown,Không rõ
+COMMON_DASH,--,--
+COMMON_HELP,Help,Trợ giúp
+PROFILE_TAB_ACHIEVEMENT,Achievement,Thành tích
+LOGIN_GOOGLE,GOOGLE,GOOGLE
+LOGIN_GUEST,GUEST,KHÁCH
+LOGIN_SIGN_OUT,Sign Out,Đăng xuất
+LOGIN_TOOLTIP_GOOGLE,Google,Google
+LOGIN_TOOLTIP_GUEST,Guest,Khách
+LOGIN_NO_PLUGIN,No plugin installed,Chưa cài plugin
+LOGIN_VERIFYING,Verifying session...,Đang kiểm tra phiên...
+LOGIN_SESSION_EXPIRED,Session expired. Please sign in again.,Phiên đã hết hạn. Vui lòng đăng nhập lại.
+LOGIN_SESSION_VERIFY_FAIL_PREFIX,"Could not verify session: ","Không thể xác thực phiên: "
+LOGIN_SESSION_VERIFY_FAIL_SUFFIX,. Please try again.,. Vui lòng thử lại.
+LOGIN_SIGNING_IN,Signing in...,Đang đăng nhập...
+LOGIN_SUCCESS_PREFIX,"Logged in! Player ID: ","Đăng nhập thành công! ID: "
+LOGIN_ERR_PREFIX,"Error: ","Lỗi: "
+LOGIN_SIGNIN_FAIL_PREFIX,"Sign-in failed: ","Đăng nhập thất bại: "
+LOGIN_SIGNED_OUT,Signed out,Đã đăng xuất
+NOTIF_TITLE,Notification,Thông báo
+NOTIF_PURCHASE_SUCCESS,Purchase Successful!,Mua thành công!
+NOTIF_PURCHASE_BODY_FMT,You bought a %s,Bạn đã mua %s
+NOTIF_REWARD_CLAIMED,Reward Claimed!,Đã nhận thưởng!
+NOTIF_REWARD_BODY_FMT,"%s\n+%d %s","%s\n+%d %s"
+NOTIF_ERROR,Error,Lỗi
+DIALOG_CONFIRM_PURCHASE_TITLE,Confirm Purchase,Xác nhận mua
+DIALOG_CONFIRM_PURCHASE_FMT,Buy %s for %d %s?,Mua %s với giá %d %s?
+ITEM_PROP_TYPE,Type,Loại
+ITEM_PROP_DAMAGE,Damage,Sát thương
+ITEM_PROP_FIRE_RATE,Fire Rate,Tốc độ bắn
+ITEM_PROP_HP,HP,Máu
+ITEM_PROP_RUN_SPEED,Run Speed,Tốc độ chạy
+LOBBY_LEADERBOARD,Leaderboard,Bảng xếp hạng
+LOBBY_RANKING,Ranking,Xếp hạng
+LOBBY_NORMAL,Normal,Thường
+LOBBY_LAN,LAN,LAN
+LOBBY_EQUIP,Equip,Trang bị
+LOBBY_TASK,Task,Nhiệm vụ
+LOBBY_WHEEL,Wheel,Vòng quay
+LOBBY_SHOP,Shop,Cửa hàng
+LOBBY_TAB_DAILY,Daily,Hằng ngày
+LOBBY_TAB_WEEKLY,Weekly,Hằng tuần
+LOBBY_BACK_BTN,Lobby,Sảnh chờ
+LB_COL_PLAYER_NAME,Player Name,Tên người chơi
+LB_COL_WEAPONS,Weapons,Vũ khí
+LB_COL_ITEMS,Items,Vật phẩm
+LB_COL_CHARACTER,Character,Nhân vật
+LB_COL_TOTAL,Total,Tổng
+LB_COL_WIN_RATE,Win rate,Tỉ lệ thắng
+LB_COL_KDA,KDA,KDA
+LB_COL_RANK,Rank,Hạng
+LB_COL_TOTAL_GAMES,Total Games,Tổng trận
+LB_TAB_COLLECTOR,Collector,Sưu tầm
+RANK_BRONZE,Bronze,Đồng
+RANK_SILVER,Silver,Bạc
+RANK_GOLD,Gold,Vàng
+RANK_PLATINUM,Platinum,Bạch kim
+RANK_DIAMOND,Diamond,Kim cương
+RANK_MASTER,Master,Cao thủ
+RANK_TIER_FMT,%s: %d - %d,%s: %d - %d
+MM_SEARCHING,Searching for match...,Đang tìm trận...
+MM_SEARCHING_POS_FMT,Searching... (position %d),Đang tìm... (vị trí %d)
+MM_FOUND,Match Found!,Đã tìm thấy trận!
+MM_CANCEL,Cancel,Hủy
+MM_FIGHT,Fight,Chiến!
+MM_MAP,Map,Bản đồ
+MM_MODE,Mode,Chế độ
+MM_CHOOSE_MAP,Choose Map,Chọn bản đồ
+MM_HOST,Host,Chủ phòng
+MM_CLIENT,Client,Người chơi
+MM_START,Start,Bắt đầu
+MM_PLEASE_CHOOSE_MAP,Please choose a map first,Vui lòng chọn bản đồ
+MM_INVALID_PORT_NAN,Invalid port: not a number,Cổng không hợp lệ: không phải là số
+MM_INVALID_PORT_RANGE,Invalid port: must be between 1024 and 65535,Cổng không hợp lệ: phải nằm trong khoảng 1024 - 65535
+MM_INVALID_HOST_IP,Invalid host IP,Địa chỉ IP không hợp lệ
+MM_NO_WIFI_IP,Error: No WiFi IP found,Lỗi: Không tìm thấy IP WiFi
+MM_UNEXPECTED_STATUS,Unexpected matchmaking status,Trạng thái tìm trận bất thường
+MM_JOIN_FAILED,Failed to join matchmaking,Không thể vào hàng đợi
+NETWORK_CONNECT_FAIL,Could not connect to game server,Không thể kết nối tới máy chủ
+NETWORK_CLIENT_ERR_PREFIX,"Could not create client: ","Không thể tạo client: "
+NETWORK_SERVER_ERR_PREFIX,"Could not start server on port ","Không thể khởi động server trên cổng "
+MODE_FREE_FOR_ALL,Free for all,Đấu loạn
+MODE_1V1,1v1,1v1
+MODE_SEARCH_DESTROY,Search & Destroy,Tìm và Diệt
+MAP_NIGHT,Night,Đêm tối
+MAP_ICE,Ice,Băng giá
+MAP_DUST,Dust,Sa mạc
+MAP_FOREST,Forest,Rừng
+SHOP_TAB_RECOMMENDED,Recommended,Đề xuất
+SHOP_TAB_DAILY_DISCOUNT,Daily Discount,Ưu đãi hằng ngày
+SHOP_TAB_WEAPON,Weapon,Vũ khí
+SHOP_TAB_ITEM,Item,Vật phẩm
+SHOP_TAB_CHARACTER,Character,Nhân vật
+WEAPON_PRIMARY,Primary,Vũ khí chính
+WEAPON_SECONDARY,Secondary,Vũ khí phụ
+WEAPON_MELEE,Melee,Cận chiến
+CURRENCY_GOLD,Gold,Vàng
+CURRENCY_DIAMOND,Diamond,Kim cương
+PURCHASE_NOTIF_TITLE,Currency Top-Up,Nạp tiền tệ
+PURCHASE_FAIL_FMT,Purchase failed: %s,Mua thất bại: %s
+WHEEL_RESULTS_TITLE,Spin Results,Kết quả vòng quay
+WHEEL_DUPLICATE_FMT,Owned → +%d %s,Đã có → +%d %s
+WHEEL_REWARD_FMT,+%d %s,+%d %s
+TASK_PLACEHOLDER_DESC,Eliminate Enemies,Tiêu diệt kẻ thù
+TASK_CLAIM_FAILED,Failed to claim reward,Không thể nhận thưởng
+ACH_PLACEHOLDER_NAME,Achievement Name,Tên thành tích
+ACH_PLACEHOLDER_DESC,Requirement description,Mô tả yêu cầu
+ACH_PROGRESS_FMT,Progress: %d,Tiến độ: %d
+ACH_UNLOCKED_FMT,Unlocked %s,Đã mở khóa %s
+MATCH_RESULT_VICTORY,VICTORY,CHIẾN THẮNG
+MATCH_RESULT_DEFEAT,DEFEAT,THẤT BẠI
+MATCH_COL_NAME,Name,Tên
+MATCH_COL_KILL,Kill,Hạ gục
+MATCH_COL_DEAD,Dead,Tử trận
+MATCH_COL_GOLD,Gold,Vàng
+MATCH_COL_EXP,EXP,KN
+MATCH_COL_RANK,Rank,Hạng
+MATCH_DELTA_FMT,+%d,+%d
+MATCH_RANK_DELTA_FMT,%+d,%+d
+MATCH_CONFIRM_FMT,Confirm (%d),Xác nhận (%d)
+MATCH_LEAVING,Leaving...,Đang rời trận...

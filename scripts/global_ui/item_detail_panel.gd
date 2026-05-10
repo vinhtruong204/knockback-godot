@@ -30,10 +30,10 @@ func show_detail(item_id: int, item_type: String, price: int, currency_type: Str
 
 	# Owned state
 	if is_owned:
-		buy_button.text = "Owned"
+		buy_button.text = tr("COMMON_OWNED")
 		buy_button.disabled = true
 	else:
-		buy_button.text = "Buy"
+		buy_button.text = tr("COMMON_BUY")
 		buy_button.disabled = false
 
 	# Fetch config and populate
@@ -42,25 +42,25 @@ func show_detail(item_id: int, item_type: String, price: int, currency_type: Str
 			ConfigApi.get_weapon(item_id, func(response: Dictionary):
 				if response.get("ok", false):
 					var data = response.get("data", {})
-					name_label.text = data.get("name", "Unknown")
+					name_label.text = data.get("name", tr("COMMON_UNKNOWN"))
 					var image_name = data.get("image", "")
 					if image_name != "":
 						item_preview.texture = load("res://assets/game/weapon/static/%s" % image_name)
-					_add_property("Type", data.get("weapon_type", "").capitalize())
-					_add_property("Damage", str(data.get("damage", 0)))
-					_add_property("Fire Rate", str(data.get("fire_rate", 0.0)))
+					_add_property(tr("ITEM_PROP_TYPE"), data.get("weapon_type", "").capitalize())
+					_add_property(tr("ITEM_PROP_DAMAGE"), str(data.get("damage", 0)))
+					_add_property(tr("ITEM_PROP_FIRE_RATE"), str(data.get("fire_rate", 0.0)))
 			)
 		Enums.ItemType.CHARACTER:
 			ConfigApi.get_character(item_id, func(response: Dictionary):
 				if response.get("ok", false):
 					var data = response.get("data", {})
-					name_label.text = data.get("name", "Unknown")
+					name_label.text = data.get("name", tr("COMMON_UNKNOWN"))
 					var texture_name = data.get("texture", "")
 					if texture_name != "":
 						item_preview.texture = load("res://assets/game/player/%s" % texture_name)
-					_add_property("Type", data.get("character_type", "").capitalize())
-					_add_property("HP", str(data.get("hp", 0)))
-					_add_property("Run Speed", str(data.get("run_speed", 0.0)))
+					_add_property(tr("ITEM_PROP_TYPE"), data.get("character_type", "").capitalize())
+					_add_property(tr("ITEM_PROP_HP"), str(data.get("hp", 0)))
+					_add_property(tr("ITEM_PROP_RUN_SPEED"), str(data.get("run_speed", 0.0)))
 			)
 		_:
 			name_label.text = item_type.capitalize()

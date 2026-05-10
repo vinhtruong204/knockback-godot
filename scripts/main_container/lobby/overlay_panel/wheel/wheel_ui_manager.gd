@@ -185,6 +185,7 @@ func _do_spin(wheel_type: String, spin_count: int) -> void:
 				_show_single_result(results[0], wheel_type)
 			else:
 				_show_multi_results(results, wheel_type)
+			AudioManager.play_sfx(&"lucky_wheel_reward")
 			_refresh_after_spin()
 		)
 	)
@@ -258,6 +259,7 @@ func _highlight_item(items: Array, index: int) -> void:
 		items[_current_highlight_index].set_highlighted(false)
 	if index >= 0 and index < items.size():
 		items[index].set_highlighted(true)
+		AudioManager.play_sfx(&"lucky_wheel_ting")
 	_current_highlight_index = index
 #endregion
 

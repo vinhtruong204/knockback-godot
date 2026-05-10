@@ -15,6 +15,7 @@ func _ready() -> void:
 func _on_throw_bomb() -> void:
 	if not weapon_hold_handler.consume_grenade():
 		return
+	AudioManager.play_sfx(&"throw_bomb")
 
 	var bomb_barrel_position: Vector2 = Vector2()
 	var direction: PlayerFlip.Direction = player_flip.get_player_direction()

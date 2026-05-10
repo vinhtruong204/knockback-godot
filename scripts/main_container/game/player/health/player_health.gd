@@ -57,6 +57,7 @@ func take_damage_rpc(damage: int) -> void:
 	if not is_multiplayer_authority(): return
 
 	health -= damage
+	AudioManager.play_sfx(&"character_hit")
 
 	if health <= 0:
 		# Reset health and decrease heart

@@ -27,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://pkh4vcgyq8u1" path="res://assets/lobby/bottom_bar/equipment/water-gun.png" id="19_8vi03"]
 [ext_resource type="Texture2D" uid="uid://6lp2p1pncgxs" path="res://assets/lobby/bottom_bar/equipment/knife.png" id="20_qkvb6"]
 [ext_resource type="Script" uid="uid://0wxgl2n7id6k" path="res://scripts/main_container/lobby/overlay_panel/profile/player_profile_panel.gd" id="21_3nquo"]
-[ext_resource type="Texture2D" uid="uid://cbqjpj6oiapq8" path="res://assets/lobby/bottom_bar/equipment/grenade.png" id="21_qkvb6"]
 [ext_resource type="PackedScene" uid="uid://ddil1hqxl3u0d" path="res://scenes/main_container/lobby/shop/shop_discount_item.tscn" id="22_nv17j"]
 [ext_resource type="Script" uid="uid://8i8mck3xo6h8" path="res://scripts/main_container/lobby/overlay_panel/leaderboard/leaderboard_panel.gd" id="23_3d233"]
 [ext_resource type="Script" uid="uid://byvqrb4x87lhl" path="res://scripts/main_container/lobby/overlay_panel/shop/shop_ui_manager.gd" id="23_idp30"]
@@ -51,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://cqaq60yiorv4y" path="res://assets/lobby/middle/rank/gold.png" id="34_8od1p"]
 [ext_resource type="Texture2D" uid="uid://cbbunphpr4sxr" path="res://assets/lobby/middle/normal_config/team_size_icon.png" id="34_iyufi"]
 [ext_resource type="Script" uid="uid://ch4f878ym0qrx" path="res://scripts/main_container/lobby/overlay_panel/shop/item/shop_items.gd" id="34_v5bt6"]
+[ext_resource type="Texture2D" uid="uid://cm5grwlxf0lba" path="res://assets/game/weapon/static/frag-grenade.png" id="34_vk22e"]
 [ext_resource type="Script" uid="uid://cgng515gvynwx" path="res://scripts/main_container/lobby/top_overlay/settings/settings_controller.gd" id="35_hur8o"]
 [ext_resource type="Texture2D" uid="uid://dfbdwtxhasppi" path="res://assets/lobby/middle/rank/platinum.png" id="35_n1kpd"]
 [ext_resource type="Script" uid="uid://bq3545jnijnhj" path="res://scripts/main_container/lobby/top_overlay/purchase/purchase_controller.gd" id="35_rjdw1"]
@@ -66,6 +66,7 @@
 [ext_resource type="Texture2D" uid="uid://caqrygjgvg3bm" path="res://assets/lobby/background_overlay/lucky_wheel.png" id="60_vk22e"]
 [ext_resource type="PackedScene" uid="uid://bq0tjg1s7a731" path="res://scenes/main_container/lobby/achievement/achievement_card.tscn" id="90_achiev"]
 [ext_resource type="Theme" uid="uid://c2fgmjus4cmtj" path="res://assets/ui/lobby_buttons.tres" id="99_lobby_theme"]
+[ext_resource type="PackedScene" uid="uid://b3recmcombo24" path="res://scenes/main_container/lobby/shop/shop_recommended_combo.tscn" id="201_combo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yapo1"]
 texture = ExtResource("1_psu8p")
@@ -285,7 +286,7 @@ offset_right = 108.0
 offset_bottom = 60.5
 grow_vertical = 2
 theme_type_variation = &"PanelButton"
-text = "Leaderboard"
+text = "LOBBY_LEADERBOARD"
 icon = ExtResource("9_hdsot")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -356,7 +357,7 @@ offset_bottom = 113.0
 grow_horizontal = 2
 theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 35
-text = "Ranking"
+text = "LOBBY_RANKING"
 icon = ExtResource("9_rmwd2")
 expand_icon = true
 
@@ -370,7 +371,7 @@ offset_right = 206.0
 grow_vertical = 0
 theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 35
-text = "Normal"
+text = "LOBBY_NORMAL"
 icon = ExtResource("10_docll")
 expand_icon = true
 
@@ -387,7 +388,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 35
-text = "LAN"
+text = "LOBBY_LAN"
 icon = ExtResource("11_hwkks")
 expand_icon = true
 
@@ -416,7 +417,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 25
-text = "Equip"
+text = "LOBBY_EQUIP"
 icon = ExtResource("12_1rix5")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -427,7 +428,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 25
-text = "Task"
+text = "LOBBY_TASK"
 icon = ExtResource("13_nkg57")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -450,7 +451,7 @@ alignment = 1
 layout_mode = 2
 theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 25
-text = "Wheel"
+text = "LOBBY_WHEEL"
 icon = ExtResource("14_rmwd2")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -460,7 +461,7 @@ expand_icon = true
 layout_mode = 2
 theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 25
-text = "Shop"
+text = "LOBBY_SHOP"
 icon = ExtResource("15_trvm1")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -602,18 +603,17 @@ alignment = 1
 [node name="RankingBtn" type="Button" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer" unique_id=1387583681]
 layout_mode = 2
 theme_type_variation = &"TabButton"
-text = "Ranking"
+text = "LOBBY_RANKING"
 
 [node name="NormalBtn" type="Button" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer" unique_id=1379107573]
 layout_mode = 2
 theme_type_variation = &"TabButton"
-text = "Normal
-"
+text = "LOBBY_NORMAL"
 
 [node name="AchivementBtn" type="Button" parent="Root/OverlayContainer/PlayerProfile/StatsPanel/HBoxContainer" unique_id=1041056605]
 layout_mode = 2
 theme_type_variation = &"TabButton"
-text = "Achivement"
+text = "PROFILE_TAB_ACHIEVEMENT"
 
 [node name="ContentContainer" type="Control" parent="Root/OverlayContainer/PlayerProfile/StatsPanel" unique_id=215379027]
 custom_minimum_size = Vector2(384, 240)
@@ -729,19 +729,19 @@ alignment = 1
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_type_variation = &"TabButton"
-text = "Ranking"
+text = "LOBBY_RANKING"
 
 [node name="NormalBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/Control/VBoxContainer" unique_id=1890209324]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_type_variation = &"TabButton"
-text = "Normal"
+text = "LOBBY_NORMAL"
 
 [node name="CollectorBtn" type="Button" parent="Root/OverlayContainer/Leaderboard/Panel/Control/VBoxContainer" unique_id=1700520144]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_type_variation = &"TabButton"
-text = "Collector"
+text = "LB_TAB_COLLECTOR"
 
 [node name="StatsPanel" type="Panel" parent="Root/OverlayContainer/Leaderboard/Panel/Control" unique_id=1661980868]
 layout_mode = 1
@@ -789,31 +789,31 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=1159703347]
 layout_mode = 2
-text = "Player Name"
+text = "LB_COL_PLAYER_NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=904228805]
 layout_mode = 2
-text = "Weapons"
+text = "LB_COL_WEAPONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=216309490]
 layout_mode = 2
-text = "Items"
+text = "LB_COL_ITEMS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=292833585]
 layout_mode = 2
-text = "Character"
+text = "LB_COL_CHARACTER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Title/HBoxContainer" unique_id=1844522400]
 layout_mode = 2
-text = "Total"
+text = "LB_COL_TOTAL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -839,31 +839,31 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item1/HBoxContainer" unique_id=1124311098]
 layout_mode = 2
-text = "Player Name"
+text = "LB_COL_PLAYER_NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item1/HBoxContainer" unique_id=1159245146]
 layout_mode = 2
-text = "Weapons"
+text = "LB_COL_WEAPONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item1/HBoxContainer" unique_id=663197496]
 layout_mode = 2
-text = "Items"
+text = "LB_COL_ITEMS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item1/HBoxContainer" unique_id=595853708]
 layout_mode = 2
-text = "Character"
+text = "LB_COL_CHARACTER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item1/HBoxContainer" unique_id=292772423]
 layout_mode = 2
-text = "Total"
+text = "LB_COL_TOTAL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -889,31 +889,31 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item2/HBoxContainer" unique_id=1591714976]
 layout_mode = 2
-text = "Player Name"
+text = "LB_COL_PLAYER_NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item2/HBoxContainer" unique_id=1766358521]
 layout_mode = 2
-text = "Weapons"
+text = "LB_COL_WEAPONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item2/HBoxContainer" unique_id=654419928]
 layout_mode = 2
-text = "Items"
+text = "LB_COL_ITEMS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item2/HBoxContainer" unique_id=2337811]
 layout_mode = 2
-text = "Character"
+text = "LB_COL_CHARACTER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item2/HBoxContainer" unique_id=1909308693]
 layout_mode = 2
-text = "Total"
+text = "LB_COL_TOTAL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -939,31 +939,31 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item3/HBoxContainer" unique_id=1894476453]
 layout_mode = 2
-text = "Player Name"
+text = "LB_COL_PLAYER_NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item3/HBoxContainer" unique_id=1063853929]
 layout_mode = 2
-text = "Weapons"
+text = "LB_COL_WEAPONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item3/HBoxContainer" unique_id=2060746125]
 layout_mode = 2
-text = "Items"
+text = "LB_COL_ITEMS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item3/HBoxContainer" unique_id=371951542]
 layout_mode = 2
-text = "Character"
+text = "LB_COL_CHARACTER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item3/HBoxContainer" unique_id=2138452054]
 layout_mode = 2
-text = "Total"
+text = "LB_COL_TOTAL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -989,31 +989,31 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item4/HBoxContainer" unique_id=385083505]
 layout_mode = 2
-text = "Player Name"
+text = "LB_COL_PLAYER_NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item4/HBoxContainer" unique_id=2102957152]
 layout_mode = 2
-text = "Weapons"
+text = "LB_COL_WEAPONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item4/HBoxContainer" unique_id=1776581586]
 layout_mode = 2
-text = "Items"
+text = "LB_COL_ITEMS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item4/HBoxContainer" unique_id=2079011720]
 layout_mode = 2
-text = "Character"
+text = "LB_COL_CHARACTER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item4/HBoxContainer" unique_id=1850039690]
 layout_mode = 2
-text = "Total"
+text = "LB_COL_TOTAL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1039,31 +1039,31 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item5/HBoxContainer" unique_id=1574494836]
 layout_mode = 2
-text = "Player Name"
+text = "LB_COL_PLAYER_NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item5/HBoxContainer" unique_id=1326784387]
 layout_mode = 2
-text = "Weapons"
+text = "LB_COL_WEAPONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item5/HBoxContainer" unique_id=914280759]
 layout_mode = 2
-text = "Items"
+text = "LB_COL_ITEMS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item5/HBoxContainer" unique_id=1411178151]
 layout_mode = 2
-text = "Character"
+text = "LB_COL_CHARACTER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item5/HBoxContainer" unique_id=1318140316]
 layout_mode = 2
-text = "Total"
+text = "LB_COL_TOTAL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1089,31 +1089,31 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item6/HBoxContainer" unique_id=853151781]
 layout_mode = 2
-text = "Player Name"
+text = "LB_COL_PLAYER_NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item6/HBoxContainer" unique_id=1723132232]
 layout_mode = 2
-text = "Weapons"
+text = "LB_COL_WEAPONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item6/HBoxContainer" unique_id=1730903118]
 layout_mode = 2
-text = "Items"
+text = "LB_COL_ITEMS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item6/HBoxContainer" unique_id=864602752]
 layout_mode = 2
-text = "Character"
+text = "LB_COL_CHARACTER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="Root/OverlayContainer/Leaderboard/Panel/Control/StatsPanel/VBoxContainer/Item6/HBoxContainer" unique_id=1980404050]
 layout_mode = 2
-text = "Total"
+text = "LB_COL_TOTAL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1220,8 +1220,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("21_qkvb6")
+texture = ExtResource("34_vk22e")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="CharacterContainer" type="HBoxContainer" parent="Root/OverlayContainer/Equipment" unique_id=1659902422]
 layout_mode = 1
@@ -1298,19 +1299,19 @@ alignment = 1
 custom_minimum_size = Vector2(70, 40)
 layout_mode = 2
 theme_type_variation = &"TabButton"
-text = "Weapon"
+text = "SHOP_TAB_WEAPON"
 
 [node name="ItemBtn" type="Button" parent="Root/OverlayContainer/Equipment/SelectControl/HBoxContainer" unique_id=494570790]
 custom_minimum_size = Vector2(70, 40)
 layout_mode = 2
 theme_type_variation = &"TabButton"
-text = "Item"
+text = "SHOP_TAB_ITEM"
 
 [node name="CharacterBtn" type="Button" parent="Root/OverlayContainer/Equipment/SelectControl/HBoxContainer" unique_id=1294317994]
 custom_minimum_size = Vector2(70, 40)
 layout_mode = 2
 theme_type_variation = &"TabButton"
-text = "Character"
+text = "LB_COL_CHARACTER"
 
 [node name="Panel" type="Panel" parent="Root/OverlayContainer/Equipment/SelectControl" unique_id=1179923222]
 layout_mode = 1
@@ -1390,7 +1391,7 @@ offset_top = 20.0
 offset_right = 349.0
 offset_bottom = 62.0
 theme_override_font_sizes/font_size = 30
-text = "Diamond"
+text = "RANK_DIAMOND"
 horizontal_alignment = 1
 
 [node name="RankTexture" type="TextureRect" parent="Root/OverlayContainer/Ranking/Panel" unique_id=244299750]
@@ -1409,6 +1410,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("31_l8m0j")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="CurrentPoint" type="Label" parent="Root/OverlayContainer/Ranking/Panel" unique_id=1829864765]
 layout_mode = 0
@@ -1436,7 +1438,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_type_variation = &"PrimaryButton"
 theme_override_font_sizes/font_size = 30
-text = "Fight"
+text = "MM_FIGHT"
 icon = ExtResource("12_1rix5")
 expand_icon = true
 
@@ -1488,7 +1490,7 @@ offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 25
-text = "Help"
+text = "COMMON_HELP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1522,7 +1524,7 @@ columns = 2
 custom_minimum_size = Vector2(280, 200)
 layout_mode = 2
 mouse_filter = 2
-text = "Bronze: 0 - 499"
+text = "RANK_BRONZE"
 icon = ExtResource("32_bbxsu")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1532,7 +1534,7 @@ expand_icon = true
 custom_minimum_size = Vector2(280, 200)
 layout_mode = 2
 mouse_filter = 2
-text = "Silver: 500 - 999"
+text = "RANK_SILVER"
 icon = ExtResource("33_7vi1o")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1542,7 +1544,7 @@ expand_icon = true
 custom_minimum_size = Vector2(280, 200)
 layout_mode = 2
 mouse_filter = 2
-text = "Gold: 1000 - 1499"
+text = "RANK_GOLD"
 icon = ExtResource("34_8od1p")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1552,7 +1554,7 @@ expand_icon = true
 custom_minimum_size = Vector2(280, 200)
 layout_mode = 2
 mouse_filter = 2
-text = "Platinum: 1500 - 1999"
+text = "RANK_PLATINUM"
 icon = ExtResource("35_n1kpd")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1562,7 +1564,7 @@ expand_icon = true
 custom_minimum_size = Vector2(280, 200)
 layout_mode = 2
 mouse_filter = 2
-text = "Diamond: 2000 - 2499"
+text = "RANK_DIAMOND"
 icon = ExtResource("31_l8m0j")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1572,7 +1574,7 @@ expand_icon = true
 custom_minimum_size = Vector2(280, 200)
 layout_mode = 2
 mouse_filter = 2
-text = "Master: 2500 - 9999"
+text = "RANK_MASTER"
 icon = ExtResource("36_7vi1o")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1614,7 +1616,7 @@ offset_right = 150.0
 offset_bottom = 60.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 22
-text = "Searching for match..."
+text = "MM_SEARCHING"
 horizontal_alignment = 1
 
 [node name="TimerLabel" type="Label" parent="Root/OverlayContainer/Ranking/MatchmakingPopup/Panel" unique_id=1032392910]
@@ -1648,7 +1650,7 @@ offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 22
-text = "Cancel"
+text = "COMMON_CANCEL"
 
 [node name="Normal" type="Panel" parent="Root/OverlayContainer" unique_id=1897805840]
 visible = false
@@ -1697,7 +1699,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 25
-text = "Map"
+text = "MM_MAP"
 icon = ExtResource("33_cyr2y")
 alignment = 2
 expand_icon = true
@@ -1709,7 +1711,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 25
-text = "Free for all"
+text = "MODE_FREE_FOR_ALL"
 icon = ExtResource("32_1qp4n")
 alignment = 2
 expand_icon = true
@@ -1721,7 +1723,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 25
-text = "1v1"
+text = "MODE_1V1"
 icon = ExtResource("34_iyufi")
 alignment = 2
 expand_icon = true
@@ -1733,7 +1735,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_type_variation = &"PrimaryButton"
 theme_override_font_sizes/font_size = 30
-text = "Fight"
+text = "MM_FIGHT"
 icon = ExtResource("12_1rix5")
 expand_icon = true
 
@@ -1785,7 +1787,7 @@ offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 25
-text = "Choose Map"
+text = "MM_CHOOSE_MAP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1819,7 +1821,7 @@ columns = 2
 custom_minimum_size = Vector2(280, 220)
 layout_mode = 2
 theme_type_variation = &"PanelButton"
-text = "Night"
+text = "MAP_NIGHT"
 icon = ExtResource("41_7vi1o")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1829,7 +1831,7 @@ expand_icon = true
 custom_minimum_size = Vector2(280, 220)
 layout_mode = 2
 theme_type_variation = &"PanelButton"
-text = "Ice"
+text = "MAP_ICE"
 icon = ExtResource("42_8od1p")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1839,7 +1841,7 @@ expand_icon = true
 custom_minimum_size = Vector2(280, 220)
 layout_mode = 2
 theme_type_variation = &"PanelButton"
-text = "Dust"
+text = "MAP_DUST"
 icon = ExtResource("43_7vi1o")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1849,7 +1851,7 @@ expand_icon = true
 custom_minimum_size = Vector2(280, 220)
 layout_mode = 2
 theme_type_variation = &"PanelButton"
-text = "Forest"
+text = "MAP_FOREST"
 icon = ExtResource("44_8od1p")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1909,7 +1911,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 30
-text = "Mode"
+text = "MM_MODE"
 icon = ExtResource("32_1qp4n")
 alignment = 2
 expand_icon = true
@@ -1921,7 +1923,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 30
-text = "Map"
+text = "MM_MAP"
 icon = ExtResource("33_cyr2y")
 alignment = 2
 expand_icon = true
@@ -1933,7 +1935,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_type_variation = &"PanelButton"
 theme_override_font_sizes/font_size = 30
-text = "1v1"
+text = "MODE_1V1"
 icon = ExtResource("34_iyufi")
 alignment = 2
 expand_icon = true
@@ -1980,7 +1982,7 @@ custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 theme_type_variation = &"PrimaryButton"
 theme_override_font_sizes/font_size = 30
-text = "Start"
+text = "MM_START"
 expand_icon = true
 
 [node name="Shop" type="Panel" parent="Root/OverlayContainer" unique_id=271100709]
@@ -2027,31 +2029,31 @@ alignment = 1
 layout_mode = 2
 theme_type_variation = &"TabButton"
 theme_override_font_sizes/font_size = 22
-text = "Recommended"
+text = "SHOP_TAB_RECOMMENDED"
 
 [node name="DailyDiscountBtn" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=1525398718]
 layout_mode = 2
 theme_type_variation = &"TabButton"
 theme_override_font_sizes/font_size = 22
-text = "Daily Discount"
+text = "SHOP_TAB_DAILY_DISCOUNT"
 
 [node name="WeaponBtn" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=802948477]
 layout_mode = 2
 theme_type_variation = &"TabButton"
 theme_override_font_sizes/font_size = 22
-text = "Weapon"
+text = "SHOP_TAB_WEAPON"
 
 [node name="ItemBtn" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=2101376796]
 layout_mode = 2
 theme_type_variation = &"TabButton"
 theme_override_font_sizes/font_size = 22
-text = "Item"
+text = "SHOP_TAB_ITEM"
 
 [node name="CharacterBtn" type="Button" parent="Root/OverlayContainer/Shop/HBoxContainer" unique_id=1074166852]
 layout_mode = 2
 theme_type_variation = &"TabButton"
 theme_override_font_sizes/font_size = 22
-text = "Character"
+text = "LB_COL_CHARACTER"
 
 [node name="ItemsContainer" type="Control" parent="Root/OverlayContainer/Shop" unique_id=1370765152]
 layout_mode = 1
@@ -2077,144 +2079,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend" unique_id=207956449]
+[node name="ShopRecommendedCombo" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend" instance=ExtResource("201_combo")]
+unique_id=207956449
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 50
-alignment = 1
-
-[node name="Panel" type="Panel" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer" unique_id=224189099]
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-theme_type_variation = &"GlowCard"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel" unique_id=115520139]
-layout_mode = 1
-anchors_preset = 13
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -65.5
-offset_right = 65.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -140.0
+offset_right = 350.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 14
-alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel/VBoxContainer" unique_id=729895993]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("18_uit80")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel/VBoxContainer" unique_id=125169344]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("12_1rix5")
-expand_mode = 1
-
-[node name="TextureRect3" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel/VBoxContainer" unique_id=929328942]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("20_qkvb6")
-expand_mode = 1
-
-[node name="BuyBtn" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel/VBoxContainer" unique_id=1750978681]
-layout_mode = 2
-text = "10000"
-icon = ExtResource("4_62jta")
-icon_alignment = 2
-expand_icon = true
-
-[node name="Panel2" type="Panel" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer" unique_id=1963220034]
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-theme_type_variation = &"GlowCard"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2" unique_id=444588639]
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -65.5
-offset_right = 65.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 14
-alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2/VBoxContainer" unique_id=617193942]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("18_uit80")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2/VBoxContainer" unique_id=1873130795]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("12_1rix5")
-expand_mode = 1
-
-[node name="TextureRect3" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2/VBoxContainer" unique_id=1603467233]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("20_qkvb6")
-expand_mode = 1
-
-[node name="BuyBtn" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel2/VBoxContainer" unique_id=368162815]
-layout_mode = 2
-text = "10000"
-icon = ExtResource("4_62jta")
-icon_alignment = 2
-expand_icon = true
-
-[node name="Panel3" type="Panel" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer" unique_id=1401309630]
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-theme_type_variation = &"GlowCard"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3" unique_id=1857585628]
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -65.5
-offset_right = 65.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 14
-alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3/VBoxContainer" unique_id=1476724639]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("18_uit80")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3/VBoxContainer" unique_id=238468107]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("12_1rix5")
-expand_mode = 1
-
-[node name="TextureRect3" type="TextureRect" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3/VBoxContainer" unique_id=1694306382]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = ExtResource("20_qkvb6")
-expand_mode = 1
-
-[node name="BuyBtn" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Recommend/HBoxContainer/Panel3/VBoxContainer" unique_id=511404244]
-layout_mode = 2
-text = "1000"
-icon = ExtResource("5_u3wsq")
-icon_alignment = 2
-expand_icon = true
 
 [node name="Daily Discount" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1884015232]
 custom_minimum_size = Vector2(750, 309)
@@ -2306,17 +2184,17 @@ alignment = 1
 [node name="Button" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/HBoxContainer" unique_id=238826099]
 layout_mode = 2
 theme_type_variation = &"PanelButton"
-text = "Primary"
+text = "WEAPON_PRIMARY"
 
 [node name="Button5" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/HBoxContainer" unique_id=59211790]
 layout_mode = 2
 theme_type_variation = &"PanelButton"
-text = "Secondary"
+text = "WEAPON_SECONDARY"
 
 [node name="Button2" type="Button" parent="Root/OverlayContainer/Shop/ItemsContainer/Weapon/HBoxContainer" unique_id=582030692]
 layout_mode = 2
 theme_type_variation = &"PanelButton"
-text = "Melee"
+text = "WEAPON_MELEE"
 
 [node name="Item" type="Control" parent="Root/OverlayContainer/Shop/ItemsContainer" unique_id=1800100722]
 visible = false
@@ -2450,13 +2328,13 @@ alignment = 1
 layout_mode = 2
 theme_type_variation = &"TabButton"
 theme_override_font_sizes/font_size = 30
-text = "Gold"
+text = "CURRENCY_GOLD"
 
 [node name="DiamondBtn" type="Button" parent="Root/OverlayContainer/Wheel/Control/HBoxContainer" unique_id=1854966229]
 layout_mode = 2
 theme_type_variation = &"TabButton"
 theme_override_font_sizes/font_size = 30
-text = "Diamond"
+text = "CURRENCY_DIAMOND"
 
 [node name="WheelContainer" type="Control" parent="Root/OverlayContainer/Wheel/Control" unique_id=2126800399]
 layout_mode = 1
@@ -2834,13 +2712,13 @@ alignment = 1
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_type_variation = &"TabButton"
-text = "Daily "
+text = "LOBBY_TAB_DAILY"
 
 [node name="Weekly" type="Button" parent="Root/OverlayContainer/Task/Control/VBoxContainer" unique_id=1012983784]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_type_variation = &"TabButton"
-text = "Weekly"
+text = "LOBBY_TAB_WEEKLY"
 
 [node name="DailyPanel" type="Panel" parent="Root/OverlayContainer/Task/Control" unique_id=18616367]
 custom_minimum_size = Vector2(603, 305)
@@ -2921,7 +2799,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_vk22e")
 script = ExtResource("35_rjdw1")
 
-[node name="Dimmer" type="ColorRect" parent="Root/TopOverlay/Purchase"]
+[node name="Dimmer" type="ColorRect" parent="Root/TopOverlay/Purchase" unique_id=1028136326]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3042,7 +2920,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_vk22e")
 script = ExtResource("35_hur8o")
 
-[node name="Dimmer" type="ColorRect" parent="Root/TopOverlay/Settings"]
+[node name="Dimmer" type="ColorRect" parent="Root/TopOverlay/Settings" unique_id=893117807]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3063,9 +2941,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -311.0
-offset_top = -52.0
+offset_top = -92.0
 offset_right = 311.0
-offset_bottom = 52.0
+offset_bottom = 92.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
@@ -3081,7 +2959,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 30
-text = "Music"
+text = "SETTINGS_MUSIC"
 
 [node name="HSlider" type="HSlider" parent="Root/TopOverlay/Settings/VBoxContainer/MusicContainer" unique_id=938932922]
 custom_minimum_size = Vector2(500, 50)
@@ -3102,7 +2980,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 30
-text = "Sound"
+text = "SETTINGS_SOUND"
 
 [node name="HSlider" type="HSlider" parent="Root/TopOverlay/Settings/VBoxContainer/SoundContainer" unique_id=2097273034]
 custom_minimum_size = Vector2(500, 50)
@@ -3125,7 +3003,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 30
-text = "FPS"
+text = "SETTINGS_FPS"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Root/TopOverlay/Settings/VBoxContainer/FPS" unique_id=821004315]
 layout_mode = 1
@@ -3148,19 +3026,63 @@ theme_override_constants/separation = 50
 layout_mode = 2
 theme_type_variation = &"TabButton"
 theme_override_font_sizes/font_size = 32
-text = "LOW"
+text = "SETTINGS_FPS_LOW"
 
 [node name="MediumBtn" type="Button" parent="Root/TopOverlay/Settings/VBoxContainer/FPS/HBoxContainer" unique_id=988226059]
 layout_mode = 2
 theme_type_variation = &"TabButton"
 theme_override_font_sizes/font_size = 32
-text = "MEDIUM"
+text = "SETTINGS_FPS_MEDIUM"
 
 [node name="HighBtn" type="Button" parent="Root/TopOverlay/Settings/VBoxContainer/FPS/HBoxContainer" unique_id=707795126]
 layout_mode = 2
 theme_type_variation = &"TabButton"
 theme_override_font_sizes/font_size = 32
-text = "HIGH"
+text = "SETTINGS_FPS_HIGH"
+
+[node name="LanguageContainer" type="Control" parent="Root/TopOverlay/Settings/VBoxContainer" unique_id=110000001]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Root/TopOverlay/Settings/VBoxContainer/LanguageContainer" unique_id=110000002]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 51.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS_LANGUAGE"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/TopOverlay/Settings/VBoxContainer/LanguageContainer" unique_id=110000003]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -453.0
+offset_top = -25.0
+offset_right = -41.0
+offset_bottom = 28.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+
+[node name="EnBtn" type="Button" parent="Root/TopOverlay/Settings/VBoxContainer/LanguageContainer/HBoxContainer" unique_id=110000004]
+layout_mode = 2
+theme_type_variation = &"TabButton"
+theme_override_font_sizes/font_size = 32
+text = "EN"
+
+[node name="ViBtn" type="Button" parent="Root/TopOverlay/Settings/VBoxContainer/LanguageContainer/HBoxContainer" unique_id=110000005]
+layout_mode = 2
+theme_type_variation = &"TabButton"
+theme_override_font_sizes/font_size = 32
+text = "VI"
 
 [node name="SignOutBtn" type="Button" parent="Root/TopOverlay/Settings" unique_id=2101795352]
 custom_minimum_size = Vector2(100, 50)
@@ -3177,7 +3099,7 @@ offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_type_variation = &"TabButton"
-text = "Sign out"
+text = "SETTINGS_SIGN_OUT"
 
 [connection signal="pressed" from="Root/UIButtons/TopBar/ProfileBtn" to="Root" method="_open_player_profile"]
 [connection signal="pressed" from="Root/UIButtons/TopBar/CurrencyContainer/GoldBtn" to="Root" method="_open_purchase"]
@@ -3215,10 +3137,10 @@ text = "Sign out"
 [connection signal="pressed" from="Root/OverlayContainer/Wheel/Control/HBoxContainer/DiamondBtn" to="Root/OverlayContainer/Wheel" method="_open_diamond_wheel"]
 [connection signal="pressed" from="Root/OverlayContainer/Task/Control/VBoxContainer/Daily" to="Root/OverlayContainer/Task" method="show_daily_tasks"]
 [connection signal="pressed" from="Root/OverlayContainer/Task/Control/VBoxContainer/Weekly" to="Root/OverlayContainer/Task" method="show_weekly_tasks"]
-[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [10000, "diamond"]]
-[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button2" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [5000, "diamond"]]
-[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button3" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [1000, "diamond"]]
-[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button4" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [500, "diamond"]]
-[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button6" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [10000, "gold"]]
-[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button7" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= [5000, "gold"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= ["diamond_pack_10000"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button2" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= ["diamond_pack_5000"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button3" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= ["diamond_pack_1000"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button4" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= ["diamond_pack_500"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button6" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= ["gold_pack_10000"]]
+[connection signal="pressed" from="Root/TopOverlay/Purchase/GridContainer/Button7" to="Root/TopOverlay/Purchase" method="on_purchase_button_pressed" binds= ["gold_pack_5000"]]
 [connection signal="pressed" from="Root/TopOverlay/Settings/SignOutBtn" to="Root" method="_sign_out"]

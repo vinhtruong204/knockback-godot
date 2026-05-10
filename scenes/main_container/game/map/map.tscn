@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://yw0c4fpfxk8i"]
 
 [ext_resource type="Texture2D" uid="uid://csdlfa7nl6wrt" path="res://assets/game/map/dust.png" id="1_u05x7"]
-[ext_resource type="PackedScene" uid="uid://caljydg84ylxu" path="res://scenes/main_container/game/map/platforms/dust_platforms.tscn" id="2_u05x7"]
 [ext_resource type="PackedScene" uid="uid://dbnp1ulccd0wi" path="res://scenes/main_container/game/map/death_zone.tscn" id="3_u05x7"]
 
 [node name="Map" type="Node2D" unique_id=1512980749]
@@ -9,6 +8,6 @@
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1750878947]
 texture = ExtResource("1_u05x7")
 
-[node name="DustPlatforms" parent="." unique_id=2050163370 instance=ExtResource("2_u05x7")]
+[node name="Platforms" type="Node2D" parent="." unique_id=1440327098]
 
 [node name="DeathZone" parent="." unique_id=1933175393 instance=ExtResource("3_u05x7")]

@@ -77,7 +77,7 @@ func _on_task_completed(task: Dictionary):
 				currency_ui.update_currency()
 				global_ui.show_reward_notification(task["name"], reward_amount, currency_type)
 			else:
-				global_ui.show_error_notification("Failed to claim reward")
+				global_ui.show_error_notification(tr("TASK_CLAIM_FAILED"))
 	)
 
 
