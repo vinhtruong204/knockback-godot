@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://dsrr0ajer1sbd" path="res://scripts/main_container/game/player/player_animation_controller.gd" id="11_anim"]
 [ext_resource type="Texture2D" uid="uid://b5g8lekj8fj5v" path="res://assets/game/player/limbs/hand_circle.png" id="12_hand"]
 [ext_resource type="Texture2D" uid="uid://b1g1i1f3rn1wk" path="res://assets/game/player/limbs/leg_ellipse.png" id="13_leg"]
-[ext_resource type="Texture2D" path="res://assets/game/effects/knife_slash.png" id="14_slash"]
+[ext_resource type="Texture2D" uid="uid://34vgegooqj6h" path="res://assets/game/effects/knife_slash.png" id="14_slash"]
 
 [sub_resource type="Animation" id="Animation_7lq4o"]
 length = 0.001
@@ -163,7 +163,7 @@ scale = Vector2(0.075, 0.075)
 texture = ExtResource("6_7lq4o")
 flip_h = true
 
-[node name="KnifeSlash" type="Sprite2D" parent="ChracterSprites/WeaponHoldHandler"]
+[node name="KnifeSlash" type="Sprite2D" parent="ChracterSprites/WeaponHoldHandler" unique_id=111109182]
 visible = false
 z_index = 3
 position = Vector2(-47, 16)
@@ -203,7 +203,7 @@ script = ExtResource("5_hr0h4")
 script = ExtResource("6_oi880")
 
 [node name="GunBarrel" type="Node2D" parent="PlayerActtack" unique_id=466263056]
-position = Vector2(90, 8)
+position = Vector2(90, 14)
 
 [node name="MovementStateMachine" type="Node" parent="." unique_id=137007932]
 script = ExtResource("6_fvmf8")

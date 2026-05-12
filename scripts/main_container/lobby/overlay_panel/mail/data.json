@@ -1,0 +1,40 @@
+[
+	{
+		"id": "admin_welcome_001",
+		"sender": "Admin",
+		"title": "Welcome Gift",
+		"content": "Welcome to Knockback. Claim these rewards to start stronger.",
+		"date": "2026-05-12",
+		"claimed": false,
+		"rewards": [
+			{"type": "currency", "currency_type": "gold", "amount": 5000},
+			{"type": "currency", "currency_type": "diamond", "amount": 100},
+			{"type": "item", "item_type": "weapon", "item_id": 1, "name": "AK Basic", "image": "ak-47.png"},
+			{"type": "item", "item_type": "character", "item_id": 1, "name": "Titan", "image": "titan.png"}
+		]
+	},
+	{
+		"id": "admin_event_002",
+		"sender": "Admin",
+		"title": "Arena Training Bonus",
+		"content": "The arena is open for training. Use this bonus to test new loadouts.",
+		"date": "2026-05-12",
+		"claimed": false,
+		"rewards": [
+			{"type": "currency", "currency_type": "gold", "amount": 12000},
+			{"type": "item", "item_type": "weapon", "item_id": 2, "name": "AWP", "image": "awp.png"}
+		]
+	},
+	{
+		"id": "admin_rank_003",
+		"sender": "Admin",
+		"title": "Rank Season Preparation",
+		"content": "A new rank push is starting soon. Claim this support package before entering matchmaking.",
+		"date": "2026-05-12",
+		"claimed": false,
+		"rewards": [
+			{"type": "currency", "currency_type": "diamond", "amount": 250},
+			{"type": "item", "item_type": "character", "item_id": 2, "name": "Viper", "image": "viper.png"}
+		]
+	}
+]
