@@ -1,6 +1,6 @@
 class_name BulletController extends Area2D
 
-const BULLET_SPEED: float = 200.0
+const BULLET_SPEED: float = 300.0
 const BULLET_KNOCKBACK_FORCE: float = 200.0
 const DEFAULT_DAMAGE: int = 50
 var direction: PlayerFlip.Direction
