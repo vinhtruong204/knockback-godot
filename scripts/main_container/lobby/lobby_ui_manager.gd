@@ -113,6 +113,10 @@ func _open_wheel():
 func _open_task():
 	$OverlayContainer/Task.visible = true
 	_ignore_ui_buttons_input()
+
+func _open_mail():
+	$OverlayContainer/Mail.visible = true
+	_ignore_ui_buttons_input()
 #endregion
 
 #region Top overlay

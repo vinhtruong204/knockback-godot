@@ -5,6 +5,10 @@ const PORT := 9543
 const GAME_MODE_RANK := "rank"
 const GAME_MODE_NORMAL := "normal"
 const GAME_MODE_LAN := "lan"
+const MODE_CODE_FREE_FOR_ALL := "free_for_all"
+const MODE_CODE_RANKED_FREE_FOR_ALL := "ranked_free_for_all"
+const MODE_CODE_SEARCH_DESTROY := "search_destroy"
+const MODE_CODE_RANKED_SEARCH_DESTROY := "ranked_search_destroy"
 
 var game_scene_path := "res://scenes/main_container/game/game.tscn"
 var lobby_scene_path := "res://scenes/main_container/lobby/lobby.tscn"
@@ -16,6 +20,9 @@ var current_player_name: String = ""
 var current_map_name: String = ""
 var current_map_key: String = ""
 var current_game_mode: String = GAME_MODE_RANK
+var current_mode_id: int = 0
+var current_mode_name: String = ""
+var current_mode_code: String = MODE_CODE_RANKED_FREE_FOR_ALL
 var is_lan_host_player: bool = false
 
 
@@ -51,6 +58,9 @@ func start_online_match(match_context: Dictionary) -> void:
 	current_match_players = match_context.get("players", [])
 	current_map_name = str(match_context.get("map_name", ""))
 	current_map_key = str(match_context.get("map_key", get_map_key(current_map_name)))
+	current_mode_id = int(match_context.get("mode_id", 0))
+	current_mode_name = str(match_context.get("mode_name", ""))
+	current_mode_code = str(match_context.get("mode_code", _default_mode_code_for_game_mode(current_game_mode)))
 	is_lan_host_player = false
 	create_client(str(match_context.get("address", ADDRESS)), int(match_context.get("port", PORT)))
 
@@ -61,6 +71,9 @@ func start_lan_host(port: int, map_name: String = "") -> void:
 	current_match_players = []
 	current_map_name = map_name
 	current_map_key = get_map_key(map_name)
+	current_mode_id = 0
+	current_mode_name = "LAN"
+	current_mode_code = GAME_MODE_LAN
 	is_lan_host_player = true
 	create_server(port)
 
@@ -71,6 +84,9 @@ func start_lan_client(address: String, port: int, map_name: String = "") -> void
 	current_match_players = []
 	current_map_name = map_name
 	current_map_key = get_map_key(map_name)
+	current_mode_id = 0
+	current_mode_name = "LAN"
+	current_mode_code = GAME_MODE_LAN
 	is_lan_host_player = false
 	create_client(address, port)
 
@@ -117,9 +133,24 @@ func leave_game() -> void:
 	current_map_name = ""
 	current_map_key = ""
 	current_game_mode = GAME_MODE_RANK
+	current_mode_id = 0
+	current_mode_name = ""
+	current_mode_code = MODE_CODE_RANKED_FREE_FOR_ALL
 	is_lan_host_player = false
 	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 	SceneLoader.load_scene(lobby_scene_path)
+
+
+func is_search_destroy_mode(mode_code: String = current_mode_code) -> bool:
+	return mode_code in [MODE_CODE_SEARCH_DESTROY, MODE_CODE_RANKED_SEARCH_DESTROY]
+
+
+func _default_mode_code_for_game_mode(p_game_mode: String) -> String:
+	if p_game_mode == GAME_MODE_NORMAL:
+		return MODE_CODE_FREE_FOR_ALL
+	if p_game_mode == GAME_MODE_RANK:
+		return MODE_CODE_RANKED_FREE_FOR_ALL
+	return p_game_mode
 
 
 func get_map_key(map_name: String) -> String:

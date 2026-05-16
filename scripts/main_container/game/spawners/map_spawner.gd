@@ -1,5 +1,7 @@
 class_name MapSpawner extends MultiplayerSpawner
 
+signal map_spawned(map: Node)
+
 const MAP_TEXTURE_PATH := "res://assets/game/map/"
 const DEFAULT_MAP := "dust"
 const PLATFORM_SCENE_PATHS := {
@@ -46,6 +48,7 @@ func _spawn_map(data: Dictionary) -> Node:
 
 	_spawn_platforms(map, map_key)
 	print("Map spawned: " + map_key)
+	map_spawned.emit(map)
 
 	return map
 

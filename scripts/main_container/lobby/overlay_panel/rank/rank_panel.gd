@@ -282,7 +282,7 @@ func _handle_match_found(match_data) -> void:
 	poll_timer.stop()
 
 	status_label.text = tr("MM_FOUND")
-	timer_label.text = match_data.map_name
+	timer_label.text = _format_match_found_label(match_data)
 	cancel_btn.visible = false
 
 	# Store match context for the game scene
@@ -294,11 +294,29 @@ func _handle_match_found(match_data) -> void:
 		NetworkManager.start_online_match({
 			"game_mode": NetworkManager.GAME_MODE_RANK,
 			"match_id": match_data.match_id,
+			"mode_id": match_data.mode_id,
+			"mode_name": match_data.mode_name,
+			"mode_code": _resolve_ranked_mode_code(match_data),
 			"players": players,
 			"map_name": match_data.map_name,
 			"map_key": NetworkManager.get_map_key(match_data.map_name),
 		})
 	)
+
+
+func _format_match_found_label(match_data) -> String:
+	var mode_name := str(match_data.mode_name)
+	var map_name := str(match_data.map_name)
+	if mode_name == "":
+		return map_name
+	return "%s - %s" % [mode_name, map_name]
+
+
+func _resolve_ranked_mode_code(match_data) -> String:
+	var code := str(match_data.mode_code).strip_edges()
+	if code != "":
+		return code
+	return NetworkManager.MODE_CODE_RANKED_FREE_FOR_ALL
 
 
 # ─── Cleanup ────────────────────────────────────────────────

@@ -21,6 +21,7 @@ var my_rank_point_change: int = 0
 var my_result: String = ""
 var my_kills: int = 0
 var my_deaths: int = 0
+var my_score: int = 0
 var result_game_mode: String = "rank"
 
 const COUNTDOWN_SECONDS := 5
@@ -50,6 +51,7 @@ func show_result(my_data: Dictionary, opponent_data: Dictionary) -> void:
 	my_rank_point_change = my_data.get("rank_point_change", 0)
 	my_kills = my_data.get("kill", 0)
 	my_deaths = my_data.get("dead", 0)
+	my_score = my_data.get("score", 0)
 
 	# Header
 	if my_result == Enums.MatchResult.WIN:
@@ -58,6 +60,8 @@ func show_result(my_data: Dictionary, opponent_data: Dictionary) -> void:
 	else:
 		result_label.text = tr("MATCH_RESULT_DEFEAT")
 		result_label.add_theme_color_override("font_color", Color.RED)
+	if my_data.has("score") or opponent_data.has("score"):
+		result_label.text += " (%d-%d)" % [int(my_data.get("score", 0)), int(opponent_data.get("score", 0))]
 
 	# Your row
 	p1_name.text = my_data.get("name", "You")
@@ -124,6 +128,7 @@ func _on_confirm_pressed() -> void:
 			"kill": my_kills,
 			"dead": my_deaths,
 			"result": my_result,
+			"score": my_score,
 			"exp_earned": my_exp_earned,
 			"reward_gold": my_reward_gold,
 		}, func(_r): pass)

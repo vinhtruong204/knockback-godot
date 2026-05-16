@@ -44,6 +44,7 @@ func start_match(peer_data: Dictionary) -> void:
 			"peer_id": peer_id,
 			"pos": Vector2(rng.randf_range(-SPAWN_X_OFFSET, SPAWN_X_OFFSET), 0),
 			"name": entry.get("name", ""),
+			"team_id": int(entry.get("team_id", 0)),
 			"weapons": entry.get("weapons", {}),
 			"character": entry.get("character", {}),
 		})
@@ -84,12 +85,15 @@ func _spawn_player(data: Dictionary) -> Node:
 	var character: Dictionary = data.get("character", {})
 	var weapons: Dictionary = data.get("weapons", {})
 	var display_name: String = data.get("name", "")
+	var team_id: int = int(data.get("team_id", 0))
 	var is_own: bool = peer_id == multiplayer.get_unique_id()
 
 	# Stash values that PlayerController applies in _ready (after @onready vars
 	# resolve): the display name label and the character sprite texture.
 	if display_name != "":
 		player.set_meta("display_name", display_name)
+	if team_id > 0:
+		player.set_meta("team_id", team_id)
 	var texture_name: String = character.get("texture", "")
 	if texture_name != "":
 		player.set_meta("character_texture_name", texture_name)
@@ -126,15 +130,18 @@ func _spawn_player(data: Dictionary) -> Node:
 		# weapon-handler ref and connects ammo_changed; WeaponHoldHandler._ready
 		# seeds default ammo for the owning player when no loadout was applied,
 		# so the bottom CurrentWeaponBtn still shows "mag/reserve" text.
-		var switch_handler = get_tree().root.get_node_or_null("Main/SceneContainer/Game/CanvasLayer/Root/UIControlPlayer/SwitchWeaponHandler")
-		var weapon_handler2 = player.get_node_or_null("ChracterSprites/WeaponHoldHandler")
-		if switch_handler and weapon_handler2 and switch_handler.has_method("bind_local_player"):
+		var switch_handler: SwitchWeaponHandler = get_tree().root.get_node_or_null("Main/SceneContainer/Game/CanvasLayer/Root/UIControlPlayer/SwitchWeaponHandler") as SwitchWeaponHandler
+		var weapon_handler2: WeaponHoldHandler = player.get_node_or_null("ChracterSprites/WeaponHoldHandler") as WeaponHoldHandler
+		if switch_handler and weapon_handler2:
 			switch_handler.bind_local_player(weapon_handler2, weapons)
+		var buttons: ButtonsControlPlayer = get_tree().root.get_node_or_null("Main/SceneContainer/Game/CanvasLayer/Root/UIControlPlayer/ButtonsWrapper") as ButtonsControlPlayer
+		if buttons and weapon_handler2:
+			buttons.bind_grenade_counter(weapon_handler2)
 	else:
 		if display_name != "":
 			var opponent_label = get_tree().root.get_node_or_null("Main/SceneContainer/Game/CanvasLayer/Root/TopUI/OpponentInfor/Name")
 			if opponent_label:
-				opponent_label.text = display_name
+				opponent_label.text = _format_display_name_for_mode(display_name, team_id)
 
 	_players_list[peer_id] = player
 
@@ -146,3 +153,20 @@ func _spawn_player(data: Dictionary) -> Node:
 func has_live_player(peer_id: int) -> bool:
 	var player = _players_list.get(peer_id)
 	return is_instance_valid(player) and player.is_inside_tree()
+
+
+func get_player(peer_id: int) -> Node:
+	var player = _players_list.get(peer_id)
+	if is_instance_valid(player):
+		return player
+	return null
+
+
+func _format_display_name_for_mode(display_name: String, team_id: int) -> String:
+	if not NetworkManager.is_search_destroy_mode():
+		return display_name
+	if team_id == 1:
+		return "[PLANT] " + display_name
+	if team_id == 2:
+		return "[DEFUSE] " + display_name
+	return display_name

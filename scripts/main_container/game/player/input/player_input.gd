@@ -19,6 +19,7 @@ signal drop_down()
 # Action signals
 signal shoot()
 signal throw_bomb()
+signal throw_bomb_released()
 
 # Switch weapon signals
 signal switch_weapon(weapon: SwitchWeaponHandler.WeaponType)
@@ -34,6 +35,7 @@ func _ready() -> void:
 	buttons_control_player.jump_pressed.connect(_on_jump_pressed)
 	buttons_control_player.attack_pressed.connect(_on_attack_pressed)
 	buttons_control_player.bomb_pressed.connect(_on_bomb_pressed)
+	buttons_control_player.bomb_released.connect(_on_bomb_released)
 
 func _on_weapon_switched(weapon: SwitchWeaponHandler.WeaponType) -> void:
 	switch_weapon.emit(weapon)
@@ -49,6 +51,10 @@ func _on_attack_pressed() -> void:
 
 func _on_bomb_pressed() -> void:
 	throw_bomb.emit()
+
+
+func _on_bomb_released() -> void:
+	throw_bomb_released.emit()
 
 
 func _physics_process(_delta: float) -> void:
@@ -70,6 +76,8 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("player_throw_bomb"):
 		throw_bomb.emit()
+	if Input.is_action_just_released("player_throw_bomb"):
+		throw_bomb_released.emit()
 	#endregion
 
 

@@ -68,13 +68,25 @@ func take_damage_rpc(damage: int) -> void:
 		player.reset()
 
 		# Notify server of death (for kill/death tracking)
-		if is_multiplayer_authority():
-			_notify_server_death.rpc_id(1)
+		_notify_death()
 
 		if heart <= 0:
 			heart = 0
-			if is_multiplayer_authority():
-				_notify_server_eliminated.rpc_id(1)
+			_notify_eliminated()
+
+
+func _notify_death() -> void:
+	if multiplayer.is_server():
+		player_died.emit(player.get_multiplayer_authority())
+	elif is_multiplayer_authority():
+		_notify_server_death.rpc_id(1)
+
+
+func _notify_eliminated() -> void:
+	if multiplayer.is_server():
+		player_eliminated.emit(player.get_multiplayer_authority())
+	elif is_multiplayer_authority():
+		_notify_server_eliminated.rpc_id(1)
 
 
 @rpc("any_peer", "call_remote", "reliable")

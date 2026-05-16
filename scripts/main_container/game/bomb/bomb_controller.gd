@@ -56,6 +56,7 @@ func _on_timer_timeout() -> void:
 		return
 
 	_has_exploded = true
+	play_explosion_rpc.rpc()
 
 	# Print current character in explosion area
 	for body in explosion_area.get_overlapping_bodies():
@@ -69,7 +70,6 @@ func _on_timer_timeout() -> void:
 
 			_shake_player_camera(body, authority)
 
-	play_explosion_rpc.rpc()
 	await get_tree().create_timer(EXPLOSION_DURATION).timeout
 	queue_free()
 
