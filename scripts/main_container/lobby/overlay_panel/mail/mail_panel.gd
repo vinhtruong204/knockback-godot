@@ -3,13 +3,10 @@ class_name MailPanel extends Panel
 const DATA_PATH := "res://scripts/main_container/lobby/overlay_panel/mail/data.json"
 
 @onready var mail_list: VBoxContainer = $Content/HBoxContainer/ListPanel/MarginContainer/VBoxContainer/ScrollContainer/MailList
-@onready var sender_label: Label = $Content/HBoxContainer/DetailPanel/MarginContainer/VBoxContainer/Header/SenderLabel
-@onready var date_label: Label = $Content/HBoxContainer/DetailPanel/MarginContainer/VBoxContainer/Header/DateLabel
 @onready var title_label: Label = $Content/HBoxContainer/DetailPanel/MarginContainer/VBoxContainer/TitleLabel
 @onready var content_label: Label = $Content/HBoxContainer/DetailPanel/MarginContainer/VBoxContainer/ContentLabel
 @onready var rewards_container: VBoxContainer = $Content/HBoxContainer/DetailPanel/MarginContainer/VBoxContainer/RewardsScroll/RewardsContainer
 @onready var claim_button: Button = $Content/HBoxContainer/DetailPanel/MarginContainer/VBoxContainer/ClaimBtn
-@onready var currency_ui: CurrencyContainer = %UIButtons/TopBar/CurrencyContainer
 
 var _mails: Array = []
 var _selected_index := -1
@@ -70,8 +67,6 @@ func _select_mail(index: int) -> void:
 
 	_selected_index = index
 	var mail: Dictionary = _mails[index]
-	sender_label.text = str(mail.get("sender", "Admin"))
-	date_label.text = str(mail.get("date", ""))
 	title_label.text = str(mail.get("title", "Admin Mail"))
 	content_label.text = str(mail.get("content", ""))
 	_render_rewards(mail.get("rewards", []))
@@ -79,8 +74,6 @@ func _select_mail(index: int) -> void:
 
 
 func _show_empty_state() -> void:
-	sender_label.text = "Admin"
-	date_label.text = ""
 	title_label.text = "No mail"
 	content_label.text = "There are no admin mails right now."
 	_render_rewards([])
@@ -171,63 +164,7 @@ func _on_claim_pressed() -> void:
 	if bool(mail.get("claimed", false)):
 		return
 
-	var rewards: Array = mail.get("rewards", [])
-	if rewards.is_empty():
-		_finish_claim(true)
-		return
-
-	_claim_in_progress = true
-	_refresh_claim_button(mail)
-
-	var pending := rewards.size()
-	var failed := false
-	var complete := func(ok: bool) -> void:
-		if not ok:
-			failed = true
-		pending -= 1
-		if pending <= 0:
-			_finish_claim(not failed)
-
-	for reward in rewards:
-		if reward is Dictionary:
-			_claim_reward(reward, complete)
-		else:
-			complete.call(false)
-
-
-func _claim_reward(reward: Dictionary, callback: Callable) -> void:
-	match str(reward.get("type", "")):
-		"currency":
-			var currency_type := str(reward.get("currency_type", ""))
-			var amount := int(reward.get("amount", 0))
-			if currency_type == "" or amount <= 0:
-				callback.call(false)
-				return
-			PlayerApi.add_player_currency_amount(
-				ApiManager.player_id,
-				currency_type,
-				{"amount": amount},
-				func(response: Dictionary) -> void:
-					callback.call(response.get("ok", false))
-			)
-		"item":
-			var item_type := str(reward.get("item_type", ""))
-			var item_id := int(reward.get("item_id", 0))
-			if item_type == "" or item_id <= 0:
-				callback.call(false)
-				return
-			PlayerApi.add_inventory_item(
-				{
-					"player_id": ApiManager.player_id,
-					"item_id": item_id,
-					"item_type": item_type,
-					"quantity": int(reward.get("quantity", 1)),
-				},
-				func(response: Dictionary) -> void:
-					callback.call(response.get("ok", false))
-			)
-		_:
-			callback.call(false)
+	_finish_claim(true)
 
 
 func _finish_claim(success: bool) -> void:
@@ -239,7 +176,6 @@ func _finish_claim(success: bool) -> void:
 	var global_ui := _get_global_ui()
 	if success:
 		mail["claimed"] = true
-		currency_ui.update_currency(true)
 		_render_mail_list()
 		_select_mail(_selected_index)
 		if global_ui:
