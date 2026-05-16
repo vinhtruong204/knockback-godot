@@ -31,14 +31,20 @@ class ModeModel:
 	var mode_id: int
 	var name: String
 	var type: String
+	var code: String
 	var players_per_team: int
+	var selection_weight: int
 
 	static func from_dict(data: Dictionary) -> ModeModel:
 		var model := ModeModel.new()
 		model.mode_id = data.get("mode_id", 0)
 		model.name = data.get("name", "")
 		model.type = data.get("type", "")
+		var raw_code = data.get("code", "")
+		model.code = "" if raw_code == null else str(raw_code)
 		model.players_per_team = data.get("players_per_team", 1)
+		var raw_selection_weight = data.get("selection_weight", 0)
+		model.selection_weight = 0 if raw_selection_weight == null else int(raw_selection_weight)
 		return model
 
 	static func from_array(arr: Array) -> Array[ModeModel]:
@@ -52,7 +58,9 @@ class ModeModel:
 			"mode_id": mode_id,
 			"name": name,
 			"type": type,
+			"code": code,
 			"players_per_team": players_per_team,
+			"selection_weight": selection_weight,
 		}
 
 
@@ -195,6 +203,7 @@ class MatchmakingMatchFoundModel:
 	var match_id: int
 	var mode_id: int
 	var mode_name: String
+	var mode_code: String
 	var map_id: int
 	var map_name: String
 	var players_per_team: int
@@ -206,6 +215,8 @@ class MatchmakingMatchFoundModel:
 		model.match_id = data.get("match_id", 0)
 		model.mode_id = data.get("mode_id", 0)
 		model.mode_name = data.get("mode_name", "")
+		var raw_mode_code = data.get("mode_code", "")
+		model.mode_code = "" if raw_mode_code == null else str(raw_mode_code)
 		model.map_id = data.get("map_id", 0)
 		model.map_name = data.get("map_name", "")
 		model.players_per_team = data.get("players_per_team", 1)
@@ -221,6 +232,7 @@ class MatchmakingMatchFoundModel:
 			"match_id": match_id,
 			"mode_id": mode_id,
 			"mode_name": mode_name,
+			"mode_code": mode_code,
 			"map_id": map_id,
 			"map_name": map_name,
 			"players_per_team": players_per_team,
@@ -259,6 +271,7 @@ class MatchmakingMatchedModel:
 	var match_id: int
 	var mode_id: int
 	var mode_name: String
+	var mode_code: String
 	var map_id: int
 	var map_name: String
 	var players_per_team: int
@@ -270,6 +283,8 @@ class MatchmakingMatchedModel:
 		model.match_id = data.get("match_id", 0)
 		model.mode_id = data.get("mode_id", 0)
 		model.mode_name = data.get("mode_name", "")
+		var raw_mode_code = data.get("mode_code", "")
+		model.mode_code = "" if raw_mode_code == null else str(raw_mode_code)
 		model.map_id = data.get("map_id", 0)
 		model.map_name = data.get("map_name", "")
 		model.players_per_team = data.get("players_per_team", 1)
@@ -285,6 +300,7 @@ class MatchmakingMatchedModel:
 			"match_id": match_id,
 			"mode_id": mode_id,
 			"mode_name": mode_name,
+			"mode_code": mode_code,
 			"map_id": map_id,
 			"map_name": map_name,
 			"players_per_team": players_per_team,

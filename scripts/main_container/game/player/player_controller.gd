@@ -24,6 +24,7 @@ var _camera_limits_ready: bool = false
 var _shake_strength: float = 0.0
 var _shake_duration: float = 0.0
 var _shake_time_left: float = 0.0
+var _owner_indicator: OwnerPlayerIndicator
 
 
 func set_character_texture(tex: Texture2D) -> void:
@@ -41,26 +42,31 @@ func set_grenade_damage(value: int) -> void:
 func _ready() -> void:
 	# Display name from PlayerSpawner metadata; falls back to the node name
 	# (the peer_id string) when no spawn-time name was provided (instant-start).
-	player_name.text = get_meta("display_name", name)
+	var display_name: String = str(get_meta("display_name", name))
+	var team_id: int = int(get_meta("team_id", 0))
+	player_name.text = _format_display_name_for_mode(display_name, team_id)
 
 	# Character sprite texture stashed by PlayerSpawner. Applied here because
 	# character_sprite is @onready and is null until the node enters the tree.
 	# _ready runs before _physics_process, so the sprite is in place before
 	# the player ever falls.
-	var texture_name: String = get_meta("character_texture_name", "")
+	var texture_name: String = str(get_meta("character_texture_name", ""))
 	if texture_name != "":
-		var tex = load("res://assets/game/player/" + texture_name)
+		var tex: Texture2D = load("res://assets/game/player/" + texture_name) as Texture2D
 		if tex:
 			set_character_texture(tex)
 
 	# Setup color for player object
 	if not is_multiplayer_authority():
-		player_name.add_theme_color_override("font_color", Color.RED)
+		player_name.add_theme_color_override("font_color", _team_color(team_id, false))
 	else:
-		player_name.add_theme_color_override("font_color", Color.GREEN)
+		player_name.add_theme_color_override("font_color", _team_color(team_id, true))
+	player_name.add_theme_color_override("font_outline_color", Color.BLACK)
+	player_name.add_theme_constant_override("outline_size", 2)
 	
 	# Setup camera for player object
 	if is_multiplayer_authority():
+		_add_owner_indicator()
 		_camera = $Camera2D
 		_camera.zoom = CAMERA_BASE_ZOOM
 		_camera.make_current()
@@ -195,3 +201,31 @@ func reset() -> void:
 	var wh = get_node_or_null("ChracterSprites/WeaponHoldHandler")
 	if wh and wh.has_method("reset_ammo_and_active"):
 		wh.reset_ammo_and_active()
+
+
+func _format_display_name_for_mode(display_name: String, team_id: int) -> String:
+	if not NetworkManager.is_search_destroy_mode():
+		return display_name
+	if team_id == 1:
+		return "[PLANT] " + display_name
+	if team_id == 2:
+		return "[DEFUSE] " + display_name
+	return display_name
+
+
+func _team_color(team_id: int, fallback_is_own: bool) -> Color:
+	if NetworkManager.is_search_destroy_mode():
+		if team_id == 1:
+			return Color(1.0, 0.74, 0.18)
+		if team_id == 2:
+			return Color(0.36, 0.78, 1.0)
+	return Color.GREEN if fallback_is_own else Color.RED
+
+
+func _add_owner_indicator() -> void:
+	if _owner_indicator != null:
+		return
+	_owner_indicator = OwnerPlayerIndicator.new()
+	_owner_indicator.name = "OwnerPlayerIndicator"
+	_owner_indicator.position = Vector2(0.0, -88.0)
+	add_child(_owner_indicator)

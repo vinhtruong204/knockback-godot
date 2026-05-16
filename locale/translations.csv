@@ -136,5 +136,22 @@ MATCH_COL_EXP,EXP,KN
 MATCH_COL_RANK,Rank,Hạng
 MATCH_DELTA_FMT,+%d,+%d
 MATCH_RANK_DELTA_FMT,%+d,%+d
+SD_TEAM_SCORE_FMT,Plant %d - %d Defuse,Plant %d - %d Defuse
+SD_TEAM_PLANT,Plant,Plant
+SD_TEAM_DEFUSE,Defuse,Defuse
+SD_ROUND_SITE_FMT,Round %d/%d - Site %s,Vong %d/%d - Diem %s
+SD_TIME_FMT,Time %s,Thoi gian %s
+SD_BOMB_TIME_FMT,Bomb %s,Bom %s
+SD_ROLE_PLANT,Plant objective,Dat bom
+SD_ROLE_DEFUSE,Defuse objective,Go bom
+SD_PLANTING_FMT,Planting %.0f%%,Dang dat bom %.0f%%
+SD_DEFUSING_FMT,Defusing %.0f%%,Dang go bom %.0f%%
+SD_BOMB_PLANTED_PLANT,Bomb planted - Plant,Bom da dat - Bao ve
+SD_BOMB_PLANTED_DEFUSE,Bomb planted - Defuse,Bom da dat - Go bom
+SD_BANNER_DETONATED_FMT,Bomb detonated - %s wins round,Bomb detonated - %s wins round
+SD_BANNER_DEFUSED_FMT,Bomb defused - %s wins round,Bomb defused - %s wins round
+SD_BANNER_TIMEOUT_FMT,Time expired - %s wins round,Time expired - %s wins round
+SD_BANNER_HEARTS_FMT,Out of hearts - %s wins match,Out of hearts - %s wins match
+SD_BANNER_WIN_FMT,%s wins round,%s wins round
 MATCH_CONFIRM_FMT,Confirm (%d),Xác nhận (%d)
 MATCH_LEAVING,Leaving...,Đang rời trận...

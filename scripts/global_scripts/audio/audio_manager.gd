@@ -25,14 +25,24 @@ const SFX_SOUNDS := {
 	&"lucky_wheel_reward": preload("res://assets/audio/sfx/lucky_wheel/reward.ogg"),
 }
 
+const OPTIONAL_SFX_PATHS := {
+	&"sd_planted": "res://assets/audio/sfx/objective/search_destroy/planted.ogg",
+	&"sd_bomb_tick": "res://assets/audio/sfx/objective/search_destroy/bomb_tick.ogg",
+	&"sd_defuse": "res://assets/audio/sfx/objective/search_destroy/defuse.ogg",
+	&"sd_explosion": "res://assets/audio/sfx/objective/search_destroy/explosion.ogg",
+}
+
 var music_volume: float = 1.0
 var sfx_volume: float = 1.0
 var _music_player: AudioStreamPlayer
 var _sfx_players: Array[AudioStreamPlayer] = []
 var _current_music_track: StringName = &""
+var _missing_optional_sfx_warned: Dictionary = {}
+var _optional_sfx_cache: Dictionary = {}
 
 func _ready():
 	_setup_players()
+	_preload_optional_sfx()
 	load_settings()
 	apply_audio_settings()
 
@@ -69,11 +79,20 @@ func stop_music() -> void:
 		_music_player.stop()
 
 func play_sfx(sound: StringName) -> void:
-	if not SFX_SOUNDS.has(sound):
+	var stream: AudioStream = null
+	if SFX_SOUNDS.has(sound):
+		stream = SFX_SOUNDS[sound] as AudioStream
+	elif OPTIONAL_SFX_PATHS.has(sound):
+		if _optional_sfx_cache.has(sound):
+			stream = _optional_sfx_cache[sound] as AudioStream
+		else:
+			stream = _load_optional_sfx(sound)
+			if stream == null:
+				return
+	else:
 		push_warning("[AudioManager] Unknown SFX sound: %s" % sound)
 		return
 
-	var stream := SFX_SOUNDS[sound] as AudioStream
 	if stream == null:
 		push_warning("[AudioManager] Invalid SFX stream: %s" % sound)
 		return
@@ -124,6 +143,25 @@ func _setup_players() -> void:
 		player.bus = "SFX"
 		add_child(player)
 		_sfx_players.append(player)
+
+
+func _preload_optional_sfx() -> void:
+	for sound_key in OPTIONAL_SFX_PATHS.keys():
+		_load_optional_sfx(StringName(str(sound_key)))
+
+
+func _load_optional_sfx(sound: StringName) -> AudioStream:
+	var path: String = str(OPTIONAL_SFX_PATHS[sound])
+	if not ResourceLoader.exists(path):
+		if not _missing_optional_sfx_warned.has(sound):
+			_missing_optional_sfx_warned[sound] = true
+			push_warning("[AudioManager] Optional SFX not installed yet: %s" % path)
+		return null
+	var stream: AudioStream = load(path) as AudioStream
+	if stream != null:
+		_optional_sfx_cache[sound] = stream
+	return stream
+
 
 func _get_available_sfx_player() -> AudioStreamPlayer:
 	for player in _sfx_players:

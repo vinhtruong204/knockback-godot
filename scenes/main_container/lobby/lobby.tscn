@@ -58,7 +58,7 @@
 [ext_resource type="Script" uid="uid://cfabbtqvvrtxm" path="res://scripts/main_container/lobby/overlay_panel/task/task_panel.gd" id="36_4ossl"]
 [ext_resource type="Texture2D" uid="uid://bwgfpd86uysw5" path="res://assets/lobby/middle/rank/master.png" id="36_7vi1o"]
 [ext_resource type="PackedScene" uid="uid://dbyop0ht6j7ps" path="res://scenes/main_container/lobby/task/task_item.tscn" id="37_7xsny"]
-[ext_resource type="Script" uid="uid://c8ltadmbinpch" path="res://scripts/main_container/lobby/overlay_panel/mail/mail_panel.gd" id="38_mail"]
+[ext_resource type="PackedScene" uid="uid://dmailpanellob0" path="res://scenes/main_container/lobby/overlay_panel/mail/mail_panel.tscn" id="38_mail"]
 [ext_resource type="Texture2D" uid="uid://cub3evny7fhhc" path="res://assets/game/map/night.png" id="41_7vi1o"]
 [ext_resource type="Texture2D" uid="uid://bdlul4woss37y" path="res://assets/game/map/ice.png" id="42_8od1p"]
 [ext_resource type="Texture2D" uid="uid://csdlfa7nl6wrt" path="res://assets/game/map/dust.png" id="43_7vi1o"]
@@ -2778,158 +2778,8 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 2
 
-[node name="Mail" type="Panel" parent="Root/OverlayContainer" unique_id=1297892303]
+[node name="Mail" parent="Root/OverlayContainer" unique_id=1297892303 instance=ExtResource("38_mail")]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_vk22e")
-script = ExtResource("38_mail")
-
-[node name="BackBtn" parent="Root/OverlayContainer/Mail" unique_id=2081581684 instance=ExtResource("17_1cl6t")]
-layout_mode = 0
-
-[node name="Content" type="Panel" parent="Root/OverlayContainer/Mail" unique_id=18336706]
-custom_minimum_size = Vector2(1000, 440)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -500.0
-offset_top = -190.0
-offset_right = 500.0
-offset_bottom = 250.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_type_variation = &"GlowCard"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Mail/Content" unique_id=2020056635]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = 24.0
-offset_right = -24.0
-offset_bottom = -24.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
-
-[node name="ListPanel" type="Panel" parent="Root/OverlayContainer/Mail/Content/HBoxContainer" unique_id=1377670137]
-custom_minimum_size = Vector2(310, 0)
-layout_mode = 2
-size_flags_vertical = 3
-theme_type_variation = &"Card"
-
-[node name="MarginContainer" type="MarginContainer" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/ListPanel" unique_id=497103460]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 14.0
-offset_top = 14.0
-offset_right = -14.0
-offset_bottom = -14.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/ListPanel/MarginContainer" unique_id=463523414]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="ListTitle" type="Label" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/ListPanel/MarginContainer/VBoxContainer" unique_id=123797060]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Admin Mail"
-horizontal_alignment = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/ListPanel/MarginContainer/VBoxContainer" unique_id=1794466104]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MailList" type="VBoxContainer" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/ListPanel/MarginContainer/VBoxContainer/ScrollContainer" unique_id=1982110905]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 8
-
-[node name="DetailPanel" type="Panel" parent="Root/OverlayContainer/Mail/Content/HBoxContainer" unique_id=597081596]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_type_variation = &"Card"
-
-[node name="MarginContainer" type="MarginContainer" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/DetailPanel" unique_id=121876094]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 18.0
-offset_top = 18.0
-offset_right = -18.0
-offset_bottom = -18.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/DetailPanel/MarginContainer" unique_id=774086680]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="Header" type="HBoxContainer" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/DetailPanel/MarginContainer/VBoxContainer" unique_id=2043599179]
-layout_mode = 2
-
-[node name="SenderLabel" type="Label" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/DetailPanel/MarginContainer/VBoxContainer/Header" unique_id=889973426]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 18
-text = "Admin"
-
-[node name="DateLabel" type="Label" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/DetailPanel/MarginContainer/VBoxContainer/Header" unique_id=500071656]
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "2026-05-12"
-horizontal_alignment = 2
-
-[node name="TitleLabel" type="Label" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/DetailPanel/MarginContainer/VBoxContainer" unique_id=557459253]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Welcome Gift"
-autowrap_mode = 3
-
-[node name="ContentLabel" type="Label" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/DetailPanel/MarginContainer/VBoxContainer" unique_id=1944091801]
-custom_minimum_size = Vector2(0, 72)
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "Welcome to Knockback. Claim these rewards to start stronger."
-autowrap_mode = 3
-
-[node name="RewardsTitle" type="Label" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/DetailPanel/MarginContainer/VBoxContainer" unique_id=1791032807]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Rewards"
-
-[node name="RewardsScroll" type="ScrollContainer" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/DetailPanel/MarginContainer/VBoxContainer" unique_id=196161396]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="RewardsContainer" type="VBoxContainer" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/DetailPanel/MarginContainer/VBoxContainer/RewardsScroll" unique_id=880276932]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 8
-
-[node name="ClaimBtn" type="Button" parent="Root/OverlayContainer/Mail/Content/HBoxContainer/DetailPanel/MarginContainer/VBoxContainer" unique_id=926143610]
-custom_minimum_size = Vector2(0, 52)
-layout_mode = 2
-theme_type_variation = &"PrimaryButton"
-theme_override_font_sizes/font_size = 24
-text = "Claim"
 
 [node name="TopOverlay" type="Control" parent="Root" unique_id=308563002]
 z_index = 1

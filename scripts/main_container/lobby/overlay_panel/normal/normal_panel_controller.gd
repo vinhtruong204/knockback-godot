@@ -21,7 +21,7 @@ var _maps: Array = []
 var _modes: Array = []
 var _selected_map_display: String = ""
 var _selected_map_key: String = ""
-var _current_mode_value: String = "Free for all"
+var _current_mode_code: String = NetworkManager.MODE_CODE_FREE_FOR_ALL
 
 
 func _ready() -> void:
@@ -70,11 +70,11 @@ func _on_map_selected(map: String) -> void:
 
 
 func _on_mode_btn_pressed() -> void:
-	if _current_mode_value == "Free for all":
-		_current_mode_value = "Search & Destroy"
+	if _current_mode_code == NetworkManager.MODE_CODE_FREE_FOR_ALL:
+		_current_mode_code = NetworkManager.MODE_CODE_SEARCH_DESTROY
 		mode_btn.text = tr("MODE_SEARCH_DESTROY")
 	else:
-		_current_mode_value = "Free for all"
+		_current_mode_code = NetworkManager.MODE_CODE_FREE_FOR_ALL
 		mode_btn.text = tr("MODE_FREE_FOR_ALL")
 
 
@@ -198,6 +198,9 @@ func _handle_match_found(match_data) -> void:
 		NetworkManager.start_online_match({
 			"game_mode": NetworkManager.GAME_MODE_NORMAL,
 			"match_id": match_data.match_id,
+			"mode_id": match_data.mode_id,
+			"mode_name": match_data.mode_name,
+			"mode_code": _resolve_match_mode_code(match_data),
 			"players": players,
 			"map_name": matched_map_name,
 			"map_key": matched_map_key,
@@ -248,7 +251,6 @@ func _find_selected_map_id() -> int:
 
 func _find_selected_mode_id() -> int:
 	var fallback := 0
-	var wanted := _current_mode_value.strip_edges().to_lower()
 	for item in _modes:
 		if not (item is Dictionary):
 			continue
@@ -257,10 +259,26 @@ func _find_selected_mode_id() -> int:
 			continue
 		if fallback == 0:
 			fallback = int(item.get("mode_id", 0))
+		var mode_code := str(item.get("code", "")).strip_edges().to_lower()
+		if mode_code == _current_mode_code:
+			return int(item.get("mode_id", 0))
 		var mode_name := str(item.get("name", "")).strip_edges().to_lower()
-		if mode_name == wanted:
+		if _mode_name_matches_code(mode_name, _current_mode_code):
 			return int(item.get("mode_id", 0))
 	return fallback
+
+
+func _resolve_match_mode_code(match_data) -> String:
+	var code := str(match_data.mode_code).strip_edges()
+	if code != "":
+		return code
+	return _current_mode_code
+
+
+func _mode_name_matches_code(mode_name: String, mode_code: String) -> bool:
+	if mode_code == NetworkManager.MODE_CODE_SEARCH_DESTROY:
+		return mode_name in ["search & destroy", "search and destroy"]
+	return mode_name in ["free for all", "free-for-all", "normal"]
 
 
 func _display_map_name(map: String) -> String:
