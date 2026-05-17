@@ -765,13 +765,13 @@ func _process_search_destroy(delta: float) -> void:
 
 
 func _sd_complete_plant() -> void:
+	_sd_play_objective_sfx.rpc("sd_planted")
 	sd_state = SearchDestroyState.PLANTED
 	sd_bomb_time_left = SD_BOMB_TIME
 	sd_interacting_peer = -1
 	sd_interaction_type = ""
 	sd_interaction_progress = 0.0
 	sd_last_bomb_tick_second = int(ceil(sd_bomb_time_left))
-	_sd_play_objective_sfx.rpc("sd_planted")
 	_sd_sync_state()
 
 
@@ -784,8 +784,8 @@ func _sd_maybe_play_bomb_tick() -> void:
 	var tick_second := int(ceil(sd_bomb_time_left))
 	if tick_second == sd_last_bomb_tick_second:
 		return
-	sd_last_bomb_tick_second = tick_second
 	_sd_play_objective_sfx.rpc("sd_bomb_tick")
+	sd_last_bomb_tick_second = tick_second
 
 
 func _sd_cancel_interaction() -> void:
@@ -802,10 +802,11 @@ func _sd_cancel_interaction() -> void:
 func _sd_finish_round(winning_team: int, reason: String) -> void:
 	if sd_state == SearchDestroyState.ROUND_OVER or sd_state == SearchDestroyState.MATCH_OVER or match_ended:
 		return
+	if reason == "detonated":
+		_sd_play_explosion_effect.rpc(sd_active_site_position)
 	sd_state = SearchDestroyState.ROUND_OVER
 	sd_scores[winning_team] = int(sd_scores.get(winning_team, 0)) + 1
 	if reason == "detonated":
-		_sd_play_explosion_effect.rpc(sd_active_site_position)
 		_sd_apply_c4_blast(sd_active_site_position)
 	_sd_show_round_banner.rpc(winning_team, reason)
 	_sd_sync_state()
@@ -948,7 +949,7 @@ func _sd_show_round_banner(winning_team: int, reason: String) -> void:
 		banner.visible = false
 
 
-@rpc("authority", "call_local", "reliable")
+@rpc("authority", "call_local", "unreliable_ordered")
 func _sd_play_objective_sfx(sound_key: String) -> void:
 	AudioManager.play_sfx(StringName(sound_key))
 

@@ -2,7 +2,7 @@ extends Node
 
 const SETTINGS_PATH := "user://settings.cfg"
 const MIN_VOLUME_DB := -80.0
-const SFX_POOL_SIZE := 8
+const SFX_POOL_SIZE := 16
 
 const MUSIC_TRACKS := {
 	&"lobby": preload("res://assets/audio/background_music/lobby/music_background.mp3"),
@@ -39,6 +39,7 @@ var _sfx_players: Array[AudioStreamPlayer] = []
 var _current_music_track: StringName = &""
 var _missing_optional_sfx_warned: Dictionary = {}
 var _optional_sfx_cache: Dictionary = {}
+var _next_eviction_index: int = 0
 
 func _ready():
 	_setup_players()
@@ -167,7 +168,11 @@ func _get_available_sfx_player() -> AudioStreamPlayer:
 	for player in _sfx_players:
 		if not player.playing:
 			return player
-	return _sfx_players[0]
+	# Pool saturated — rotate eviction so the same slot isn't always stolen,
+	# which made one specific sound (often the first-allocated loop) hiccup.
+	var victim := _sfx_players[_next_eviction_index]
+	_next_eviction_index = (_next_eviction_index + 1) % _sfx_players.size()
+	return victim
 
 func _make_looping_stream(stream: AudioStream) -> AudioStream:
 	var playback_stream := stream.duplicate()
