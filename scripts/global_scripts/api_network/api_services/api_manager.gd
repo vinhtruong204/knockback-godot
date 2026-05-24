@@ -2,7 +2,7 @@ extends Node
 
 const AUTH_SAVE_PATH := "user://auth.cfg"
 
-var host := "http://100.96.156.107"
+var host := "http://100.64.167.118"
 var session_token := ""
 var player_id := ""
 
