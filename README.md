@@ -1,8 +1,10 @@
 # Knockback
 
-**Knockback** is a networked multiplayer 2D action game built with **Godot 4.6** (Mobile renderer). Players engage in fast-paced PvP combat driven by physics-based knockback mechanics — knock your opponent off the map to win. The game ships with a REST API backend, Google Sign-In authentication, and full progression systems (shop, equipment, economy, ranks).
+**Knockback** is a networked multiplayer 2D action game built with **Godot 4.6** (Mobile renderer). Players engage in fast-paced PvP combat driven by physics-based knockback mechanics — knock your opponent off the map to win. The game is backed by a REST API ([**game-platform-api**](https://github.com/vinhtruong204/game-platform-api)), Google Sign-In authentication, and full progression systems (shop, equipment, economy, ranks).
 
 Target platforms: **Android** (primary) and **Windows** (dedicated server).
+
+> **Backend:** the REST API this client talks to lives in **[game-platform-api](https://github.com/vinhtruong204/game-platform-api)** (four FastAPI microservices). See [Related Repositories](#related-repositories).
 
 ## Gameplay
 
@@ -102,6 +104,8 @@ Flow: Login → Lobby → Game
 
 ### Backend API
 
+The API is a separate project — **[game-platform-api](https://github.com/vinhtruong204/game-platform-api)** — comprising four independent FastAPI microservices, each with its own PostgreSQL database.
+
 Base URL: `http://100.96.156.107`
 
 | Port | Service | Endpoints |
@@ -135,3 +139,12 @@ knockback-godot/
 ```
 
 For a deeper breakdown of the player component system, spawners, match lifecycle, and config-driven stats, see [`CLAUDE.md`](CLAUDE.md).
+
+## Related Repositories
+
+| Repository | Role |
+|------------|------|
+| **knockback-godot** *(this repo)* | The **game client** — Godot 4.6 multiplayer 2D action game. |
+| **[game-platform-api](https://github.com/vinhtruong204/game-platform-api)** | The **backend** — four FastAPI microservices (player / config / economy / match) on ports 8000–8003, each with its own PostgreSQL database. |
+
+This client's API autoloads map to the backend services: `PlayerApi` → player-service (8000), `ConfigApi` → config-service (8001), `EconomyApi` → economy-service (8002), `MatchApi` → match-service (8003).
