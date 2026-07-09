@@ -576,6 +576,22 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_uit80")
 placeholder_text = "Smooth Criminal"
 
+[node name="ClaimDiamondBtn" type="Button" parent="Root/OverlayContainer/PlayerProfile/ProfilePanel" unique_id=771203847]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -40.0
+offset_right = 85.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Claim"
+
 [node name="StatsPanel" type="Panel" parent="Root/OverlayContainer/PlayerProfile" unique_id=833522583]
 layout_mode = 1
 anchors_preset = 6
