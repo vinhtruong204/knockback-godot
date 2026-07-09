@@ -83,6 +83,17 @@ func update_match_player(match_id: String, pid: String, data: Dictionary, callba
 	ApiManager.send_request(self, base_url, "/match-players/" + match_id + "/" + pid,
 		HTTPClient.METHOD_PUT, data, true, callback)
 
+func get_player_winning_streak(player_id: String, callback: Callable, force_refresh := false) -> void:
+	var key := "player_dynamic:winning_streak:" + player_id
+	if force_refresh:
+		CacheManager.invalidate(key)
+	CacheManager.fetch_or_cache(key, CacheManager.TTL_DYNAMIC, "player_dynamic", false,
+		func(cb: Callable):
+			ApiManager.send_request(self, base_url,
+				"/match-players/" + player_id + "/winning-streak",
+				HTTPClient.METHOD_GET, {}, true, cb),
+		callback)
+
 # --- Matchmaking (no cache - real-time) ---
 
 func join_matchmaking(rank_point_or_data: Variant, callback: Callable):

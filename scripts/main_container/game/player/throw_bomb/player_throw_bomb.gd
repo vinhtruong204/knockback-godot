@@ -15,7 +15,7 @@ func _ready() -> void:
 func _on_throw_bomb() -> void:
 	if not weapon_hold_handler.consume_grenade():
 		return
-	AudioManager.play_sfx(&"throw_bomb")
+	_play_throw_bomb_sfx_rpc.rpc()
 
 	var bomb_barrel_position: Vector2 = Vector2()
 	var direction: PlayerFlip.Direction = player_flip.get_player_direction()
@@ -27,6 +27,11 @@ func _on_throw_bomb() -> void:
 			bomb_barrel_position = player.global_position + bomb_barrel.position
 
 	request_throw_bomb.rpc_id(1, multiplayer.get_unique_id(), bomb_barrel_position, direction, player.grenade_damage)
+
+
+@rpc("any_peer", "call_local", "unreliable_ordered")
+func _play_throw_bomb_sfx_rpc() -> void:
+	AudioManager.play_sfx(&"throw_bomb")
 
 
 @rpc("authority", "call_remote", "reliable")

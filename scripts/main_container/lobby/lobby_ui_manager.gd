@@ -117,6 +117,10 @@ func _open_task():
 func _open_mail():
 	$OverlayContainer/Mail.visible = true
 	_ignore_ui_buttons_input()
+
+func _open_help():
+	$OverlayContainer/Help.visible = true
+	_ignore_ui_buttons_input()
 #endregion
 
 #region Top overlay

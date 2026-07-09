@@ -1,6 +1,6 @@
 extends Node
 
-const ADDRESS := "100.96.156.107"
+const ADDRESS := "100.90.76.19"
 const PORT := 9543
 const GAME_MODE_RANK := "rank"
 const GAME_MODE_NORMAL := "normal"

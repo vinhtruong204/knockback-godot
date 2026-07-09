@@ -8,12 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://b4ib7m3oh0bqc" path="res://assets/lobby/top_bar/player_profile/avatar_1.png" id="4_yapo1"]
 [ext_resource type="Texture2D" uid="uid://bu70s8kcb7igl" path="res://assets/lobby/top_bar/currency/diamond.png" id="5_u3wsq"]
 [ext_resource type="Script" uid="uid://ceyogbx00end" path="res://scripts/main_container/lobby/ui_buttons/top_bar/currency/currency_container.gd" id="6_5f28n"]
-[ext_resource type="Texture2D" uid="uid://ds7nx8256lo5g" path="res://assets/lobby/top_bar/top_right/friend.png" id="6_5ibcn"]
 [ext_resource type="Texture2D" uid="uid://cyef5dnhi63h0" path="res://assets/lobby/top_bar/top_right/mail.png" id="7_hdsot"]
 [ext_resource type="Texture2D" uid="uid://dl36dfjcu1naq" path="res://assets/lobby/top_bar/top_right/settings.png" id="8_cvlo1"]
 [ext_resource type="Texture2D" uid="uid://cxd1mt1hrtcty" path="res://assets/lobby/middle/leaderboard/podium.png" id="9_hdsot"]
 [ext_resource type="Texture2D" uid="uid://cmjudeb8he08g" path="res://assets/lobby/middle/mode_selection/ranking.png" id="9_rmwd2"]
 [ext_resource type="Script" uid="uid://bj633tv1r6en8" path="res://scripts/main_container/lobby/common/team_handle_position.gd" id="10_7huou"]
+[ext_resource type="Texture2D" uid="uid://dxgt0x22pjtvy" path="res://assets/lobby/top_bar/top_right/help.png" id="10_8y3ar"]
 [ext_resource type="Texture2D" uid="uid://blily84q0t8rs" path="res://assets/lobby/middle/mode_selection/marketing.png" id="10_docll"]
 [ext_resource type="Texture2D" uid="uid://d3y4t3u8jp3or" path="res://assets/lobby/middle/mode_selection/lan.png" id="11_hwkks"]
 [ext_resource type="Texture2D" uid="uid://coeuiave5xvqf" path="res://assets/lobby/bottom_bar/gun.png" id="12_1rix5"]
@@ -59,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://bwgfpd86uysw5" path="res://assets/lobby/middle/rank/master.png" id="36_7vi1o"]
 [ext_resource type="PackedScene" uid="uid://dbyop0ht6j7ps" path="res://scenes/main_container/lobby/task/task_item.tscn" id="37_7xsny"]
 [ext_resource type="Script" uid="uid://c8ltadmbinpch" path="res://scripts/main_container/lobby/overlay_panel/mail/mail_panel.gd" id="38_mail"]
+[ext_resource type="Script" uid="uid://b557hwwdv2fn8" path="res://scripts/main_container/lobby/overlay_panel/help/help_panel.gd" id="39_help"]
 [ext_resource type="Texture2D" uid="uid://cub3evny7fhhc" path="res://assets/game/map/night.png" id="41_7vi1o"]
 [ext_resource type="Texture2D" uid="uid://bdlul4woss37y" path="res://assets/game/map/ice.png" id="42_8od1p"]
 [ext_resource type="Texture2D" uid="uid://csdlfa7nl6wrt" path="res://assets/game/map/dust.png" id="43_7vi1o"]
@@ -97,6 +98,9 @@ load_path = "res://.godot/imported/p90.png-e7572846593b8430b63d722a7ec0cd4b.ctex
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_exon6"]
 texture = ExtResource("60_vk22e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8y3ar"]
+texture = ExtResource("50_errxf")
 
 [node name="Lobby" type="CanvasLayer" unique_id=745962393]
 
@@ -243,12 +247,11 @@ grow_horizontal = 0
 theme_override_constants/separation = 20
 alignment = 2
 
-[node name="FriendBtn" type="Button" parent="Root/UIButtons/TopBar/RightContainer" unique_id=1169760456]
-visible = false
+[node name="HelpBtn" type="Button" parent="Root/UIButtons/TopBar/RightContainer" unique_id=1169760456]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_type_variation = &"IconButton"
-icon = ExtResource("6_5ibcn")
+icon = ExtResource("10_8y3ar")
 expand_icon = true
 
 [node name="MailBtn" type="Button" parent="Root/UIButtons/TopBar/RightContainer" unique_id=795767844]
@@ -572,6 +575,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_uit80")
 placeholder_text = "Smooth Criminal"
+
+[node name="ClaimDiamondBtn" type="Button" parent="Root/OverlayContainer/PlayerProfile/ProfilePanel" unique_id=771203847]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -40.0
+offset_right = 85.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Claim"
 
 [node name="StatsPanel" type="Panel" parent="Root/OverlayContainer/PlayerProfile" unique_id=833522583]
 layout_mode = 1
@@ -2915,6 +2934,130 @@ theme_type_variation = &"PrimaryButton"
 theme_override_font_sizes/font_size = 24
 text = "Claim"
 
+[node name="Help" type="Panel" parent="Root/OverlayContainer" unique_id=1997803558]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_8y3ar")
+script = ExtResource("39_help")
+
+[node name="BackBtn" parent="Root/OverlayContainer/Help" unique_id=1784810938 instance=ExtResource("17_1cl6t")]
+layout_mode = 0
+
+[node name="Content" type="Panel" parent="Root/OverlayContainer/Help" unique_id=1973389468]
+custom_minimum_size = Vector2(1000, 360)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -138.0
+offset_right = 500.0
+offset_bottom = 222.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"GlowCard"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/OverlayContainer/Help/Content" unique_id=1053372485]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="TabsPanel" type="Panel" parent="Root/OverlayContainer/Help/Content/HBoxContainer" unique_id=600499840]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"Card"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/OverlayContainer/Help/Content/HBoxContainer/TabsPanel" unique_id=1608008142]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = -14.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="HowToPlayBtn" type="Button" parent="Root/OverlayContainer/Help/Content/HBoxContainer/TabsPanel/VBoxContainer" unique_id=368063482]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_type_variation = &"TabButton"
+toggle_mode = true
+text = "HELP_TAB_HOW_TO_PLAY"
+
+[node name="FfaBtn" type="Button" parent="Root/OverlayContainer/Help/Content/HBoxContainer/TabsPanel/VBoxContainer" unique_id=2081587807]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_type_variation = &"TabButton"
+toggle_mode = true
+text = "HELP_TAB_FFA"
+
+[node name="SdBtn" type="Button" parent="Root/OverlayContainer/Help/Content/HBoxContainer/TabsPanel/VBoxContainer" unique_id=898876239]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_type_variation = &"TabButton"
+toggle_mode = true
+text = "HELP_TAB_SD"
+
+[node name="ContentArea" type="Panel" parent="Root/OverlayContainer/Help/Content/HBoxContainer" unique_id=265010939]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"Card"
+
+[node name="Title" type="Label" parent="Root/OverlayContainer/Help/Content/HBoxContainer/ContentArea" unique_id=737170890]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 18.0
+offset_top = 12.0
+offset_right = -18.0
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 26
+text = "HELP_TAB_HOW_TO_PLAY"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/OverlayContainer/Help/Content/HBoxContainer/ContentArea" unique_id=1402429782]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 56.0
+offset_right = -18.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="ContentLabel" type="RichTextLabel" parent="Root/OverlayContainer/Help/Content/HBoxContainer/ContentArea/ScrollContainer" unique_id=1152557556]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
 [node name="TopOverlay" type="Control" parent="Root" unique_id=308563002]
 z_index = 1
 layout_mode = 1
@@ -3242,6 +3385,7 @@ text = "SETTINGS_SIGN_OUT"
 [connection signal="pressed" from="Root/UIButtons/TopBar/ProfileBtn" to="Root" method="_open_player_profile"]
 [connection signal="pressed" from="Root/UIButtons/TopBar/CurrencyContainer/GoldBtn" to="Root" method="_open_purchase"]
 [connection signal="pressed" from="Root/UIButtons/TopBar/CurrencyContainer/DiamondBtn" to="Root" method="_open_purchase"]
+[connection signal="pressed" from="Root/UIButtons/TopBar/RightContainer/HelpBtn" to="Root" method="_open_help"]
 [connection signal="pressed" from="Root/UIButtons/TopBar/RightContainer/MailBtn" to="Root" method="_open_mail"]
 [connection signal="pressed" from="Root/UIButtons/TopBar/RightContainer/SettingsBtn" to="Root" method="_open_settings"]
 [connection signal="pressed" from="Root/UIButtons/Middle/LeaderBoardBtn" to="Root" method="_open_leaderboard"]

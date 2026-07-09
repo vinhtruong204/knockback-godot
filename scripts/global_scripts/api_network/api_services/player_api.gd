@@ -69,7 +69,7 @@ func get_player_stats(pid: String, callback: Callable, force_refresh := false):
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_SEMI, "player", false,
 		func(cb: Callable):
-			ApiManager.send_request(self , base_url, "/players/" + pid + "/stats",
+			ApiManager.send_request(self , base_url, "/player-stats/?player_id=" + pid,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 
@@ -79,7 +79,7 @@ func get_player_stats_by_mode(pid: String, mode: String, callback: Callable, for
 		CacheManager.invalidate(key)
 	CacheManager.fetch_or_cache(key, CacheManager.TTL_SEMI, "player", false,
 		func(cb: Callable):
-			ApiManager.send_request(self , base_url, "/players/" + pid + "/stats/" + mode,
+			ApiManager.send_request(self , base_url, "/player-stats/" + pid + "/" + mode,
 				HTTPClient.METHOD_GET, {}, true, cb),
 		callback)
 
@@ -88,7 +88,7 @@ func create_player_stats(data: Dictionary, callback: Callable):
 		HTTPClient.METHOD_POST, data, true, callback)
 
 func update_player_stats(pid: String, mode: String, data: Dictionary, callback: Callable):
-	ApiManager.send_request(self , base_url, "/players/" + pid + "/stats/" + mode,
+	ApiManager.send_request(self , base_url, "/player-stats/" + pid + "/" + mode,
 		HTTPClient.METHOD_PUT, data, true,
 		func(response: Dictionary):
 			if response.ok:

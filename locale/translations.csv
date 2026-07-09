@@ -155,3 +155,44 @@ SD_BANNER_HEARTS_FMT,Out of hearts - %s wins match,Out of hearts - %s wins match
 SD_BANNER_WIN_FMT,%s wins round,%s wins round
 MATCH_CONFIRM_FMT,Confirm (%d),Xác nhận (%d)
 MATCH_LEAVING,Leaving...,Đang rời trận...
+HELP_TAB_HOW_TO_PLAY,How to Play,Cách chơi
+HELP_TAB_FFA,Free For All,Đấu loạn
+HELP_TAB_SD,Search & Destroy,Tìm và Diệt
+HELP_HTP_CONTROLS_TITLE,Controls,Điều khiển
+HELP_HTP_MOVEMENT,Movement — virtual joystick (mobile) / WASD (desktop),Di chuyển — joystick ảo (di động) / WASD (máy tính)
+HELP_HTP_JUMP,Jump — Jump button / Space (double-jump supported),Nhảy — nút Nhảy / Space (hỗ trợ nhảy đôi)
+HELP_HTP_DROP,Drop-down — down + Jump on one-way platforms,Rơi xuống — Xuống + Nhảy trên nền một chiều
+HELP_HTP_FIRE,Fire — Fire button / Right Arrow (primary weapon),Bắn — nút Bắn / Mũi tên phải (vũ khí chính)
+HELP_HTP_THROW,Throw bomb — Bomb button / E,Ném bom — nút Bom / E
+HELP_HTP_SWITCH,Switch weapon — cycle Primary → Secondary → Melee,Đổi vũ khí — chuyển Chính → Phụ → Cận chiến
+HELP_HTP_GOAL_TITLE,Goal,Mục tiêu
+HELP_HTP_GOAL_BODY,"Reduce your opponent's hearts to 0. Each player has 5 hearts and 100 HP per heart. Low HP means you take bigger knockback — stay healthy or get launched off the map.","Giảm tim của đối thủ về 0. Mỗi người chơi có 5 tim và 100 HP mỗi tim. HP thấp đồng nghĩa bị đẩy lùi mạnh hơn — giữ sức khỏe nếu không muốn bị văng khỏi bản đồ."
+HELP_HTP_TIPS_TITLE,Tips,Mẹo
+HELP_HTP_TIPS_1,Use the map edges to your advantage — knock the opponent off.,Tận dụng rìa bản đồ — đẩy đối thủ rơi xuống.
+HELP_HTP_TIPS_2,Bombs deal area damage and knockback. Time your throws.,Bom gây sát thương diện rộng và đẩy lùi. Canh thời điểm ném chuẩn.
+HELP_HTP_TIPS_3,Melee is short range but deals strong knockback.,Cận chiến tầm ngắn nhưng đẩy lùi rất mạnh.
+HELP_FFA_INTRO,"Free For All — 1v1 elimination, no rounds, no objectives.","Đấu loạn — 1v1 loại trực tiếp, không vòng, không mục tiêu."
+HELP_FFA_WIN_TITLE,How to win,Cách thắng
+HELP_FFA_WIN_1,Eliminate the opponent to win the match.,Hạ gục đối thủ để thắng trận.
+HELP_FFA_WIN_2,Both players spawn with full hearts; each death costs 1 heart.,Cả hai người chơi bắt đầu với đủ tim; mỗi lần chết mất 1 tim.
+HELP_FFA_WIN_3,Match ends when one player loses all 5 hearts OR on disconnect (forfeit).,Trận kết thúc khi một người mất hết 5 tim HOẶC mất kết nối (bỏ trận).
+HELP_FFA_KB_TITLE,Knockback,Đẩy lùi
+HELP_FFA_KB_BODY,"The lower your HP, the further you get knocked back. A low-HP hit can launch you off-stage for an instant elimination.","HP càng thấp thì bị đẩy càng xa. Một đòn lúc HP thấp có thể hất văng bạn khỏi sân và bị hạ gục ngay tức khắc."
+HELP_FFA_RW_TITLE,Rewards,Phần thưởng
+HELP_FFA_RW_WIN,"Win — +50 gold, +100 EXP, +15 rank points","Thắng — +50 vàng, +100 KN, +15 điểm hạng"
+HELP_FFA_RW_LOSE,"Lose — +20 gold, +50 EXP, -10 rank points","Thua — +20 vàng, +50 KN, -10 điểm hạng"
+HELP_FFA_RW_FORFEIT,"Forfeit — 0 gold, 0 EXP, -20 rank points","Bỏ trận — 0 vàng, 0 KN, -20 điểm hạng"
+HELP_SD_INTRO,"Search & Destroy — round-based: one player plants the C4, the other defuses.","Tìm và Diệt — chế độ theo vòng: một người đặt C4, người kia tháo bom."
+HELP_SD_ROLES_TITLE,Roles,Vai trò
+HELP_SD_ROLE_ATT,Attacker — plant the C4 at the active site.,Tấn công — đặt C4 tại điểm đang hoạt động.
+HELP_SD_ROLE_DEF,"Defender — defuse the planted C4, or eliminate the attacker before they plant.","Phòng thủ — tháo C4 đã đặt, hoặc hạ gục đối phương trước khi họ đặt bom."
+HELP_SD_ROLES_NOTE,Roles swap each round.,Vai trò đổi sau mỗi vòng.
+HELP_SD_WINR_TITLE,Win the round,Thắng vòng
+HELP_SD_WINR_ATT,"Attacker wins by: (a) C4 detonates, OR (b) eliminating the defender.","Tấn công thắng khi: (a) C4 nổ, HOẶC (b) hạ gục Phòng thủ."
+HELP_SD_WINR_DEF,"Defender wins by: (a) defusing planted C4, OR (b) eliminating the attacker before plant.","Phòng thủ thắng khi: (a) tháo được C4 đã đặt, HOẶC (b) hạ gục Tấn công trước khi đặt bom."
+HELP_SD_WINM_TITLE,Win the match,Thắng trận
+HELP_SD_WINM_BODY,First side to reach the round target wins.,Bên đầu tiên đạt số vòng yêu cầu sẽ thắng.
+HELP_SD_AUDIO_TITLE,Audio cues,Âm thanh báo hiệu
+HELP_SD_AUDIO_1,A planted beep plays when C4 is armed.,Có tiếng bíp khi C4 vừa được kích hoạt.
+HELP_SD_AUDIO_2,Bomb tick speeds up as detonation approaches.,Tiếng tích tắc nhanh dần khi sắp nổ.
+HELP_SD_AUDIO_3,Listen to locate the C4 if you're the defender.,"Hãy nghe ngóng để tìm vị trí C4 nếu bạn là Phòng thủ."
