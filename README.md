@@ -22,8 +22,6 @@ Watch a full match on YouTube:
 
 ## Screenshots
 
-> ⚠️ The images below are placeholders. Replace the files in `docs/images/` with the real UI screenshots (keep the same file names, or update the paths below).
-
 ### Login
 ![Login screen](docs/images/login.png)
 
